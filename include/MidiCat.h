@@ -26,7 +26,6 @@ namespace midicat {
 										 double seconds, int initQ);
 			int 	  correctTempo		(int oldTempo, int oldTpq, int newTpq);
 			void 	  run				(int argc, char* argv[]);
-			//void 	  run				(int fu);
 			
 		private:
 		

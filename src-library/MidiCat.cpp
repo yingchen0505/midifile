@@ -12,11 +12,6 @@
 #include "MidiCat.h"
 using namespace midicat;
 
-//////////////////////////////////////////////////////////////////////////
-//void MidiCat::run(int fu) {
-//}
-
-
 void MidiCat::run(int argc, char* argv[]) {
    checkOptions(options, argc, argv);
    MidiFile outfile;
