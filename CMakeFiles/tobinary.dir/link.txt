@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/tobinary.dir/src-programs/tobinary.cpp.o  -o tobinary libmidifile.a 

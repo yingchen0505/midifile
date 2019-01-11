@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/drumtab.dir/src-programs/drumtab.cpp.o  -o drumtab libmidifile.a 

@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-programs/vlv.cpp
+Options.h
+/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-programs/Options.h
+stdlib.h
+-
+string
+-
+iostream
+-
+iomanip
+-
+
+include/Options.h
+iostream
+-
+map
+-
+string
+-
+vector
+-
+

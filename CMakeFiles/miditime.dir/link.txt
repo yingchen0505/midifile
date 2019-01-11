@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/miditime.dir/src-programs/miditime.cpp.o  -o miditime libmidifile.a 

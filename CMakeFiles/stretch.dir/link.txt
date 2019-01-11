@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/stretch.dir/src-programs/stretch.cpp.o  -o stretch libmidifile.a 

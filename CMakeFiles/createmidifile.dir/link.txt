@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/createmidifile.dir/src-programs/createmidifile.cpp.o  -o createmidifile libmidifile.a 

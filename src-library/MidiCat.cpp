@@ -1,7 +1,7 @@
 //
 // Programmer:    Craig Stuart Sapp <craig@ccrma.stanford.edu>, Modified into library by Yingchen Lai <lai.yingchen@u.nus.edu>
 // Creation Date: Tue Oct 16 07:34:30 PDT 2012
-// Last Modified: Mon Feb  9 20:40:50 PST 2015 Updated for C++11.
+// Last Modified: 
 // Filename:      ...sig/examples/all/midicat.cpp
 // Web Address:   http://museinfo.sapp.org/examples/museinfo/midi/midicat.cpp
 // Syntax:        C++; museinfo
@@ -9,31 +9,15 @@
 // Description:   Concatenate multiple MIDI files into single type-0 MIDI file.
 //
 
-#include "MidiFile.h"
-#include "Options.h"
-#include <iostream>
-#include <vector>
 #include "MidiCat.h"
-
-using namespace std;
-using namespace smf;
-
-// user interface variables
-Options options;
-double seconds         = 2.0;  // used with -p option
-int    binaryQ         = 1;    // used with -a option
-
-// function declarations:
-void      checkOptions      (Options& opts, int argc, char** argv);
-void      example           (void);
-void      usage             (const char* command);
-void      appendMidi        (MidiFile& outfile, const char* filename,
-                             double seconds, int initQ);
-double 	  correctTempo		(double oldTempo, int oldTpq, int newTpq);
+using namespace midicat;
 
 //////////////////////////////////////////////////////////////////////////
+//void MidiCat::run(int fu) {
+//}
 
-int main(int argc, char* argv[]) {
+
+void MidiCat::run(int argc, char* argv[]) {
    checkOptions(options, argc, argv);
    MidiFile outfile;
    outfile.joinTracks();
@@ -61,9 +45,8 @@ int main(int argc, char* argv[]) {
    } else {
       cout << outfile;
    }
-
-   return 0;
 }
+
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -74,7 +57,7 @@ int main(int argc, char* argv[]) {
 // 				   Returns the new tempo which = oldTempo * newTpq / oldTpq
 //
 
-int correctTempo(int oldTempo, int oldTpq, int newTpq) {
+int MidiCat::correctTempo(int oldTempo, int oldTpq, int newTpq) {
 	return (oldTempo * newTpq / oldTpq);
 }
 
@@ -87,7 +70,7 @@ int correctTempo(int oldTempo, int oldTpq, int newTpq) {
 // appendMidi --
 //
 
-void appendMidi(MidiFile& outfile, const char* filename,
+void MidiCat::appendMidi(MidiFile& outfile, const char* filename,
       double seconds, int initQ) {
    MidiFile infile(filename);
    infile.joinTracks();
@@ -156,7 +139,7 @@ void appendMidi(MidiFile& outfile, const char* filename,
 // checkOptions --
 //
 
-void checkOptions(Options& opts, int argc, char* argv[]) {
+void MidiCat::checkOptions(Options& opts, int argc, char* argv[]) {
    opts.define("p|pause=d:2.0",  "Pause given number of secs after each file");
    opts.define("a|ascii=b",  "Display MIDI output as ASCII text");
 
@@ -199,7 +182,7 @@ void checkOptions(Options& opts, int argc, char* argv[]) {
 // example --
 //
 
-void example(void) {
+void MidiCat::example(void) {
 
 }
 
@@ -210,7 +193,7 @@ void example(void) {
 // usage --
 //
 
-void usage(const char* command) {
+void MidiCat::usage(const char* command) {
 
 }
 

@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/shutak.dir/src-programs/shutak.cpp.o  -o shutak libmidifile.a 

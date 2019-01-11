@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/midi2text.dir/src-programs/midi2text.cpp.o  -o midi2text libmidifile.a 

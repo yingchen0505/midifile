@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/midi2binasc.dir/src-programs/midi2binasc.cpp.o  -o midi2binasc libmidifile.a 

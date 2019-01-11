@@ -51,6 +51,7 @@ set(SRCS
     src-library/MidiEventList.cpp
     src-library/MidiFile.cpp
     src-library/MidiMessage.cpp
+	src-library/MidiCat.cpp
 )
 
 set(HDRS
@@ -60,6 +61,7 @@ set(HDRS
     include/MidiFile.h
     include/MidiMessage.h
     include/Options.h
+	include/MidiCat.h
 )
 
 add_library(midifile STATIC ${SRCS} ${HDRS})
@@ -85,6 +87,7 @@ add_executable(midi2notes src-programs/midi2notes.cpp)
 add_executable(midi2skini src-programs/midi2skini.cpp)
 add_executable(midi2text src-programs/midi2text.cpp)
 add_executable(midicat src-programs/midicat.cpp)
+add_executable(fyp src-programs/fyp.cpp)
 add_executable(midimixup src-programs/midimixup.cpp)
 add_executable(miditime src-programs/miditime.cpp)
 add_executable(perfid src-programs/perfid.cpp)
@@ -119,6 +122,7 @@ target_link_libraries(midi2notes midifile)
 target_link_libraries(midi2skini midifile)
 target_link_libraries(midi2text midifile)
 target_link_libraries(midicat midifile)
+target_link_libraries(fyp midifile)
 target_link_libraries(midimixup midifile)
 target_link_libraries(miditime midifile)
 target_link_libraries(perfid midifile)

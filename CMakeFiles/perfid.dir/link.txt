@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/perfid.dir/src-programs/perfid.cpp.o  -o perfid libmidifile.a 

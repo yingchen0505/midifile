@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/midi2skini.dir/src-programs/midi2skini.cpp.o  -o midi2skini libmidifile.a 

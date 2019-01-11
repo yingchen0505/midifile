@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-programs/todec.cpp
+stdlib.h
+-
+stdio.h
+-
+ctype.h
+-
+string.h
+-
+iostream
+-
+
