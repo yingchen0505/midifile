@@ -123,6 +123,7 @@ class MidiFile {
 		int              getFileDurationInTicks    (void);
 		double           getFileDurationInQuarters (void);
 		double           getFileDurationInSeconds  (void);
+		int				 getBarByTick			   (int tickvalue);
 
 		// note-analysis functions:
 		int              linkNotePairs             (void);
@@ -241,8 +242,7 @@ class MidiFile {
 		                                              double value);
 		static std::ostream& writeBigEndianDouble    (std::ostream& out,
 		                                              double value);
-		void   updateBarNumber                 		 (void);
-
+													  
 	protected:
 		// m_events == Lists of MidiEvents for each MIDI file track.
 		std::vector<MidiEventList*> m_events;
@@ -277,6 +277,8 @@ class MidiFile {
 		
 		// m_barnumbervalid ==
 		bool m_barnumbervalid = false;
+		
+		std::map<int, int> m_tickbarmap;
 
 		// m_rwstatus == True if last read was successful, false if a problem.
 		bool m_rwstatus = true;
@@ -298,6 +300,7 @@ class MidiFile {
 		static int ticksearch                      (const void* A, const void* B);
 		static int secondsearch                    (const void* A, const void* B);
 		void       buildTimeMap                    (void);
+		void	   updateBarNumber                 (void);
 		double     linearTickInterpolationAtSecond (double seconds);
 		double     linearSecondInterpolationAtTick (int ticktime);
 };

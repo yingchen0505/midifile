@@ -2562,7 +2562,7 @@ void MidiFile::buildTimeMap(void) {
 //////////////////////////////
 //
 // MidiFile::updateBarNumber -- update the bar number for each
-//      midi event. Bar number starts from 1.
+//      midi event. Also updates m_tickbarmap. Bar number starts from 1.
 //
 
 void MidiFile::updateBarNumber(void) {
@@ -2576,7 +2576,7 @@ void MidiFile::updateBarNumber(void) {
 	makeAbsoluteTicks();
 	joinTracks();
 	
-	std::map<int, int> tickBarMap;
+	m_tickbarmap.clear();
 	int tpqn = getTicksPerQuarterNote();
 
 	// Assumes 4/4 time signature since it is the default if there's no time signature.
@@ -2607,7 +2607,7 @@ void MidiFile::updateBarNumber(void) {
 			accumulatedTicks -= ticksPerMeasure;
 		}
 		
-		tickBarMap[currentTick] = currentBarNumber;
+		m_tickbarmap[currentTick] = currentBarNumber;
 		lastTick = currentTick;
 	}
 
@@ -2616,7 +2616,7 @@ void MidiFile::updateBarNumber(void) {
 	int numTracks = getNumTracks();
 	for (int i=0; i<numTracks; i++) {
 		for (int j=1; j<(int)m_events[i]->size(); j++) {
-			(*m_events[i])[j].bar = tickBarMap[(*m_events[i])[j].tick];
+			(*m_events[i])[j].bar = m_tickbarmap[(*m_events[i])[j].tick];
 		}
 	}
 
@@ -2631,6 +2631,23 @@ void MidiFile::updateBarNumber(void) {
 	m_barnumbervalid = 1;
 
 }
+
+//////////////////////////////
+//
+// MidiFile::getBarByTick -- Returns bar number for given absolute tick value
+//
+
+int	MidiFile::getBarByTick (int tickvalue) {
+	if(!m_barnumbervalid) {
+		updateBarNumber();
+		if(!m_barnumbervalid){
+			return -1; // Something went wrong
+		}
+	}
+	
+	return m_tickbarmap[tickvalue];
+}
+
 
 //////////////////////////////
 //
