@@ -29,14 +29,31 @@ int main(int argc, char* argv[]) {
 	outfile.deltaTicks();
     outfile.setTicksPerQuarterNote(infile.getTicksPerQuarterNote());
 	
+	MidiEvent tempoBeforeStart;
+	//MidiEvent* timberBeforeStart;
+	bool tempoBeforeStartIsAdded = false;
+
 	for (int i=0; i<eventCount; i++) {
-		//std::cout << "i = " << i << "\n";
 		int currentBar = infile.getEvent(0,i).bar;
+		
+		// Add tempo setting before start bar
+		if(currentBar < startBar && infile.getEvent(0,i).isTempo()) {
+			tempoBeforeStart = infile.getEvent(0,i);
+		}
+		
+		// Add timber setting before start bar
+		//if(currentBar < startBar && infile.getEvent(0,i).isTimber()) {
+			
+		//}
+		
 		if(currentBar >= startBar && currentBar <= endBar){
+			if(!tempoBeforeStartIsAdded) {
+				tempoBeforeStart.track = 0;
+				outfile.addEvent(tempoBeforeStart);
+			}
 			MidiEvent event = infile.getEvent(0,i);
 			event.track = 0;
 			outfile.addEvent(event);
-			//outfile.addEvent(infile.getEvent(0,i));
 		}
 	}
 
