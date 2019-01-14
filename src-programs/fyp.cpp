@@ -21,8 +21,7 @@ int main(int argc, char* argv[]) {
 	MidiFile infile(filename);
 	infile.joinTracks();
 	infile.deltaTicks();
-	//infile.absoluteTicks();
-	int eventCount = infile.getEventCount(0);
+	int eventCount = infile.getEventCount(0) - 1; // exclude end of file event
 	
 	MidiFile outfile;
 	outfile.joinTracks();
@@ -30,26 +29,28 @@ int main(int argc, char* argv[]) {
     outfile.setTicksPerQuarterNote(infile.getTicksPerQuarterNote());
 	
 	MidiEvent tempoBeforeStart;
-	//MidiEvent* timberBeforeStart;
 	bool tempoBeforeStartIsAdded = false;
 
 	for (int i=0; i<eventCount; i++) {
 		int currentBar = infile.getEvent(0,i).bar;
 		
-		// Add tempo setting before start bar
+		// Store tempo setting before start bar
 		if(currentBar < startBar && infile.getEvent(0,i).isTempo()) {
 			tempoBeforeStart = infile.getEvent(0,i);
 		}
 		
 		// Add timber setting before start bar
-		//if(currentBar < startBar && infile.getEvent(0,i).isTimber()) {
-			
-		//}
+		if(currentBar < startBar && infile.getEvent(0,i).isTimbre()) {
+			MidiEvent timbreEvent = infile.getEvent(0,i);
+			outfile.addEvent(timbreEvent);
+		}
 		
 		if(currentBar >= startBar && currentBar <= endBar){
+			// Add tempo setting before start bar if it hasn't been added
 			if(!tempoBeforeStartIsAdded) {
 				tempoBeforeStart.track = 0;
 				outfile.addEvent(tempoBeforeStart);
+				tempoBeforeStartIsAdded = true;
 			}
 			MidiEvent event = infile.getEvent(0,i);
 			event.track = 0;
@@ -70,8 +71,7 @@ int main(int argc, char* argv[]) {
 
    	outfile.absoluteTicks();
 	outfile.sortTracks();
-	
-   
+
 	outfile.updateBarNumber();
 	outfile.write(cout);
 	
