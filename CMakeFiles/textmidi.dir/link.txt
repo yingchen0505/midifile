@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/textmidi.dir/src-programs/textmidi.cpp.o  -o textmidi libmidifile.a 

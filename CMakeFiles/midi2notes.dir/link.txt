@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/midi2notes.dir/src-programs/midi2notes.cpp.o  -o midi2notes libmidifile.a 

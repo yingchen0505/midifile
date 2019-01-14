@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/durations.dir/src-programs/durations.cpp.o  -o durations libmidifile.a 

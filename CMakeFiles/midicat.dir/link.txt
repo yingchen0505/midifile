@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/midicat.dir/src-programs/midicat.cpp.o  -o midicat libmidifile.a 

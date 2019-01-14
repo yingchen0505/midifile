@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/type0.dir/src-programs/type0.cpp.o  -o type0 libmidifile.a 

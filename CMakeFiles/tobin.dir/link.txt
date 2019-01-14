@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/tobin.dir/src-programs/tobin.cpp.o  -o tobin libmidifile.a 

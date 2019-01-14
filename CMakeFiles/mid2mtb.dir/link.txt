@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/mid2mtb.dir/src-programs/mid2mtb.cpp.o  -o mid2mtb libmidifile.a 

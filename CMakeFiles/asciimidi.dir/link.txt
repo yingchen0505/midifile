@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/asciimidi.dir/src-programs/asciimidi.cpp.o  -o asciimidi libmidifile.a 
