@@ -241,6 +241,7 @@ class MidiFile {
 		                                              double value);
 		static std::ostream& writeBigEndianDouble    (std::ostream& out,
 		                                              double value);
+		void   updateBarNumber                 		 (void);
 
 	protected:
 		// m_events == Lists of MidiEvents for each MIDI file track.
@@ -297,7 +298,6 @@ class MidiFile {
 		static int ticksearch                      (const void* A, const void* B);
 		static int secondsearch                    (const void* A, const void* B);
 		void       buildTimeMap                    (void);
-		void       updateBarNumber                 (void);
 		double     linearTickInterpolationAtSecond (double seconds);
 		double     linearSecondInterpolationAtTick (int ticktime);
 };
