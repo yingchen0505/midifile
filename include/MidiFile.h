@@ -18,6 +18,8 @@
 
 #include <vector>
 #include <string>
+#include <cmath>
+#include <map>
 #include <istream>
 #include <fstream>
 
@@ -34,7 +36,6 @@ class _TickTime {
 		int    tick;
 		double seconds;
 };
-
 
 class MidiFile {
 	public:
@@ -272,6 +273,9 @@ class MidiFile {
 
 		// m_timemap ==
 		std::vector<_TickTime> m_timemap;
+		
+		// m_barnumbervalid ==
+		bool m_barnumbervalid = false;
 
 		// m_rwstatus == True if last read was successful, false if a problem.
 		bool m_rwstatus = true;
@@ -293,6 +297,7 @@ class MidiFile {
 		static int ticksearch                      (const void* A, const void* B);
 		static int secondsearch                    (const void* A, const void* B);
 		void       buildTimeMap                    (void);
+		void       updateBarNumber                 (void);
 		double     linearTickInterpolationAtSecond (double seconds);
 		double     linearSecondInterpolationAtTick (int ticktime);
 };

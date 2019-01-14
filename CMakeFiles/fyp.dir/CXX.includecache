@@ -7,6 +7,18 @@
 #IncludeRegexTransform: 
 
 /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-programs/fyp.cpp
+MidiFile.h
+/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-programs/MidiFile.h
+Options.h
+/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-programs/Options.h
+iostream
+-
+vector
+-
+cmath
+-
+map
+-
 MidiCat.h
 /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-programs/MidiCat.h
 
@@ -38,6 +50,10 @@ include/MidiEventList.h
 vector
 -
 string
+-
+cmath
+-
+map
 -
 istream
 -

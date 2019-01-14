@@ -454,6 +454,7 @@ bool MidiFile::read(std::istream& input) {
 
 	m_theTimeState = TIME_STATE_ABSOLUTE;
 	markSequence();
+	updateBarNumber();
 	return m_rwstatus;
 }
 
@@ -2558,7 +2559,78 @@ void MidiFile::buildTimeMap(void) {
 
 }
 
+//////////////////////////////
+//
+// MidiFile::updateBarNumber -- update the bar number for each
+//      midi event. Bar number starts from 1.
+//
 
+void MidiFile::updateBarNumber(void) {
+
+	// convert the MIDI file to absolute time representation
+	// in single track mode (and undo if the MIDI file was not
+	// in that state when this function was called.
+	//
+	int trackstate = getTrackState();
+	int timestate  = getTickState();
+	makeAbsoluteTicks();
+	joinTracks();
+	
+	std::map<int, int> tickBarMap;
+	int tpqn = getTicksPerQuarterNote();
+
+	// Assumes 4/4 time signature since it is the default if there's no time signature.
+	// Calculates ticksPerMeasure
+	double qnPerMeasure = 4;
+	int ticksPerMeasure = qnPerMeasure * tpqn;
+	
+	int currentBarNumber = 1;
+	int lastTick = 0;
+	int currentTick = 0;
+	int accumulatedTicks = 0; // This counter is reset to zero every time it reaches ticksPerMeasure
+	
+	for (int i=0; i<getNumEvents(0); i++) {
+		
+		// Updates ticksPerMeasure if there is time signature meta-event
+		if(getEvent(0, i).isTimeSignature()){
+			double numerator = getEvent(0, i)[3];
+			double denom = (pow(2, (-1) * getEvent(0, i)[4]) / 0.25);
+			qnPerMeasure = numerator * denom;
+			ticksPerMeasure = qnPerMeasure * tpqn;
+		}
+		
+		currentTick = getEvent(0, i).tick;
+		accumulatedTicks += currentTick - lastTick;
+		// if accumulatedTicks overflows, increase currentBarNumber
+		if(accumulatedTicks >= ticksPerMeasure) {
+			currentBarNumber++;
+			accumulatedTicks -= ticksPerMeasure;
+		}
+		
+		tickBarMap[currentTick] = currentBarNumber;
+		lastTick = currentTick;
+	}
+
+	// Get bar number from map and insert it to each event
+	splitTracks();
+	int numTracks = getNumTracks();
+	for (int i=0; i<numTracks; i++) {
+		for (int j=1; j<(int)m_events[i]->size(); j++) {
+			(*m_events[i])[j].bar = tickBarMap[(*m_events[i])[j].tick];
+		}
+	}
+
+	// reset the states of the tracks or time values if necessary here:
+	if (timestate == TIME_STATE_ABSOLUTE) {
+		deltaTicks();
+	}
+	if (trackstate == TRACK_STATE_JOINED) {
+		joinTracks();
+	}
+
+	m_barnumbervalid = 1;
+
+}
 
 //////////////////////////////
 //
