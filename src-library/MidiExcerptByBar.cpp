@@ -60,6 +60,21 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 			outfile.addEvent(event);
 		}
 	}
+	
+	// Turn off any note still on
+	outfile.linkNotePairs();
+	int outputEventCount = outfile.getEventCount(0);
+	for (int i=0; i < outputEventCount; i++){
+		if(outfile.getEvent(0, i).isNoteOn()){
+			MidiEvent* linkedEvent = outfile.getEvent(0, i).getLinkedEvent();
+			// There is no corresponding note-off event, add one
+			if(!linkedEvent) {
+				MidiEvent noteOff = outfile.getEvent(0, i);
+				noteOff.makeNoteOff();
+				outfile.addEvent(noteOff);
+			}
+		}
+	}
 
 	 // insert an end-of track Meta Event
    int tpq = outfile.getTicksPerQuarterNote();
