@@ -45,9 +45,16 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 				outfile.addEvent(tempoBeforeStart);
 				tempoBeforeStartIsAdded = true;
 			}
-			
+
 			// Add current event to output file
 			MidiEvent event = infile.getEvent(0,i);
+			
+			if(event.isNoteOff()) {
+				MidiEvent* linkedEvent = event.getLinkedEvent();
+				// Ignore this note-off if it is for a note before the targeted bar range
+				if(linkedEvent && (*linkedEvent).bar < startBar) continue;
+			}
+			
 			// Make track number 0 so that it does not exceed the number of tracks in output file
 			event.track = 0;
 			outfile.addEvent(event);
