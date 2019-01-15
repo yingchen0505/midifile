@@ -686,6 +686,33 @@ src-library/MidiEventList.cpp.s:
 	$(MAKE) -f CMakeFiles/midifile.dir/build.make CMakeFiles/midifile.dir/src-library/MidiEventList.cpp.s
 .PHONY : src-library/MidiEventList.cpp.s
 
+src-library/MidiExcerptByBar.o: src-library/MidiExcerptByBar.cpp.o
+
+.PHONY : src-library/MidiExcerptByBar.o
+
+# target to build an object file
+src-library/MidiExcerptByBar.cpp.o:
+	$(MAKE) -f CMakeFiles/midifile.dir/build.make CMakeFiles/midifile.dir/src-library/MidiExcerptByBar.cpp.o
+.PHONY : src-library/MidiExcerptByBar.cpp.o
+
+src-library/MidiExcerptByBar.i: src-library/MidiExcerptByBar.cpp.i
+
+.PHONY : src-library/MidiExcerptByBar.i
+
+# target to preprocess a source file
+src-library/MidiExcerptByBar.cpp.i:
+	$(MAKE) -f CMakeFiles/midifile.dir/build.make CMakeFiles/midifile.dir/src-library/MidiExcerptByBar.cpp.i
+.PHONY : src-library/MidiExcerptByBar.cpp.i
+
+src-library/MidiExcerptByBar.s: src-library/MidiExcerptByBar.cpp.s
+
+.PHONY : src-library/MidiExcerptByBar.s
+
+# target to generate assembly for a file
+src-library/MidiExcerptByBar.cpp.s:
+	$(MAKE) -f CMakeFiles/midifile.dir/build.make CMakeFiles/midifile.dir/src-library/MidiExcerptByBar.cpp.s
+.PHONY : src-library/MidiExcerptByBar.cpp.s
+
 src-library/MidiFile.o: src-library/MidiFile.cpp.o
 
 .PHONY : src-library/MidiFile.o
@@ -1768,6 +1795,9 @@ help:
 	@echo "... src-library/MidiEventList.o"
 	@echo "... src-library/MidiEventList.i"
 	@echo "... src-library/MidiEventList.s"
+	@echo "... src-library/MidiExcerptByBar.o"
+	@echo "... src-library/MidiExcerptByBar.i"
+	@echo "... src-library/MidiExcerptByBar.s"
 	@echo "... src-library/MidiFile.o"
 	@echo "... src-library/MidiFile.i"
 	@echo "... src-library/MidiFile.s"

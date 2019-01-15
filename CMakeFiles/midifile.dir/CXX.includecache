@@ -38,6 +38,10 @@ utility
 stdlib.h
 /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/stdlib.h
 
+/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MidiExcerptByBar.cpp
+MidiExcerptByBar.h
+/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MidiExcerptByBar.h
+
 /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MidiFile.cpp
 MidiFile.h
 /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MidiFile.h
@@ -118,6 +122,20 @@ include/MidiEventList.h
 MidiEvent.h
 include/MidiEvent.h
 vector
+-
+
+include/MidiExcerptByBar.h
+MidiFile.h
+include/MidiFile.h
+Options.h
+include/Options.h
+iostream
+-
+vector
+-
+cmath
+-
+map
 -
 
 include/MidiFile.h
