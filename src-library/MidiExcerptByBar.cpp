@@ -12,6 +12,7 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 	infile.joinTracks();
 	infile.deltaTicks();
 	int eventCount = infile.getEventCount(0) - 1; // exclude end of file event
+	infile.linkNotePairs();
 	
 	// Initialize output file
 	MidiFile outfile;
@@ -21,6 +22,10 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 	
 	MidiEvent tempoBeforeStart;
 	bool tempoBeforeStartIsAdded = false;
+	
+	// Notes that are turned on during the selected bars but only turned off afterwards
+	// Need to add the note-off events at the end of the file
+	std::vector<MidiEvent> noteOffAfterEndBar; 
 
 	// Loop through all events except the end-of-file event
 	for (int i=0; i<eventCount; i++) {
@@ -46,34 +51,32 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 				tempoBeforeStartIsAdded = true;
 			}
 
-			// Add current event to output file
-			MidiEvent event = infile.getEvent(0,i);
-			
-			if(event.isNoteOff()) {
-				MidiEvent* linkedEvent = event.getLinkedEvent();
+			if(infile.getEvent(0,i).isNoteOff()) {
+				MidiEvent* linkedEvent = infile.getEvent(0,i).getLinkedEvent();
 				// Ignore this note-off if it is for a note before the targeted bar range
 				if(linkedEvent && (*linkedEvent).bar < startBar) continue;
 			}
 			
+			if(infile.getEvent(0,i).isNoteOn()) {
+				MidiEvent* linkedEvent = infile.getEvent(0,i).getLinkedEvent();
+				// If this note is only turned off after selected bar range, 
+				// need to add the note-off to end of file
+				if(linkedEvent && (*linkedEvent).bar > endBar) {
+					noteOffAfterEndBar.push_back(*linkedEvent);
+				}
+			}
+			
 			// Make track number 0 so that it does not exceed the number of tracks in output file
-			event.track = 0;
-			outfile.addEvent(event);
+			infile.getEvent(0,i).track = 0;
+			
+			// Add current event to output file
+			outfile.addEvent(infile.getEvent(0,i));
 		}
 	}
 	
 	// Turn off any note still on
-	outfile.linkNotePairs();
-	int outputEventCount = outfile.getEventCount(0);
-	for (int i=0; i < outputEventCount; i++){
-		if(outfile.getEvent(0, i).isNoteOn()){
-			MidiEvent* linkedEvent = outfile.getEvent(0, i).getLinkedEvent();
-			// There is no corresponding note-off event, add one
-			if(!linkedEvent) {
-				MidiEvent noteOff = outfile.getEvent(0, i);
-				noteOff.makeNoteOff();
-				outfile.addEvent(noteOff);
-			}
-		}
+	for(int i = 0; i < noteOffAfterEndBar.size(); i++) {
+		outfile.addEvent(noteOffAfterEndBar[i]);
 	}
 
 	 // insert an end-of track Meta Event
