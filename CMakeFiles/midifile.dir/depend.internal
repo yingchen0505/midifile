@@ -11,7 +11,6 @@ CMakeFiles/midifile.dir/src-library/MidiCat.cpp.o
  include/MidiEventList.h
  include/MidiFile.h
  include/MidiMessage.h
- include/Options.h
 CMakeFiles/midifile.dir/src-library/MidiEvent.cpp.o
  /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MidiEvent.cpp
  include/MidiEvent.h
@@ -21,6 +20,14 @@ CMakeFiles/midifile.dir/src-library/MidiEventList.cpp.o
  include/MidiEvent.h
  include/MidiEventList.h
  include/MidiMessage.h
+CMakeFiles/midifile.dir/src-library/MidiExcerptByBar.cpp.o
+ /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MidiExcerptByBar.cpp
+ include/MidiEvent.h
+ include/MidiEventList.h
+ include/MidiExcerptByBar.h
+ include/MidiFile.h
+ include/MidiMessage.h
+ include/Options.h
 CMakeFiles/midifile.dir/src-library/MidiFile.cpp.o
  /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MidiFile.cpp
  include/Binasc.h
