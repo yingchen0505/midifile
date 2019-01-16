@@ -8,5 +8,6 @@ CMakeFiles/fyp.dir/src-programs/fyp.cpp.o: include/MidiEventList.h
 CMakeFiles/fyp.dir/src-programs/fyp.cpp.o: include/MidiExcerptByBar.h
 CMakeFiles/fyp.dir/src-programs/fyp.cpp.o: include/MidiFile.h
 CMakeFiles/fyp.dir/src-programs/fyp.cpp.o: include/MidiMessage.h
+CMakeFiles/fyp.dir/src-programs/fyp.cpp.o: include/MusicSegment.h
 CMakeFiles/fyp.dir/src-programs/fyp.cpp.o: include/Options.h
 
