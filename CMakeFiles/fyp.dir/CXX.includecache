@@ -19,6 +19,10 @@ cmath
 -
 map
 -
+list
+-
+MidiCat.h
+/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-programs/MidiCat.h
 MidiExcerptByBar.h
 /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-programs/MidiExcerptByBar.h
 MusicSegment.h
@@ -32,6 +36,8 @@ include/Options.h
 iostream
 -
 vector
+-
+list
 -
 
 include/MidiEvent.h
@@ -85,8 +91,6 @@ string
 include/MusicSegment.h
 MidiFile.h
 include/MidiFile.h
-MidiCat.h
-include/MidiCat.h
 
 include/Options.h
 iostream
