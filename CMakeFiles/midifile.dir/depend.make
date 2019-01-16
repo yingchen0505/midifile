@@ -10,7 +10,6 @@ CMakeFiles/midifile.dir/src-library/MidiCat.cpp.o: include/MidiEvent.h
 CMakeFiles/midifile.dir/src-library/MidiCat.cpp.o: include/MidiEventList.h
 CMakeFiles/midifile.dir/src-library/MidiCat.cpp.o: include/MidiFile.h
 CMakeFiles/midifile.dir/src-library/MidiCat.cpp.o: include/MidiMessage.h
-CMakeFiles/midifile.dir/src-library/MidiCat.cpp.o: include/Options.h
 
 CMakeFiles/midifile.dir/src-library/MidiEvent.cpp.o: src-library/MidiEvent.cpp
 CMakeFiles/midifile.dir/src-library/MidiEvent.cpp.o: include/MidiEvent.h

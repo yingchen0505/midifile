@@ -31,12 +31,6 @@ MusicSegment.h
 include/MidiCat.h
 MidiFile.h
 include/MidiFile.h
-Options.h
-include/Options.h
-iostream
--
-vector
--
 list
 -
 
