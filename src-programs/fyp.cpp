@@ -34,9 +34,17 @@ int main(int argc, char* argv[]) {
 	for (int i=1; i<=options.getArgCount(); i++) {
 		inputFileNames.push_back(options.getArg(i).c_str());
 	}
-   
-	MidiFile output = midiCat.run(inputFileNames, pause);
+	
+	vector<MidiFile> inputFiles;
+	while(!inputFileNames.empty()){
+		inputFiles.push_back(MidiFile(inputFileNames.front()));
+		inputFileNames.pop_front();
+	}
+
+	MidiFile output = midiCat.run(inputFiles, pause);
 	output.write(cout);
+	
+	
 	//MidiExcerptByBar midiExcerptByBar;
 	//midiExcerptByBar.run(argc, argv);
 }

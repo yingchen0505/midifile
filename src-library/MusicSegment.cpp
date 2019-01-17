@@ -11,5 +11,7 @@ MusicSegment::MusicSegment(MidiFile* prep, MidiFile* mainLoop, MidiFile* mainLoo
 
 /*
 MidiFile MusicSegment::repeat(double timeInSeconds, bool isAbsoluteStart, bool isAbsoluteEnd) {
+	MidiCat midiCat;
+	
 	
 }*/
