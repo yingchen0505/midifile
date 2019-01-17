@@ -1,5 +1,6 @@
+#include <cmath>
 #include "MidiFile.h"
-//#include "MidiCat.h"
+#include "MidiCat.h"
 
 using namespace smf;
 using namespace midicat;

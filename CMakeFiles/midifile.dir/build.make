@@ -249,6 +249,30 @@ CMakeFiles/midifile.dir/src-library/MidiExcerptByBar.cpp.o.provides: CMakeFiles/
 CMakeFiles/midifile.dir/src-library/MidiExcerptByBar.cpp.o.provides.build: CMakeFiles/midifile.dir/src-library/MidiExcerptByBar.cpp.o
 
 
+CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o: CMakeFiles/midifile.dir/flags.make
+CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o: src-library/MusicSegment.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o -c /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MusicSegment.cpp
+
+CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MusicSegment.cpp > CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.i
+
+CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MusicSegment.cpp -o CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.s
+
+CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o.requires:
+
+.PHONY : CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o.requires
+
+CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o.provides: CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o.requires
+	$(MAKE) -f CMakeFiles/midifile.dir/build.make CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o.provides.build
+.PHONY : CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o.provides
+
+CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o.provides.build: CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o
+
+
 # Object files for target midifile
 midifile_OBJECTS = \
 "CMakeFiles/midifile.dir/src-library/Options.cpp.o" \
@@ -258,7 +282,8 @@ midifile_OBJECTS = \
 "CMakeFiles/midifile.dir/src-library/MidiFile.cpp.o" \
 "CMakeFiles/midifile.dir/src-library/MidiMessage.cpp.o" \
 "CMakeFiles/midifile.dir/src-library/MidiCat.cpp.o" \
-"CMakeFiles/midifile.dir/src-library/MidiExcerptByBar.cpp.o"
+"CMakeFiles/midifile.dir/src-library/MidiExcerptByBar.cpp.o" \
+"CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o"
 
 # External object files for target midifile
 midifile_EXTERNAL_OBJECTS =
@@ -271,9 +296,10 @@ libmidifile.a: CMakeFiles/midifile.dir/src-library/MidiFile.cpp.o
 libmidifile.a: CMakeFiles/midifile.dir/src-library/MidiMessage.cpp.o
 libmidifile.a: CMakeFiles/midifile.dir/src-library/MidiCat.cpp.o
 libmidifile.a: CMakeFiles/midifile.dir/src-library/MidiExcerptByBar.cpp.o
+libmidifile.a: CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o
 libmidifile.a: CMakeFiles/midifile.dir/build.make
 libmidifile.a: CMakeFiles/midifile.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX static library libmidifile.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX static library libmidifile.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/midifile.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/midifile.dir/link.txt --verbose=$(VERBOSE)
 
@@ -290,6 +316,7 @@ CMakeFiles/midifile.dir/requires: CMakeFiles/midifile.dir/src-library/MidiFile.c
 CMakeFiles/midifile.dir/requires: CMakeFiles/midifile.dir/src-library/MidiMessage.cpp.o.requires
 CMakeFiles/midifile.dir/requires: CMakeFiles/midifile.dir/src-library/MidiCat.cpp.o.requires
 CMakeFiles/midifile.dir/requires: CMakeFiles/midifile.dir/src-library/MidiExcerptByBar.cpp.o.requires
+CMakeFiles/midifile.dir/requires: CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o.requires
 
 .PHONY : CMakeFiles/midifile.dir/requires
 

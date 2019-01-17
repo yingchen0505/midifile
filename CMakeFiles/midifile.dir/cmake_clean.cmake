@@ -7,6 +7,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/midifile.dir/src-library/MidiMessage.cpp.o"
   "CMakeFiles/midifile.dir/src-library/MidiCat.cpp.o"
   "CMakeFiles/midifile.dir/src-library/MidiExcerptByBar.cpp.o"
+  "CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o"
   "libmidifile.pdb"
   "libmidifile.a"
 )

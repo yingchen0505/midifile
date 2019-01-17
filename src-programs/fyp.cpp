@@ -5,7 +5,7 @@
 #include <cmath>
 #include <map>
 #include <list>
-#include "MidiCat.h"
+//#include "MidiCat.h"
 #include "MidiExcerptByBar.h"
 #include "MusicSegment.h"
 
@@ -14,6 +14,7 @@
 
 using namespace midi_excerpt_by_bar;
 using namespace smf;
+using namespace music_segment;
 
 
 // Pause (in seconds) between concatenated midi files.
@@ -28,23 +29,15 @@ void checkOptions (Options& opts, int argc, char** argv);
 int main(int argc, char* argv[]) {
 	Options options;
 	checkOptions(options, argc, argv);
-	MidiCat midiCat;
-	list<const char *> inputFileNames;
+	
+	MidiFile prep(options.getArg(1).c_str());
+	MidiFile mainLoop(options.getArg(2).c_str());
+	MidiFile finalEnd(options.getArg(3).c_str());
+	
+	MusicSegment musicSegment(&prep, &mainLoop, NULL, &finalEnd);
+	MidiFile outfile = musicSegment.repeat(150, true, true);
+	outfile.write(cout);
 
-	for (int i=1; i<=options.getArgCount(); i++) {
-		inputFileNames.push_back(options.getArg(i).c_str());
-	}
-	
-	vector<MidiFile> inputFiles;
-	while(!inputFileNames.empty()){
-		inputFiles.push_back(MidiFile(inputFileNames.front()));
-		inputFileNames.pop_front();
-	}
-
-	MidiFile output = midiCat.run(inputFiles, pause);
-	output.write(cout);
-	
-	
 	//MidiExcerptByBar midiExcerptByBar;
 	//midiExcerptByBar.run(argc, argv);
 }

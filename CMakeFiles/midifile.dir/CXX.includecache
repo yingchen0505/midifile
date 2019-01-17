@@ -74,6 +74,10 @@ iostream
 iterator
 -
 
+/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MusicSegment.cpp
+MusicSegment.h
+/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MusicSegment.h
+
 /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/Options.cpp
 Options.h
 /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/Options.h
@@ -155,6 +159,14 @@ vector
 -
 string
 -
+
+include/MusicSegment.h
+cmath
+-
+MidiFile.h
+include/MidiFile.h
+MidiCat.h
+include/MidiCat.h
 
 include/Options.h
 iostream
