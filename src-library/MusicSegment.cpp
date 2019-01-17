@@ -11,7 +11,7 @@ MusicSegment::MusicSegment(MidiFile* prep, MidiFile* mainLoop, MidiFile* mainLoo
 
 
 MidiFile MusicSegment::repeat(double timeInSeconds, bool isAbsoluteStart, bool isAbsoluteEnd) {
-	//if(!mainLoop) return NULL; // No mainLoop to repeat, something went wrong.
+	if(!mainLoop) return MidiFile(); // No mainLoop to repeat, something went wrong.
 	
 	double durationOfPrepAndEnd = 0.0; 
 	MidiCat midiCat;
