@@ -21,9 +21,11 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
     outfile.setTicksPerQuarterNote(infile.getTicksPerQuarterNote());
 	
 	MidiEvent tempoBeforeStart;
+	bool hasTempoBeforeStart = false;
 	bool tempoBeforeStartIsAdded = false;
 	
 	MidiEvent timeSignature;
+	bool hasTimeSignature = false;
 	bool timeSignatureIsAdded = false;
 	
 	// Notes that are turned on during the selected bars but only turned off afterwards
@@ -36,11 +38,13 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 		
 		// Store the latest tempo setting before start bar
 		if(currentBar < startBar && infile.getEvent(0,i).isTempo()) {
+			hasTempoBeforeStart = true;
 			tempoBeforeStart = infile.getEvent(0,i);
 		}
 		
 		// Store the latest time signature before start bar
 		if(currentBar < startBar && infile.getEvent(0,i).isTimeSignature()) {
+			hasTimeSignature = true;
 			timeSignature = infile.getEvent(0,i);
 		}
 		
@@ -53,14 +57,14 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 		// Find events between targeted bars
 		if(currentBar >= startBar && currentBar <= endBar){
 			// Add tempo setting before start bar if it hasn't been added
-			if(!tempoBeforeStartIsAdded) {
+			if(!tempoBeforeStartIsAdded && hasTempoBeforeStart) {
 				tempoBeforeStart.track = 0;
 				outfile.addEvent(tempoBeforeStart);
 				tempoBeforeStartIsAdded = true;
 			}
 			
 			// Add time signature before start bar if it hasn't been added
-			if(!timeSignatureIsAdded) {
+			if(!timeSignatureIsAdded && hasTimeSignature) {
 				timeSignature.track = 0;
 				outfile.addEvent(timeSignature);
 				timeSignatureIsAdded = true;
