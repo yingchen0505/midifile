@@ -79,6 +79,7 @@ MidiEvent::~MidiEvent() {
 	tick    = -1;
 	seconds = -1.0;
 	seq     = -1;
+	bar 	= -1;
 	this->resize(0);
 	m_eventlink = NULL;
 }

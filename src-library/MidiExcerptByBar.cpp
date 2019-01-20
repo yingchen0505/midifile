@@ -51,6 +51,7 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 		// Add timber setting before start bar
 		if(currentBar < startBar && infile.getEvent(0,i).isTimbre()) {
 			MidiEvent timbreEvent = infile.getEvent(0,i);
+			timbreEvent.clearVariables();
 			outfile.addEvent(timbreEvent);
 		}
 		
@@ -58,14 +59,14 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 		if(currentBar >= startBar && currentBar <= endBar){
 			// Add tempo setting before start bar if it hasn't been added
 			if(!tempoBeforeStartIsAdded && hasTempoBeforeStart) {
-				tempoBeforeStart.track = 0;
+				tempoBeforeStart.clearVariables();
 				outfile.addEvent(tempoBeforeStart);
 				tempoBeforeStartIsAdded = true;
 			}
 			
 			// Add time signature before start bar if it hasn't been added
 			if(!timeSignatureIsAdded && hasTimeSignature) {
-				timeSignature.track = 0;
+				timeSignature.clearVariables();
 				outfile.addEvent(timeSignature);
 				timeSignatureIsAdded = true;
 			}
@@ -113,7 +114,7 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 	outfile.sortTracks();
 
 	outfile.updateBarNumber();
-	std::cout << outfile;
+	//std::cout << outfile;
 	outfile.write(std::cout);
 }
 
