@@ -56,6 +56,11 @@ MidiFile MusicSegment::repeat(double timeInSeconds, bool isAbsoluteStart, bool i
 	}
 	
 	if(isAbsoluteEnd && finalEnd) {
+		// If there is mainLoopEnd, 
+		// need to replace the last one of it with the finalEnd
+		if(mainLoopEnd) {
+			concatList.pop_back();
+		}
 		concatList.push_back(*finalEnd);
 	}
 	
