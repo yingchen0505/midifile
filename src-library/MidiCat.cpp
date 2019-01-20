@@ -23,12 +23,6 @@ MidiFile MidiCat::run(vector<MidiFile> inputFiles, double pause) {
    for(int i=0; i<inputFiles.size(); i++){
 	   appendMidi(outfile, inputFiles[i], pause, initQ++);
    }
-   
-   /*
-   while(!inputFileNames.empty()){
-	   appendMidi(outfile, inputFileNames.front(), pause, initQ++);
-	   inputFileNames.pop_front();
-   }*/
 
    // insert an end-of track Meta Event
    int tpq = outfile.getTicksPerQuarterNote();
@@ -67,7 +61,6 @@ int MidiCat::correctTempo(int oldTempo, int oldTpq, int newTpq) {
 // appendMidi --
 //
 
-//void MidiCat::appendMidi(MidiFile& outfile, string filename,
 void MidiCat::appendMidi(MidiFile& outfile, MidiFile infile,
       double pause, int initQ) {
    infile.joinTracks();
