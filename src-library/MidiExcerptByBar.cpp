@@ -23,6 +23,9 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 	MidiEvent tempoBeforeStart;
 	bool tempoBeforeStartIsAdded = false;
 	
+	MidiEvent timeSignature;
+	bool timeSignatureIsAdded = false;
+	
 	// Notes that are turned on during the selected bars but only turned off afterwards
 	// Need to add the note-off events at the end of the file
 	std::vector<MidiEvent> noteOffAfterEndBar; 
@@ -34,6 +37,11 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 		// Store the latest tempo setting before start bar
 		if(currentBar < startBar && infile.getEvent(0,i).isTempo()) {
 			tempoBeforeStart = infile.getEvent(0,i);
+		}
+		
+		// Store the latest time signature before start bar
+		if(currentBar < startBar && infile.getEvent(0,i).isTimeSignature()) {
+			timeSignature = infile.getEvent(0,i);
 		}
 		
 		// Add timber setting before start bar
@@ -49,6 +57,13 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 				tempoBeforeStart.track = 0;
 				outfile.addEvent(tempoBeforeStart);
 				tempoBeforeStartIsAdded = true;
+			}
+			
+			// Add time signature before start bar if it hasn't been added
+			if(!timeSignatureIsAdded) {
+				timeSignature.track = 0;
+				outfile.addEvent(timeSignature);
+				timeSignatureIsAdded = true;
 			}
 
 			if(infile.getEvent(0,i).isNoteOff()) {
