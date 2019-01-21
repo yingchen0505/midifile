@@ -1,4 +1,3 @@
-ticksPerMeasure = 960
 bar = 0
 ticks since beginning of bar = 0
 ticks till end of bar = 0

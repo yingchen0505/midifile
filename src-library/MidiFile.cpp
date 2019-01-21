@@ -2583,13 +2583,13 @@ void MidiFile::updateBarNumber(void) {
 	// Assumes 4/4 time signature since it is the default if there's no time signature.
 	// Calculates ticksPerMeasure
 	double qnPerMeasure = 4;
-	m_ticksPerMeasure = qnPerMeasure * tpqn;
+	int ticksPerMeasure = qnPerMeasure * tpqn;
 	
 	int currentBarNumber = 1;
 	int lastTick = 0;
 	int currentTick = 0;
 	int beginningOfBarMarker = 0;	// This is the beginning (in absolute ticks) of the current bar
-	int endOfBarMarker = m_ticksPerMeasure; // This is the end (in absolute ticks) of the current bar
+	int endOfBarMarker = ticksPerMeasure; // This is the end (in absolute ticks) of the current bar
 	int accumulatedTicks = 0; // This counter is reset to zero every time it reaches ticksPerMeasure
 	
 	bool isFirstTimeSignatureFound = true;
@@ -2600,20 +2600,20 @@ void MidiFile::updateBarNumber(void) {
 		accumulatedTicks += currentTick - lastTick;
 		
 		// if accumulatedTicks overflows, increase currentBarNumber
-		if(accumulatedTicks >= m_ticksPerMeasure) {
+		if(accumulatedTicks >= ticksPerMeasure) {
 			currentBarNumber++;
-			beginningOfBarMarker += m_ticksPerMeasure;
-			endOfBarMarker = beginningOfBarMarker + m_ticksPerMeasure;
-			accumulatedTicks -= m_ticksPerMeasure;
+			beginningOfBarMarker += ticksPerMeasure;
+			endOfBarMarker = beginningOfBarMarker + ticksPerMeasure;
+			accumulatedTicks -= ticksPerMeasure;
 		}
 		
-		// Updates m_ticksPerMeasure if there is time signature meta-event
+		// Updates ticksPerMeasure if there is time signature meta-event
 		if(getEvent(0, i).isTimeSignature()){
 			double numerator = getEvent(0, i)[3];
 			double denom = (pow(2, (-1) * getEvent(0, i)[4]) / 0.25);
 			qnPerMeasure = numerator * denom;
-			m_ticksPerMeasure = qnPerMeasure * tpqn;
-			endOfBarMarker = beginningOfBarMarker + m_ticksPerMeasure;
+			ticksPerMeasure = qnPerMeasure * tpqn;
+			endOfBarMarker = beginningOfBarMarker + ticksPerMeasure;
 			
 			// If this is the first time signature found, 
 			// it means our previous assumption of 4/4 is wrong
@@ -2624,7 +2624,7 @@ void MidiFile::updateBarNumber(void) {
 				lastTick = 0;
 				currentTick = 0;
 				beginningOfBarMarker = 0;
-				endOfBarMarker = m_ticksPerMeasure;
+				endOfBarMarker = ticksPerMeasure;
 				accumulatedTicks = 0;
 				isFirstTimeSignatureFound = false;
 				continue;
@@ -2678,25 +2678,6 @@ int	MidiFile::getBarByTick (int tickvalue) {
 	
 	return barMapValue[0];
 }
-
-//////////////////////////////
-//
-// MidiFile::updateBarNumber -- update the bar number, ticksSinceBeginningOfBar 
-// 		and ticksTillEndOfBar for each midi event. Also updates m_tickbarmap. 
-//		Bar number starts from 1.
-//
-
-int MidiFile::getTicksPerMeasure (void) {
-	if(!m_barnumbervalid) {
-		updateBarNumber();
-		if(!m_barnumbervalid){
-			return -1; // Something went wrong
-		}
-	}
-	
-	return m_ticksPerMeasure;
-}
-
 
 //////////////////////////////
 //

@@ -44,7 +44,6 @@ int main(int argc, char* argv[]) {
 	checkOptions(options, argc, argv);
 	MidiFile infile(options.getArg(1).c_str());
 	
-	cout << "ticksPerMeasure = " << infile.getTicksPerMeasure() << "\n";
 	infile.joinTracks();
 	for (int i=0; i<infile.getEventCount(0); i++){
 		cout << "bar = " << infile.getEvent(0, i).bar << "\n";
