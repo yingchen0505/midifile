@@ -1,0 +1,2255 @@
+"MThd"			; MIDI header chunk marker
+4'6			; bytes to follow in header chunk
+2'0			; file format: Type-0 (single track)
+2'1			; number of tracks
+2'480			; ticks per quarter note
+
+;;; TRACK 0 ----------------------------------
+"MTrk"			; MIDI track chunk marker
+4'10476			; bytes to follow in track chunk
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 51 v3 t150	; tempo
+v0	ff 58 v4 '2 '2 '24 '8	; time signature
+v0	c0 '0		; patch-change
+v0	c1 '0		; patch-change
+v13	90 '74 '76	; note-on D5
+v0	91 '50 '70	; note-on D3
+v0	91 '62 '70	; note-on D4
+v455	90 '74 '0	; note-off D5
+v0	91 '50 '0	; note-off D3
+v0	91 '62 '0	; note-off D4
+v265	90 '69 '80	; note-on A4
+v227	90 '69 '0	; note-off A4
+v0	ff 2f v0	; end-of-track
+MThd      àMTrk  (ì ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿQ€ ÿX À  Á JL ‘2F ‘>FƒGJ  ‘2  ‘> ‚	EPcE  ÿ/ 

@@ -6,7 +6,6 @@
 #include <map>
 #include <list>
 #include <unistd.h>
-//#include <fstream>
 #include "MidiExcerptByBar.h"
 #include "MusicSegment.h"
 
@@ -28,6 +27,7 @@ int endBar = -1;	// Use with -e option (inclusive)
 void checkOptions (Options& opts, int argc, char** argv);
 
 int main(int argc, char* argv[]) {
+	/*
 	// Store current directory so as to return to this before exiting constructor
 	char homeDirectory[1024];
 	getcwd(homeDirectory, sizeof(homeDirectory));
@@ -38,26 +38,33 @@ int main(int argc, char* argv[]) {
 	chdir(INPUT_PATH);
 	
 	getcwd(currDirectory, sizeof(currDirectory));
-	cout << currDirectory << "\n";
-	/*
+	cout << currDirectory << "\n";*/
+	
 	Options options;
 	checkOptions(options, argc, argv);
-	
+	MidiFile infile(options.getArg(1).c_str());
+	//cout << infile;
+	infile.write(cout);
+	/*
 	MidiFile prep(options.getArg(1).c_str());
 	MidiFile mainLoop(options.getArg(2).c_str());
-	MidiFile finalEnd(options.getArg(3).c_str());
+	MidiFile mainLoopEnd(options.getArg(3).c_str());
+	MidiFile finalEnd(options.getArg(4).c_str());
 	
-	MusicSegment musicSegment(&prep, &mainLoop, NULL, &finalEnd);
+	//MusicSegment musicSegment(NULL, &mainLoop, &mainLoopEnd, NULL);
+	
+	MusicSegment musicSegment(&prep, &mainLoop, &mainLoopEnd, &finalEnd);
 	MidiFile outfile = musicSegment.repeat(150, true, true);
+	cout << outfile;
 	outfile.write(cout);*/
 
 	//MidiExcerptByBar midiExcerptByBar;
 	//midiExcerptByBar.run(argc, argv);
-	
+	/*
 	chdir(homeDirectory);
 	
 	getcwd(currDirectory, sizeof(currDirectory));
-	cout << currDirectory << "\n";
+	cout << currDirectory << "\n";*/
 	
 }
 

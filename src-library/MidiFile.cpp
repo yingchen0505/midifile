@@ -2561,8 +2561,9 @@ void MidiFile::buildTimeMap(void) {
 
 //////////////////////////////
 //
-// MidiFile::updateBarNumber -- update the bar number for each
-//      midi event. Also updates m_tickbarmap. Bar number starts from 1.
+// MidiFile::updateBarNumber -- update the bar number, ticksSinceBeginningOfBar 
+// 		and ticksTillEndOfBar for each midi event. Also updates m_tickbarmap. 
+//		Bar number starts from 1.
 //
 
 void MidiFile::updateBarNumber(void) {
@@ -2587,6 +2588,8 @@ void MidiFile::updateBarNumber(void) {
 	int currentBarNumber = 1;
 	int lastTick = 0;
 	int currentTick = 0;
+	int beginningOfBarMarker = 0;	// This is the beginning (in absolute ticks) of the current bar
+	int endOfBarMarker = ticksPerMeasure; // This is the end (in absolute ticks) of the current bar
 	int accumulatedTicks = 0; // This counter is reset to zero every time it reaches ticksPerMeasure
 	
 	for (int i=0; i<getNumEvents(0); i++) {
@@ -2604,10 +2607,13 @@ void MidiFile::updateBarNumber(void) {
 		// if accumulatedTicks overflows, increase currentBarNumber
 		if(accumulatedTicks >= ticksPerMeasure) {
 			currentBarNumber++;
+			beginningOfBarMarker += ticksPerMeasure;
+			endOfBarMarker += ticksPerMeasure;
 			accumulatedTicks -= ticksPerMeasure;
 		}
-		
-		m_tickbarmap[currentTick] = currentBarNumber;
+		// value of bar map = vector of {bar, ticksSinceBeginningOfBar, ticksTillEndOfBar}
+		std::vector<int> barMapValue = {currentBarNumber, currentTick - beginningOfBarMarker, endOfBarMarker - currentTick};
+		m_tickbarmap[currentTick] = barMapValue;
 		lastTick = currentTick;
 	}
 
@@ -2616,7 +2622,10 @@ void MidiFile::updateBarNumber(void) {
 	int numTracks = getNumTracks();
 	for (int i=0; i<numTracks; i++) {
 		for (int j=1; j<(int)m_events[i]->size(); j++) {
-			(*m_events[i])[j].bar = m_tickbarmap[(*m_events[i])[j].tick];
+			std::vector<int> barMapValue = m_tickbarmap[(*m_events[i])[j].tick];
+			(*m_events[i])[j].bar = barMapValue[0];
+			(*m_events[i])[j].ticksSinceBeginningOfBar = barMapValue[1];
+			(*m_events[i])[j].ticksTillEndOfBar = barMapValue[2];
 		}
 	}
 
@@ -2645,7 +2654,9 @@ int	MidiFile::getBarByTick (int tickvalue) {
 		}
 	}
 	
-	return m_tickbarmap[tickvalue];
+	std::vector<int> barMapValue = m_tickbarmap[tickvalue];
+	
+	return barMapValue[0];
 }
 
 

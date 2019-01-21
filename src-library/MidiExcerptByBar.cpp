@@ -114,7 +114,7 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 	outfile.sortTracks();
 
 	outfile.updateBarNumber();
-	//std::cout << outfile;
+	std::cout << outfile;
 	outfile.write(std::cout);
 }
 

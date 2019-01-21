@@ -280,7 +280,7 @@ class MidiFile {
 		// m_barnumbervalid ==
 		bool m_barnumbervalid = false;
 		
-		std::map<int, int> m_tickbarmap;
+		std::map<int, std::vector<int>> m_tickbarmap;	// key = tick; value = vector of {bar, ticksSinceBeginningOfBar, ticksTillEndOfBar}
 
 		// m_rwstatus == True if last read was successful, false if a problem.
 		bool m_rwstatus = true;

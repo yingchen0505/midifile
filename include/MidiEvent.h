@@ -58,6 +58,8 @@ class MidiEvent : public MidiMessage {
 		double     seconds;  // calculated time in sec. (after doTimeAnalysis())
 		int        seq;      // sorting sequence number of event
 		int 	   bar;		 // which bar this event is situated in. Bar number starts from 1.
+		int ticksSinceBeginningOfBar;	// ticks since the beginning of the measure in which this event is situated.
+		int ticksTillEndOfBar;		// ticks until the end of the measure in which this event is situated.
 
 	private:
 		MidiEvent* m_eventlink;  // used to match note-ons and note-offs
