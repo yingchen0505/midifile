@@ -243,7 +243,9 @@ class MidiFile {
 		static std::ostream& writeBigEndianDouble    (std::ostream& out,
 		                                              double value);
 													  
-		void	   updateBarNumber                 (void);
+		void 		updateBarNumber                 (void);
+		
+		int 		getTicksPerMeasure				(void);
 													  
 	protected:
 		// m_events == Lists of MidiEvents for each MIDI file track.
@@ -287,6 +289,8 @@ class MidiFile {
 
 		// m_linkedEventQ == True if link analysis has been done.
 		bool m_linkedEventsQ = false;
+		
+		int m_ticksPerMeasure;
 
 	private:
 		int        extractMidiData                 (std::istream& inputfile,

@@ -2583,34 +2583,54 @@ void MidiFile::updateBarNumber(void) {
 	// Assumes 4/4 time signature since it is the default if there's no time signature.
 	// Calculates ticksPerMeasure
 	double qnPerMeasure = 4;
-	int ticksPerMeasure = qnPerMeasure * tpqn;
+	m_ticksPerMeasure = qnPerMeasure * tpqn;
 	
 	int currentBarNumber = 1;
 	int lastTick = 0;
 	int currentTick = 0;
 	int beginningOfBarMarker = 0;	// This is the beginning (in absolute ticks) of the current bar
-	int endOfBarMarker = ticksPerMeasure; // This is the end (in absolute ticks) of the current bar
+	int endOfBarMarker = m_ticksPerMeasure; // This is the end (in absolute ticks) of the current bar
 	int accumulatedTicks = 0; // This counter is reset to zero every time it reaches ticksPerMeasure
 	
+	bool isFirstTimeSignatureFound = true;
+	
 	for (int i=0; i<getNumEvents(0); i++) {
+
+		currentTick = getEvent(0, i).tick;
+		accumulatedTicks += currentTick - lastTick;
 		
-		// Updates ticksPerMeasure if there is time signature meta-event
+		// if accumulatedTicks overflows, increase currentBarNumber
+		if(accumulatedTicks >= m_ticksPerMeasure) {
+			currentBarNumber++;
+			beginningOfBarMarker += m_ticksPerMeasure;
+			endOfBarMarker = beginningOfBarMarker + m_ticksPerMeasure;
+			accumulatedTicks -= m_ticksPerMeasure;
+		}
+		
+		// Updates m_ticksPerMeasure if there is time signature meta-event
 		if(getEvent(0, i).isTimeSignature()){
 			double numerator = getEvent(0, i)[3];
 			double denom = (pow(2, (-1) * getEvent(0, i)[4]) / 0.25);
 			qnPerMeasure = numerator * denom;
-			ticksPerMeasure = qnPerMeasure * tpqn;
+			m_ticksPerMeasure = qnPerMeasure * tpqn;
+			endOfBarMarker = beginningOfBarMarker + m_ticksPerMeasure;
+			
+			// If this is the first time signature found, 
+			// it means our previous assumption of 4/4 is wrong
+			// and might lead to errors. Thus, reset to beginning of loop.
+			if(isFirstTimeSignatureFound) {
+				i = -1;
+				currentBarNumber = 1;
+				lastTick = 0;
+				currentTick = 0;
+				beginningOfBarMarker = 0;
+				endOfBarMarker = m_ticksPerMeasure;
+				accumulatedTicks = 0;
+				isFirstTimeSignatureFound = false;
+				continue;
+			}
 		}
 		
-		currentTick = getEvent(0, i).tick;
-		accumulatedTicks += currentTick - lastTick;
-		// if accumulatedTicks overflows, increase currentBarNumber
-		if(accumulatedTicks >= ticksPerMeasure) {
-			currentBarNumber++;
-			beginningOfBarMarker += ticksPerMeasure;
-			endOfBarMarker += ticksPerMeasure;
-			accumulatedTicks -= ticksPerMeasure;
-		}
 		// value of bar map = vector of {bar, ticksSinceBeginningOfBar, ticksTillEndOfBar}
 		std::vector<int> barMapValue = {currentBarNumber, currentTick - beginningOfBarMarker, endOfBarMarker - currentTick};
 		m_tickbarmap[currentTick] = barMapValue;
@@ -2657,6 +2677,24 @@ int	MidiFile::getBarByTick (int tickvalue) {
 	std::vector<int> barMapValue = m_tickbarmap[tickvalue];
 	
 	return barMapValue[0];
+}
+
+//////////////////////////////
+//
+// MidiFile::updateBarNumber -- update the bar number, ticksSinceBeginningOfBar 
+// 		and ticksTillEndOfBar for each midi event. Also updates m_tickbarmap. 
+//		Bar number starts from 1.
+//
+
+int MidiFile::getTicksPerMeasure (void) {
+	if(!m_barnumbervalid) {
+		updateBarNumber();
+		if(!m_barnumbervalid){
+			return -1; // Something went wrong
+		}
+	}
+	
+	return m_ticksPerMeasure;
 }
 
 

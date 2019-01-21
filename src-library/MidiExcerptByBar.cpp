@@ -55,7 +55,7 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 			outfile.addEvent(timbreEvent);
 		}
 		
-		// Find events between targeted bars
+		// Find events between targeted bars:
 		if(currentBar >= startBar && currentBar <= endBar){
 			// Add tempo setting before start bar if it hasn't been added
 			if(!tempoBeforeStartIsAdded && hasTempoBeforeStart) {
