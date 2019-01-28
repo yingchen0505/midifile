@@ -121,18 +121,30 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 		}
 	}
 	
-	// Turn off any note still on
 	int currentOutputLengthInTicks = outfile.getFileDurationInTicks();
-	// We want to make sure all these note-offs happen exactly at the end of the end bar
-	int VLVOfNoteOffAfterEndBar = endTicksOfEndBar - currentOutputLengthInTicks - 1;
-	for(int i = 0; i < noteOffAfterEndBar.size(); i++) {
-		if(i==0) {
-			noteOffAfterEndBar[i].tick = VLVOfNoteOffAfterEndBar;
+	// We don't want a gap between the end of file and the actual end of the last bar
+	// This gap will be filled by either a rest, or the note-off events yet to be added.
+	int gap = endTicksOfEndBar - currentOutputLengthInTicks - 1;
+	
+	// If there isn't any notes still on, then add a rest to fill the gap
+	if(noteOffAfterEndBar.empty() && gap > 0){
+		std::string text = "This is a rest to complete the last bar";
+		MidiEvent rest;
+		rest.makeText(text);
+		rest.tick = gap;
+		outfile.addEvent(rest);
+	}
+	// There are notes still on, therefore turn them off, which fills the gap at the same time
+	else {
+		for(int i = 0; i < noteOffAfterEndBar.size(); i++) {
+			if(i==0) {
+				noteOffAfterEndBar[i].tick = gap;
+			}
+			else {
+				noteOffAfterEndBar[i].tick = 0;
+			}
+			outfile.addEvent(noteOffAfterEndBar[i]);
 		}
-		else {
-			noteOffAfterEndBar[i].tick = 0;
-		}
-		outfile.addEvent(noteOffAfterEndBar[i]);
 	}
 
 	 // insert an end-of track Meta Event

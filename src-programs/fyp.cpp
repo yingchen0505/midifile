@@ -42,10 +42,10 @@ int main(int argc, char* argv[]) {
 	
 	Options options;
 	checkOptions(options, argc, argv);
-	MidiFile infile(options.getArg(1).c_str());
-	
-	//infile.joinTracks();
 	/*
+	MidiFile infile(options.getArg(1).c_str());
+	infile.joinTracks();
+	
 	for (int i=0; i<infile.getEventCount(0); i++){
 		cout << "bar = " << infile.getEvent(0, i).bar << "\n";
 		cout << "ticks since beginning of bar = " << infile.getEvent(0, i).ticksSinceBeginningOfBar << "\n";
@@ -66,7 +66,7 @@ int main(int argc, char* argv[]) {
 	}*/
 	
 	//infile.write(cout);
-	/*
+	
 	MidiFile prep(options.getArg(1).c_str());
 	MidiFile mainLoop(options.getArg(2).c_str());
 	MidiFile mainLoopEnd(options.getArg(3).c_str());
@@ -76,11 +76,11 @@ int main(int argc, char* argv[]) {
 	
 	MusicSegment musicSegment(&prep, &mainLoop, &mainLoopEnd, &finalEnd);
 	MidiFile outfile = musicSegment.repeat(150, true, true);
-	cout << outfile;
-	outfile.write(cout);*/
+	//cout << outfile;
+	outfile.write(cout);
 
-	MidiExcerptByBar midiExcerptByBar;
-	midiExcerptByBar.run(argc, argv);
+	//MidiExcerptByBar midiExcerptByBar;
+	//midiExcerptByBar.run(argc, argv);
 	/*
 	chdir(homeDirectory);
 	

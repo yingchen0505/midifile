@@ -55,6 +55,8 @@ iostream
 -
 vector
 -
+string
+-
 cmath
 -
 map
