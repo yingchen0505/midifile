@@ -44,14 +44,14 @@ int main(int argc, char* argv[]) {
 	checkOptions(options, argc, argv);
 	MidiFile infile(options.getArg(1).c_str());
 	
-	infile.joinTracks();
+	//infile.joinTracks();
 	/*
 	for (int i=0; i<infile.getEventCount(0); i++){
 		cout << "bar = " << infile.getEvent(0, i).bar << "\n";
 		cout << "ticks since beginning of bar = " << infile.getEvent(0, i).ticksSinceBeginningOfBar << "\n";
 		cout << "ticks till end of bar = " << infile.getEvent(0, i).ticksTillEndOfBar << "\n";
 	}*/
-	
+	/*
 	int currBar = 1;
 	
 	while(1) {
@@ -63,7 +63,7 @@ int main(int argc, char* argv[]) {
 		cout << "beg ticks = " << ticks[0] << "\n";
 		cout << "end ticks = " << ticks[1] << "\n";
 		currBar++;
-	}
+	}*/
 	
 	//infile.write(cout);
 	/*
@@ -79,8 +79,8 @@ int main(int argc, char* argv[]) {
 	cout << outfile;
 	outfile.write(cout);*/
 
-	//MidiExcerptByBar midiExcerptByBar;
-	//midiExcerptByBar.run(argc, argv);
+	MidiExcerptByBar midiExcerptByBar;
+	midiExcerptByBar.run(argc, argv);
 	/*
 	chdir(homeDirectory);
 	
