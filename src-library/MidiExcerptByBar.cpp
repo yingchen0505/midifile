@@ -31,11 +31,28 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 	// Notes that are turned on during the selected bars but only turned off afterwards
 	// Need to add the note-off events at the end of the file
 	std::vector<MidiEvent> noteOffAfterEndBar; 
+	
+	int currentTick = 0;
+	
+	std::vector<int> startBarTicks = infile.getBeginningAndEndTicksByBar(startBar);
+	if(startBarTicks.empty()) {
+		std::cout << "Error: start bar out of bound. \n";
+		return; 
+	}
+	const int beginningTicksOfStartBar = startBarTicks[0];
+	
+	std::vector<int> endBarTicks = infile.getBeginningAndEndTicksByBar(endBar);
+	if(endBarTicks.empty()) {
+		std::cout << "Error: end bar out of bound. \n";
+		return; 
+	}
+	const int endTicksOfEndBar = endBarTicks[1];
 
 	// Loop through all events except the end-of-file event
 	for (int i=0; i<eventCount; i++) {
 		int currentBar = infile.getEvent(0,i).bar;
-		
+		currentTick += infile.getEvent(0,i).tick;
+
 		// Store the latest tempo setting before start bar
 		if(currentBar < startBar && infile.getEvent(0,i).isTempo()) {
 			hasTempoBeforeStart = true;
@@ -57,6 +74,13 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 		
 		// Find events between targeted bars:
 		if(currentBar >= startBar && currentBar <= endBar){
+			
+			int ticksSinceBeginningOfStartBar = currentTick - beginningTicksOfStartBar;
+			if(ticksSinceBeginningOfStartBar < 0) {
+				std::cout << "Error: currentTick < beginningTicksOfStartBar. Bar tick map is wrong! \n";
+				return;
+			}
+			
 			// Add tempo setting before start bar if it hasn't been added
 			if(!tempoBeforeStartIsAdded && hasTempoBeforeStart) {
 				tempoBeforeStart.clearVariables();
@@ -88,6 +112,9 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 			
 			// Make track number 0 so that it does not exceed the number of tracks in output file
 			infile.getEvent(0,i).track = 0;
+			if(infile.getEvent(0,i).tick > ticksSinceBeginningOfStartBar) {
+				infile.getEvent(0,i).tick = ticksSinceBeginningOfStartBar;
+			}
 			
 			// Add current event to output file
 			outfile.addEvent(infile.getEvent(0,i));
@@ -95,7 +122,16 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 	}
 	
 	// Turn off any note still on
+	int currentOutputLengthInTicks = outfile.getFileDurationInTicks();
+	// We want to make sure all these note-offs happen exactly at the end of the end bar
+	int VLVOfNoteOffAfterEndBar = endTicksOfEndBar - currentOutputLengthInTicks - 1;
 	for(int i = 0; i < noteOffAfterEndBar.size(); i++) {
+		if(i==0) {
+			noteOffAfterEndBar[i].tick = VLVOfNoteOffAfterEndBar;
+		}
+		else {
+			noteOffAfterEndBar[i].tick = 0;
+		}
 		outfile.addEvent(noteOffAfterEndBar[i]);
 	}
 
@@ -114,7 +150,7 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 	outfile.sortTracks();
 
 	outfile.updateBarNumber();
-	std::cout << outfile;
+	//std::cout << outfile;
 	outfile.write(std::cout);
 }
 
