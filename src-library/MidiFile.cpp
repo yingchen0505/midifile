@@ -2562,7 +2562,7 @@ void MidiFile::buildTimeMap(void) {
 //////////////////////////////
 //
 // MidiFile::updateBarNumber -- update the bar number, ticksSinceBeginningOfBar 
-// 		and ticksTillEndOfBar for each midi event. Also updates m_tickbarmap. 
+// 		and ticksTillEndOfBar for each midi event. Also updates m_tickbarmap and m_bartickmap. 
 //		Bar number starts from 1.
 //
 
@@ -2578,6 +2578,7 @@ void MidiFile::updateBarNumber(void) {
 	joinTracks();
 	
 	m_tickbarmap.clear();
+	m_bartickmap.clear();
 	int tpqn = getTicksPerQuarterNote();
 
 	// Assumes 4/4 time signature since it is the default if there's no time signature.
@@ -2632,8 +2633,10 @@ void MidiFile::updateBarNumber(void) {
 		}
 		
 		// value of bar map = vector of {bar, ticksSinceBeginningOfBar, ticksTillEndOfBar}
-		std::vector<int> barMapValue = {currentBarNumber, currentTick - beginningOfBarMarker, endOfBarMarker - currentTick};
-		m_tickbarmap[currentTick] = barMapValue;
+		std::vector<int> tickBarMapValue = {currentBarNumber, currentTick - beginningOfBarMarker, endOfBarMarker - currentTick};
+		m_tickbarmap[currentTick] = tickBarMapValue;
+		std::vector<int> barTickMapValue = {beginningOfBarMarker, endOfBarMarker};
+		m_bartickmap[currentBarNumber] = barTickMapValue;
 		lastTick = currentTick;
 	}
 
@@ -2677,6 +2680,24 @@ int	MidiFile::getBarByTick (int tickvalue) {
 	std::vector<int> barMapValue = m_tickbarmap[tickvalue];
 	
 	return barMapValue[0];
+}
+
+//////////////////////////////
+//
+// MidiFile::getBeginningAndEndTicksByBar -- Returns vector of 
+//		{ticks at beginning of bar (inclusive), ticks at end of bar (inclusive)} 
+//		for given absolute bar number.
+//
+
+std::vector<int> MidiFile::getBeginningAndEndTicksByBar (int bar) {
+	if(!m_barnumbervalid) {
+		updateBarNumber();
+		if(!m_barnumbervalid){
+			return std::vector<int>(); // Something went wrong
+		}
+	}
+
+	return m_bartickmap[bar];
 }
 
 //////////////////////////////
