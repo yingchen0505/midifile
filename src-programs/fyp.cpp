@@ -66,7 +66,7 @@ int main(int argc, char* argv[]) {
 	}*/
 	
 	//infile.write(cout);
-	
+	/*
 	MidiFile prep(options.getArg(1).c_str());
 	MidiFile mainLoop(options.getArg(2).c_str());
 	MidiFile mainLoopEnd(options.getArg(3).c_str());
@@ -77,10 +77,10 @@ int main(int argc, char* argv[]) {
 	MusicSegment musicSegment(&prep, &mainLoop, &mainLoopEnd, &finalEnd);
 	MidiFile outfile = musicSegment.repeat(150, true, true);
 	//cout << outfile;
-	outfile.write(cout);
+	outfile.write(cout);*/
 
-	//MidiExcerptByBar midiExcerptByBar;
-	//midiExcerptByBar.run(argc, argv);
+	MidiExcerptByBar midiExcerptByBar;
+	midiExcerptByBar.run(argc, argv);
 	/*
 	chdir(homeDirectory);
 	
