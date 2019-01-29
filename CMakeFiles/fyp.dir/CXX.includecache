@@ -97,6 +97,10 @@ string
 -
 vector
 -
+iostream
+-
+unistd.h
+-
 MusicSegment.h
 include/MusicSegment.h
 

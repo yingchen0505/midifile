@@ -1,5 +1,7 @@
 #include <string>
 #include <vector>
+#include <iostream>
+#include <unistd.h>
 #include "MusicSegment.h"
 
 using namespace music_segment;
