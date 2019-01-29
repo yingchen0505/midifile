@@ -7,14 +7,16 @@
 #include <list>
 #include <unistd.h>
 #include "MidiExcerptByBar.h"
-#include "MusicSegment.h"
+//#include "MusicSegment.h"
+#include "MusicSegmentManager.h"
 
 #define INPUT_PATH	"./input"
 #define OUTPUT_PATH	"./output"
 
 using namespace midi_excerpt_by_bar;
 using namespace smf;
-using namespace music_segment;
+//using namespace music_segment;
+using namespace music_segment_manager;
 
 
 // pause (in seconds) between concatenated midi files.
@@ -40,8 +42,12 @@ int main(int argc, char* argv[]) {
 	getcwd(currDirectory, sizeof(currDirectory));
 	cout << currDirectory << "\n";*/
 	
-	Options options;
-	checkOptions(options, argc, argv);
+	//Options options;
+	//checkOptions(options, argc, argv);
+	
+	MusicSegmentManager musicSegmentManager(INPUT_PATH);
+	
+	//// Debugger by event
 	/*
 	MidiFile infile(options.getArg(1).c_str());
 	infile.joinTracks();
@@ -51,6 +57,9 @@ int main(int argc, char* argv[]) {
 		cout << "ticks since beginning of bar = " << infile.getEvent(0, i).ticksSinceBeginningOfBar << "\n";
 		cout << "ticks till end of bar = " << infile.getEvent(0, i).ticksTillEndOfBar << "\n";
 	}*/
+	
+	
+	//// Debugger by bar
 	/*
 	int currBar = 1;
 	
@@ -65,22 +74,23 @@ int main(int argc, char* argv[]) {
 		currBar++;
 	}*/
 	
-	//infile.write(cout);
+	///// MidiCat Tester
 	/*
 	MidiFile prep(options.getArg(1).c_str());
 	MidiFile mainLoop(options.getArg(2).c_str());
 	MidiFile mainLoopEnd(options.getArg(3).c_str());
 	MidiFile finalEnd(options.getArg(4).c_str());
-	
-	//MusicSegment musicSegment(NULL, &mainLoop, &mainLoopEnd, NULL);
-	
-	MusicSegment musicSegment(&prep, &mainLoop, &mainLoopEnd, &finalEnd);
+	MusicSegment musicSegment(0, 0, &prep, &mainLoop, &mainLoopEnd, &finalEnd);
 	MidiFile outfile = musicSegment.repeat(150, true, true);
 	//cout << outfile;
 	outfile.write(cout);*/
 
+	///// Midi Excerpt Tool
+	/*
 	MidiExcerptByBar midiExcerptByBar;
 	midiExcerptByBar.run(argc, argv);
+	*/
+	
 	/*
 	chdir(homeDirectory);
 	

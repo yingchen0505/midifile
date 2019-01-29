@@ -2,7 +2,9 @@
 
 using namespace music_segment;
 
-MusicSegment::MusicSegment(MidiFile* prep, MidiFile* mainLoop, MidiFile* mainLoopEnd, MidiFile* finalEnd) {
+MusicSegment::MusicSegment(int valence, int arousal, MidiFile* prep, MidiFile* mainLoop, MidiFile* mainLoopEnd, MidiFile* finalEnd) {
+	this->valence = valence;
+	this->arousal = arousal;
 	this->prep = prep;
 	this->mainLoop = mainLoop;
 	this->mainLoopEnd = mainLoopEnd;

@@ -794,6 +794,33 @@ src-library/MusicSegment.cpp.s:
 	$(MAKE) -f CMakeFiles/midifile.dir/build.make CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.s
 .PHONY : src-library/MusicSegment.cpp.s
 
+src-library/MusicSegmentManager.o: src-library/MusicSegmentManager.cpp.o
+
+.PHONY : src-library/MusicSegmentManager.o
+
+# target to build an object file
+src-library/MusicSegmentManager.cpp.o:
+	$(MAKE) -f CMakeFiles/midifile.dir/build.make CMakeFiles/midifile.dir/src-library/MusicSegmentManager.cpp.o
+.PHONY : src-library/MusicSegmentManager.cpp.o
+
+src-library/MusicSegmentManager.i: src-library/MusicSegmentManager.cpp.i
+
+.PHONY : src-library/MusicSegmentManager.i
+
+# target to preprocess a source file
+src-library/MusicSegmentManager.cpp.i:
+	$(MAKE) -f CMakeFiles/midifile.dir/build.make CMakeFiles/midifile.dir/src-library/MusicSegmentManager.cpp.i
+.PHONY : src-library/MusicSegmentManager.cpp.i
+
+src-library/MusicSegmentManager.s: src-library/MusicSegmentManager.cpp.s
+
+.PHONY : src-library/MusicSegmentManager.s
+
+# target to generate assembly for a file
+src-library/MusicSegmentManager.cpp.s:
+	$(MAKE) -f CMakeFiles/midifile.dir/build.make CMakeFiles/midifile.dir/src-library/MusicSegmentManager.cpp.s
+.PHONY : src-library/MusicSegmentManager.cpp.s
+
 src-library/Options.o: src-library/Options.cpp.o
 
 .PHONY : src-library/Options.o
@@ -1834,6 +1861,9 @@ help:
 	@echo "... src-library/MusicSegment.o"
 	@echo "... src-library/MusicSegment.i"
 	@echo "... src-library/MusicSegment.s"
+	@echo "... src-library/MusicSegmentManager.o"
+	@echo "... src-library/MusicSegmentManager.i"
+	@echo "... src-library/MusicSegmentManager.s"
 	@echo "... src-library/Options.o"
 	@echo "... src-library/Options.i"
 	@echo "... src-library/Options.s"

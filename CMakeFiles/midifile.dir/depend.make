@@ -46,6 +46,15 @@ CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o: include/MidiFile.h
 CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o: include/MidiMessage.h
 CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o: include/MusicSegment.h
 
+CMakeFiles/midifile.dir/src-library/MusicSegmentManager.cpp.o: src-library/MusicSegmentManager.cpp
+CMakeFiles/midifile.dir/src-library/MusicSegmentManager.cpp.o: include/MidiCat.h
+CMakeFiles/midifile.dir/src-library/MusicSegmentManager.cpp.o: include/MidiEvent.h
+CMakeFiles/midifile.dir/src-library/MusicSegmentManager.cpp.o: include/MidiEventList.h
+CMakeFiles/midifile.dir/src-library/MusicSegmentManager.cpp.o: include/MidiFile.h
+CMakeFiles/midifile.dir/src-library/MusicSegmentManager.cpp.o: include/MidiMessage.h
+CMakeFiles/midifile.dir/src-library/MusicSegmentManager.cpp.o: include/MusicSegment.h
+CMakeFiles/midifile.dir/src-library/MusicSegmentManager.cpp.o: include/MusicSegmentManager.h
+
 CMakeFiles/midifile.dir/src-library/Options.cpp.o: src-library/Options.cpp
 CMakeFiles/midifile.dir/src-library/Options.cpp.o: include/Options.h
 

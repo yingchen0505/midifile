@@ -78,6 +78,10 @@ iterator
 MusicSegment.h
 /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MusicSegment.h
 
+/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MusicSegmentManager.cpp
+MusicSegmentManager.h
+/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MusicSegmentManager.h
+
 /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/Options.cpp
 Options.h
 /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/Options.h
@@ -169,6 +173,14 @@ MidiFile.h
 include/MidiFile.h
 MidiCat.h
 include/MidiCat.h
+
+include/MusicSegmentManager.h
+string
+-
+vector
+-
+MusicSegment.h
+include/MusicSegment.h
 
 include/Options.h
 iostream

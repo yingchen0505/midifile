@@ -54,6 +54,7 @@ set(SRCS
 	src-library/MidiCat.cpp
 	src-library/MidiExcerptByBar.cpp
 	src-library/MusicSegment.cpp
+	src-library/MusicSegmentManager.cpp
 	
 )
 
@@ -67,7 +68,7 @@ set(HDRS
 	include/MidiCat.h
 	include/MidiExcerptByBar.h
 	include/MusicSegment.h
-	
+	include/MusicSegmentManager.h
 )
 
 add_library(midifile STATIC ${SRCS} ${HDRS})

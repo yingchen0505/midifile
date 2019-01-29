@@ -76,7 +76,7 @@ all: CMakeFiles/midi2text.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/midi2text.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/midi2text.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/midi2text.dir/rule
@@ -113,7 +113,7 @@ all: CMakeFiles/midi2notes.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/midi2notes.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/midi2notes.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/midi2notes.dir/rule
@@ -140,7 +140,7 @@ clean: CMakeFiles/midi2notes.dir/clean
 CMakeFiles/midifile.dir/all:
 	$(MAKE) -f CMakeFiles/midifile.dir/build.make CMakeFiles/midifile.dir/depend
 	$(MAKE) -f CMakeFiles/midifile.dir/build.make CMakeFiles/midifile.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=37,38,39,40,41,42,43,44,45,46 "Built target midifile"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=37,38,39,40,41,42,43,44,45,46,47 "Built target midifile"
 .PHONY : CMakeFiles/midifile.dir/all
 
 # Include target in all.
@@ -150,7 +150,7 @@ all: CMakeFiles/midifile.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/midifile.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 11
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/midifile.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/midifile.dir/rule
@@ -177,7 +177,7 @@ clean: CMakeFiles/midifile.dir/clean
 CMakeFiles/tobinary.dir/all: CMakeFiles/midifile.dir/all
 	$(MAKE) -f CMakeFiles/tobinary.dir/build.make CMakeFiles/tobinary.dir/depend
 	$(MAKE) -f CMakeFiles/tobinary.dir/build.make CMakeFiles/tobinary.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=71,72 "Built target tobinary"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=72,73 "Built target tobinary"
 .PHONY : CMakeFiles/tobinary.dir/all
 
 # Include target in all.
@@ -187,7 +187,7 @@ all: CMakeFiles/tobinary.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/tobinary.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/tobinary.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/tobinary.dir/rule
@@ -214,7 +214,7 @@ clean: CMakeFiles/tobinary.dir/clean
 CMakeFiles/tohex.dir/all: CMakeFiles/midifile.dir/all
 	$(MAKE) -f CMakeFiles/tohex.dir/build.make CMakeFiles/tohex.dir/depend
 	$(MAKE) -f CMakeFiles/tohex.dir/build.make CMakeFiles/tohex.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=75,76 "Built target tohex"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=76,77 "Built target tohex"
 .PHONY : CMakeFiles/tohex.dir/all
 
 # Include target in all.
@@ -224,7 +224,7 @@ all: CMakeFiles/tohex.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/tohex.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/tohex.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/tohex.dir/rule
@@ -261,7 +261,7 @@ all: CMakeFiles/midi2melody.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/midi2melody.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/midi2melody.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/midi2melody.dir/rule
@@ -298,7 +298,7 @@ all: CMakeFiles/midi2binasc.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/midi2binasc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/midi2binasc.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/midi2binasc.dir/rule
@@ -335,7 +335,7 @@ all: CMakeFiles/mid2mat.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mid2mat.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mid2mat.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/mid2mat.dir/rule
@@ -362,7 +362,7 @@ clean: CMakeFiles/mid2mat.dir/clean
 CMakeFiles/retick.dir/all: CMakeFiles/midifile.dir/all
 	$(MAKE) -f CMakeFiles/retick.dir/build.make CMakeFiles/retick.dir/depend
 	$(MAKE) -f CMakeFiles/retick.dir/build.make CMakeFiles/retick.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=53,54 "Built target retick"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=54,55 "Built target retick"
 .PHONY : CMakeFiles/retick.dir/all
 
 # Include target in all.
@@ -372,7 +372,7 @@ all: CMakeFiles/retick.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/retick.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/retick.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/retick.dir/rule
@@ -409,7 +409,7 @@ all: CMakeFiles/durations.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/durations.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/durations.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/durations.dir/rule
@@ -446,7 +446,7 @@ all: CMakeFiles/createmidifile2.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/createmidifile2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/createmidifile2.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/createmidifile2.dir/rule
@@ -473,7 +473,7 @@ clean: CMakeFiles/createmidifile2.dir/clean
 CMakeFiles/textmidi.dir/all: CMakeFiles/midifile.dir/all
 	$(MAKE) -f CMakeFiles/textmidi.dir/build.make CMakeFiles/textmidi.dir/depend
 	$(MAKE) -f CMakeFiles/textmidi.dir/build.make CMakeFiles/textmidi.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=65,66 "Built target textmidi"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=66,67 "Built target textmidi"
 .PHONY : CMakeFiles/textmidi.dir/all
 
 # Include target in all.
@@ -483,7 +483,7 @@ all: CMakeFiles/textmidi.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/textmidi.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/textmidi.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/textmidi.dir/rule
@@ -520,7 +520,7 @@ all: CMakeFiles/mid2svg.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mid2svg.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mid2svg.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/mid2svg.dir/rule
@@ -557,7 +557,7 @@ all: CMakeFiles/mid2mtb.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mid2mtb.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mid2mtb.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/mid2mtb.dir/rule
@@ -594,7 +594,7 @@ all: CMakeFiles/midi2skini.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/midi2skini.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/midi2skini.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/midi2skini.dir/rule
@@ -631,7 +631,7 @@ all: CMakeFiles/drumtab.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/drumtab.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/drumtab.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/drumtab.dir/rule
@@ -668,7 +668,7 @@ all: CMakeFiles/asciimidi.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/asciimidi.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/asciimidi.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/asciimidi.dir/rule
@@ -705,7 +705,7 @@ all: CMakeFiles/binasc.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/binasc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/binasc.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/binasc.dir/rule
@@ -742,7 +742,7 @@ all: CMakeFiles/createmidifile.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/createmidifile.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/createmidifile.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/createmidifile.dir/rule
@@ -779,7 +779,7 @@ all: CMakeFiles/midicat.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/midicat.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/midicat.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/midicat.dir/rule
@@ -816,7 +816,7 @@ all: CMakeFiles/fyp.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/fyp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/fyp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/fyp.dir/rule
@@ -843,7 +843,7 @@ clean: CMakeFiles/fyp.dir/clean
 CMakeFiles/midimixup.dir/all: CMakeFiles/midifile.dir/all
 	$(MAKE) -f CMakeFiles/midimixup.dir/build.make CMakeFiles/midimixup.dir/depend
 	$(MAKE) -f CMakeFiles/midimixup.dir/build.make CMakeFiles/midimixup.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=47,48 "Built target midimixup"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=48,49 "Built target midimixup"
 .PHONY : CMakeFiles/midimixup.dir/all
 
 # Include target in all.
@@ -853,7 +853,7 @@ all: CMakeFiles/midimixup.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/midimixup.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/midimixup.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/midimixup.dir/rule
@@ -880,7 +880,7 @@ clean: CMakeFiles/midimixup.dir/clean
 CMakeFiles/miditime.dir/all: CMakeFiles/midifile.dir/all
 	$(MAKE) -f CMakeFiles/miditime.dir/build.make CMakeFiles/miditime.dir/depend
 	$(MAKE) -f CMakeFiles/miditime.dir/build.make CMakeFiles/miditime.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=49,50 "Built target miditime"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=50,51 "Built target miditime"
 .PHONY : CMakeFiles/miditime.dir/all
 
 # Include target in all.
@@ -890,7 +890,7 @@ all: CMakeFiles/miditime.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/miditime.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/miditime.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/miditime.dir/rule
@@ -917,7 +917,7 @@ clean: CMakeFiles/miditime.dir/clean
 CMakeFiles/sysextest.dir/all: CMakeFiles/midifile.dir/all
 	$(MAKE) -f CMakeFiles/sysextest.dir/build.make CMakeFiles/sysextest.dir/depend
 	$(MAKE) -f CMakeFiles/sysextest.dir/build.make CMakeFiles/sysextest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=61,62 "Built target sysextest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=62,63 "Built target sysextest"
 .PHONY : CMakeFiles/sysextest.dir/all
 
 # Include target in all.
@@ -927,7 +927,7 @@ all: CMakeFiles/sysextest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/sysextest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/sysextest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/sysextest.dir/rule
@@ -954,7 +954,7 @@ clean: CMakeFiles/sysextest.dir/clean
 CMakeFiles/todec.dir/all: CMakeFiles/midifile.dir/all
 	$(MAKE) -f CMakeFiles/todec.dir/build.make CMakeFiles/todec.dir/depend
 	$(MAKE) -f CMakeFiles/todec.dir/build.make CMakeFiles/todec.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=73,74 "Built target todec"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=74,75 "Built target todec"
 .PHONY : CMakeFiles/todec.dir/all
 
 # Include target in all.
@@ -964,7 +964,7 @@ all: CMakeFiles/todec.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/todec.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/todec.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/todec.dir/rule
@@ -1001,7 +1001,7 @@ all: CMakeFiles/midi2beep.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/midi2beep.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/midi2beep.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/midi2beep.dir/rule
@@ -1028,7 +1028,7 @@ clean: CMakeFiles/midi2beep.dir/clean
 CMakeFiles/perfid.dir/all: CMakeFiles/midifile.dir/all
 	$(MAKE) -f CMakeFiles/perfid.dir/build.make CMakeFiles/perfid.dir/depend
 	$(MAKE) -f CMakeFiles/perfid.dir/build.make CMakeFiles/perfid.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=51,52 "Built target perfid"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=52,53 "Built target perfid"
 .PHONY : CMakeFiles/perfid.dir/all
 
 # Include target in all.
@@ -1038,7 +1038,7 @@ all: CMakeFiles/perfid.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/perfid.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/perfid.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/perfid.dir/rule
@@ -1065,7 +1065,7 @@ clean: CMakeFiles/perfid.dir/clean
 CMakeFiles/toascii.dir/all: CMakeFiles/midifile.dir/all
 	$(MAKE) -f CMakeFiles/toascii.dir/build.make CMakeFiles/toascii.dir/depend
 	$(MAKE) -f CMakeFiles/toascii.dir/build.make CMakeFiles/toascii.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=67,68 "Built target toascii"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=68,69 "Built target toascii"
 .PHONY : CMakeFiles/toascii.dir/all
 
 # Include target in all.
@@ -1075,7 +1075,7 @@ all: CMakeFiles/toascii.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/toascii.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/toascii.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/toascii.dir/rule
@@ -1102,7 +1102,7 @@ clean: CMakeFiles/toascii.dir/clean
 CMakeFiles/type0.dir/all: CMakeFiles/midifile.dir/all
 	$(MAKE) -f CMakeFiles/type0.dir/build.make CMakeFiles/type0.dir/depend
 	$(MAKE) -f CMakeFiles/type0.dir/build.make CMakeFiles/type0.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=77,78 "Built target type0"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=78,79 "Built target type0"
 .PHONY : CMakeFiles/type0.dir/all
 
 # Include target in all.
@@ -1112,7 +1112,7 @@ all: CMakeFiles/type0.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/type0.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/type0.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/type0.dir/rule
@@ -1139,7 +1139,7 @@ clean: CMakeFiles/type0.dir/clean
 CMakeFiles/shutak.dir/all: CMakeFiles/midifile.dir/all
 	$(MAKE) -f CMakeFiles/shutak.dir/build.make CMakeFiles/shutak.dir/depend
 	$(MAKE) -f CMakeFiles/shutak.dir/build.make CMakeFiles/shutak.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=55,56 "Built target shutak"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=56,57 "Built target shutak"
 .PHONY : CMakeFiles/shutak.dir/all
 
 # Include target in all.
@@ -1149,7 +1149,7 @@ all: CMakeFiles/shutak.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/shutak.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/shutak.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/shutak.dir/rule
@@ -1186,7 +1186,7 @@ all: CMakeFiles/80off.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/80off.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/80off.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/80off.dir/rule
@@ -1213,7 +1213,7 @@ clean: CMakeFiles/80off.dir/clean
 CMakeFiles/text2midi.dir/all: CMakeFiles/midifile.dir/all
 	$(MAKE) -f CMakeFiles/text2midi.dir/build.make CMakeFiles/text2midi.dir/depend
 	$(MAKE) -f CMakeFiles/text2midi.dir/build.make CMakeFiles/text2midi.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=63,64 "Built target text2midi"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=64,65 "Built target text2midi"
 .PHONY : CMakeFiles/text2midi.dir/all
 
 # Include target in all.
@@ -1223,7 +1223,7 @@ all: CMakeFiles/text2midi.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/text2midi.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/text2midi.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/text2midi.dir/rule
@@ -1250,7 +1250,7 @@ clean: CMakeFiles/text2midi.dir/clean
 CMakeFiles/smfdur.dir/all: CMakeFiles/midifile.dir/all
 	$(MAKE) -f CMakeFiles/smfdur.dir/build.make CMakeFiles/smfdur.dir/depend
 	$(MAKE) -f CMakeFiles/smfdur.dir/build.make CMakeFiles/smfdur.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=57,58 "Built target smfdur"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=58,59 "Built target smfdur"
 .PHONY : CMakeFiles/smfdur.dir/all
 
 # Include target in all.
@@ -1260,7 +1260,7 @@ all: CMakeFiles/smfdur.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/smfdur.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/smfdur.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/smfdur.dir/rule
@@ -1287,7 +1287,7 @@ clean: CMakeFiles/smfdur.dir/clean
 CMakeFiles/stretch.dir/all: CMakeFiles/midifile.dir/all
 	$(MAKE) -f CMakeFiles/stretch.dir/build.make CMakeFiles/stretch.dir/depend
 	$(MAKE) -f CMakeFiles/stretch.dir/build.make CMakeFiles/stretch.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=59,60 "Built target stretch"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=60,61 "Built target stretch"
 .PHONY : CMakeFiles/stretch.dir/all
 
 # Include target in all.
@@ -1297,7 +1297,7 @@ all: CMakeFiles/stretch.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/stretch.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/stretch.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/stretch.dir/rule
@@ -1324,7 +1324,7 @@ clean: CMakeFiles/stretch.dir/clean
 CMakeFiles/tobin.dir/all: CMakeFiles/midifile.dir/all
 	$(MAKE) -f CMakeFiles/tobin.dir/build.make CMakeFiles/tobin.dir/depend
 	$(MAKE) -f CMakeFiles/tobin.dir/build.make CMakeFiles/tobin.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=69,70 "Built target tobin"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=70,71 "Built target tobin"
 .PHONY : CMakeFiles/tobin.dir/all
 
 # Include target in all.
@@ -1334,7 +1334,7 @@ all: CMakeFiles/tobin.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/tobin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/tobin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/tobin.dir/rule
@@ -1361,7 +1361,7 @@ clean: CMakeFiles/tobin.dir/clean
 CMakeFiles/vlv.dir/all: CMakeFiles/midifile.dir/all
 	$(MAKE) -f CMakeFiles/vlv.dir/build.make CMakeFiles/vlv.dir/depend
 	$(MAKE) -f CMakeFiles/vlv.dir/build.make CMakeFiles/vlv.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=79,80 "Built target vlv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles --progress-num=80,81 "Built target vlv"
 .PHONY : CMakeFiles/vlv.dir/all
 
 # Include target in all.
@@ -1371,7 +1371,7 @@ all: CMakeFiles/vlv.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/vlv.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/vlv.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles 0
 .PHONY : CMakeFiles/vlv.dir/rule

@@ -8,6 +8,8 @@ using namespace midicat;
 namespace music_segment {
 	class MusicSegment {
 		public:
+			int valence;
+			int arousal;
 			MidiFile* prep;
 			MidiFile* mainLoop;
 			MidiFile* mainLoopEnd;
@@ -15,7 +17,7 @@ namespace music_segment {
 			
 			// Constructors and desctructors:
 			MusicSegment() = default;
-			MusicSegment(MidiFile* prep, MidiFile* mainLoop, MidiFile* mainLoopEnd, MidiFile* finalEnd);
+			MusicSegment(int valence, int arousal, MidiFile* prep, MidiFile* mainLoop, MidiFile* mainLoopEnd, MidiFile* finalEnd);
 			~MusicSegment() = default;
 			
 			// Returns a midifile that repeats for the closest possible value to given time
