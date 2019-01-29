@@ -29,18 +29,6 @@ int endBar = -1;	// Use with -e option (inclusive)
 void checkOptions (Options& opts, int argc, char** argv);
 
 int main(int argc, char* argv[]) {
-	/*
-	// Store current directory so as to return to this before exiting constructor
-	char homeDirectory[1024];
-	getcwd(homeDirectory, sizeof(homeDirectory));
-	
-	char currDirectory[1024];
-	
-	// Change to image input directory
-	chdir(INPUT_PATH);
-	
-	getcwd(currDirectory, sizeof(currDirectory));
-	cout << currDirectory << "\n";*/
 	
 	//Options options;
 	//checkOptions(options, argc, argv);
@@ -90,13 +78,6 @@ int main(int argc, char* argv[]) {
 	MidiExcerptByBar midiExcerptByBar;
 	midiExcerptByBar.run(argc, argv);
 	*/
-	
-	/*
-	chdir(homeDirectory);
-	
-	getcwd(currDirectory, sizeof(currDirectory));
-	cout << currDirectory << "\n";*/
-	
 }
 
 

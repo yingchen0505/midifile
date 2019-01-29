@@ -9,7 +9,7 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 	
 	char currDirectory[1024];
 	
-	// Change to image input directory
+	// Change to input directory
 	chdir(inputFolderPath.c_str());
 	
 	getcwd(currDirectory, sizeof(currDirectory));
