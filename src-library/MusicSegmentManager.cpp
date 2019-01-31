@@ -12,6 +12,11 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 	// Change to input directory
 	chdir(inputFolderPath.c_str());
 	
+	
+	
+	//MusicSegment musicSegment();
+	//musicSegmentList.push_back(musicSegment);
+	
 	getcwd(currDirectory, sizeof(currDirectory));
 	std::cout << currDirectory << "\n";
 	

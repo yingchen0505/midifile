@@ -101,6 +101,8 @@ iostream
 -
 unistd.h
 -
+boost/filesystem.hpp
+-
 MusicSegment.h
 include/MusicSegment.h
 

@@ -6,11 +6,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(CheckIncludeFiles)
 
+FIND_PACKAGE(Boost COMPONENTS filesystem system REQUIRED)
+
 include_directories(include)
 
 check_include_files(unistd.h HAVE_UNISTD_H)
 check_include_files(humdrum.h HAVE_HUMDRUM_H)
 check_include_files(sys/io.h HAVE_SYS_IO_H)
+
 
 ##############################
 ##
@@ -129,7 +132,7 @@ target_link_libraries(midi2notes midifile)
 target_link_libraries(midi2skini midifile)
 target_link_libraries(midi2text midifile)
 target_link_libraries(midicat midifile)
-target_link_libraries(fyp midifile)
+target_link_libraries(fyp midifile boost_system boost_filesystem )
 target_link_libraries(midimixup midifile)
 target_link_libraries(miditime midifile)
 target_link_libraries(perfid midifile)
