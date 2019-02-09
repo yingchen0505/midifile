@@ -8,12 +8,26 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 	getcwd(homeDirectory, sizeof(homeDirectory));
 	
 	char currDirectory[1024];
+
+	if ( !exists( inputFolderPath ) ) {
+		return;
+	}
+
+	directory_iterator end_itr; // default construction yields past-the-end
+	for ( directory_iterator itr( inputFolderPath ); itr != end_itr; ++itr ) {
+		if ( is_directory(itr->status()) ) {
+			if(itr->path().leaf().string() == "music_segments") {
+				// Loop through all emotion folders in music_segments folder
+				for (directory_iterator musicSegmentItr( itr->path() ); musicSegmentItr != end_itr; ++musicSegmentItr) {
+					std::cout << musicSegmentItr->path().leaf().string() << "\n";
+				}
+			}
+		}
+	}	
 	
 	// Change to input directory
-	chdir(inputFolderPath.c_str());
-	
-	
-	
+	//chdir(inputFolderPath.c_str());
+
 	//MusicSegment musicSegment();
 	//musicSegmentList.push_back(musicSegment);
 	

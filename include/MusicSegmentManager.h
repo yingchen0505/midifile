@@ -5,7 +5,7 @@
 #include <boost/filesystem.hpp>
 #include "MusicSegment.h"
 
-//using namespace boost::filesystem;    
+using namespace boost::filesystem;    
 using namespace music_segment;
 
 namespace music_segment_manager {
