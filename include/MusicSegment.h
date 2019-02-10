@@ -17,7 +17,7 @@ namespace music_segment {
 			MidiFile* finalEnd;
 			
 			// Constructors and desctructors:
-			MusicSegment() = default;
+			MusicSegment();
 			MusicSegment(int valence, int arousal, MidiFile* prep, MidiFile* mainLoop, MidiFile* mainLoopEnd, MidiFile* finalEnd);
 			~MusicSegment() = default;
 			MusicSegment(const MusicSegment &src) = default;

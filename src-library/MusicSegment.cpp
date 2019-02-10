@@ -2,6 +2,15 @@
 
 using namespace music_segment;
 
+MusicSegment::MusicSegment() {
+	valence = 0;
+	arousal = 0;
+	prep = NULL;
+	mainLoop = NULL;
+	mainLoopEnd = NULL;
+	finalEnd = NULL;
+}
+
 MusicSegment::MusicSegment(int valence, int arousal, MidiFile* prep, MidiFile* mainLoop, MidiFile* mainLoopEnd, MidiFile* finalEnd) {
 	this->valence = valence;
 	this->arousal = arousal;
@@ -31,14 +40,14 @@ MidiFile MusicSegment::repeat(double timeInSeconds, bool isAbsoluteStart, bool i
 		// Account for the duration first, but only add finalEnd to the list after mainLoop is added.
 		durationOfPrepAndEnd += (*finalEnd).getFileDurationInSeconds(); 
 	}
-	
+
 	double mainLoopDuration = (*mainLoop).getFileDurationInSeconds();
 	
 	// If mainLoopEnd is not null, it should be repeated together with mainLoop
 	if(mainLoopEnd) {
 		mainLoopDuration += (*mainLoopEnd).getFileDurationInSeconds();
 	}
-	
+
 	// Calculate how many times the mainLoop (and mainLoopEnd if exists) should be repeated
 	int repeatRounds = round((timeInSeconds - durationOfPrepAndEnd) / mainLoopDuration);
 	
@@ -46,7 +55,7 @@ MidiFile MusicSegment::repeat(double timeInSeconds, bool isAbsoluteStart, bool i
 	if(repeatRounds == 0) {
 		repeatRounds++;
 	}
-	
+
 	// If mainLoopEnd is not null, it should be repeated together with mainLoop
 	if(mainLoopEnd) {
 		for (int i=0; i< repeatRounds; i++){

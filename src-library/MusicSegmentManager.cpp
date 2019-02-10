@@ -42,12 +42,7 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 					// Loop through music segments within this emotion
 					for (directory_iterator musicSegmentItr( emotionFolderItr->path() ); musicSegmentItr != end_itr; ++musicSegmentItr) {
 						MidiFile infile(musicSegmentItr->path().string().c_str());
-						//std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
 						string infileName = musicSegmentItr->path().leaf().string();
-						//string outfileName = emotionFolderName + "_" + infileName;
-						//outfile.open(outfileName.c_str());
-						//infile.write(outfile);
-						//outfile.close();
 						
 						searchString = infileName;
 						regex intRegex("[[:d:]]+");
@@ -72,30 +67,18 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 
 						switch(partNumber) {
 							case 1:
-								//tempList[fileNumber].prep = &infile;
 								tempList[fileNumber].prep = new MidiFile(infile);
 								break;
 							
 							case 2:
 								tempList[fileNumber].mainLoop = new MidiFile(infile);
-								//tempList[fileNumber].mainLoop = &infile;
-							/*
-							{
-								
-								std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
-								string outfileName = emotionFolderName + "_" + infileName;
-								outfile.open(outfileName.c_str());
-								(*(tempList[fileNumber].mainLoop)).write(outfile);
-							outfile.close();}*/
 								break;
 							
 							case 3:
-								//tempList[fileNumber].mainLoopEnd = &infile;
 								tempList[fileNumber].mainLoopEnd = new MidiFile(infile);
 								break;
 							
 							case 4:
-								//tempList[fileNumber].finalEnd = &infile;
 								tempList[fileNumber].finalEnd = new MidiFile(infile);
 								break;
 						}
@@ -114,24 +97,14 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 	}	
 	
 	for(int i=0; i<musicSegmentList.size(); i++){
-		//musicSegmentList[i].repeat(30, true, true);
-		//MidiFile midiFile = musicSegmentList[i].repeat(30, true, true);
+		MidiFile midiFile = musicSegmentList[i].repeat(30, true, true);
 		cout << musicSegmentList[i].isInvalid() << "\n";
 		
 		std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
 		outfile.open((to_string(i) + ".mid").c_str());
-		//cout << *(musicSegmentList[i].mainLoop);
-		//cout << (*(musicSegmentList[i].mainLoop)).getTrackCount() << "\n";
-		//cout << &(musicSegmentList[i].mainLoop) << " \n";
-		(*(musicSegmentList[i].mainLoop)).write(outfile);
+		midiFile.write(outfile);
 		outfile.close();
 	}
-	
-	// Change to input directory
-	//chdir(inputFolderPath.c_str());
-
-	//MusicSegment musicSegment();
-	//musicSegmentList.push_back(musicSegment);
 
 	chdir(homeDirectory);
 	
