@@ -38,7 +38,7 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 					cout << "arousal = " << arousal << "\n";
 					
 					vector<MusicSegment> tempList;
-					
+
 					// Loop through music segments within this emotion
 					for (directory_iterator musicSegmentItr( emotionFolderItr->path() ); musicSegmentItr != end_itr; ++musicSegmentItr) {
 						MidiFile infile(musicSegmentItr->path().string().c_str());
@@ -72,19 +72,31 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 
 						switch(partNumber) {
 							case 1:
-								tempList[fileNumber].prep = &infile;
+								//tempList[fileNumber].prep = &infile;
+								tempList[fileNumber].prep = new MidiFile(infile);
 								break;
 							
 							case 2:
-								tempList[fileNumber].mainLoop = &infile;
+								tempList[fileNumber].mainLoop = new MidiFile(infile);
+								//tempList[fileNumber].mainLoop = &infile;
+							/*
+							{
+								
+								std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
+								string outfileName = emotionFolderName + "_" + infileName;
+								outfile.open(outfileName.c_str());
+								(*(tempList[fileNumber].mainLoop)).write(outfile);
+							outfile.close();}*/
 								break;
 							
 							case 3:
-								tempList[fileNumber].mainLoopEnd = &infile;
+								//tempList[fileNumber].mainLoopEnd = &infile;
+								tempList[fileNumber].mainLoopEnd = new MidiFile(infile);
 								break;
 							
 							case 4:
-								tempList[fileNumber].finalEnd = &infile;
+								//tempList[fileNumber].finalEnd = &infile;
+								tempList[fileNumber].finalEnd = new MidiFile(infile);
 								break;
 						}
 					
@@ -105,11 +117,14 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 		//musicSegmentList[i].repeat(30, true, true);
 		//MidiFile midiFile = musicSegmentList[i].repeat(30, true, true);
 		cout << musicSegmentList[i].isInvalid() << "\n";
-		/*
+		
 		std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
-		outfile.open(to_string(i).c_str());
-		midiFile.write(outfile);
-		outfile.close();*/
+		outfile.open((to_string(i) + ".mid").c_str());
+		//cout << *(musicSegmentList[i].mainLoop);
+		//cout << (*(musicSegmentList[i].mainLoop)).getTrackCount() << "\n";
+		//cout << &(musicSegmentList[i].mainLoop) << " \n";
+		(*(musicSegmentList[i].mainLoop)).write(outfile);
+		outfile.close();
 	}
 	
 	// Change to input directory

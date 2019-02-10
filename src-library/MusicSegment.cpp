@@ -26,7 +26,7 @@ MidiFile MusicSegment::repeat(double timeInSeconds, bool isAbsoluteStart, bool i
 		concatList.push_back(*prep);
 		durationOfPrepAndEnd += (*prep).getFileDurationInSeconds();
 	}
-	
+
 	if(isAbsoluteEnd && finalEnd) {
 		// Account for the duration first, but only add finalEnd to the list after mainLoop is added.
 		durationOfPrepAndEnd += (*finalEnd).getFileDurationInSeconds(); 

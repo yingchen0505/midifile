@@ -1,4 +1,5 @@
 #include <cmath>
+#include <iostream>
 #include "MidiFile.h"
 #include "MidiCat.h"
 
