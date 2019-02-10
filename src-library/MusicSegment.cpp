@@ -52,9 +52,7 @@ MidiFile MusicSegment::repeat(double timeInSeconds, bool isAbsoluteStart, bool i
 	int repeatRounds = round((timeInSeconds - durationOfPrepAndEnd) / mainLoopDuration);
 	
 	// Need to play at least once, even if time given is too short
-	if(repeatRounds == 0) {
-		repeatRounds++;
-	}
+	repeatRounds = max(repeatRounds, 1);
 
 	// If mainLoopEnd is not null, it should be repeated together with mainLoop
 	if(mainLoopEnd) {
