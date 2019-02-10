@@ -11,6 +11,9 @@ MusicSegment::MusicSegment(int valence, int arousal, MidiFile* prep, MidiFile* m
 	this->finalEnd = finalEnd;
 }
 
+bool MusicSegment::isInvalid() {
+	return !mainLoop;
+}
 
 MidiFile MusicSegment::repeat(double timeInSeconds, bool isAbsoluteStart, bool isAbsoluteEnd) {
 	if(!mainLoop) return MidiFile(); // No mainLoop to repeat, something went wrong.

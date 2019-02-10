@@ -16,8 +16,7 @@ namespace music_segment_manager {
 	class MusicSegmentManager {
 		public:
 			MusicSegmentManager(string inputFolderPath);
-			
-			
+
 		private:
 			std::vector<MusicSegment> musicSegmentList;
 		
