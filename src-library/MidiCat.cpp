@@ -12,7 +12,7 @@
 #include "MidiCat.h"
 using namespace midicat;
 
-MidiFile MidiCat::run(list<const char*> inputFileNames, double pause) {
+MidiFile MidiCat::run(vector<MidiFile> inputFiles, double pause) {
    MidiFile outfile;
    outfile.joinTracks();
    outfile.deltaTicks();
@@ -20,9 +20,8 @@ MidiFile MidiCat::run(list<const char*> inputFileNames, double pause) {
    int i;
    int initQ = 0;
    
-   while(!inputFileNames.empty()){
-	   appendMidi(outfile, inputFileNames.front(), pause, initQ++);
-	   inputFileNames.pop_front();
+   for(int i=0; i<inputFiles.size(); i++){
+	   appendMidi(outfile, inputFiles[i], pause, initQ++);
    }
 
    // insert an end-of track Meta Event
@@ -62,10 +61,8 @@ int MidiCat::correctTempo(int oldTempo, int oldTpq, int newTpq) {
 // appendMidi --
 //
 
-//void MidiCat::appendMidi(MidiFile& outfile, string filename,
-void MidiCat::appendMidi(MidiFile& outfile, const char* filename,
+void MidiCat::appendMidi(MidiFile& outfile, MidiFile infile,
       double pause, int initQ) {
-   MidiFile infile(filename);
    infile.joinTracks();
    infile.deltaTicks();
    int i;

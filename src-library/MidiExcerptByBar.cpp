@@ -21,34 +21,78 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
     outfile.setTicksPerQuarterNote(infile.getTicksPerQuarterNote());
 	
 	MidiEvent tempoBeforeStart;
+	bool hasTempoBeforeStart = false;
 	bool tempoBeforeStartIsAdded = false;
+	
+	MidiEvent timeSignature;
+	bool hasTimeSignature = false;
+	bool timeSignatureIsAdded = false;
 	
 	// Notes that are turned on during the selected bars but only turned off afterwards
 	// Need to add the note-off events at the end of the file
 	std::vector<MidiEvent> noteOffAfterEndBar; 
+	
+	int currentTick = 0;
+	
+	std::vector<int> startBarTicks = infile.getBeginningAndEndTicksByBar(startBar);
+	if(startBarTicks.empty()) {
+		std::cout << "Error: start bar out of bound. \n";
+		return; 
+	}
+	const int beginningTicksOfStartBar = startBarTicks[0];
+	
+	std::vector<int> endBarTicks = infile.getBeginningAndEndTicksByBar(endBar);
+	if(endBarTicks.empty()) {
+		std::cout << "Error: end bar out of bound. \n";
+		return; 
+	}
+	const int endTicksOfEndBar = endBarTicks[1];
 
 	// Loop through all events except the end-of-file event
 	for (int i=0; i<eventCount; i++) {
 		int currentBar = infile.getEvent(0,i).bar;
-		
+		currentTick += infile.getEvent(0,i).tick;
+
 		// Store the latest tempo setting before start bar
 		if(currentBar < startBar && infile.getEvent(0,i).isTempo()) {
+			hasTempoBeforeStart = true;
 			tempoBeforeStart = infile.getEvent(0,i);
+		}
+		
+		// Store the latest time signature before start bar
+		if(currentBar < startBar && infile.getEvent(0,i).isTimeSignature()) {
+			hasTimeSignature = true;
+			timeSignature = infile.getEvent(0,i);
 		}
 		
 		// Add timber setting before start bar
 		if(currentBar < startBar && infile.getEvent(0,i).isTimbre()) {
 			MidiEvent timbreEvent = infile.getEvent(0,i);
+			timbreEvent.clearVariables();
 			outfile.addEvent(timbreEvent);
 		}
 		
-		// Find events between targeted bars
+		// Find events between targeted bars:
 		if(currentBar >= startBar && currentBar <= endBar){
+			
+			int ticksSinceBeginningOfStartBar = currentTick - beginningTicksOfStartBar;
+			if(ticksSinceBeginningOfStartBar < 0) {
+				std::cout << "Error: currentTick < beginningTicksOfStartBar. Bar tick map is wrong! \n";
+				return;
+			}
+			
 			// Add tempo setting before start bar if it hasn't been added
-			if(!tempoBeforeStartIsAdded) {
-				tempoBeforeStart.track = 0;
+			if(!tempoBeforeStartIsAdded && hasTempoBeforeStart) {
+				tempoBeforeStart.clearVariables();
 				outfile.addEvent(tempoBeforeStart);
 				tempoBeforeStartIsAdded = true;
+			}
+			
+			// Add time signature before start bar if it hasn't been added
+			if(!timeSignatureIsAdded && hasTimeSignature) {
+				timeSignature.clearVariables();
+				outfile.addEvent(timeSignature);
+				timeSignatureIsAdded = true;
 			}
 
 			if(infile.getEvent(0,i).isNoteOff()) {
@@ -68,15 +112,39 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 			
 			// Make track number 0 so that it does not exceed the number of tracks in output file
 			infile.getEvent(0,i).track = 0;
+			if(infile.getEvent(0,i).tick > ticksSinceBeginningOfStartBar) {
+				infile.getEvent(0,i).tick = ticksSinceBeginningOfStartBar;
+			}
 			
 			// Add current event to output file
 			outfile.addEvent(infile.getEvent(0,i));
 		}
 	}
 	
-	// Turn off any note still on
-	for(int i = 0; i < noteOffAfterEndBar.size(); i++) {
-		outfile.addEvent(noteOffAfterEndBar[i]);
+	int currentOutputLengthInTicks = outfile.getFileDurationInTicks();
+	// We don't want a gap between the end of file and the actual end of the last bar
+	// This gap will be filled by either a rest, or the note-off events yet to be added.
+	int gap = endTicksOfEndBar - currentOutputLengthInTicks - 1;
+	
+	// If there isn't any notes still on, then add a rest to fill the gap
+	if(noteOffAfterEndBar.empty() && gap > 0){
+		std::string text = "This is a rest to complete the last bar";
+		MidiEvent rest;
+		rest.makeText(text);
+		rest.tick = gap;
+		outfile.addEvent(rest);
+	}
+	// There are notes still on, therefore turn them off, which fills the gap at the same time
+	else {
+		for(int i = 0; i < noteOffAfterEndBar.size(); i++) {
+			if(i==0) {
+				noteOffAfterEndBar[i].tick = gap;
+			}
+			else {
+				noteOffAfterEndBar[i].tick = 0;
+			}
+			outfile.addEvent(noteOffAfterEndBar[i]);
+		}
 	}
 
 	 // insert an end-of track Meta Event
@@ -94,6 +162,7 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 	outfile.sortTracks();
 
 	outfile.updateBarNumber();
+	//std::cout << outfile;
 	outfile.write(std::cout);
 }
 

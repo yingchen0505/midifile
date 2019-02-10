@@ -21,12 +21,12 @@ map
 -
 list
 -
-MidiCat.h
-/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-programs/MidiCat.h
+unistd.h
+-
 MidiExcerptByBar.h
 /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-programs/MidiExcerptByBar.h
-MusicSegment.h
-/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-programs/MusicSegment.h
+MusicSegmentManager.h
+/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-programs/MusicSegmentManager.h
 
 include/MidiCat.h
 MidiFile.h
@@ -54,6 +54,8 @@ include/Options.h
 iostream
 -
 vector
+-
+string
 -
 cmath
 -
@@ -83,8 +85,26 @@ string
 -
 
 include/MusicSegment.h
+cmath
+-
 MidiFile.h
 include/MidiFile.h
+MidiCat.h
+include/MidiCat.h
+
+include/MusicSegmentManager.h
+string
+-
+vector
+-
+iostream
+-
+unistd.h
+-
+boost/filesystem.hpp
+-
+MusicSegment.h
+include/MusicSegment.h
 
 include/Options.h
 iostream

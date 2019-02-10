@@ -2561,8 +2561,9 @@ void MidiFile::buildTimeMap(void) {
 
 //////////////////////////////
 //
-// MidiFile::updateBarNumber -- update the bar number for each
-//      midi event. Also updates m_tickbarmap. Bar number starts from 1.
+// MidiFile::updateBarNumber -- update the bar number, ticksSinceBeginningOfBar 
+// 		and ticksTillEndOfBar for each midi event. Also updates m_tickbarmap and m_bartickmap. 
+//		Bar number starts from 1.
 //
 
 void MidiFile::updateBarNumber(void) {
@@ -2577,6 +2578,7 @@ void MidiFile::updateBarNumber(void) {
 	joinTracks();
 	
 	m_tickbarmap.clear();
+	m_bartickmap.clear();
 	int tpqn = getTicksPerQuarterNote();
 
 	// Assumes 4/4 time signature since it is the default if there's no time signature.
@@ -2587,9 +2589,24 @@ void MidiFile::updateBarNumber(void) {
 	int currentBarNumber = 1;
 	int lastTick = 0;
 	int currentTick = 0;
+	int beginningOfBarMarker = 0;	// This is the beginning (in absolute ticks) of the current bar
+	int endOfBarMarker = ticksPerMeasure; // This is the end (in absolute ticks) of the current bar
 	int accumulatedTicks = 0; // This counter is reset to zero every time it reaches ticksPerMeasure
 	
+	bool isFirstTimeSignatureFound = true;
+	
 	for (int i=0; i<getNumEvents(0); i++) {
+
+		currentTick = getEvent(0, i).tick;
+		accumulatedTicks += currentTick - lastTick;
+		
+		// if accumulatedTicks overflows, increase currentBarNumber
+		if(accumulatedTicks >= ticksPerMeasure) {
+			currentBarNumber++;
+			beginningOfBarMarker += ticksPerMeasure;
+			endOfBarMarker = beginningOfBarMarker + ticksPerMeasure;
+			accumulatedTicks -= ticksPerMeasure;
+		}
 		
 		// Updates ticksPerMeasure if there is time signature meta-event
 		if(getEvent(0, i).isTimeSignature()){
@@ -2597,17 +2614,29 @@ void MidiFile::updateBarNumber(void) {
 			double denom = (pow(2, (-1) * getEvent(0, i)[4]) / 0.25);
 			qnPerMeasure = numerator * denom;
 			ticksPerMeasure = qnPerMeasure * tpqn;
+			endOfBarMarker = beginningOfBarMarker + ticksPerMeasure;
+			
+			// If this is the first time signature found, 
+			// it means our previous assumption of 4/4 is wrong
+			// and might lead to errors. Thus, reset to beginning of loop.
+			if(isFirstTimeSignatureFound) {
+				i = -1;
+				currentBarNumber = 1;
+				lastTick = 0;
+				currentTick = 0;
+				beginningOfBarMarker = 0;
+				endOfBarMarker = ticksPerMeasure;
+				accumulatedTicks = 0;
+				isFirstTimeSignatureFound = false;
+				continue;
+			}
 		}
 		
-		currentTick = getEvent(0, i).tick;
-		accumulatedTicks += currentTick - lastTick;
-		// if accumulatedTicks overflows, increase currentBarNumber
-		if(accumulatedTicks >= ticksPerMeasure) {
-			currentBarNumber++;
-			accumulatedTicks -= ticksPerMeasure;
-		}
-		
-		m_tickbarmap[currentTick] = currentBarNumber;
+		// value of bar map = vector of {bar, ticksSinceBeginningOfBar, ticksTillEndOfBar}
+		std::vector<int> tickBarMapValue = {currentBarNumber, currentTick - beginningOfBarMarker, endOfBarMarker - currentTick};
+		m_tickbarmap[currentTick] = tickBarMapValue;
+		std::vector<int> barTickMapValue = {beginningOfBarMarker, endOfBarMarker};
+		m_bartickmap[currentBarNumber] = barTickMapValue;
 		lastTick = currentTick;
 	}
 
@@ -2616,7 +2645,10 @@ void MidiFile::updateBarNumber(void) {
 	int numTracks = getNumTracks();
 	for (int i=0; i<numTracks; i++) {
 		for (int j=1; j<(int)m_events[i]->size(); j++) {
-			(*m_events[i])[j].bar = m_tickbarmap[(*m_events[i])[j].tick];
+			std::vector<int> barMapValue = m_tickbarmap[(*m_events[i])[j].tick];
+			(*m_events[i])[j].bar = barMapValue[0];
+			(*m_events[i])[j].ticksSinceBeginningOfBar = barMapValue[1];
+			(*m_events[i])[j].ticksTillEndOfBar = barMapValue[2];
 		}
 	}
 
@@ -2645,9 +2677,28 @@ int	MidiFile::getBarByTick (int tickvalue) {
 		}
 	}
 	
-	return m_tickbarmap[tickvalue];
+	std::vector<int> barMapValue = m_tickbarmap[tickvalue];
+	
+	return barMapValue[0];
 }
 
+//////////////////////////////
+//
+// MidiFile::getBeginningAndEndTicksByBar -- Returns vector of 
+//		{ticks at beginning of bar (inclusive), ticks at end of bar (inclusive)} 
+//		for given absolute bar number.
+//
+
+std::vector<int> MidiFile::getBeginningAndEndTicksByBar (int bar) {
+	if(!m_barnumbervalid) {
+		updateBarNumber();
+		if(!m_barnumbervalid){
+			return std::vector<int>(); // Something went wrong
+		}
+	}
+
+	return m_bartickmap[bar];
+}
 
 //////////////////////////////
 //

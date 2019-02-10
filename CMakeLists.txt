@@ -6,11 +6,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(CheckIncludeFiles)
 
+FIND_PACKAGE(Boost COMPONENTS filesystem system REQUIRED)
+
 include_directories(include)
 
 check_include_files(unistd.h HAVE_UNISTD_H)
 check_include_files(humdrum.h HAVE_HUMDRUM_H)
 check_include_files(sys/io.h HAVE_SYS_IO_H)
+
 
 ##############################
 ##
@@ -53,6 +56,9 @@ set(SRCS
     src-library/MidiMessage.cpp
 	src-library/MidiCat.cpp
 	src-library/MidiExcerptByBar.cpp
+	src-library/MusicSegment.cpp
+	src-library/MusicSegmentManager.cpp
+	
 )
 
 set(HDRS
@@ -64,6 +70,8 @@ set(HDRS
     include/Options.h
 	include/MidiCat.h
 	include/MidiExcerptByBar.h
+	include/MusicSegment.h
+	include/MusicSegmentManager.h
 )
 
 add_library(midifile STATIC ${SRCS} ${HDRS})
@@ -124,7 +132,7 @@ target_link_libraries(midi2notes midifile)
 target_link_libraries(midi2skini midifile)
 target_link_libraries(midi2text midifile)
 target_link_libraries(midicat midifile)
-target_link_libraries(fyp midifile)
+target_link_libraries(fyp midifile boost_system boost_filesystem )
 target_link_libraries(midimixup midifile)
 target_link_libraries(miditime midifile)
 target_link_libraries(perfid midifile)

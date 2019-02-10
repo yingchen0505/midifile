@@ -38,6 +38,23 @@ CMakeFiles/midifile.dir/src-library/MidiFile.cpp.o
 CMakeFiles/midifile.dir/src-library/MidiMessage.cpp.o
  /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MidiMessage.cpp
  include/MidiMessage.h
+CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o
+ /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MusicSegment.cpp
+ include/MidiCat.h
+ include/MidiEvent.h
+ include/MidiEventList.h
+ include/MidiFile.h
+ include/MidiMessage.h
+ include/MusicSegment.h
+CMakeFiles/midifile.dir/src-library/MusicSegmentManager.cpp.o
+ /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MusicSegmentManager.cpp
+ include/MidiCat.h
+ include/MidiEvent.h
+ include/MidiEventList.h
+ include/MidiFile.h
+ include/MidiMessage.h
+ include/MusicSegment.h
+ include/MusicSegmentManager.h
 CMakeFiles/midifile.dir/src-library/Options.cpp.o
  /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/Options.cpp
  include/Options.h

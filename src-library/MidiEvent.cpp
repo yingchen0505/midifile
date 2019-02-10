@@ -79,6 +79,7 @@ MidiEvent::~MidiEvent() {
 	tick    = -1;
 	seconds = -1.0;
 	seq     = -1;
+	bar 	= -1;
 	this->resize(0);
 	m_eventlink = NULL;
 }
@@ -94,6 +95,7 @@ void MidiEvent::clearVariables(void) {
 	tick      = 0;
 	seconds   = 0.0;
 	seq       = 0;
+	bar		  = 0;
 	m_eventlink = NULL;
 }
 

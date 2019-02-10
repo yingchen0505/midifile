@@ -243,7 +243,8 @@ class MidiFile {
 		static std::ostream& writeBigEndianDouble    (std::ostream& out,
 		                                              double value);
 													  
-		void	   updateBarNumber                 (void);
+		void 		updateBarNumber                 (void);
+		std::vector<int> getBeginningAndEndTicksByBar (int bar);
 													  
 	protected:
 		// m_events == Lists of MidiEvents for each MIDI file track.
@@ -280,7 +281,9 @@ class MidiFile {
 		// m_barnumbervalid ==
 		bool m_barnumbervalid = false;
 		
-		std::map<int, int> m_tickbarmap;
+		std::map<int, std::vector<int>> m_tickbarmap;	// key = tick; value = vector of {bar, ticksSinceBeginningOfBar, ticksTillEndOfBar}
+		
+		std::map<int, std::vector<int>> m_bartickmap;  // key = bar; value = vector of {ticks at beginning of bar (inclusive), ticks at end of bar (inclusive)}
 
 		// m_rwstatus == True if last read was successful, false if a problem.
 		bool m_rwstatus = true;

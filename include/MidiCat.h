@@ -14,10 +14,10 @@ namespace midicat {
 			~MidiCat() = default;
 			void      example           (void);
 			void      usage             (const char* command);
-			void      appendMidi        (MidiFile& outfile, const char* filename,
+			void      appendMidi        (MidiFile& outfile, MidiFile infile,
 										 double pause, int initQ);
 			int 	  correctTempo		(int oldTempo, int oldTpq, int newTpq);
-			MidiFile 	  run			(list<const char*> inputFileNames, double pause);
+			MidiFile 	  run			(vector<MidiFile> inputFiles, double pause);
 			
 		private:
 		

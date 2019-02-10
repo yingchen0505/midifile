@@ -11,6 +11,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MidiExcerptByBar.cpp" "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles/midifile.dir/src-library/MidiExcerptByBar.cpp.o"
   "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MidiFile.cpp" "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles/midifile.dir/src-library/MidiFile.cpp.o"
   "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MidiMessage.cpp" "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles/midifile.dir/src-library/MidiMessage.cpp.o"
+  "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MusicSegment.cpp" "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o"
+  "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MusicSegmentManager.cpp" "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles/midifile.dir/src-library/MusicSegmentManager.cpp.o"
   "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/Options.cpp" "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles/midifile.dir/src-library/Options.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

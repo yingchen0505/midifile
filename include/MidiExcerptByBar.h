@@ -2,6 +2,7 @@
 #include "Options.h"
 #include <iostream>
 #include <vector>
+#include <string>
 #include <cmath>
 #include <map>
 
