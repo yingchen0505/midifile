@@ -6,39 +6,53 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 	// Store current directory so as to return to this before exiting constructor
 	char homeDirectory[1024];
 	getcwd(homeDirectory, sizeof(homeDirectory));
-	
-	char currDirectory[1024];
 
 	if ( !exists( inputFolderPath ) ) {
 		return;
 	}
 
 	directory_iterator end_itr; // default construction yields past-the-end
+	
 	for ( directory_iterator itr( inputFolderPath ); itr != end_itr; ++itr ) {
 		if ( is_directory(itr->status()) ) {
 			if(itr->path().leaf().string() == "music_segments") {
-				int valence;
-				int arousal;
-				string emotionFolderName;
-				regex signedIntRegex("(\\-)?[[:d:]]+");
-				smatch numberFound;  
 				// Loop through all emotion folders in music_segments folder
-				for (directory_iterator musicSegmentItr( itr->path() ); musicSegmentItr != end_itr; ++musicSegmentItr) {
-					emotionFolderName = musicSegmentItr->path().leaf().string();
+				for (directory_iterator emotionFolderItr( itr->path() ); emotionFolderItr != end_itr; ++emotionFolderItr) {
+					string emotionFolderName = emotionFolderItr->path().leaf().string();
 					cout << "emotionFolderName = " << emotionFolderName << "\n";
 					
+					string searchString = emotionFolderName;
+					regex signedIntRegex("(\\-)?[[:d:]]+");
+					smatch numberFound;  
+
 					// Read valence
-					regex_search(emotionFolderName, numberFound, signedIntRegex);
-					valence = stoi(numberFound[0]);
-					emotionFolderName = numberFound.suffix();
+					regex_search(searchString, numberFound, signedIntRegex);
+					int valence = stoi(numberFound[0]);
+					searchString = numberFound.suffix();
 					
 					// Read arousal
-					regex_search(emotionFolderName, numberFound, signedIntRegex);
-					arousal = stoi(numberFound[0]);
-					
-					
+					regex_search(searchString, numberFound, signedIntRegex);
+					int arousal = stoi(numberFound[0]);
+
 					cout << "valence = " << valence << "\n";
 					cout << "arousal = " << arousal << "\n";
+					
+					// Read music segments within this emotion
+					for (directory_iterator musicSegmentItr( emotionFolderItr->path() ); musicSegmentItr != end_itr; ++musicSegmentItr) {
+						MidiFile infile(musicSegmentItr->path().string().c_str());
+						std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
+						string infileName = musicSegmentItr->path().leaf().string();
+						string outfileName = emotionFolderName + "_" + infileName;
+						outfile.open(outfileName.c_str());
+						infile.write(outfile);
+						outfile.close();
+					}
+					/*
+					cout << "musicSegmentItr->path().string() = " << musicSegmentItr->path().string() << "\n";
+					chdir(musicSegmentItr->path().string().c_str());
+					char currDirectory[1024];
+					getcwd(currDirectory, sizeof(currDirectory));
+					cout << currDirectory << "\n";*/
 				}
 			}
 		}
@@ -49,12 +63,10 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 
 	//MusicSegment musicSegment();
 	//musicSegmentList.push_back(musicSegment);
-	
-	getcwd(currDirectory, sizeof(currDirectory));
-	std::cout << currDirectory << "\n";
-	
+
 	chdir(homeDirectory);
 	
+	char currDirectory[1024];
 	getcwd(currDirectory, sizeof(currDirectory));
 	std::cout << currDirectory << "\n";
 }
