@@ -2,6 +2,7 @@
 #include <vector>
 #include <iostream>
 #include <unistd.h>
+#include <regex>
 #include <boost/filesystem.hpp>
 #include "MusicSegment.h"
 

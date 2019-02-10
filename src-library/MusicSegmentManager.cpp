@@ -17,9 +17,28 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 	for ( directory_iterator itr( inputFolderPath ); itr != end_itr; ++itr ) {
 		if ( is_directory(itr->status()) ) {
 			if(itr->path().leaf().string() == "music_segments") {
+				int valence;
+				int arousal;
+				string emotionFolderName;
+				regex signedIntRegex("(\\-)?[[:d:]]+");
+				smatch numberFound;  
 				// Loop through all emotion folders in music_segments folder
 				for (directory_iterator musicSegmentItr( itr->path() ); musicSegmentItr != end_itr; ++musicSegmentItr) {
-					std::cout << musicSegmentItr->path().leaf().string() << "\n";
+					emotionFolderName = musicSegmentItr->path().leaf().string();
+					cout << "emotionFolderName = " << emotionFolderName << "\n";
+					
+					// Read valence
+					regex_search(emotionFolderName, numberFound, signedIntRegex);
+					valence = stoi(numberFound[0]);
+					emotionFolderName = numberFound.suffix();
+					
+					// Read arousal
+					regex_search(emotionFolderName, numberFound, signedIntRegex);
+					arousal = stoi(numberFound[0]);
+					
+					
+					cout << "valence = " << valence << "\n";
+					cout << "arousal = " << arousal << "\n";
 				}
 			}
 		}
