@@ -34,15 +34,11 @@ MidiFile MusicSegment::repeat(double timeInSeconds, bool isAbsoluteStart, bool i
 	if(isAbsoluteStart && prep) {
 		concatList.push_back(*prep);
 		durationOfPrepAndEnd += (*prep).getFileDurationInSeconds();
-		//cout << "(*prep).getFileDurationInSeconds() = " << (*prep).getFileDurationInSeconds() << "\n";
-	
 	}
 
 	if(isAbsoluteEnd && finalEnd) {
 		// Account for the duration first, but only add finalEnd to the list after mainLoop is added.
 		durationOfPrepAndEnd += (*finalEnd).getFileDurationInSeconds(); 
-		//cout << "(*finalEnd).getFileDurationInSeconds() = " << (*finalEnd).getFileDurationInSeconds() << "\n";
-	
 	}
 
 	double mainLoopDuration = (*mainLoop).getFileDurationInSeconds();
@@ -54,15 +50,10 @@ MidiFile MusicSegment::repeat(double timeInSeconds, bool isAbsoluteStart, bool i
 
 	// Calculate how many times the mainLoop (and mainLoopEnd if exists) should be repeated
 	int repeatRounds = round((timeInSeconds - durationOfPrepAndEnd) / mainLoopDuration);
-	/*cout << "timeInSeconds = " << timeInSeconds << "\n";
-	cout << "durationOfPrepAndEnd = " << durationOfPrepAndEnd << "\n";
-	cout << "mainLoopDuration = " << mainLoopDuration << "\n";
-	
-	cout << "calculated repeat rounds = " << repeatRounds << "\n";*/
+
 	// Need to play at least once, even if time given is too short
 	repeatRounds = max(repeatRounds, 1);
-	//cout << "final repeat rounds = " << repeatRounds << "\n";
-	
+
 	// If mainLoopEnd is not null, it should be repeated together with mainLoop
 	if(mainLoopEnd) {
 		for (int i=0; i< repeatRounds; i++){
@@ -80,9 +71,7 @@ MidiFile MusicSegment::repeat(double timeInSeconds, bool isAbsoluteStart, bool i
 		// If there is mainLoopEnd, 
 		// need to replace the last one of it with the finalEnd
 		if(mainLoopEnd) {
-			//cout << "blurp \n";
 			concatList.pop_back();
-			//concatList.pop_back();
 		}
 		concatList.push_back(*finalEnd);
 	}

@@ -3,10 +3,6 @@
 using namespace music_segment_manager;
 
 MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
-	// Store current directory so as to return to this before exiting constructor
-	char homeDirectory[1024];
-	getcwd(homeDirectory, sizeof(homeDirectory));
-
 	if ( !exists( inputFolderPath ) ) {
 		return;
 	}
@@ -19,8 +15,7 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 				// Loop through all emotion folders in music_segments folder
 				for (directory_iterator emotionFolderItr( itr->path() ); emotionFolderItr != end_itr; ++emotionFolderItr) {
 					string emotionFolderName = emotionFolderItr->path().leaf().string();
-					cout << "emotionFolderName = " << emotionFolderName << "\n";
-					
+
 					string searchString = emotionFolderName;
 					regex signedIntRegex("(\\-)?[[:d:]]+");
 					smatch numberFound;  
@@ -34,9 +29,6 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 					regex_search(searchString, numberFound, signedIntRegex);
 					int arousal = stoi(numberFound[0]);
 
-					cout << "valence = " << valence << "\n";
-					cout << "arousal = " << arousal << "\n";
-					
 					vector<MusicSegment> tempList;
 
 					// Loop through music segments within this emotion
@@ -56,6 +48,7 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 						regex_search(searchString, numberFound, intRegex);
 						int partNumber = stoi(numberFound[0]);
 						
+						// Construct new MusicSegment if needed (i.e. if fileNumber is out of bound)
 						if(fileNumber >= tempList.size()) {
 							for(int i=tempList.size() - 1; i<fileNumber; i++) {
 								MusicSegment musicSegment;
@@ -96,19 +89,12 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 		}
 	}	
 	
+	// Testing repeat function for all segments
 	for(int i=0; i<musicSegmentList.size(); i++){
 		MidiFile midiFile = musicSegmentList[i].repeat(190, true, true);
-		cout << musicSegmentList[i].isInvalid() << "\n";
-		
 		std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
 		outfile.open((to_string(i) + ".mid").c_str());
 		midiFile.write(outfile);
 		outfile.close();
 	}
-
-	chdir(homeDirectory);
-	
-	char currDirectory[1024];
-	getcwd(currDirectory, sizeof(currDirectory));
-	std::cout << currDirectory << "\n";
 }

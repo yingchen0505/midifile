@@ -169,6 +169,8 @@ string
 include/MusicSegment.h
 cmath
 -
+iostream
+-
 MidiFile.h
 include/MidiFile.h
 MidiCat.h
@@ -179,14 +181,20 @@ string
 -
 vector
 -
+fstream
+-
 iostream
 -
 unistd.h
+-
+regex
 -
 boost/filesystem.hpp
 -
 MusicSegment.h
 include/MusicSegment.h
+MidiFile.h
+include/MidiFile.h
 
 include/Options.h
 iostream

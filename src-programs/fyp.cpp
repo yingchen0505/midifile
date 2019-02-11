@@ -18,7 +18,6 @@ using namespace smf;
 //using namespace music_segment;
 using namespace music_segment_manager;
 
-
 // pause (in seconds) between concatenated midi files.
 // used with -p option
 double pauseBetweenMidi = 0.0;  
@@ -30,8 +29,8 @@ void checkOptions (Options& opts, int argc, char** argv);
 
 int main(int argc, char* argv[]) {
 	
-	//Options options;
-	//checkOptions(options, argc, argv);
+	Options options;
+	checkOptions(options, argc, argv);
 	
 	MusicSegmentManager musicSegmentManager(INPUT_PATH);
 	
@@ -74,10 +73,10 @@ int main(int argc, char* argv[]) {
 	outfile.write(cout);*/
 
 	///// Midi Excerpt Tool
-	/*
-	MidiExcerptByBar midiExcerptByBar;
-	midiExcerptByBar.run(argc, argv);
-	*/
+	
+	//MidiExcerptByBar midiExcerptByBar;
+	//midiExcerptByBar.run(argc, argv);
+	
 }
 
 
