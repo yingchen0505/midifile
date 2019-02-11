@@ -103,7 +103,8 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 		midiFile.write(outfile);
 		outfile.close();
 		cout << musicSegmentList[i].ID << "\n";
-	}
-	
-	bridgeManager.getBridge(musicSegmentList[0], musicSegmentList[1]);
+		for(int j=0; j<musicSegmentList.size(); j++){
+			bridgeManager.getBridge(musicSegmentList[i], musicSegmentList[j]);
+		}
+	}	
 }

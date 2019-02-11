@@ -125,6 +125,8 @@ string
 -
 MidiFile.h
 include/MidiFile.h
+MusicSegment.h
+include/MusicSegment.h
 
 include/BridgeManager.h
 iostream
