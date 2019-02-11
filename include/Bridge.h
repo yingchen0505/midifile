@@ -14,7 +14,7 @@ namespace bridge {
 				valid = false;
 			}
 			Bridge(MusicSegment prevSegment, MusicSegment nextSegment, MidiFile bridgeMidi);
-			Bridge(string ID, MidiFile bridgeMidi);
+			Bridge(string ID, MidiFile bridgeMidi, int barErosion);
 			
 			bool valid;
 			string ID;	// is the same as file name without last "_digit" that represents barErosion

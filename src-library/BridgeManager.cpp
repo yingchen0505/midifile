@@ -9,30 +9,32 @@ BridgeManager::BridgeManager(string bridgeFolderPath) {
 
 	directory_iterator end_itr; // default construction yields past-the-end
 	
+	// Loop through the bridges folder to add bridges to the map
 	for ( directory_iterator itr( bridgeFolderPath ); itr != end_itr; ++itr ) {
 		string bridgeFileName = itr->path().leaf().string();
 
 		string searchString = bridgeFileName;
+		
+		/// Read bridge ID:
+		
+		// The format is basically six integers separated by "_"
 		regex bridgeIDRegex("(\\-)?[[:d:]]+_(\\-)?[[:d:]]+_(\\-)?[[:d:]]+_(\\-)?[[:d:]]+_(\\-)?[[:d:]]+_(\\-)?[[:d:]]+");
+		
 		smatch substringFound;  
-		regex_search(bridgeFileName, substringFound, bridgeIDRegex);
+		regex_search(searchString, substringFound, bridgeIDRegex);
 		string bridgeID = substringFound[0];
 		cout << "bridgeID = " << bridgeID << "\n";
-		//searchString = numberFound.suffix();
-/*
-		// Read previous music segment valence
-		regex_search(searchString, numberFound, signedIntRegex);
-		int prevValence = stoi(numberFound[0]);
-		searchString = numberFound.suffix();
+		searchString = substringFound.suffix();
 		
-		// Read previous music segment arousal
-		regex_search(searchString, numberFound, signedIntRegex);
-		int prevArousal = stoi(numberFound[0]);
-		*/
+		/// Read bar erosion number:
+		regex intRegex("[[:d:]]+");
+		regex_search(searchString, substringFound, intRegex);
+		int barErosion = stoi(substringFound[0]);
+		
+		// Constructing bridge and adding it to map
 		MidiFile bridgeMidi(itr->path().string());
-		Bridge bridge(bridgeID, bridgeMidi);
+		Bridge bridge(bridgeID, bridgeMidi, barErosion);
 		bridgeMap[bridgeID] = bridge;
-
 	}
 }
 
@@ -40,10 +42,11 @@ MidiFile BridgeManager::getBridge(MusicSegment prevSegment, MusicSegment nextSeg
 	string bridgeID = to_string(prevSegment.valence) + "_" + to_string(prevSegment.arousal) + "_" + to_string(prevSegment.ID) + "_" +
 						to_string(nextSegment.valence) + "_" + to_string(nextSegment.arousal) + "_" + to_string(nextSegment.ID);
 	if(bridgeMap[bridgeID].isInvalid()) {
-		cout << bridgeID << "NOT FOUND \n";
+		//cout << bridgeID << "NOT FOUND \n";
 	}
 	else {
 		cout << bridgeID << "FOUND \n";
+		cout << "barErosion = " << bridgeMap[bridgeID].barErosion << "\n";
 	}
 	return MidiFile();
 }
