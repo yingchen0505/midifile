@@ -32,7 +32,11 @@ BridgeManager::BridgeManager(string bridgeFolderPath) {
 }
 
 MidiFile BridgeManager::getBridge(MusicSegment prevSegment, MusicSegment nextSegment) {
-	string bridgeID;
+	string bridgeID = to_string(prevSegment.valence) + to_string(prevSegment.arousal) + to_string(prevSegment.ID) +
+						to_string(nextSegment.valence) + to_string(nextSegment.arousal) + to_string(nextSegment.ID);
+	if(bridgeMap[bridgeID].isInvalid()) {
+		cout << "HERE \n";
+	}
 	return MidiFile();
 }
 		

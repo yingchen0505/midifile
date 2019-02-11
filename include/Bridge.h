@@ -3,15 +3,21 @@
 #include "MidiFile.h"
 
 using namespace smf;
+using std::string;
 
 namespace bridge {
 	class Bridge {
 		public:
-			Bridge() = default;
-			Bridge(std::string ID, MidiFile bridgeMidi);
+			Bridge() {
+				valid = false;
+			}
+			Bridge(string ID, MidiFile bridgeMidi);
 			
-			std::string ID;
+			bool valid;
+			string ID;
 			MidiFile bridgeMidi;
+			
+			bool isInvalid();
 		
 		private:
 			
