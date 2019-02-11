@@ -605,6 +605,60 @@ src-library/Binasc.cpp.s:
 	$(MAKE) -f CMakeFiles/midifile.dir/build.make CMakeFiles/midifile.dir/src-library/Binasc.cpp.s
 .PHONY : src-library/Binasc.cpp.s
 
+src-library/Bridge.o: src-library/Bridge.cpp.o
+
+.PHONY : src-library/Bridge.o
+
+# target to build an object file
+src-library/Bridge.cpp.o:
+	$(MAKE) -f CMakeFiles/midifile.dir/build.make CMakeFiles/midifile.dir/src-library/Bridge.cpp.o
+.PHONY : src-library/Bridge.cpp.o
+
+src-library/Bridge.i: src-library/Bridge.cpp.i
+
+.PHONY : src-library/Bridge.i
+
+# target to preprocess a source file
+src-library/Bridge.cpp.i:
+	$(MAKE) -f CMakeFiles/midifile.dir/build.make CMakeFiles/midifile.dir/src-library/Bridge.cpp.i
+.PHONY : src-library/Bridge.cpp.i
+
+src-library/Bridge.s: src-library/Bridge.cpp.s
+
+.PHONY : src-library/Bridge.s
+
+# target to generate assembly for a file
+src-library/Bridge.cpp.s:
+	$(MAKE) -f CMakeFiles/midifile.dir/build.make CMakeFiles/midifile.dir/src-library/Bridge.cpp.s
+.PHONY : src-library/Bridge.cpp.s
+
+src-library/BridgeManager.o: src-library/BridgeManager.cpp.o
+
+.PHONY : src-library/BridgeManager.o
+
+# target to build an object file
+src-library/BridgeManager.cpp.o:
+	$(MAKE) -f CMakeFiles/midifile.dir/build.make CMakeFiles/midifile.dir/src-library/BridgeManager.cpp.o
+.PHONY : src-library/BridgeManager.cpp.o
+
+src-library/BridgeManager.i: src-library/BridgeManager.cpp.i
+
+.PHONY : src-library/BridgeManager.i
+
+# target to preprocess a source file
+src-library/BridgeManager.cpp.i:
+	$(MAKE) -f CMakeFiles/midifile.dir/build.make CMakeFiles/midifile.dir/src-library/BridgeManager.cpp.i
+.PHONY : src-library/BridgeManager.cpp.i
+
+src-library/BridgeManager.s: src-library/BridgeManager.cpp.s
+
+.PHONY : src-library/BridgeManager.s
+
+# target to generate assembly for a file
+src-library/BridgeManager.cpp.s:
+	$(MAKE) -f CMakeFiles/midifile.dir/build.make CMakeFiles/midifile.dir/src-library/BridgeManager.cpp.s
+.PHONY : src-library/BridgeManager.cpp.s
+
 src-library/MidiCat.o: src-library/MidiCat.cpp.o
 
 .PHONY : src-library/MidiCat.o
@@ -1840,6 +1894,12 @@ help:
 	@echo "... src-library/Binasc.o"
 	@echo "... src-library/Binasc.i"
 	@echo "... src-library/Binasc.s"
+	@echo "... src-library/Bridge.o"
+	@echo "... src-library/Bridge.i"
+	@echo "... src-library/Bridge.s"
+	@echo "... src-library/BridgeManager.o"
+	@echo "... src-library/BridgeManager.i"
+	@echo "... src-library/BridgeManager.s"
 	@echo "... src-library/MidiCat.o"
 	@echo "... src-library/MidiCat.i"
 	@echo "... src-library/MidiCat.s"

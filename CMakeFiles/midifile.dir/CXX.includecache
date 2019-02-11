@@ -14,6 +14,14 @@ sstream
 stdlib.h
 -
 
+/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/Bridge.cpp
+Bridge.h
+/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/Bridge.h
+
+/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/BridgeManager.cpp
+BridgeManager.h
+/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/BridgeManager.h
+
 /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MidiCat.cpp
 MidiCat.h
 /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MidiCat.h
@@ -110,6 +118,32 @@ cstdlib
 stdlib.h
 -
 
+include/Bridge.h
+iostream
+-
+string
+-
+MidiFile.h
+include/MidiFile.h
+
+include/BridgeManager.h
+iostream
+-
+string
+-
+map
+-
+regex
+-
+boost/filesystem.hpp
+-
+MidiFile.h
+include/MidiFile.h
+MusicSegment.h
+include/MusicSegment.h
+Bridge.h
+include/Bridge.h
+
 include/MidiCat.h
 MidiFile.h
 include/MidiFile.h
@@ -195,6 +229,8 @@ MusicSegment.h
 include/MusicSegment.h
 MidiFile.h
 include/MidiFile.h
+BridgeManager.h
+include/BridgeManager.h
 
 include/Options.h
 iostream

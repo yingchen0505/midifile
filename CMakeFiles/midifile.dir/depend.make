@@ -4,6 +4,23 @@
 CMakeFiles/midifile.dir/src-library/Binasc.cpp.o: src-library/Binasc.cpp
 CMakeFiles/midifile.dir/src-library/Binasc.cpp.o: include/Binasc.h
 
+CMakeFiles/midifile.dir/src-library/Bridge.cpp.o: src-library/Bridge.cpp
+CMakeFiles/midifile.dir/src-library/Bridge.cpp.o: include/Bridge.h
+CMakeFiles/midifile.dir/src-library/Bridge.cpp.o: include/MidiEvent.h
+CMakeFiles/midifile.dir/src-library/Bridge.cpp.o: include/MidiEventList.h
+CMakeFiles/midifile.dir/src-library/Bridge.cpp.o: include/MidiFile.h
+CMakeFiles/midifile.dir/src-library/Bridge.cpp.o: include/MidiMessage.h
+
+CMakeFiles/midifile.dir/src-library/BridgeManager.cpp.o: src-library/BridgeManager.cpp
+CMakeFiles/midifile.dir/src-library/BridgeManager.cpp.o: include/Bridge.h
+CMakeFiles/midifile.dir/src-library/BridgeManager.cpp.o: include/BridgeManager.h
+CMakeFiles/midifile.dir/src-library/BridgeManager.cpp.o: include/MidiCat.h
+CMakeFiles/midifile.dir/src-library/BridgeManager.cpp.o: include/MidiEvent.h
+CMakeFiles/midifile.dir/src-library/BridgeManager.cpp.o: include/MidiEventList.h
+CMakeFiles/midifile.dir/src-library/BridgeManager.cpp.o: include/MidiFile.h
+CMakeFiles/midifile.dir/src-library/BridgeManager.cpp.o: include/MidiMessage.h
+CMakeFiles/midifile.dir/src-library/BridgeManager.cpp.o: include/MusicSegment.h
+
 CMakeFiles/midifile.dir/src-library/MidiCat.cpp.o: src-library/MidiCat.cpp
 CMakeFiles/midifile.dir/src-library/MidiCat.cpp.o: include/MidiCat.h
 CMakeFiles/midifile.dir/src-library/MidiCat.cpp.o: include/MidiEvent.h
@@ -47,6 +64,8 @@ CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o: include/MidiMessage.h
 CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o: include/MusicSegment.h
 
 CMakeFiles/midifile.dir/src-library/MusicSegmentManager.cpp.o: src-library/MusicSegmentManager.cpp
+CMakeFiles/midifile.dir/src-library/MusicSegmentManager.cpp.o: include/Bridge.h
+CMakeFiles/midifile.dir/src-library/MusicSegmentManager.cpp.o: include/BridgeManager.h
 CMakeFiles/midifile.dir/src-library/MusicSegmentManager.cpp.o: include/MidiCat.h
 CMakeFiles/midifile.dir/src-library/MusicSegmentManager.cpp.o: include/MidiEvent.h
 CMakeFiles/midifile.dir/src-library/MusicSegmentManager.cpp.o: include/MidiEventList.h

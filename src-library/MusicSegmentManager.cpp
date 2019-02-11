@@ -11,7 +11,12 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 	
 	for ( directory_iterator itr( inputFolderPath ); itr != end_itr; ++itr ) {
 		if ( is_directory(itr->status()) ) {
-			if(itr->path().leaf().string() == "music_segments") {
+			
+			if(itr->path().leaf().string() == "bridges") {
+				bridgeManager = BridgeManager(itr->path().string());
+			}
+			
+			else if(itr->path().leaf().string() == "music_segments") {
 				// Loop through all emotion folders in music_segments folder
 				for (directory_iterator emotionFolderItr( itr->path() ); emotionFolderItr != end_itr; ++emotionFolderItr) {
 					string emotionFolderName = emotionFolderItr->path().leaf().string();

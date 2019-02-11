@@ -1,3 +1,6 @@
+#ifndef _MUSICSEGMENT_H_INCLUDED
+#define _MUSICSEGMENT_H_INCLUDED
+
 #include <cmath>
 #include <iostream>
 #include "MidiFile.h"
@@ -36,3 +39,5 @@ namespace music_segment {
 		private:
 	};
 }
+
+#endif /* _MUSICSEGMENT_H_INCLUDED */
