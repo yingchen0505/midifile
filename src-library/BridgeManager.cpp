@@ -2,7 +2,7 @@
 
 using namespace bridge_manager;
 
-BridgeManager::BridgeManager(std::string bridgeFolderPath) {
+BridgeManager::BridgeManager(string bridgeFolderPath) {
 	if ( !exists( bridgeFolderPath ) ) {
 		return;
 	}
@@ -10,11 +10,11 @@ BridgeManager::BridgeManager(std::string bridgeFolderPath) {
 	directory_iterator end_itr; // default construction yields past-the-end
 	
 	for ( directory_iterator itr( bridgeFolderPath ); itr != end_itr; ++itr ) {
-		std::string bridgeFileName = itr->path().leaf().string();
+		string bridgeFileName = itr->path().leaf().string();
 
-		std::string searchString = bridgeFileName;
-		std::regex signedIntRegex("(\\-)?[[:d:]]+");
-		std::smatch numberFound;  
+		string searchString = bridgeFileName;
+		regex signedIntRegex("(\\-)?[[:d:]]+");
+		smatch numberFound;  
 
 		// Read previous music segment valence
 		regex_search(searchString, numberFound, signedIntRegex);
@@ -30,3 +30,9 @@ BridgeManager::BridgeManager(std::string bridgeFolderPath) {
 
 	}
 }
+
+MidiFile BridgeManager::getBridge(MusicSegment prevSegment, MusicSegment nextSegment) {
+	string bridgeID;
+	return MidiFile();
+}
+		

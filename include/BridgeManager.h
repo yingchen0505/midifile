@@ -14,17 +14,20 @@ using namespace smf;
 using namespace bridge;
 using namespace boost::filesystem;   
 using namespace music_segment;
+using std::string;
+using std::regex;
+using std::map;
 
 namespace bridge_manager {
 	class BridgeManager {
 		public:
 			BridgeManager() = default;
-			BridgeManager(std::string bridgeFolderPath);
+			BridgeManager(string bridgeFolderPath);
 			~BridgeManager() = default;
 			MidiFile getBridge(MusicSegment prevSegment, MusicSegment nextSegment);
 		
 		private:
-			std::map<std::string, Bridge> bridgeMap;
+			map<string, Bridge> bridgeMap;
 		
 	};
 }
