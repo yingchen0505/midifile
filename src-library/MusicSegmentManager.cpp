@@ -54,6 +54,7 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 								MusicSegment musicSegment;
 								musicSegment.valence = valence;
 								musicSegment.arousal = arousal;
+								musicSegment.ID = fileNumber + 1; // ID starts from 1, while fileNumber starts from 0
 								tempList.push_back(musicSegment);
 							}
 						}
@@ -96,5 +97,6 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 		outfile.open((to_string(i) + ".mid").c_str());
 		midiFile.write(outfile);
 		outfile.close();
+		cout << musicSegmentList[i].ID << "\n";
 	}
 }

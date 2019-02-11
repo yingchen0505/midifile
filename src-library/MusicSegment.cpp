@@ -5,15 +5,17 @@ using namespace music_segment;
 MusicSegment::MusicSegment() {
 	valence = 0;
 	arousal = 0;
+	ID = 0;
 	prep = NULL;
 	mainLoop = NULL;
 	mainLoopEnd = NULL;
 	finalEnd = NULL;
 }
 
-MusicSegment::MusicSegment(int valence, int arousal, MidiFile* prep, MidiFile* mainLoop, MidiFile* mainLoopEnd, MidiFile* finalEnd) {
+MusicSegment::MusicSegment(int valence, int arousal, int ID, MidiFile* prep, MidiFile* mainLoop, MidiFile* mainLoopEnd, MidiFile* finalEnd) {
 	this->valence = valence;
 	this->arousal = arousal;
+	this->ID = ID;
 	this->prep = prep;
 	this->mainLoop = mainLoop;
 	this->mainLoopEnd = mainLoopEnd;

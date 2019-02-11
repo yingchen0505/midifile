@@ -11,6 +11,7 @@ namespace music_segment {
 		public:
 			int valence;
 			int arousal;
+			int ID;		// unique identification number among music segments with exact same emotion
 			MidiFile* prep;
 			MidiFile* mainLoop;
 			MidiFile* mainLoopEnd;
@@ -18,7 +19,7 @@ namespace music_segment {
 			
 			// Constructors and desctructors:
 			MusicSegment();
-			MusicSegment(int valence, int arousal, MidiFile* prep, MidiFile* mainLoop, MidiFile* mainLoopEnd, MidiFile* finalEnd);
+			MusicSegment(int valence, int arousal, int ID, MidiFile* prep, MidiFile* mainLoop, MidiFile* mainLoopEnd, MidiFile* finalEnd);
 			~MusicSegment() = default;
 			MusicSegment(const MusicSegment &src) = default;
 			MusicSegment& operator=(const MusicSegment &rhs) = default;
