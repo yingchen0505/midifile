@@ -97,7 +97,7 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 	}	
 	
 	for(int i=0; i<musicSegmentList.size(); i++){
-		MidiFile midiFile = musicSegmentList[i].repeat(30, true, true);
+		MidiFile midiFile = musicSegmentList[i].repeat(190, true, true);
 		cout << musicSegmentList[i].isInvalid() << "\n";
 		
 		std::ofstream outfile; // without std::, reference would be ambiguous because of Boost

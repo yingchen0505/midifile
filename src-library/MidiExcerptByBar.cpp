@@ -124,7 +124,7 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 	int currentOutputLengthInTicks = outfile.getFileDurationInTicks();
 	// We don't want a gap between the end of file and the actual end of the last bar
 	// This gap will be filled by either a rest, or the note-off events yet to be added.
-	int gap = endTicksOfEndBar - currentOutputLengthInTicks - 1;
+	int gap = endTicksOfEndBar - beginningTicksOfStartBar - currentOutputLengthInTicks - 1; // minus 1 to prevent it from overflowing to next bar
 	
 	// If there isn't any notes still on, then add a rest to fill the gap
 	if(noteOffAfterEndBar.empty() && gap > 0){
