@@ -143,6 +143,8 @@ MidiFile.h
 include/MidiFile.h
 BridgeManager.h
 include/BridgeManager.h
+Bridge.h
+include/Bridge.h
 
 include/Options.h
 iostream

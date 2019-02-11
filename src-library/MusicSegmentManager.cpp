@@ -104,7 +104,10 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 		outfile.close();
 		cout << musicSegmentList[i].ID << "\n";
 		for(int j=0; j<musicSegmentList.size(); j++){
-			bridgeManager.getBridge(musicSegmentList[i], musicSegmentList[j]);
+			Bridge bridge = bridgeManager.getBridge(musicSegmentList[i], musicSegmentList[j]);
+			if(!bridge.isInvalid()) {
+				cout << "NEED TO CAT NOW \n";
+			}
 		}
 	}	
 }

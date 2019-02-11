@@ -38,16 +38,18 @@ BridgeManager::BridgeManager(string bridgeFolderPath) {
 	}
 }
 
-MidiFile BridgeManager::getBridge(MusicSegment prevSegment, MusicSegment nextSegment) {
+Bridge BridgeManager::getBridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	string bridgeID = to_string(prevSegment.valence) + "_" + to_string(prevSegment.arousal) + "_" + to_string(prevSegment.ID) + "_" +
 						to_string(nextSegment.valence) + "_" + to_string(nextSegment.arousal) + "_" + to_string(nextSegment.ID);
 	if(bridgeMap[bridgeID].isInvalid()) {
 		//cout << bridgeID << "NOT FOUND \n";
+		// TODO: construct new bridge
 	}
 	else {
-		cout << bridgeID << "FOUND \n";
-		cout << "barErosion = " << bridgeMap[bridgeID].barErosion << "\n";
+		//cout << bridgeID << "FOUND \n";
+		//cout << "barErosion = " << bridgeMap[bridgeID].barErosion << "\n";
+		return bridgeMap[bridgeID];
 	}
-	return MidiFile();
+	return Bridge();
 }
 		

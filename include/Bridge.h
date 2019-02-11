@@ -1,3 +1,6 @@
+#ifndef _BRIDGE_H_INCLUDED
+#define _BRIDGE_H_INCLUDED
+
 #include <iostream>
 #include <string>
 #include "MidiFile.h"
@@ -29,3 +32,5 @@ namespace bridge {
 			
 	};
 }
+
+#endif /* _BRIDGE_H_INCLUDED */

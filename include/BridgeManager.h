@@ -24,7 +24,7 @@ namespace bridge_manager {
 			BridgeManager() = default;
 			BridgeManager(string bridgeFolderPath);
 			~BridgeManager() = default;
-			MidiFile getBridge(MusicSegment prevSegment, MusicSegment nextSegment);
+			Bridge getBridge(MusicSegment prevSegment, MusicSegment nextSegment);
 		
 		private:
 			map<string, Bridge> bridgeMap;

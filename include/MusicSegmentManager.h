@@ -8,11 +8,13 @@
 #include "MusicSegment.h"
 #include "MidiFile.h"
 #include "BridgeManager.h"
+#include "Bridge.h"
 
 using namespace boost::filesystem;    
 using namespace music_segment;
 using namespace smf;
 using namespace bridge_manager;
+using namespace bridge;
 
 namespace music_segment_manager {
 	class MusicSegmentManager {
