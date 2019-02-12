@@ -1,3 +1,6 @@
+#ifndef _MIDIEXCERPTBYBAR_H_INCLUDED
+#define _MIDIEXCERPTBYBAR_H_INCLUDED
+
 #include "MidiFile.h"
 #include <iostream>
 #include <vector>
@@ -22,3 +25,5 @@ namespace midi_excerpt_by_bar {
 	};
 
 }
+
+#endif /* _MIDIEXCERPTBYBAR_H_INCLUDED */
