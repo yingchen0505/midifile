@@ -23,7 +23,6 @@ BridgeManager::BridgeManager(string bridgeFolderPath) {
 		smatch substringFound;  
 		regex_search(searchString, substringFound, bridgeIDRegex);
 		string bridgeID = substringFound[0];
-		cout << "bridgeID = " << bridgeID << "\n";
 		searchString = substringFound.suffix();
 		
 		/// Read bar erosion number:
@@ -47,7 +46,7 @@ Bridge BridgeManager::getBridge(MusicSegment prevSegment, MusicSegment nextSegme
 	}
 	else {
 		//cout << bridgeID << "FOUND \n";
-		//cout << "barErosion = " << bridgeMap[bridgeID].barErosion << "\n";
+		//cout << "bridgeMap[bridgeID].bridgeMidi.getTrackCount() = " << bridgeMap[bridgeID].bridgeMidi.getTrackCount() << "\n";
 		return bridgeMap[bridgeID];
 	}
 	return Bridge();

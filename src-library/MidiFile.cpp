@@ -100,13 +100,11 @@ MidiFile& MidiFile::operator=(const MidiFile& other) {
 	if (this == &other) {
 		return *this;
 	}
-	m_events.reserve(other.m_events.size());
-	auto it = other.m_events.begin();
-	std::generate_n(std::back_inserter(m_events), other.m_events.size(),
-		[&]()->MidiEventList* {
-			return new MidiEventList(**it++);
-		}
-	);
+
+	m_events = std::vector<MidiEventList*>(other.m_events.size());
+    for (int i=0; i<other.m_events.size(); i++)
+            m_events[i] = new MidiEventList(*other.m_events[i]); 
+	
 	m_ticksPerQuarterNote = other.m_ticksPerQuarterNote;
 	m_trackCount          = other.m_trackCount;
 	m_theTrackState       = other.m_theTrackState;
@@ -118,6 +116,7 @@ MidiFile& MidiFile::operator=(const MidiFile& other) {
 	if (other.m_linkedEventsQ) {
 		linkEventPairs();
 	}
+	
 	return *this;
 }
 
@@ -872,7 +871,7 @@ void MidiFile::joinTracks(void) {
 		m_theTrackState = TRACK_STATE_JOINED;
 		return;
 	}
-
+	
 	MidiEventList* joinedTrack;
 	joinedTrack = new MidiEventList;
 
@@ -2572,8 +2571,8 @@ void MidiFile::updateBarNumber(void) {
 	// in single track mode (and undo if the MIDI file was not
 	// in that state when this function was called.
 	//
-	int trackstate = getTrackState();
-	int timestate  = getTickState();
+	const int trackstate = getTrackState();
+	const int timestate  = getTickState();
 	makeAbsoluteTicks();
 	joinTracks();
 	
@@ -2655,9 +2654,15 @@ void MidiFile::updateBarNumber(void) {
 	// reset the states of the tracks or time values if necessary here:
 	if (timestate == TIME_STATE_ABSOLUTE) {
 		deltaTicks();
+	} 
+	else {
+		absoluteTicks();
 	}
 	if (trackstate == TRACK_STATE_JOINED) {
 		joinTracks();
+	}
+	else {
+		splitTracks();
 	}
 
 	m_barnumbervalid = 1;

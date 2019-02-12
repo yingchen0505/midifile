@@ -3,6 +3,7 @@
 
 #include "MidiFile.h"
 #include <list>
+#include <iostream>
 
 using namespace std;
 using namespace smf;

@@ -151,6 +151,8 @@ MidiFile.h
 include/MidiFile.h
 list
 -
+iostream
+-
 
 include/MidiEvent.h
 MidiMessage.h
@@ -235,6 +237,8 @@ BridgeManager.h
 include/BridgeManager.h
 Bridge.h
 include/Bridge.h
+MidiCat.h
+include/MidiCat.h
 
 include/Options.h
 iostream

@@ -94,19 +94,34 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 			}
 		}
 	}	
+}
+
+void MusicSegmentManager::generateMusicFromEmotion() {
+	MidiCat midiCat;
 	
 	// Testing repeat function for all segments
 	for(int i=0; i<musicSegmentList.size(); i++){
+		/*
 		MidiFile midiFile = musicSegmentList[i].repeat(190, true, true);
 		std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
 		outfile.open((to_string(i) + ".mid").c_str());
 		midiFile.write(outfile);
 		outfile.close();
-		cout << musicSegmentList[i].ID << "\n";
+		cout << musicSegmentList[i].ID << "\n";*/
 		for(int j=0; j<musicSegmentList.size(); j++){
 			Bridge bridge = bridgeManager.getBridge(musicSegmentList[i], musicSegmentList[j]);
 			if(!bridge.isInvalid()) {
-				cout << "NEED TO CAT NOW \n";
+
+				vector<MidiFile> catList;
+				catList.push_back(musicSegmentList[i].repeat(30, true, false));
+				catList.push_back(bridge.bridgeMidi);
+				catList.push_back(musicSegmentList[j].repeat(30, false, true));
+				
+				MidiFile midiFile = midiCat.run(catList, 0.0);
+				std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
+				outfile.open((to_string(i) + to_string(j) + ".mid").c_str());
+				midiFile.write(outfile);
+				outfile.close();
 			}
 		}
 	}	

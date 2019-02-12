@@ -33,6 +33,7 @@ int main(int argc, char* argv[]) {
 	checkOptions(options, argc, argv);
 	
 	MusicSegmentManager musicSegmentManager(INPUT_PATH);
+	musicSegmentManager.generateMusicFromEmotion();
 	
 	//// Debugger by event
 	/*

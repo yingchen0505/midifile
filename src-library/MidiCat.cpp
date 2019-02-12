@@ -83,7 +83,7 @@ void MidiCat::appendMidi(MidiFile& outfile, MidiFile infile,
          anevent.track = 0;
          outfile.addEvent(anevent);
       }
-      return;
+	  return;
    }
 
    // presuming constant tpq for different files.
