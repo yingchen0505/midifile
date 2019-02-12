@@ -45,7 +45,6 @@ CMakeFiles/midifile.dir/src-library/MidiExcerptByBar.cpp.o: include/MidiEventLis
 CMakeFiles/midifile.dir/src-library/MidiExcerptByBar.cpp.o: include/MidiExcerptByBar.h
 CMakeFiles/midifile.dir/src-library/MidiExcerptByBar.cpp.o: include/MidiFile.h
 CMakeFiles/midifile.dir/src-library/MidiExcerptByBar.cpp.o: include/MidiMessage.h
-CMakeFiles/midifile.dir/src-library/MidiExcerptByBar.cpp.o: include/Options.h
 
 CMakeFiles/midifile.dir/src-library/MidiFile.cpp.o: src-library/MidiFile.cpp
 CMakeFiles/midifile.dir/src-library/MidiFile.cpp.o: include/Binasc.h

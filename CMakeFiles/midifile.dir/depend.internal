@@ -46,7 +46,6 @@ CMakeFiles/midifile.dir/src-library/MidiExcerptByBar.cpp.o
  include/MidiExcerptByBar.h
  include/MidiFile.h
  include/MidiMessage.h
- include/Options.h
 CMakeFiles/midifile.dir/src-library/MidiFile.cpp.o
  /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MidiFile.cpp
  include/Binasc.h

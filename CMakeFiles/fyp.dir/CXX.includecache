@@ -19,6 +19,8 @@ cmath
 -
 map
 -
+string
+-
 list
 -
 unistd.h
@@ -79,8 +81,6 @@ vector
 include/MidiExcerptByBar.h
 MidiFile.h
 include/MidiFile.h
-Options.h
-include/Options.h
 iostream
 -
 vector

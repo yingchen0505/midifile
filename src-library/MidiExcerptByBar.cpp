@@ -2,13 +2,11 @@
 
 using namespace midi_excerpt_by_bar;
 
-void MidiExcerptByBar::run(int argc, char* argv[]) {
-	Options options;
-	checkOptions(options, argc, argv);
-	const char* filename = options.getArg(1).c_str();
+void MidiExcerptByBar::run(int startBar, int endBar, string filePath) {	
+	const char* filepath = filePath.c_str();
 	
 	// Initialize input file
-	MidiFile infile(filename);
+	MidiFile infile(filepath);
 	infile.joinTracks();
 	infile.deltaTicks();
 	int eventCount = infile.getEventCount(0) - 1; // exclude end of file event
@@ -170,7 +168,7 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 //
 // checkOptions --
 //
-
+/*
 void MidiExcerptByBar::checkOptions(Options& opts, int argc, char* argv[]) {
    opts.define("s|start=i:1",  "Starting bar (inclusive)");
    opts.define("e|end=i:-1",  "Ending bar (inclusive)");
@@ -178,4 +176,4 @@ void MidiExcerptByBar::checkOptions(Options& opts, int argc, char* argv[]) {
 
    startBar     =  opts.getInt("start");
    endBar     = opts.getInt("end");
-}
+}*/

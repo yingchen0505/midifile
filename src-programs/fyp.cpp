@@ -4,6 +4,7 @@
 #include <vector>
 #include <cmath>
 #include <map>
+#include <string>
 #include <list>
 #include <unistd.h>
 #include "MidiExcerptByBar.h"
@@ -17,6 +18,7 @@ using namespace midi_excerpt_by_bar;
 using namespace smf;
 //using namespace music_segment;
 using namespace music_segment_manager;
+using std::string;
 
 // pause (in seconds) between concatenated midi files.
 // used with -p option
@@ -32,8 +34,8 @@ int main(int argc, char* argv[]) {
 	Options options;
 	checkOptions(options, argc, argv);
 	
-	MusicSegmentManager musicSegmentManager(INPUT_PATH);
-	musicSegmentManager.generateMusicFromEmotion();
+	//MusicSegmentManager musicSegmentManager(INPUT_PATH);
+	//musicSegmentManager.generateMusicFromEmotion();
 	
 	//// Debugger by event
 	/*
@@ -74,9 +76,8 @@ int main(int argc, char* argv[]) {
 	outfile.write(cout);*/
 
 	///// Midi Excerpt Tool
-	
-	//MidiExcerptByBar midiExcerptByBar;
-	//midiExcerptByBar.run(argc, argv);
+	MidiExcerptByBar midiExcerptByBar;
+	midiExcerptByBar.run(startBar, endBar, options.getArg(1));
 	
 }
 
