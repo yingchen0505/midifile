@@ -3,7 +3,9 @@
 using namespace bridge;
 
 Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
-	
+	MidiFile newMidi;
+	newMidi.setTPQ(nextSegment.mainLoop->getTPQ());
+	this->bridgeMidi = newMidi;
 }
 
 Bridge::Bridge(string ID, MidiFile bridgeMidi, int barErosionIntoPrevSeg, int barErosionIntoNextSeg) {
