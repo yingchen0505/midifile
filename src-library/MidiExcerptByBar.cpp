@@ -88,12 +88,6 @@ MidiFile MidiExcerptByBar::run(int startBar, int endBar, MidiFile infile) {
 				outfile.addEvent(timeSignature);
 				timeSignatureIsAdded = true;
 			}
-
-			if(infile.getEvent(0,i).isNoteOff()) {
-				MidiEvent* linkedEvent = infile.getEvent(0,i).getLinkedEvent();
-				// Ignore this note-off if it is for a note before the targeted bar range
-				if(linkedEvent && (*linkedEvent).bar < startBar) continue;
-			}
 			
 			if(infile.getEvent(0,i).isNoteOn()) {
 				MidiEvent* linkedEvent = infile.getEvent(0,i).getLinkedEvent();

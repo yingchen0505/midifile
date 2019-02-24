@@ -33,7 +33,6 @@ MidiFile MusicSegment::repeat(double timeInSeconds, int beginningBarErosion, int
 	MidiCat midiCat;
 	vector<MidiFile> concatList; // list of files waiting to be concatenated into output
 
-	// TODO: handle beginningBarErosion
 	if(prep) {
 		concatList.push_back(*prep);
 		durationOfPrepAndEnd += (*prep).getFileDurationInSeconds();
@@ -93,6 +92,26 @@ MidiFile MusicSegment::repeat(double timeInSeconds, int beginningBarErosion, int
 		else {
 			concatList.pop_back();
 			endBarErosion = endBarErosion - totalBars;
+		}
+	}
+	
+	while(beginningBarErosion > 0 && !(concatList.empty())) {
+		MidiFile firstMidi = concatList.front();
+
+		int totalBars = firstMidi.getTotalBars();
+		if(totalBars > beginningBarErosion) {
+			int newBeginningBar = beginningBarErosion + 1;
+			MidiExcerptByBar midiExcerptByBar;
+			firstMidi = midiExcerptByBar.run(newBeginningBar, totalBars, firstMidi);
+			concatList.erase(concatList.begin());
+			concatList.insert(concatList.begin(), firstMidi);
+
+			break; // All required bars have been dropped
+		}
+		
+		else {
+			concatList.erase(concatList.begin());
+			beginningBarErosion = beginningBarErosion - totalBars;
 		}
 	}
 	
