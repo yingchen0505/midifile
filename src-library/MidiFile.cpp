@@ -2655,7 +2655,7 @@ void MidiFile::updateBarNumber(void) {
 		lastTick = currentTick;
 	}
 	
-	m_totalbars = currentBarNumber + 1;
+	m_totalbars = currentBarNumber;
 
 	// Get bar number from map and insert it to each event
 	splitTracks();
