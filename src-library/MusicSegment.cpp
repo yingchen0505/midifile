@@ -78,28 +78,58 @@ MidiFile MusicSegment::repeat(double timeInSeconds, bool isAbsoluteStart, bool i
 		concatList.push_back(*finalEnd);
 	}
 	
-	if(numberOfEndBarsToDrop > 0) {
+	while(numberOfEndBarsToDrop > 0 && !(concatList.empty())) {
 		MidiFile lastMidi = concatList.back();
-		/*
+		
 		std::ofstream outfile1; // without std::, reference would be ambiguous because of Boost
 		outfile1.open((to_string(valence) + to_string(arousal) + to_string(ID) + "_lastMidi_orig.mid").c_str());
 		lastMidi.write(outfile1);
-		outfile1.close();*/
+		outfile1.close();
+		
+		std::ofstream outfile1txt; // without std::, reference would be ambiguous because of Boost
+		outfile1txt.open((to_string(valence) + to_string(arousal) + to_string(ID) + "_lastMidi_orig.txt").c_str());
+		outfile1txt << lastMidi;
+		outfile1txt.close();
 		
 		int totalBars = lastMidi.getTotalBars();
-		int newEndBar = totalBars - numberOfEndBarsToDrop;
-		MidiExcerptByBar midiExcerptByBar;
-		cout << "totalBars = " << totalBars << "\n";
-		cout << "numberOfEndBarsToDrop = " << numberOfEndBarsToDrop << "\n";
-		cout << "newEndBar = " << newEndBar << "\n";
-		lastMidi = midiExcerptByBar.run(1, newEndBar, lastMidi);
-		concatList.pop_back();
-		concatList.push_back(lastMidi);
+		if(totalBars > numberOfEndBarsToDrop) {
+			int newEndBar = totalBars - numberOfEndBarsToDrop;
+			MidiExcerptByBar midiExcerptByBar;
+			lastMidi = midiExcerptByBar.run(1, newEndBar, lastMidi);
+			concatList.pop_back();
+			concatList.push_back(lastMidi);
+			
+			break; // All required bars have been dropped
+		}
 		
-		std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
-		outfile.open((to_string(valence) + to_string(arousal) + to_string(ID) + "_lastMidi.mid").c_str());
-		lastMidi.write(outfile);
-		outfile.close();
+		else {
+			concatList.pop_back();
+			numberOfEndBarsToDrop = numberOfEndBarsToDrop - totalBars;
+		}
+		
+		
+/*
+		if(newEndBar >= 1) {
+			lastMidi = midiExcerptByBar.run(1, newEndBar, lastMidi);
+			concatList.pop_back();
+			concatList.push_back(lastMidi);
+			
+			std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
+			outfile.open((to_string(valence) + to_string(arousal) + to_string(ID) + "_lastMidi.mid").c_str());
+			lastMidi.write(outfile);
+			outfile.close();
+			
+			std::ofstream outfiletxt; // without std::, reference would be ambiguous because of Boost
+			outfiletxt.open((to_string(valence) + to_string(arousal) + to_string(ID) + "_lastMidi.txt").c_str());
+			outfiletxt << lastMidi;
+			outfiletxt.close();
+			
+			numberOfEndBarsToDrop = 0; // All required bars have been dropped
+		}
+		else {
+			concatList.pop_back();
+			numberOfEndBarsToDrop = numberOfEndBarsToDrop - totalBars;
+		}*/
 	}
 	
 	return midiCat.run(concatList, 0.0);

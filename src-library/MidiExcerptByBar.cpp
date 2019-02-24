@@ -35,6 +35,7 @@ MidiFile MidiExcerptByBar::run(int startBar, int endBar, MidiFile infile) {
 		return outfile; 
 	}
 	const int beginningTicksOfStartBar = startBarTicks[0];
+	std::cout << "beginningTicksOfStartBar = " << beginningTicksOfStartBar << "\n";
 	
 	std::vector<int> endBarTicks = infile.getBeginningAndEndTicksByBar(endBar);
 	if(endBarTicks.empty()) {
@@ -42,12 +43,14 @@ MidiFile MidiExcerptByBar::run(int startBar, int endBar, MidiFile infile) {
 		return outfile; 
 	}
 	const int endTicksOfEndBar = endBarTicks[1];
+	bool lostTempo = infile.getEvent(0,0).isTempo();
 	
 	// Loop through all events except the end-of-file event
 	for (int i=0; i<eventCount; i++) {
 		int currentBar = infile.getEvent(0,i).bar;
 		currentTick += infile.getEvent(0,i).tick;
-		
+		std::cout << "infile.getEvent(0,i).bar = " << infile.getEvent(0,i).bar << "\n";
+
 		// Store the latest tempo setting before start bar
 		if(currentBar < startBar && infile.getEvent(0,i).isTempo()) {
 			hasTempoBeforeStart = true;
@@ -68,6 +71,13 @@ MidiFile MidiExcerptByBar::run(int startBar, int endBar, MidiFile infile) {
 		}
 		
 		// Find events between targeted bars:
+		if(lostTempo && i==0) {
+			std::cout << "hello tempo lost. currentBar >= startBar && currentBar <= endBar = " << (currentBar >= startBar && currentBar <= endBar) <<"\n";
+			std::cout << "currentBar = " << currentBar << "\n";
+			std::cout << "startBar = " << startBar << "\n";
+			std::cout << "endBar = " << endBar << "\n";
+			
+		}
 		if(currentBar >= startBar && currentBar <= endBar){
 			
 			int ticksSinceBeginningOfStartBar = currentTick - beginningTicksOfStartBar;
@@ -110,7 +120,9 @@ MidiFile MidiExcerptByBar::run(int startBar, int endBar, MidiFile infile) {
 			if(infile.getEvent(0,i).tick > ticksSinceBeginningOfStartBar) {
 				infile.getEvent(0,i).tick = ticksSinceBeginningOfStartBar;
 			}
-			
+			if(lostTempo) {
+				if(i==0) std::cout << "idk waddu say alr \n";
+			}
 			// Add current event to output file
 			outfile.addEvent(infile.getEvent(0,i));
 		}
