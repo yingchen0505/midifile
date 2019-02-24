@@ -5,9 +5,11 @@
 #include <iostream>
 #include "MidiFile.h"
 #include "MidiCat.h"
+#include "MidiExcerptByBar.h"
 
 using namespace smf;
 using namespace midicat;
+using namespace midi_excerpt_by_bar;
 
 namespace music_segment {
 	class MusicSegment {
@@ -31,7 +33,7 @@ namespace music_segment {
 			// If this segment is the absolute beginning of the entire midi output, prep (if exists) will be used
 			// If this segment is the absolute end of the entire midi output, finalEnd (if exists) will be used
 			// Else, only the mainLoop will be used since new prep and end bar will be provided by the bridges
-			MidiFile repeat(double timeInSeconds, bool isAbsoluteStart, bool isAbsoluteEnd);
+			MidiFile repeat(double timeInSeconds, bool isAbsoluteStart, bool isAbsoluteEnd, int numberOfEndBarsToDrop);
 
 			// Returns true if main loop is null
 			bool isInvalid();

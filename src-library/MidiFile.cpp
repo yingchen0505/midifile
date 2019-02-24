@@ -2560,8 +2560,23 @@ void MidiFile::buildTimeMap(void) {
 
 //////////////////////////////
 //
+// MidiFile::getTotalBars -- return the total number of bars in the file
+//
+int	MidiFile::getTotalBars(void) {
+	if(!m_barnumbervalid) {
+		updateBarNumber();
+		if(!m_barnumbervalid) {
+			std::cout << "Something went wrong. updateBarNumber() is not working. \n";
+			return -1;
+		}
+	}
+	return m_totalbars;
+}
+
+//////////////////////////////
+//
 // MidiFile::updateBarNumber -- update the bar number, ticksSinceBeginningOfBar 
-// 		and ticksTillEndOfBar for each midi event. Also updates m_tickbarmap and m_bartickmap. 
+// 		and ticksTillEndOfBar for each midi event. Also updates m_tickbarmap, m_bartickmap and m_totalbars. 
 //		Bar number starts from 1.
 //
 
@@ -2573,6 +2588,7 @@ void MidiFile::updateBarNumber(void) {
 	//
 	const int trackstate = getTrackState();
 	const int timestate  = getTickState();
+	
 	makeAbsoluteTicks();
 	joinTracks();
 	
@@ -2638,6 +2654,8 @@ void MidiFile::updateBarNumber(void) {
 		m_bartickmap[currentBarNumber] = barTickMapValue;
 		lastTick = currentTick;
 	}
+	
+	m_totalbars = currentBarNumber + 1;
 
 	// Get bar number from map and insert it to each event
 	splitTracks();
@@ -2653,10 +2671,10 @@ void MidiFile::updateBarNumber(void) {
 
 	// reset the states of the tracks or time values if necessary here:
 	if (timestate == TIME_STATE_ABSOLUTE) {
-		deltaTicks();
+		absoluteTicks();
 	} 
 	else {
-		absoluteTicks();
+		deltaTicks();
 	}
 	if (trackstate == TRACK_STATE_JOINED) {
 		joinTracks();
@@ -2664,7 +2682,7 @@ void MidiFile::updateBarNumber(void) {
 	else {
 		splitTracks();
 	}
-
+	
 	m_barnumbervalid = 1;
 
 }
@@ -2683,7 +2701,6 @@ int	MidiFile::getBarByTick (int tickvalue) {
 	}
 	
 	std::vector<int> barMapValue = m_tickbarmap[tickvalue];
-	
 	return barMapValue[0];
 }
 
@@ -2701,7 +2718,6 @@ std::vector<int> MidiFile::getBeginningAndEndTicksByBar (int bar) {
 			return std::vector<int>(); // Something went wrong
 		}
 	}
-
 	return m_bartickmap[bar];
 }
 

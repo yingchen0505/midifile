@@ -1,15 +1,12 @@
 #include "MidiExcerptByBar.h"
 
 using namespace midi_excerpt_by_bar;
-
-void MidiExcerptByBar::run(int startBar, int endBar, string filePath) {	
-	const char* filepath = filePath.c_str();
-	
-	// Initialize input file
-	MidiFile infile(filepath);
+MidiFile MidiExcerptByBar::run(int startBar, int endBar, MidiFile infile) {
 	infile.joinTracks();
 	infile.deltaTicks();
+	
 	int eventCount = infile.getEventCount(0) - 1; // exclude end of file event
+	
 	infile.linkNotePairs();
 	
 	// Initialize output file
@@ -35,22 +32,22 @@ void MidiExcerptByBar::run(int startBar, int endBar, string filePath) {
 	std::vector<int> startBarTicks = infile.getBeginningAndEndTicksByBar(startBar);
 	if(startBarTicks.empty()) {
 		std::cout << "Error: start bar out of bound. \n";
-		return; 
+		return outfile; 
 	}
 	const int beginningTicksOfStartBar = startBarTicks[0];
 	
 	std::vector<int> endBarTicks = infile.getBeginningAndEndTicksByBar(endBar);
 	if(endBarTicks.empty()) {
 		std::cout << "Error: end bar out of bound. \n";
-		return; 
+		return outfile; 
 	}
 	const int endTicksOfEndBar = endBarTicks[1];
-
+	
 	// Loop through all events except the end-of-file event
 	for (int i=0; i<eventCount; i++) {
 		int currentBar = infile.getEvent(0,i).bar;
 		currentTick += infile.getEvent(0,i).tick;
-
+		
 		// Store the latest tempo setting before start bar
 		if(currentBar < startBar && infile.getEvent(0,i).isTempo()) {
 			hasTempoBeforeStart = true;
@@ -76,7 +73,7 @@ void MidiExcerptByBar::run(int startBar, int endBar, string filePath) {
 			int ticksSinceBeginningOfStartBar = currentTick - beginningTicksOfStartBar;
 			if(ticksSinceBeginningOfStartBar < 0) {
 				std::cout << "Error: currentTick < beginningTicksOfStartBar. Bar tick map is wrong! \n";
-				return;
+				return outfile;
 			}
 			
 			// Add tempo setting before start bar if it hasn't been added
@@ -160,20 +157,6 @@ void MidiExcerptByBar::run(int startBar, int endBar, string filePath) {
 	outfile.sortTracks();
 
 	outfile.updateBarNumber();
-	//std::cout << outfile;
-	outfile.write(std::cout);
+	
+	return outfile;
 }
-
-//////////////////////////////
-//
-// checkOptions --
-//
-/*
-void MidiExcerptByBar::checkOptions(Options& opts, int argc, char* argv[]) {
-   opts.define("s|start=i:1",  "Starting bar (inclusive)");
-   opts.define("e|end=i:-1",  "Ending bar (inclusive)");
-   opts.process(argc, argv);
-
-   startBar     =  opts.getInt("start");
-   endBar     = opts.getInt("end");
-}*/

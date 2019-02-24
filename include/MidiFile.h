@@ -245,6 +245,7 @@ class MidiFile {
 													  
 		void 		updateBarNumber                 (void);
 		std::vector<int> getBeginningAndEndTicksByBar (int bar);
+		int			getTotalBars					(void);
 													  
 	protected:
 		// m_events == Lists of MidiEvents for each MIDI file track.
@@ -285,6 +286,8 @@ class MidiFile {
 		
 		std::map<int, std::vector<int>> m_bartickmap;  // key = bar; value = vector of {ticks at beginning of bar (inclusive), ticks at end of bar (inclusive)}
 
+		int m_totalbars;
+		
 		// m_rwstatus == True if last read was successful, false if a problem.
 		bool m_rwstatus = true;
 

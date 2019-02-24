@@ -34,8 +34,8 @@ int main(int argc, char* argv[]) {
 	Options options;
 	checkOptions(options, argc, argv);
 	
-	//MusicSegmentManager musicSegmentManager(INPUT_PATH);
-	//musicSegmentManager.generateMusicFromEmotion();
+	MusicSegmentManager musicSegmentManager(INPUT_PATH);
+	musicSegmentManager.generateMusicFromEmotion();
 	
 	//// Debugger by event
 	/*
@@ -76,8 +76,18 @@ int main(int argc, char* argv[]) {
 	outfile.write(cout);*/
 
 	///// Midi Excerpt Tool
-	MidiExcerptByBar midiExcerptByBar;
-	midiExcerptByBar.run(startBar, endBar, options.getArg(1));
+	//MidiExcerptByBar midiExcerptByBar;
+	//midiExcerptByBar.run(argc, argv);
+	//midiExcerptByBar.run(startBar, endBar, options.getArg(1));
+	/*
+	MidiFile infile(options.getArg(1));
+	
+	std::ofstream orig_inMidi; // without std::, reference would be ambiguous because of Boost
+	orig_inMidi.open("infile.mid");
+	infile.write(orig_inMidi);
+	orig_inMidi.close();
+	
+	midiExcerptByBar.run(startBar, endBar, infile);*/
 	
 }
 

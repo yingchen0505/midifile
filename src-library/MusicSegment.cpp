@@ -26,7 +26,7 @@ bool MusicSegment::isInvalid() {
 	return !mainLoop;
 }
 
-MidiFile MusicSegment::repeat(double timeInSeconds, bool isAbsoluteStart, bool isAbsoluteEnd) {
+MidiFile MusicSegment::repeat(double timeInSeconds, bool isAbsoluteStart, bool isAbsoluteEnd, int numberOfEndBarsToDrop) {
 	if(!mainLoop) return MidiFile(); // No mainLoop to repeat, something went wrong.
 	
 	double durationOfPrepAndEnd = 0.0; 
@@ -76,6 +76,30 @@ MidiFile MusicSegment::repeat(double timeInSeconds, bool isAbsoluteStart, bool i
 			concatList.pop_back();
 		}
 		concatList.push_back(*finalEnd);
+	}
+	
+	if(numberOfEndBarsToDrop > 0) {
+		MidiFile lastMidi = concatList.back();
+		/*
+		std::ofstream outfile1; // without std::, reference would be ambiguous because of Boost
+		outfile1.open((to_string(valence) + to_string(arousal) + to_string(ID) + "_lastMidi_orig.mid").c_str());
+		lastMidi.write(outfile1);
+		outfile1.close();*/
+		
+		int totalBars = lastMidi.getTotalBars();
+		int newEndBar = totalBars - numberOfEndBarsToDrop;
+		MidiExcerptByBar midiExcerptByBar;
+		cout << "totalBars = " << totalBars << "\n";
+		cout << "numberOfEndBarsToDrop = " << numberOfEndBarsToDrop << "\n";
+		cout << "newEndBar = " << newEndBar << "\n";
+		lastMidi = midiExcerptByBar.run(1, newEndBar, lastMidi);
+		concatList.pop_back();
+		concatList.push_back(lastMidi);
+		
+		std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
+		outfile.open((to_string(valence) + to_string(arousal) + to_string(ID) + "_lastMidi.mid").c_str());
+		lastMidi.write(outfile);
+		outfile.close();
 	}
 	
 	return midiCat.run(concatList, 0.0);

@@ -41,12 +41,9 @@ Bridge BridgeManager::getBridge(MusicSegment prevSegment, MusicSegment nextSegme
 	string bridgeID = to_string(prevSegment.valence) + "_" + to_string(prevSegment.arousal) + "_" + to_string(prevSegment.ID) + "_" +
 						to_string(nextSegment.valence) + "_" + to_string(nextSegment.arousal) + "_" + to_string(nextSegment.ID);
 	if(bridgeMap[bridgeID].isInvalid()) {
-		//cout << bridgeID << "NOT FOUND \n";
 		// TODO: construct new bridge
 	}
 	else {
-		//cout << bridgeID << "FOUND \n";
-		//cout << "bridgeMap[bridgeID].bridgeMidi.getTrackCount() = " << bridgeMap[bridgeID].bridgeMidi.getTrackCount() << "\n";
 		return bridgeMap[bridgeID];
 	}
 	return Bridge();

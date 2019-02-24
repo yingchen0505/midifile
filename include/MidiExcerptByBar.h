@@ -7,9 +7,11 @@
 #include <string>
 #include <cmath>
 #include <map>
+#include "Options.h"
 
 using namespace smf;
 using std::string;
+using std::to_string;
 
 namespace midi_excerpt_by_bar {
 	
@@ -18,8 +20,7 @@ namespace midi_excerpt_by_bar {
 			MidiExcerptByBar() = default;
 			~MidiExcerptByBar() = default;
 
-			void run(int startBar, int endBar, string filePath);
-		
+			MidiFile run(int startBar, int endBar, MidiFile infile);
 		private:
 		
 	};
