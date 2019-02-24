@@ -5,9 +5,13 @@
 #include <string>
 #include "MidiFile.h"
 #include "MusicSegment.h"
+#include "MidiCat.h"
+#include "MidiExcerptByBar.h"
 
 using namespace smf;
 using namespace music_segment;
+using namespace midicat;
+using namespace midi_excerpt_by_bar;
 using std::string;
 
 namespace bridge {

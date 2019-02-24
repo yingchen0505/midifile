@@ -39,6 +39,10 @@ MidiFile.h
 include/MidiFile.h
 MusicSegment.h
 include/MusicSegment.h
+MidiCat.h
+include/MidiCat.h
+MidiExcerptByBar.h
+include/MidiExcerptByBar.h
 
 include/BridgeManager.h
 iostream
