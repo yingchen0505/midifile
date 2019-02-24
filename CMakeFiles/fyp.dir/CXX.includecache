@@ -35,6 +35,8 @@ iostream
 -
 string
 -
+vector
+-
 MidiFile.h
 include/MidiFile.h
 MusicSegment.h

@@ -8,9 +8,9 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 		return;
 	}
 	MidiFile newMidi;
-	//newMidi.setTPQ(nextSegment.mainLoop->getTPQ());
 	MidiExcerptByBar midiExcerptByBar;
 	MidiCat midiCat;
+	
 	MidiFile prevMidi;
 	if(prevSegment.finalEnd) {
 		prevMidi = *(prevSegment.finalEnd);
@@ -21,11 +21,29 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	else {
 		prevMidi = *(prevSegment.mainLoop);
 	}
+	
 	MidiFile nextMidi;
-	//newMidi = midiCat.run(prevSegment
+	if(nextSegment.finalEnd) {
+		nextMidi = *(nextSegment.finalEnd);
+	}
+	else if (nextSegment.mainLoopEnd) {
+		nextMidi = *(nextSegment.mainLoopEnd);
+	}
+	else {
+		nextMidi = *(nextSegment.mainLoop);
+	}
+	
+	prevMidi = midiExcerptByBar.run(max(1, prevMidi.getTotalBars() - 1), prevMidi.getTotalBars(), prevMidi);
+	nextMidi = midiExcerptByBar.run(1, min(nextMidi.getTotalBars(), 2), nextMidi);
+	vector<MidiFile> catList;
+	catList.push_back(prevMidi);
+	catList.push_back(nextMidi);
+	newMidi = midiCat.run(catList, 0.0);
 	
 	this->bridgeMidi = newMidi;
-	this->valid = false;
+	this->barErosionIntoPrevSeg = 0;
+	this->barErosionIntoNextSeg = 0;
+	this->valid = true;
 }
 
 Bridge::Bridge(string ID, MidiFile bridgeMidi, int barErosionIntoPrevSeg, int barErosionIntoNextSeg) {
