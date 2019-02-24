@@ -2,6 +2,10 @@
 
 using namespace bridge;
 
+Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
+	
+}
+
 Bridge::Bridge(string ID, MidiFile bridgeMidi, int barErosionIntoPrevSeg, int barErosionIntoNextSeg) {
 	this->ID = ID;
 	this->bridgeMidi = bridgeMidi;

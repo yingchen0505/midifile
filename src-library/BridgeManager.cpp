@@ -46,11 +46,12 @@ Bridge BridgeManager::getBridge(MusicSegment prevSegment, MusicSegment nextSegme
 	string bridgeID = to_string(prevSegment.valence) + "_" + to_string(prevSegment.arousal) + "_" + to_string(prevSegment.ID) + "_" +
 						to_string(nextSegment.valence) + "_" + to_string(nextSegment.arousal) + "_" + to_string(nextSegment.ID);
 	if(bridgeMap[bridgeID].isInvalid()) {
-		// TODO: construct new bridge
+		Bridge bridge(prevSegment, nextSegment);
+		bridgeMap[bridgeID] = bridge;
+		return bridge;
 	}
 	else {
 		return bridgeMap[bridgeID];
 	}
-	return Bridge();
 }
 		
