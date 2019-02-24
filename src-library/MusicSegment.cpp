@@ -26,23 +26,23 @@ bool MusicSegment::isInvalid() {
 	return !mainLoop;
 }
 
-MidiFile MusicSegment::repeat(double timeInSeconds, bool isAbsoluteStart, bool isAbsoluteEnd, int numberOfEndBarsToDrop) {
+MidiFile MusicSegment::repeat(double timeInSeconds, int beginningBarErosion, int endBarErosion) {
 	if(!mainLoop) return MidiFile(); // No mainLoop to repeat, something went wrong.
 	
 	double durationOfPrepAndEnd = 0.0; 
 	MidiCat midiCat;
 	vector<MidiFile> concatList; // list of files waiting to be concatenated into output
-	
-	if(isAbsoluteStart && prep) {
+
+	// TODO: handle beginningBarErosion
+	if(prep) {
 		concatList.push_back(*prep);
 		durationOfPrepAndEnd += (*prep).getFileDurationInSeconds();
 	}
-
-	if(isAbsoluteEnd && finalEnd) {
-		// Account for the duration first, but only add finalEnd to the list after mainLoop is added.
-		durationOfPrepAndEnd += (*finalEnd).getFileDurationInSeconds(); 
+	
+	if(finalEnd) {
+		durationOfPrepAndEnd += (*finalEnd).getFileDurationInSeconds();
 	}
-
+	
 	double mainLoopDuration = (*mainLoop).getFileDurationInSeconds();
 	
 	// If mainLoopEnd is not null, it should be repeated together with mainLoop
@@ -69,21 +69,19 @@ MidiFile MusicSegment::repeat(double timeInSeconds, bool isAbsoluteStart, bool i
 		}
 	}
 	
-	if(isAbsoluteEnd && finalEnd) {
-		// If there is mainLoopEnd, 
-		// need to replace the last one of it with the finalEnd
+	if(finalEnd) {
 		if(mainLoopEnd) {
 			concatList.pop_back();
 		}
 		concatList.push_back(*finalEnd);
 	}
 	
-	while(numberOfEndBarsToDrop > 0 && !(concatList.empty())) {
+	while(endBarErosion > 0 && !(concatList.empty())) {
 		MidiFile lastMidi = concatList.back();
 
 		int totalBars = lastMidi.getTotalBars();
-		if(totalBars > numberOfEndBarsToDrop) {
-			int newEndBar = totalBars - numberOfEndBarsToDrop;
+		if(totalBars > endBarErosion) {
+			int newEndBar = totalBars - endBarErosion;
 			MidiExcerptByBar midiExcerptByBar;
 			lastMidi = midiExcerptByBar.run(1, newEndBar, lastMidi);
 			concatList.pop_back();
@@ -94,7 +92,7 @@ MidiFile MusicSegment::repeat(double timeInSeconds, bool isAbsoluteStart, bool i
 		
 		else {
 			concatList.pop_back();
-			numberOfEndBarsToDrop = numberOfEndBarsToDrop - totalBars;
+			endBarErosion = endBarErosion - totalBars;
 		}
 	}
 	
