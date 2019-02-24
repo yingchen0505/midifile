@@ -107,10 +107,10 @@ void MusicSegmentManager::generateMusicFromEmotion() {
 			if(!bridge.isInvalid()) {
 
 				vector<MidiFile> catList;
-				catList.push_back(musicSegmentList[i].repeat(30, 0, bridge.barErosion));
+				catList.push_back(musicSegmentList[i].repeat(30, 0, bridge.barErosionIntoPrevSeg));
 				
 				catList.push_back(bridge.bridgeMidi);
-				catList.push_back(musicSegmentList[j].repeat(30, 0, 0));
+				catList.push_back(musicSegmentList[j].repeat(30, bridge.barErosionIntoNextSeg, 0));
 				
 				MidiFile midiFile = midiCat.run(catList, 0.0);
 				std::ofstream outfile; // without std::, reference would be ambiguous because of Boost

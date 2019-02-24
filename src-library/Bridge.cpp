@@ -2,11 +2,12 @@
 
 using namespace bridge;
 
-Bridge::Bridge(string ID, MidiFile bridgeMidi, int barErosion) {
+Bridge::Bridge(string ID, MidiFile bridgeMidi, int barErosionIntoPrevSeg, int barErosionIntoNextSeg) {
 	this->ID = ID;
 	this->bridgeMidi = bridgeMidi;
 	this->valid = true;
-	this->barErosion = barErosion;
+	this->barErosionIntoPrevSeg = barErosionIntoPrevSeg;
+	this->barErosionIntoNextSeg = barErosionIntoNextSeg;
 }
 
 bool Bridge::isInvalid() {

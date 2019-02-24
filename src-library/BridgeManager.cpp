@@ -25,14 +25,19 @@ BridgeManager::BridgeManager(string bridgeFolderPath) {
 		string bridgeID = substringFound[0];
 		searchString = substringFound.suffix();
 		
-		/// Read bar erosion number:
+		/// Read number of bars eroded from previous segment:
 		regex intRegex("[[:d:]]+");
 		regex_search(searchString, substringFound, intRegex);
-		int barErosion = stoi(substringFound[0]);
+		int barErosionIntoPrevSeg = stoi(substringFound[0]);
+		searchString = substringFound.suffix();
+		
+		/// Read number of bars eroded from next segment:
+		regex_search(searchString, substringFound, intRegex);
+		int barErosionIntoNextSeg = stoi(substringFound[0]);
 		
 		// Constructing bridge and adding it to map
 		MidiFile bridgeMidi(itr->path().string());
-		Bridge bridge(bridgeID, bridgeMidi, barErosion);
+		Bridge bridge(bridgeID, bridgeMidi, barErosionIntoPrevSeg, barErosionIntoNextSeg);
 		bridgeMap[bridgeID] = bridge;
 	}
 }

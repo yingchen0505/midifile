@@ -16,12 +16,13 @@ namespace bridge {
 			Bridge() {
 				valid = false;
 			}
-			Bridge(MusicSegment prevSegment, MusicSegment nextSegment, MidiFile bridgeMidi);
-			Bridge(string ID, MidiFile bridgeMidi, int barErosion);
+			Bridge(MusicSegment prevSegment, MusicSegment nextSegment);
+			Bridge(string ID, MidiFile bridgeMidi, int barErosionIntoPrevSeg, int barErosionIntoNextSeg);
 			
 			bool valid;
 			string ID;	// is the same as file name without last "_digit" that represents barErosion
-			int barErosion; // number of end bars that the previous segment has to drop when connected to this bridge
+			int barErosionIntoPrevSeg; // number of end bars that the previous segment has to drop when connected to this bridge
+			int barErosionIntoNextSeg; // number of beginning bars that the next segment has to drop when connected to this bridge
 			MidiFile bridgeMidi;
 			string prevSegmentID;
 			string nextSegmentID;
