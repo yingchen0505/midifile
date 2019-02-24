@@ -101,20 +101,13 @@ void MusicSegmentManager::generateMusicFromEmotion() {
 	
 	// Testing repeat function for all segments
 	for(int i=0; i<musicSegmentList.size(); i++){
-		/*
-		MidiFile midiFile = musicSegmentList[i].repeat(190, true, true);
-		std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
-		outfile.open((to_string(i) + ".mid").c_str());
-		midiFile.write(outfile);
-		outfile.close();
-		cout << musicSegmentList[i].ID << "\n";*/
+		
 		for(int j=0; j<musicSegmentList.size(); j++){
 			Bridge bridge = bridgeManager.getBridge(musicSegmentList[i], musicSegmentList[j]);
 			if(!bridge.isInvalid()) {
 
 				vector<MidiFile> catList;
 				catList.push_back(musicSegmentList[i].repeat(30, true, false, bridge.barErosion));
-				//catList.push_back(musicSegmentList[i].repeat(30, true, false, 0));
 				
 				catList.push_back(bridge.bridgeMidi);
 				catList.push_back(musicSegmentList[j].repeat(30, false, true, 0));

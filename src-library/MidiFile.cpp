@@ -2661,11 +2661,9 @@ void MidiFile::updateBarNumber(void) {
 	splitTracks();
 	int numTracks = getNumTracks();
 	for (int i=0; i<numTracks; i++) {
-		for (int j=1; j<(int)m_events[i]->size(); j++) {
+		for (int j=0; j<(int)m_events[i]->size(); j++) {
 			std::vector<int> barMapValue = m_tickbarmap[(*m_events[i])[j].tick];
-			std::cout << "(*m_events[i])[j].tick = " << (*m_events[i])[j].tick << "\n";
 			(*m_events[i])[j].bar = barMapValue[0];
-			std::cout << "barMapValue[0] = " << barMapValue[0] << "\n";
 			(*m_events[i])[j].ticksSinceBeginningOfBar = barMapValue[1];
 			(*m_events[i])[j].ticksTillEndOfBar = barMapValue[2];
 		}

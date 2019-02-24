@@ -179,6 +179,8 @@ cmath
 -
 map
 -
+Options.h
+include/Options.h
 
 include/MidiFile.h
 MidiEventList.h
@@ -211,6 +213,8 @@ MidiFile.h
 include/MidiFile.h
 MidiCat.h
 include/MidiCat.h
+MidiExcerptByBar.h
+include/MidiExcerptByBar.h
 
 include/MusicSegmentManager.h
 string
