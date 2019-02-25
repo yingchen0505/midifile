@@ -37,7 +37,7 @@ namespace bridge {
 		
 		private:
 			
-			MidiFile tempoDilation(MidiFile inputFile, int finalTempo);
+			MidiFile tempoDilation(MidiFile inputFile, double finalTempo);
 	};
 }
 

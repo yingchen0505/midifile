@@ -35,7 +35,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	}
 	
 	prevMidi = midiExcerptByBar.run(max(1, prevMidi.getTotalBars() - 1), prevMidi.getTotalBars(), prevMidi);
-	prevMidi = tempoDilation(prevMidi, 0);
+	prevMidi = tempoDilation(prevMidi, 10);
 	nextMidi = midiExcerptByBar.run(1, min(nextMidi.getTotalBars(), 2), nextMidi);
 	vector<MidiFile> catList;
 	catList.push_back(prevMidi);
@@ -60,13 +60,24 @@ bool Bridge::isInvalid() {
 	return !valid;
 }
 
-MidiFile Bridge::tempoDilation(MidiFile inputFile, int finalTempo) {
+MidiFile Bridge::tempoDilation(MidiFile inputFile, double finalTempo) {
 	inputFile.joinTracks();
+	inputFile.deltaTicks();
 	int eventCount = inputFile.getEventCount(0);
+	double currentTempo = 120.0; // this is the midi default tempo if no tempo marking is found
+	double slowDownFactor = 1.0;	// default no tempo dilation
 	for(int i=0; i < eventCount; i++) {
+		double progression = (double)i/(double)eventCount;
 		if(inputFile.getEvent(0, i).isTempo()) {
-			int originalTempo = inputFile.getEvent(0, i).getTempoBPM();
-			inputFile.getEvent(0, i).setTempo(originalTempo/2);
+			double originalTempo = inputFile.getEvent(0, i).getTempoBPM();
+			double newTempo = originalTempo - (originalTempo - finalTempo) * progression;
+			currentTempo = newTempo;
+			inputFile.getEvent(0, i).setTempo(newTempo);
+		}
+		else if (inputFile.getEvent(0, i).tick != 0) {
+			double newTempo = currentTempo - (currentTempo - finalTempo) * progression;
+			slowDownFactor = newTempo/currentTempo;
+			inputFile.getEvent(0, i).tick /= slowDownFactor;
 		}
 	}
 	return inputFile;
