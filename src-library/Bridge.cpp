@@ -5,6 +5,7 @@ using namespace bridge;
 Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	if(prevSegment.isInvalid() || nextSegment.isInvalid()){
 		std::cout << "Invalid input to bridge constructor! \n";
+		this->valid = false;
 		return;
 	}
 	MidiFile newMidi;
@@ -34,6 +35,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	}
 	
 	prevMidi = midiExcerptByBar.run(max(1, prevMidi.getTotalBars() - 1), prevMidi.getTotalBars(), prevMidi);
+	prevMidi = tempoDilation(prevMidi, 0);
 	nextMidi = midiExcerptByBar.run(1, min(nextMidi.getTotalBars(), 2), nextMidi);
 	vector<MidiFile> catList;
 	catList.push_back(prevMidi);
@@ -56,4 +58,16 @@ Bridge::Bridge(string ID, MidiFile bridgeMidi, int barErosionIntoPrevSeg, int ba
 
 bool Bridge::isInvalid() {
 	return !valid;
+}
+
+MidiFile Bridge::tempoDilation(MidiFile inputFile, int finalTempo) {
+	inputFile.joinTracks();
+	int eventCount = inputFile.getEventCount(0);
+	for(int i=0; i < eventCount; i++) {
+		if(inputFile.getEvent(0, i).isTempo()) {
+			int originalTempo = inputFile.getEvent(0, i).getTempoBPM();
+			inputFile.getEvent(0, i).setTempo(originalTempo/2);
+		}
+	}
+	return inputFile;
 }

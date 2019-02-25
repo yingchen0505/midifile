@@ -103,6 +103,7 @@ void MusicSegmentManager::generateMusicFromEmotion() {
 	for(int i=0; i<musicSegmentList.size(); i++){
 		
 		for(int j=0; j<musicSegmentList.size(); j++){
+			if(i==j) continue;
 			Bridge bridge = bridgeManager.getBridge(musicSegmentList[i], musicSegmentList[j]);
 			if(!bridge.isInvalid()) {
 
