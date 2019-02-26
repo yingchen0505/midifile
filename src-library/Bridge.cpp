@@ -24,18 +24,15 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	}
 	
 	MidiFile nextMidi;
-	if(nextSegment.finalEnd) {
-		nextMidi = *(nextSegment.finalEnd);
-	}
-	else if (nextSegment.mainLoopEnd) {
-		nextMidi = *(nextSegment.mainLoopEnd);
+	if(nextSegment.prep) {
+		nextMidi = *(nextSegment.prep);
 	}
 	else {
 		nextMidi = *(nextSegment.mainLoop);
 	}
 	
 	prevMidi = midiExcerptByBar.run(max(1, prevMidi.getTotalBars() - 1), prevMidi.getTotalBars(), prevMidi);
-	prevMidi = tempoDilation(prevMidi, 10);
+	prevMidi = tempoDilation(prevMidi, findFirstTempo(nextMidi));
 	nextMidi = midiExcerptByBar.run(1, min(nextMidi.getTotalBars(), 2), nextMidi);
 	vector<MidiFile> catList;
 	catList.push_back(prevMidi);
@@ -43,8 +40,8 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	newMidi = midiCat.run(catList, 0.0);
 	
 	this->bridgeMidi = newMidi;
-	this->barErosionIntoPrevSeg = 0;
-	this->barErosionIntoNextSeg = 0;
+	this->barErosionIntoPrevSeg = min(prevMidi.getTotalBars(), 2);
+	this->barErosionIntoNextSeg = min(nextMidi.getTotalBars(), 2);
 	this->valid = true;
 }
 
@@ -81,4 +78,15 @@ MidiFile Bridge::tempoDilation(MidiFile inputFile, double finalTempo) {
 		}
 	}
 	return inputFile;
+}
+
+double Bridge::findFirstTempo(MidiFile inputFile) {
+	inputFile.joinTracks();
+	int eventCount = inputFile.getEventCount(0);
+	for(int i=0; i<eventCount; i++) {
+		if(inputFile.getEvent(0, i).isTempo()) {
+			return inputFile.getEvent(0, i).getTempoBPM();
+		}
+	}
+	return 120.0; // default tempo
 }

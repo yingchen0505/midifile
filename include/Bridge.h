@@ -36,8 +36,8 @@ namespace bridge {
 			bool isInvalid();
 		
 		private:
-			
 			MidiFile tempoDilation(MidiFile inputFile, double finalTempo);
+			double findFirstTempo(MidiFile inputFile); // Returns the value of first tempo marking (BPM)
 	};
 }
 
