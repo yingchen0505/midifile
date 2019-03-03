@@ -33,6 +33,11 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	
 	prevMidi = tempoDilation(prevMidi, findFirstTempo(nextMidi));
 	prevMidi = transpose(prevMidi, -1);
+	
+	vector<int> endNoteKeys = getEndNoteKeys(prevMidi);
+	for(int i=0; i< endNoteKeys.size(); i++){
+		std::cout << "endNoteKeys[" << i << "] = " << endNoteKeys[i] << "\n";
+	}
 	vector<MidiFile> catList;
 	catList.push_back(prevMidi);
 	catList.push_back(nextMidi);
@@ -239,4 +244,27 @@ MidiFile Bridge::transpose(MidiFile inputFile, int keyChange) {
 	inputFile.linkNotePairs();
 	
 	return inputFile;
+}
+
+vector<int> Bridge::getEndNoteKeys(MidiFile inputFile) {
+	inputFile.joinTracks();
+	inputFile.makeAbsoluteTicks();
+	int eventCount = inputFile.getEventCount(0);
+	vector<int> endNoteKeys;
+	int currentTick = 0;
+
+	for(int i=0; i<eventCount; i++) {
+		if(inputFile.getEvent(0, i).isNoteOn() || inputFile.getEvent(0, i).isNoteOff()){
+			if(inputFile.getEvent(0, i).tick > currentTick) {
+				endNoteKeys.clear();
+				endNoteKeys.push_back(inputFile.getEvent(0, i).getKeyNumber());
+				currentTick = inputFile.getEvent(0, i).tick;
+			}
+			else if(inputFile.getEvent(0, i).tick == currentTick) {
+				endNoteKeys.push_back(inputFile.getEvent(0, i).getKeyNumber());
+			}
+		}
+	}
+
+	return endNoteKeys;
 }
