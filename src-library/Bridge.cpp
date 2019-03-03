@@ -32,7 +32,6 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	}
 	
 	prevMidi = tempoDilation(prevMidi, findFirstTempo(nextMidi));
-	prevMidi = transpose(prevMidi, -1);
 	
 	vector<int> endNoteKeys = getEndNoteKeys(prevMidi);
 	for(int i=0; i< endNoteKeys.size(); i++){
@@ -44,6 +43,29 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 		std::cout << "beginningNoteKeys[" << i << "] = " << beginningNoteKeys[i] << "\n";
 	}
 	
+	if(endNoteKeys.empty() || beginningNoteKeys.empty()) {
+		std::cout << "wtf no notes! \n";
+		this->valid = false;
+		return;
+	}
+		std::cout << "HERE \n";
+
+	if(!(min_element(begin(beginningNoteKeys), end(beginningNoteKeys))) || !(max_element(begin(endNoteKeys), end(endNoteKeys)))) {
+		std::cout << "wtf! \n";
+		this->valid = false;
+		return;
+	}
+	int diff1 = *min_element(begin(beginningNoteKeys), end(beginningNoteKeys)) - *max_element(begin(endNoteKeys), end(endNoteKeys));
+	int diff2 = *max_element(begin(beginningNoteKeys), end(beginningNoteKeys)) - *min_element(begin(endNoteKeys), end(endNoteKeys));
+
+	int keyChange = abs(diff1) > abs(diff2) ? diff2 : diff1;
+	//int keyChange = 0;
+
+	//std::cout << "max_element(begin(endNoteKeys), end(endNoteKeys)) = " << *max_element(begin(endNoteKeys), end(endNoteKeys)) << "\n";
+	//std::cout << "min_element(begin(beginningNoteKeys), end(beginningNoteKeys)) = " << *min_element(begin(beginningNoteKeys), end(beginningNoteKeys)) << "\n";
+
+	std::cout << "keyChange = " << keyChange << "\n";
+	prevMidi = transpose(prevMidi, keyChange);
 	vector<MidiFile> catList;
 	catList.push_back(prevMidi);
 	catList.push_back(nextMidi);
