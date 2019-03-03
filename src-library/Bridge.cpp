@@ -23,7 +23,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 		prevMidi = *(prevSegment.mainLoop);
 	}
 	
-	MidiFile nextMidi = getFirstBarsFromSegment(nextSegment, 10);
+	MidiFile nextMidi = getFirstBarsFromSegment(nextSegment, 20);
 	
 	prevMidi = midiExcerptByBar.run(max(1, prevMidi.getTotalBars() - 1), prevMidi.getTotalBars(), prevMidi);
 	prevMidi = tempoDilation(prevMidi, findFirstTempo(nextMidi));
@@ -35,6 +35,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	this->bridgeMidi = newMidi;
 	this->barErosionIntoPrevSeg = min(prevMidi.getTotalBars(), 2);
 	this->barErosionIntoNextSeg = nextMidi.getTotalBars();
+	std::cout << nextMidi.getTotalBars() << "\n";
 	this->valid = true;
 }
 
@@ -68,12 +69,15 @@ MidiFile Bridge::getFirstBarsFromSegment(MusicSegment inputSegment, int bars) {
 		}
 	}
 	
+	bool endsWithMainLoopEnd = false;
+	
 	while(bars > 0) {
 		int mainLoopBars = inputSegment.mainLoop->getTotalBars();
 		if(mainLoopBars <= bars) {
 			catList.push_back(*(inputSegment.mainLoop));
 			bars -= mainLoopBars;
 			if(bars > 0 && inputSegment.mainLoopEnd) {
+				endsWithMainLoopEnd = true;
 				int mainLoopEndBars = inputSegment.mainLoopEnd->getTotalBars();
 				if(mainLoopEndBars <= bars) {
 					catList.push_back(*(inputSegment.mainLoopEnd));
@@ -86,13 +90,14 @@ MidiFile Bridge::getFirstBarsFromSegment(MusicSegment inputSegment, int bars) {
 			}
 		}
 		else {
+			endsWithMainLoopEnd = false; // last added is mainLoop, not mainLoopEnd
 			catList.push_back(midiExcerptByBar.run(1, bars, *(inputSegment.mainLoop)));
 			bars = 0;
 		}
 	}
 	
-	if(inputSegment.finalEnd && (inputSegment.mainLoopEnd || bars > 0)) {
-		if(inputSegment.mainLoopEnd) {
+	if(inputSegment.finalEnd && (endsWithMainLoopEnd || bars > 0)) {
+		if(endsWithMainLoopEnd) {
 			bars += catList.back().getTotalBars();
 			catList.pop_back();
 		}
@@ -130,7 +135,7 @@ MidiFile Bridge::getLastBarsFromSegment(MusicSegment inputSegment, int bars) {
 		}
 	}
 	
-	if(bars > 0) {
+	while(bars > 0) {
 		int mainLoopBars = inputSegment.mainLoop->getTotalBars();
 		if(mainLoopBars <= bars) {
 			catList.push_back(*(inputSegment.mainLoop));
