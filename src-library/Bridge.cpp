@@ -23,7 +23,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 		prevMidi = *(prevSegment.mainLoop);
 	}
 	
-	MidiFile nextMidi = getFirstBarsFromSegment(nextSegment, 3);
+	MidiFile nextMidi = getFirstBarsFromSegment(nextSegment, 10);
 	
 	prevMidi = midiExcerptByBar.run(max(1, prevMidi.getTotalBars() - 1), prevMidi.getTotalBars(), prevMidi);
 	prevMidi = tempoDilation(prevMidi, findFirstTempo(nextMidi));
@@ -64,6 +64,68 @@ MidiFile Bridge::getFirstBarsFromSegment(MusicSegment inputSegment, int bars) {
 		}
 		else {
 			catList.push_back(midiExcerptByBar.run(1, bars, *(inputSegment.prep)));
+			bars = 0;
+		}
+	}
+	
+	while(bars > 0) {
+		int mainLoopBars = inputSegment.mainLoop->getTotalBars();
+		if(mainLoopBars <= bars) {
+			catList.push_back(*(inputSegment.mainLoop));
+			bars -= mainLoopBars;
+			if(bars > 0 && inputSegment.mainLoopEnd) {
+				int mainLoopEndBars = inputSegment.mainLoopEnd->getTotalBars();
+				if(mainLoopEndBars <= bars) {
+					catList.push_back(*(inputSegment.mainLoopEnd));
+					bars -= mainLoopEndBars;
+				}
+				else {
+					catList.push_back(midiExcerptByBar.run(1, bars, *(inputSegment.mainLoopEnd)));
+					bars = 0;
+				}
+			}
+		}
+		else {
+			catList.push_back(midiExcerptByBar.run(1, bars, *(inputSegment.mainLoop)));
+			bars = 0;
+		}
+	}
+	
+	if(inputSegment.finalEnd && (inputSegment.mainLoopEnd || bars > 0)) {
+		if(inputSegment.mainLoopEnd) {
+			bars += catList.back().getTotalBars();
+			catList.pop_back();
+		}
+		int finalEndBars = inputSegment.finalEnd->getTotalBars();
+		if(finalEndBars <= bars) {
+			catList.push_back(*(inputSegment.finalEnd));
+			bars -= finalEndBars;
+		}
+		else {
+			catList.push_back(midiExcerptByBar.run(1, bars, *(inputSegment.finalEnd)));
+			bars = 0;
+		}
+	}
+	
+	output = midiCat.run(catList, 0.0);
+	return output;
+	
+}
+
+MidiFile Bridge::getLastBarsFromSegment(MusicSegment inputSegment, int bars) {
+	MidiFile output;
+	MidiCat midiCat;
+	vector<MidiFile> catList;
+	MidiExcerptByBar midiExcerptByBar;
+	
+	if(inputSegment.finalEnd) {
+		int finalEndBars = inputSegment.finalEnd->getTotalBars();
+		if(finalEndBars <= bars) {
+			catList.push_back(*(inputSegment.finalEnd));
+			bars -= finalEndBars;
+		}
+		else {
+			catList.push_back(midiExcerptByBar.run(finalEndBars - bars + 1, finalEndBars, *(inputSegment.finalEnd)));
 			bars = 0;
 		}
 	}
