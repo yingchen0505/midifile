@@ -12,7 +12,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	MidiExcerptByBar midiExcerptByBar;
 	MidiCat midiCat;
 	
-	this->barErosionIntoPrevSeg = 3;
+	this->barErosionIntoPrevSeg = 5;
 	this->barErosionIntoNextSeg = 3;
 	
 	MidiFile prevMidi = getLastBarsFromSegment(prevSegment, barErosionIntoPrevSeg);

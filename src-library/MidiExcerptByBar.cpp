@@ -23,6 +23,10 @@ MidiFile MidiExcerptByBar::run(int startBar, int endBar, MidiFile infile) {
 	bool hasTimeSignature = false;
 	bool timeSignatureIsAdded = false;
 	
+	MidiEvent keySignature;
+	bool hasKeySignature = false;
+	bool keySignatureIsAdded = false;
+	
 	// Notes that are turned on during the selected bars but only turned off afterwards
 	// Need to add the note-off events at the end of the file
 	std::vector<MidiEvent> noteOffAfterEndBar; 
@@ -60,6 +64,12 @@ MidiFile MidiExcerptByBar::run(int startBar, int endBar, MidiFile infile) {
 			timeSignature = infile.getEvent(0,i);
 		}
 		
+		// Store the latest key signature before start bar
+		if(currentBar < startBar && infile.getEvent(0,i).isKeySignature()) {
+			hasKeySignature = true;
+			keySignature = infile.getEvent(0,i);
+		}
+		
 		// Add timber setting before start bar
 		if(currentBar < startBar && infile.getEvent(0,i).isTimbre()) {
 			MidiEvent timbreEvent = infile.getEvent(0,i);
@@ -87,6 +97,13 @@ MidiFile MidiExcerptByBar::run(int startBar, int endBar, MidiFile infile) {
 				timeSignature.clearVariables();
 				outfile.addEvent(timeSignature);
 				timeSignatureIsAdded = true;
+			}
+			
+			// Add key signature before start bar if it hasn't been added
+			if(!keySignatureIsAdded && hasKeySignature) {
+				keySignature.clearVariables();
+				outfile.addEvent(keySignature);
+				keySignatureIsAdded = true;
 			}
 			
 			if(infile.getEvent(0,i).isNoteOn()) {
