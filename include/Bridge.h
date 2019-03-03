@@ -40,6 +40,8 @@ namespace bridge {
 			double findFirstTempo(MidiFile inputFile); // Returns the value of first tempo marking (BPM)
 			MidiFile getFirstBarsFromSegment(MusicSegment inputSegment, int bars); // Returns the first few bars from a segment
 			MidiFile getLastBarsFromSegment(MusicSegment inputSegment, int bars);
+			MidiEvent getLastKeySignature(MidiFile inputFile);
+			MidiEvent getFirstKeySignature(MidiFile inputFile);
 		
 	};
 }

@@ -18,6 +18,19 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	MidiFile prevMidi = getLastBarsFromSegment(prevSegment, barErosionIntoPrevSeg);
 	MidiFile nextMidi = getFirstBarsFromSegment(nextSegment, barErosionIntoNextSeg);
 	
+	if(getLastKeySignature(prevMidi).isEmpty() || getFirstKeySignature(nextMidi).isEmpty()){
+		this->valid = false;
+		return;
+	}
+
+	int prevKeySig = getLastKeySignature(prevMidi)[3];
+	int nextKeySig = getFirstKeySignature(nextMidi)[3];
+
+	if((prevKeySig > 7 && nextKeySig <= 7) || (prevKeySig <= 7 && nextKeySig > 7) ) {
+		this->valid = false;
+		return;
+	}
+	
 	prevMidi = tempoDilation(prevMidi, findFirstTempo(nextMidi));
 	vector<MidiFile> catList;
 	catList.push_back(prevMidi);
@@ -181,4 +194,32 @@ double Bridge::findFirstTempo(MidiFile inputFile) {
 		}
 	}
 	return 120.0; // default tempo
+}
+
+
+MidiEvent Bridge::getLastKeySignature(MidiFile inputFile) {
+	inputFile.joinTracks();
+	int eventCount = inputFile.getEventCount(0);
+	MidiEvent keySignature;
+	
+	for(int i=0; i<eventCount; i++) {
+		if(inputFile.getEvent(0, i).isKeySignature()){
+			keySignature = inputFile.getEvent(0, i);
+		}
+	}
+	
+	return keySignature;
+}
+
+MidiEvent Bridge::getFirstKeySignature(MidiFile inputFile) {
+	inputFile.joinTracks();
+	int eventCount = inputFile.getEventCount(0);
+
+	for(int i=0; i<eventCount; i++) {
+		if(inputFile.getEvent(0, i).isKeySignature()){
+			return inputFile.getEvent(0, i);
+		}
+	}
+	
+	return MidiEvent();
 }
