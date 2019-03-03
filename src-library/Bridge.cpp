@@ -38,6 +38,12 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	for(int i=0; i< endNoteKeys.size(); i++){
 		std::cout << "endNoteKeys[" << i << "] = " << endNoteKeys[i] << "\n";
 	}
+	
+	vector<int> beginningNoteKeys = getBeginningNoteKeys(nextMidi);
+	for(int i=0; i< beginningNoteKeys.size(); i++){
+		std::cout << "beginningNoteKeys[" << i << "] = " << beginningNoteKeys[i] << "\n";
+	}
+	
 	vector<MidiFile> catList;
 	catList.push_back(prevMidi);
 	catList.push_back(nextMidi);
@@ -267,4 +273,24 @@ vector<int> Bridge::getEndNoteKeys(MidiFile inputFile) {
 	}
 
 	return endNoteKeys;
+}
+
+vector<int> Bridge::getBeginningNoteKeys(MidiFile inputFile) {
+	inputFile.joinTracks();
+	inputFile.makeAbsoluteTicks();
+	int eventCount = inputFile.getEventCount(0);
+	vector<int> beginningNoteKeys;
+	int currentTick = 0;
+
+	for(int i=0; i<eventCount; i++) {
+		if(inputFile.getEvent(0, i).isNoteOn() || inputFile.getEvent(0, i).isNoteOff()){
+			if(inputFile.getEvent(0, i).tick > currentTick && !beginningNoteKeys.empty()) {
+				return beginningNoteKeys;
+			}
+			beginningNoteKeys.push_back(inputFile.getEvent(0, i).getKeyNumber());
+			currentTick = inputFile.getEvent(0, i).tick;
+		}
+	}
+
+	return beginningNoteKeys;
 }

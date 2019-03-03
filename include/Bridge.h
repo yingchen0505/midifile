@@ -44,6 +44,7 @@ namespace bridge {
 			MidiEvent getFirstKeySignature(MidiFile inputFile);
 			MidiFile transpose(MidiFile inputFile, int keyChange);
 			vector<int> getEndNoteKeys(MidiFile inputFile);		
+			vector<int> getBeginningNoteKeys(MidiFile inputFile);
 	};
 }
 
