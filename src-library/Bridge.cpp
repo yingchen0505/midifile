@@ -12,20 +12,9 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	MidiExcerptByBar midiExcerptByBar;
 	MidiCat midiCat;
 	
-	MidiFile prevMidi;
-	if(prevSegment.finalEnd) {
-		prevMidi = *(prevSegment.finalEnd);
-	}
-	else if (prevSegment.mainLoopEnd) {
-		prevMidi = *(prevSegment.mainLoopEnd);
-	}
-	else {
-		prevMidi = *(prevSegment.mainLoop);
-	}
+	MidiFile prevMidi = getLastBarsFromSegment(prevSegment, 3);
+	MidiFile nextMidi = getFirstBarsFromSegment(nextSegment, 3);
 	
-	MidiFile nextMidi = getFirstBarsFromSegment(nextSegment, 20);
-	
-	prevMidi = midiExcerptByBar.run(max(1, prevMidi.getTotalBars() - 1), prevMidi.getTotalBars(), prevMidi);
 	prevMidi = tempoDilation(prevMidi, findFirstTempo(nextMidi));
 	vector<MidiFile> catList;
 	catList.push_back(prevMidi);
@@ -33,9 +22,8 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	newMidi = midiCat.run(catList, 0.0);
 	
 	this->bridgeMidi = newMidi;
-	this->barErosionIntoPrevSeg = min(prevMidi.getTotalBars(), 2);
+	this->barErosionIntoPrevSeg = prevMidi.getTotalBars();
 	this->barErosionIntoNextSeg = nextMidi.getTotalBars();
-	std::cout << nextMidi.getTotalBars() << "\n";
 	this->valid = true;
 }
 
@@ -69,15 +57,12 @@ MidiFile Bridge::getFirstBarsFromSegment(MusicSegment inputSegment, int bars) {
 		}
 	}
 	
-	bool endsWithMainLoopEnd = false;
-	
 	while(bars > 0) {
 		int mainLoopBars = inputSegment.mainLoop->getTotalBars();
 		if(mainLoopBars <= bars) {
 			catList.push_back(*(inputSegment.mainLoop));
 			bars -= mainLoopBars;
 			if(bars > 0 && inputSegment.mainLoopEnd) {
-				endsWithMainLoopEnd = true;
 				int mainLoopEndBars = inputSegment.mainLoopEnd->getTotalBars();
 				if(mainLoopEndBars <= bars) {
 					catList.push_back(*(inputSegment.mainLoopEnd));
@@ -90,24 +75,7 @@ MidiFile Bridge::getFirstBarsFromSegment(MusicSegment inputSegment, int bars) {
 			}
 		}
 		else {
-			endsWithMainLoopEnd = false; // last added is mainLoop, not mainLoopEnd
 			catList.push_back(midiExcerptByBar.run(1, bars, *(inputSegment.mainLoop)));
-			bars = 0;
-		}
-	}
-	
-	if(inputSegment.finalEnd && (endsWithMainLoopEnd || bars > 0)) {
-		if(endsWithMainLoopEnd) {
-			bars += catList.back().getTotalBars();
-			catList.pop_back();
-		}
-		int finalEndBars = inputSegment.finalEnd->getTotalBars();
-		if(finalEndBars <= bars) {
-			catList.push_back(*(inputSegment.finalEnd));
-			bars -= finalEndBars;
-		}
-		else {
-			catList.push_back(midiExcerptByBar.run(1, bars, *(inputSegment.finalEnd)));
 			bars = 0;
 		}
 	}
@@ -132,45 +100,49 @@ MidiFile Bridge::getLastBarsFromSegment(MusicSegment inputSegment, int bars) {
 		else {
 			catList.push_back(midiExcerptByBar.run(finalEndBars - bars + 1, finalEndBars, *(inputSegment.finalEnd)));
 			bars = 0;
+			
+		}
+	}
+	
+	if(bars > 0) {
+		int mainLoopBars = inputSegment.mainLoop->getTotalBars();
+		if(mainLoopBars <= bars) {
+			catList.insert(catList.begin(), *(inputSegment.mainLoop));
+			bars -= mainLoopBars;
+			
+		}
+		else {
+			catList.insert(catList.begin(), midiExcerptByBar.run(mainLoopBars - bars + 1, mainLoopBars, *(inputSegment.mainLoop)));
+			bars = 0;
 		}
 	}
 	
 	while(bars > 0) {
+		if(inputSegment.mainLoopEnd) {
+			int mainLoopEndBars = inputSegment.mainLoopEnd->getTotalBars();
+			if(mainLoopEndBars <= bars) {
+				catList.insert(catList.begin(), *(inputSegment.mainLoopEnd));
+				bars -= mainLoopEndBars;
+			}
+			else {
+				catList.insert(catList.begin(), midiExcerptByBar.run(mainLoopEndBars - bars + 1, mainLoopEndBars, *(inputSegment.mainLoopEnd)));
+				bars = 0;
+			}
+		}
+		
+		if(bars <= 0) break;
+		
 		int mainLoopBars = inputSegment.mainLoop->getTotalBars();
 		if(mainLoopBars <= bars) {
-			catList.push_back(*(inputSegment.mainLoop));
+			catList.insert(catList.begin(), *(inputSegment.mainLoop));
 			bars -= mainLoopBars;
 		}
 		else {
-			catList.push_back(midiExcerptByBar.run(1, bars, *(inputSegment.mainLoop)));
+			catList.insert(catList.begin(), midiExcerptByBar.run(mainLoopBars - bars + 1, mainLoopBars, *(inputSegment.mainLoop)));
 			bars = 0;
 		}
 	}
-	
-	if(bars > 0 && inputSegment.mainLoopEnd) {
-		int mainLoopEndBars = inputSegment.mainLoopEnd->getTotalBars();
-		if(mainLoopEndBars <= bars) {
-			catList.push_back(*(inputSegment.mainLoopEnd));
-			bars -= mainLoopEndBars;
-		}
-		else {
-			catList.push_back(midiExcerptByBar.run(1, bars, *(inputSegment.mainLoopEnd)));
-			bars = 0;
-		}
-	}
-	
-	if(bars > 0 && inputSegment.finalEnd) {
-		int finalEndBars = inputSegment.finalEnd->getTotalBars();
-		if(finalEndBars <= bars) {
-			catList.push_back(*(inputSegment.finalEnd));
-			bars -= finalEndBars;
-		}
-		else {
-			catList.push_back(midiExcerptByBar.run(1, bars, *(inputSegment.finalEnd)));
-			bars = 0;
-		}
-	}
-	
+
 	output = midiCat.run(catList, 0.0);
 	return output;
 	
