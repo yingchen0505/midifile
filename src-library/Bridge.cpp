@@ -12,8 +12,11 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	MidiExcerptByBar midiExcerptByBar;
 	MidiCat midiCat;
 	
-	MidiFile prevMidi = getLastBarsFromSegment(prevSegment, 3);
-	MidiFile nextMidi = getFirstBarsFromSegment(nextSegment, 3);
+	this->barErosionIntoPrevSeg = 3;
+	this->barErosionIntoNextSeg = 3;
+	
+	MidiFile prevMidi = getLastBarsFromSegment(prevSegment, barErosionIntoPrevSeg);
+	MidiFile nextMidi = getFirstBarsFromSegment(nextSegment, barErosionIntoNextSeg);
 	
 	prevMidi = tempoDilation(prevMidi, findFirstTempo(nextMidi));
 	vector<MidiFile> catList;
@@ -22,8 +25,6 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	newMidi = midiCat.run(catList, 0.0);
 	
 	this->bridgeMidi = newMidi;
-	this->barErosionIntoPrevSeg = prevMidi.getTotalBars();
-	this->barErosionIntoNextSeg = nextMidi.getTotalBars();
 	this->valid = true;
 }
 
