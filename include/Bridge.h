@@ -42,6 +42,7 @@ namespace bridge {
 			MidiFile getLastBarsFromSegment(MusicSegment inputSegment, int bars);
 			MidiEvent getLastKeySignature(MidiFile inputFile);
 			MidiEvent getFirstKeySignature(MidiFile inputFile);
+			MidiFile transpose(MidiFile inputFile, int keyChange);
 		
 	};
 }

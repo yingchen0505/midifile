@@ -77,8 +77,7 @@ int main(int argc, char* argv[]) {
 
 	///// Midi Excerpt Tool
 	//MidiExcerptByBar midiExcerptByBar;
-	//midiExcerptByBar.run(argc, argv);
-	//midiExcerptByBar.run(startBar, endBar, options.getArg(1));
+	//midiExcerptByBar.run(startBar, endBar, options.getArg(1)).write(cout);
 	/*
 	MidiFile infile(options.getArg(1));
 	

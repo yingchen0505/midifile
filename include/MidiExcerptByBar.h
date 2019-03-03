@@ -7,11 +7,13 @@
 #include <string>
 #include <cmath>
 #include <map>
+#include <algorithm>
 #include "Options.h"
 
 using namespace smf;
 using std::string;
 using std::to_string;
+using std::max;
 
 namespace midi_excerpt_by_bar {
 	

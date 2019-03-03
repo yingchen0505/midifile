@@ -140,10 +140,10 @@ MidiFile MidiExcerptByBar::run(int startBar, int endBar, MidiFile infile) {
 		outfile.addEvent(rest);
 	}
 	// There are notes still on, therefore turn them off, which fills the gap at the same time
-	else if (gap > 0) {
+	else {
 		for(int i = 0; i < noteOffAfterEndBar.size(); i++) {
 			if(i==0) {
-				noteOffAfterEndBar[i].tick = gap;
+				noteOffAfterEndBar[i].tick = max(gap, 0);
 			}
 			else {
 				noteOffAfterEndBar[i].tick = 0;

@@ -32,8 +32,9 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	}
 	
 	prevMidi = tempoDilation(prevMidi, findFirstTempo(nextMidi));
+	//prevMidi = transpose(prevMidi, -1);
 	vector<MidiFile> catList;
-	catList.push_back(prevMidi);
+	//catList.push_back(prevMidi);
 	catList.push_back(nextMidi);
 	newMidi = midiCat.run(catList, 0.0);
 	
@@ -222,4 +223,20 @@ MidiEvent Bridge::getFirstKeySignature(MidiFile inputFile) {
 	}
 	
 	return MidiEvent();
+}
+
+MidiFile Bridge::transpose(MidiFile inputFile, int keyChange) {
+	inputFile.joinTracks();
+	int eventCount = inputFile.getEventCount(0);
+
+	for(int i=0; i<eventCount; i++) {
+		if(inputFile.getEvent(0, i).isNoteOn() || inputFile.getEvent(0, i).isNoteOff()){
+			int originalKey = inputFile.getEvent(0, i).getKeyNumber();
+			int newKey = originalKey + keyChange;
+			inputFile.getEvent(0, i).setKeyNumber(newKey);
+		}
+	}
+	inputFile.linkNotePairs();
+	
+	return inputFile;
 }
