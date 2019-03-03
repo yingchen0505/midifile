@@ -28,6 +28,5 @@ namespace bridge_manager {
 		
 		private:
 			map<string, Bridge> bridgeMap;
-		
 	};
 }

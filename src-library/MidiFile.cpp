@@ -2616,7 +2616,7 @@ void MidiFile::updateBarNumber(void) {
 		accumulatedTicks += currentTick - lastTick;
 		
 		// if accumulatedTicks overflows, increase currentBarNumber
-		if(accumulatedTicks >= ticksPerMeasure) {
+		if(accumulatedTicks > ticksPerMeasure) {
 			currentBarNumber++;
 			beginningOfBarMarker += ticksPerMeasure;
 			endOfBarMarker = beginningOfBarMarker + ticksPerMeasure;

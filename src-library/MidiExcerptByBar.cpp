@@ -123,7 +123,7 @@ MidiFile MidiExcerptByBar::run(int startBar, int endBar, MidiFile infile) {
 		outfile.addEvent(rest);
 	}
 	// There are notes still on, therefore turn them off, which fills the gap at the same time
-	else {
+	else if (gap > 0) {
 		for(int i = 0; i < noteOffAfterEndBar.size(); i++) {
 			if(i==0) {
 				noteOffAfterEndBar[i].tick = gap;
@@ -136,20 +136,19 @@ MidiFile MidiExcerptByBar::run(int startBar, int endBar, MidiFile infile) {
 	}
 
 	 // insert an end-of track Meta Event
-   int tpq = outfile.getTicksPerQuarterNote();
-   MidiEvent mfevent;
-   mfevent.tick = tpq;
-   mfevent.track = 0;
-   mfevent.resize(3);
-   mfevent[0] = 0xff;
-   mfevent[1] = 0x2f;
-   mfevent[2] = 0;
-   outfile.addEvent(mfevent);
+    int tpq = outfile.getTicksPerQuarterNote();
+    MidiEvent mfevent;
+    mfevent.tick = 0;
+    mfevent.track = 0;
+    mfevent.resize(3);
+    mfevent[0] = 0xff;
+    mfevent[1] = 0x2f;
+    mfevent[2] = 0;
+    outfile.addEvent(mfevent);
 
    	outfile.absoluteTicks();
 	outfile.sortTracks();
 
 	outfile.updateBarNumber();
-	
 	return outfile;
 }

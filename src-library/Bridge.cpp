@@ -23,17 +23,10 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 		prevMidi = *(prevSegment.mainLoop);
 	}
 	
-	MidiFile nextMidi;
-	if(nextSegment.prep) {
-		nextMidi = *(nextSegment.prep);
-	}
-	else {
-		nextMidi = *(nextSegment.mainLoop);
-	}
+	MidiFile nextMidi = getFirstBarsFromSegment(nextSegment, 3);
 	
 	prevMidi = midiExcerptByBar.run(max(1, prevMidi.getTotalBars() - 1), prevMidi.getTotalBars(), prevMidi);
 	prevMidi = tempoDilation(prevMidi, findFirstTempo(nextMidi));
-	nextMidi = midiExcerptByBar.run(1, min(nextMidi.getTotalBars(), 2), nextMidi);
 	vector<MidiFile> catList;
 	catList.push_back(prevMidi);
 	catList.push_back(nextMidi);
@@ -41,7 +34,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	
 	this->bridgeMidi = newMidi;
 	this->barErosionIntoPrevSeg = min(prevMidi.getTotalBars(), 2);
-	this->barErosionIntoNextSeg = min(nextMidi.getTotalBars(), 2);
+	this->barErosionIntoNextSeg = nextMidi.getTotalBars();
 	this->valid = true;
 }
 
@@ -55,6 +48,65 @@ Bridge::Bridge(string ID, MidiFile bridgeMidi, int barErosionIntoPrevSeg, int ba
 
 bool Bridge::isInvalid() {
 	return !valid;
+}
+
+MidiFile Bridge::getFirstBarsFromSegment(MusicSegment inputSegment, int bars) {
+	MidiFile output;
+	MidiCat midiCat;
+	vector<MidiFile> catList;
+	MidiExcerptByBar midiExcerptByBar;
+	
+	if(inputSegment.prep) {
+		int prepBars = inputSegment.prep->getTotalBars();
+		if(prepBars <= bars) {
+			catList.push_back(*(inputSegment.prep));
+			bars -= prepBars;
+		}
+		else {
+			catList.push_back(midiExcerptByBar.run(1, bars, *(inputSegment.prep)));
+			bars = 0;
+		}
+	}
+	
+	if(bars > 0) {
+		int mainLoopBars = inputSegment.mainLoop->getTotalBars();
+		if(mainLoopBars <= bars) {
+			catList.push_back(*(inputSegment.mainLoop));
+			bars -= mainLoopBars;
+		}
+		else {
+			catList.push_back(midiExcerptByBar.run(1, bars, *(inputSegment.mainLoop)));
+			bars = 0;
+		}
+	}
+	
+	if(bars > 0 && inputSegment.mainLoopEnd) {
+		int mainLoopEndBars = inputSegment.mainLoopEnd->getTotalBars();
+		if(mainLoopEndBars <= bars) {
+			catList.push_back(*(inputSegment.mainLoopEnd));
+			bars -= mainLoopEndBars;
+		}
+		else {
+			catList.push_back(midiExcerptByBar.run(1, bars, *(inputSegment.mainLoopEnd)));
+			bars = 0;
+		}
+	}
+	
+	if(bars > 0 && inputSegment.finalEnd) {
+		int finalEndBars = inputSegment.finalEnd->getTotalBars();
+		if(finalEndBars <= bars) {
+			catList.push_back(*(inputSegment.finalEnd));
+			bars -= finalEndBars;
+		}
+		else {
+			catList.push_back(midiExcerptByBar.run(1, bars, *(inputSegment.finalEnd)));
+			bars = 0;
+		}
+	}
+	
+	output = midiCat.run(catList, 0.0);
+	return output;
+	
 }
 
 MidiFile Bridge::tempoDilation(MidiFile inputFile, double finalTempo) {
