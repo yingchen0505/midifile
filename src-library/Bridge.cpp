@@ -30,19 +30,16 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	outfiletxt << prevMidi;
 	outfiletxt.close();*/
 	
-	if(getLastKeySignature(prevMidi).isEmpty() || getFirstKeySignature(nextMidi).isEmpty()){
-		this->valid = false;
-		return;
+	if(!(getLastKeySignature(prevMidi).isEmpty()) && !(getFirstKeySignature(nextMidi).isEmpty())){
+		int prevKeySig = getLastKeySignature(prevMidi)[3];
+		int nextKeySig = getFirstKeySignature(nextMidi)[3];
+
+		if((prevKeySig > 7 && nextKeySig <= 7) || (prevKeySig <= 7 && nextKeySig > 7) ) {
+			this->valid = false;
+			return;
+		}
 	}
 
-	int prevKeySig = getLastKeySignature(prevMidi)[3];
-	int nextKeySig = getFirstKeySignature(nextMidi)[3];
-
-	if((prevKeySig > 7 && nextKeySig <= 7) || (prevKeySig <= 7 && nextKeySig > 7) ) {
-		this->valid = false;
-		return;
-	}
-	
 	vector<int> endNoteKeys = getEndNoteKeys(prevMidi);
 	for(int i=0; i< endNoteKeys.size(); i++){
 		std::cout << "endNoteKeys[" << i << "] = " << endNoteKeys[i] << "\n";
