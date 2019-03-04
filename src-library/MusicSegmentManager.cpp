@@ -104,6 +104,7 @@ void MusicSegmentManager::generateMusicFromEmotion() {
 		
 		for(int j=0; j<musicSegmentList.size(); j++){
 			if(i==j) continue;
+			std::cout << "i = " << i << " j = " << j << "\n";
 			Bridge bridge = bridgeManager.getBridge(musicSegmentList[i], musicSegmentList[j]);
 			if(!bridge.isInvalid()) {
 

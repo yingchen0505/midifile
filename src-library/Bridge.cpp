@@ -32,7 +32,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	}
 	
 	prevMidi = tempoDilation(prevMidi, findFirstTempo(nextMidi));
-	
+
 	vector<int> endNoteKeys = getEndNoteKeys(prevMidi);
 	for(int i=0; i< endNoteKeys.size(); i++){
 		std::cout << "endNoteKeys[" << i << "] = " << endNoteKeys[i] << "\n";
@@ -43,26 +43,9 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 		std::cout << "beginningNoteKeys[" << i << "] = " << beginningNoteKeys[i] << "\n";
 	}
 	
-	if(endNoteKeys.empty() || beginningNoteKeys.empty()) {
-		std::cout << "wtf no notes! \n";
-		this->valid = false;
-		return;
-	}
-		std::cout << "HERE \n";
-
-	if(!(min_element(begin(beginningNoteKeys), end(beginningNoteKeys))) || !(max_element(begin(endNoteKeys), end(endNoteKeys)))) {
-		std::cout << "wtf! \n";
-		this->valid = false;
-		return;
-	}
-	int diff1 = *min_element(begin(beginningNoteKeys), end(beginningNoteKeys)) - *max_element(begin(endNoteKeys), end(endNoteKeys));
-	int diff2 = *max_element(begin(beginningNoteKeys), end(beginningNoteKeys)) - *min_element(begin(endNoteKeys), end(endNoteKeys));
-
-	int keyChange = abs(diff1) > abs(diff2) ? diff2 : diff1;
-	//int keyChange = 0;
-
-	//std::cout << "max_element(begin(endNoteKeys), end(endNoteKeys)) = " << *max_element(begin(endNoteKeys), end(endNoteKeys)) << "\n";
-	//std::cout << "min_element(begin(beginningNoteKeys), end(beginningNoteKeys)) = " << *min_element(begin(beginningNoteKeys), end(beginningNoteKeys)) << "\n";
+	int maxBeginningKey = 0;
+	int maxEndKey = 0;
+	int keyChange = *max_element(begin(beginningNoteKeys), end(beginningNoteKeys)) - *max_element(begin(endNoteKeys), end(endNoteKeys));
 
 	std::cout << "keyChange = " << keyChange << "\n";
 	prevMidi = transpose(prevMidi, keyChange);
@@ -261,7 +244,7 @@ MidiEvent Bridge::getFirstKeySignature(MidiFile inputFile) {
 MidiFile Bridge::transpose(MidiFile inputFile, int keyChange) {
 	inputFile.joinTracks();
 	int eventCount = inputFile.getEventCount(0);
-
+	
 	for(int i=0; i<eventCount; i++) {
 		if(inputFile.getEvent(0, i).isNoteOn() || inputFile.getEvent(0, i).isNoteOff()){
 			int originalKey = inputFile.getEvent(0, i).getKeyNumber();
@@ -269,7 +252,6 @@ MidiFile Bridge::transpose(MidiFile inputFile, int keyChange) {
 			inputFile.getEvent(0, i).setKeyNumber(newKey);
 		}
 	}
-	inputFile.linkNotePairs();
 	
 	return inputFile;
 }
