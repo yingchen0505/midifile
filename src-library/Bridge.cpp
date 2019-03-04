@@ -15,26 +15,37 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	MidiFile prevMidi = getLastBarsFromSegment(prevSegment, 1);
 	MidiFile nextMidi = getFirstBarsFromSegment(nextSegment, 1);
 	
-	this->barErosionIntoPrevSeg = getPhraseLengthInBars(prevMidi);
+	//this->barErosionIntoPrevSeg = getPhraseLengthInBars(prevMidi);
+	//this->barErosionIntoNextSeg = getPhraseLengthInBars(nextMidi);
+	this->barErosionIntoPrevSeg = 2;
 	this->barErosionIntoNextSeg = getPhraseLengthInBars(nextMidi);
-	
+
 	prevMidi = getLastBarsFromSegment(prevSegment, barErosionIntoPrevSeg);
 	nextMidi = getFirstBarsFromSegment(nextSegment, barErosionIntoNextSeg);
 	
+	std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
+	outfile.open(to_string(prevSegment.valence) + to_string(prevSegment.arousal) + to_string(prevSegment.ID) + "helplah.mid");
+	prevMidi.write(outfile);
+	outfile.close();
+	std::ofstream outfiletxt; // without std::, reference would be ambiguous because of Boost
+	outfiletxt.open(to_string(prevSegment.valence) + to_string(prevSegment.arousal) + to_string(prevSegment.ID) + "helplah.txt");
+	outfiletxt << prevMidi;
+	outfiletxt.close();
+	/*
 	if(getLastKeySignature(prevMidi).isEmpty() || getFirstKeySignature(nextMidi).isEmpty()){
 		this->valid = false;
 		return;
 	}
 
 	int prevKeySig = getLastKeySignature(prevMidi)[3];
-	int nextKeySig = getFirstKeySignature(nextMidi)[3];
-
+	int nextKeySig = getFirstKeySignature(nextMidi)[3];*/
+/*
 	if((prevKeySig > 7 && nextKeySig <= 7) || (prevKeySig <= 7 && nextKeySig > 7) ) {
 		this->valid = false;
 		return;
-	}
+	}*/
 	
-	
+	/*
 	vector<int> endNoteKeys = getEndNoteKeys(prevMidi);
 	for(int i=0; i< endNoteKeys.size(); i++){
 		std::cout << "endNoteKeys[" << i << "] = " << endNoteKeys[i] << "\n";
@@ -52,18 +63,18 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 
 	std::cout << "keyChange = " << keyChange << "\n";
 	
-	prevMidi = tempoDilation(prevMidi, findFirstTempo(nextMidi));
-
+	//prevMidi = tempoDilation(prevMidi, findFirstTempo(nextMidi));
+*/
 	vector<MidiFile> catList;
 	catList.push_back(prevMidi);
-	
+	/*
 	int currentKeyChange = 0;
 	while (keyChange != 0) {
 		int keyChangeStep = keyChange > 0 ? min(2, keyChange) : max(-2, keyChange);
 		currentKeyChange += keyChangeStep;
 		catList.push_back(transpose(prevMidi, currentKeyChange));
 		keyChange -= keyChangeStep;
-	}
+	}*/
 	
 	catList.push_back(nextMidi);
 	newMidi = midiCat.run(catList, 0.0);

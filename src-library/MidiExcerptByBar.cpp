@@ -77,6 +77,24 @@ MidiFile MidiExcerptByBar::run(int startBar, int endBar, MidiFile infile) {
 			outfile.addEvent(timbreEvent);
 		}
 		
+		// If this note is turned on before start bar and turned off only after start bar
+		// Need to add this note in, but adjust the start tick to beginning of start bar
+		if(currentBar < startBar && infile.getEvent(0,i).isNoteOn()) {
+			MidiEvent* linkedEvent = infile.getEvent(0,i).getLinkedEvent();
+			if(linkedEvent && (*linkedEvent).bar >= startBar) {
+				MidiEvent noteOnEvent = infile.getEvent(0,i);
+				noteOnEvent.clearVariables();
+				noteOnEvent.tick = 0;
+				outfile.addEvent(noteOnEvent);
+				// If this note is only turned off after selected bar range, 
+				// need to add the note-off to end of file.
+				// Else, the note-off is within selected range and will be auto added later
+				if((*linkedEvent).bar > endBar) {
+					noteOffAfterEndBar.push_back(*linkedEvent);
+				}
+			}
+		}
+		
 		// Find events between targeted bars:
 		if(currentBar >= startBar && currentBar <= endBar){
 			int ticksSinceBeginningOfStartBar = currentTick - beginningTicksOfStartBar;
