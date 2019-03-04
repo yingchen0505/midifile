@@ -34,8 +34,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 		return;
 	}
 	
-	prevMidi = tempoDilation(prevMidi, findFirstTempo(nextMidi));
-
+	
 	vector<int> endNoteKeys = getEndNoteKeys(prevMidi);
 	for(int i=0; i< endNoteKeys.size(); i++){
 		std::cout << "endNoteKeys[" << i << "] = " << endNoteKeys[i] << "\n";
@@ -49,11 +48,23 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	int maxBeginningKey = 0;
 	int maxEndKey = 0;
 	int keyChange = *max_element(begin(beginningNoteKeys), end(beginningNoteKeys)) - *max_element(begin(endNoteKeys), end(endNoteKeys));
+	keyChange = keyChange%12;
 
 	std::cout << "keyChange = " << keyChange << "\n";
-	prevMidi = transpose(prevMidi, keyChange);
+	
+	prevMidi = tempoDilation(prevMidi, findFirstTempo(nextMidi));
+
 	vector<MidiFile> catList;
 	catList.push_back(prevMidi);
+	
+	int currentKeyChange = 0;
+	while (keyChange != 0) {
+		int keyChangeStep = keyChange > 0 ? min(2, keyChange) : max(-2, keyChange);
+		currentKeyChange += keyChangeStep;
+		catList.push_back(transpose(prevMidi, currentKeyChange));
+		keyChange -= keyChangeStep;
+	}
+	
 	catList.push_back(nextMidi);
 	newMidi = midiCat.run(catList, 0.0);
 	
