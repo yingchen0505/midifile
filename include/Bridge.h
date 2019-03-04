@@ -45,6 +45,8 @@ namespace bridge {
 			MidiFile transpose(MidiFile inputFile, int keyChange);
 			vector<int> getEndNoteKeys(MidiFile inputFile);		
 			vector<int> getBeginningNoteKeys(MidiFile inputFile);
+			int getPhraseLengthInBars(MidiFile inputFile);
+
 	};
 }
 

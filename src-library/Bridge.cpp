@@ -12,11 +12,14 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	MidiExcerptByBar midiExcerptByBar;
 	MidiCat midiCat;
 	
-	this->barErosionIntoPrevSeg = 5;
-	this->barErosionIntoNextSeg = 3;
+	MidiFile prevMidi = getLastBarsFromSegment(prevSegment, 1);
+	MidiFile nextMidi = getFirstBarsFromSegment(nextSegment, 1);
 	
-	MidiFile prevMidi = getLastBarsFromSegment(prevSegment, barErosionIntoPrevSeg);
-	MidiFile nextMidi = getFirstBarsFromSegment(nextSegment, barErosionIntoNextSeg);
+	this->barErosionIntoPrevSeg = getPhraseLengthInBars(prevMidi);
+	this->barErosionIntoNextSeg = getPhraseLengthInBars(nextMidi);
+	
+	prevMidi = getLastBarsFromSegment(prevSegment, barErosionIntoPrevSeg);
+	nextMidi = getFirstBarsFromSegment(nextSegment, barErosionIntoNextSeg);
 	
 	if(getLastKeySignature(prevMidi).isEmpty() || getFirstKeySignature(nextMidi).isEmpty()){
 		this->valid = false;
@@ -297,4 +300,25 @@ vector<int> Bridge::getBeginningNoteKeys(MidiFile inputFile) {
 	}
 
 	return beginningNoteKeys;
+}
+
+int Bridge::getPhraseLengthInBars(MidiFile inputFile) {
+	inputFile.joinTracks();
+	int eventCount = inputFile.getEventCount(0);
+	int phraseLength;
+
+	for(int i=0; i<eventCount; i++) {
+		if(inputFile.getEvent(0, i).isTimeSignature()){
+			int numerator = inputFile.getEvent(0, i)[3];
+			int denom = inputFile.getEvent(0, i)[4];
+			denom = pow(2, denom);
+			if(denom%2 == 0) {
+				phraseLength = 2;
+			}
+			else if(denom%3 == 0) {
+				phraseLength = 3;
+			}
+		}
+	}
+	return phraseLength;
 }
