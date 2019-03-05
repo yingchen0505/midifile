@@ -67,8 +67,23 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	MidiFile keyChangeBar = midiExcerptByBar.run(1, 1, prevMidi);
 	keyChangeCatList.push_back(keyChangeBar);
 	int currentKeyChange = 0;
+	int greatestPrime = 2;
+	/*
+	if(abs(keyChange) >= 7) {
+		greatestPrime = 7;
+	}*/
+	if (abs(keyChange) >= 5) {
+		greatestPrime = 5;
+	}
+	else if (abs(keyChange) >= 3) {
+		greatestPrime = 3;
+	}
+	std::cout << "greatestPrime = " << greatestPrime << "\n";
+	
 	while (keyChange != 0) {
-		int keyChangeStep = keyChange > 0 ? min(2, keyChange) : max(-2, keyChange);
+		int keyChangeStep = keyChange > 0 ? min(greatestPrime, keyChange) : max((-1)*greatestPrime, keyChange);
+		std::cout << "keyChangeStep = " << keyChangeStep << "\n";
+
 		currentKeyChange += keyChangeStep;
 		keyChange -= keyChangeStep;
 		if(keyChange == 0) {
@@ -82,6 +97,9 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	MidiFile prevMidiAfterKeyChange = midiCat.run(keyChangeCatList, 0.0);
 	prevMidiAfterKeyChange = tempoDilation(prevMidiAfterKeyChange, findFirstTempo(nextMidi));
 	catList.push_back(prevMidiAfterKeyChange);
+	
+	//MidiFile frontOfNextMidi = midiExcerptByBar(1, )
+	nextMidi = reverseTempoDilation(nextMidi, 30);
 	
 	catList.push_back(nextMidi);
 	newMidi = midiCat.run(catList, 0.0);
@@ -229,6 +247,34 @@ MidiFile Bridge::tempoDilation(MidiFile inputFile, double finalTempo) {
 			double newTempo = currentTempo - (currentTempo - finalTempo) * progression;
 			slowDownFactor = newTempo/currentTempo;
 			inputFile.getEvent(0, i).tick /= slowDownFactor;
+		}
+	}
+	return inputFile;
+}
+
+MidiFile Bridge::reverseTempoDilation(MidiFile inputFile, double initialTempo) {
+	inputFile.joinTracks();
+	inputFile.deltaTicks();
+	int eventCount = inputFile.getEventCount(0);
+	double currentTempo = 120.0; // this is the midi default tempo if no tempo marking is found
+	double speedUpFactor = 1.0;	// default no tempo dilation
+	for(int i=0; i < eventCount; i++) {
+		double progression = (double)i/(double)eventCount;
+		if(inputFile.getEvent(0, i).isTempo()) {
+			double originalTempo = inputFile.getEvent(0, i).getTempoBPM();
+			//double newTempo = originalTempo - (originalTempo - finalTempo) * progression;
+			double newTempo = initialTempo + (originalTempo - initialTempo) * progression;
+			
+			currentTempo = newTempo;
+			inputFile.getEvent(0, i).setTempo(newTempo);
+		}
+		else if (inputFile.getEvent(0, i).tick != 0) {
+			//double newTempo = currentTempo - (currentTempo - finalTempo) * progression;
+			double newTempo = initialTempo + (currentTempo - initialTempo) * progression;
+			
+			speedUpFactor = newTempo/currentTempo;
+			std::cout << "speedUpFactor = " << speedUpFactor << "\n";
+			inputFile.getEvent(0, i).tick *= speedUpFactor;
 		}
 	}
 	return inputFile;

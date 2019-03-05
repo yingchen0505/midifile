@@ -37,6 +37,8 @@ namespace bridge {
 		
 		private:
 			MidiFile tempoDilation(MidiFile inputFile, double finalTempo);
+			MidiFile reverseTempoDilation(MidiFile inputFile, double initialTempo);
+
 			double findFirstTempo(MidiFile inputFile); // Returns the value of first tempo marking (BPM)
 			MidiFile getFirstBarsFromSegment(MusicSegment inputSegment, int bars); // Returns the first few bars from a segment
 			MidiFile getLastBarsFromSegment(MusicSegment inputSegment, int bars);
