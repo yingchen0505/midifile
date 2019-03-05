@@ -57,18 +57,31 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 
 	std::cout << "keyChange = " << keyChange << "\n";
 	
-	prevMidi = tempoDilation(prevMidi, findFirstTempo(nextMidi));
+	//prevMidi = tempoDilation(prevMidi, findFirstTempo(nextMidi));
 
 	vector<MidiFile> catList;
-	catList.push_back(prevMidi);
+	vector<MidiFile> keyChangeCatList;
+
+	//catList.push_back(prevMidi);
 	
+	MidiFile keyChangeBar = midiExcerptByBar.run(1, 1, prevMidi);
+	keyChangeCatList.push_back(keyChangeBar);
 	int currentKeyChange = 0;
 	while (keyChange != 0) {
 		int keyChangeStep = keyChange > 0 ? min(2, keyChange) : max(-2, keyChange);
 		currentKeyChange += keyChangeStep;
-		catList.push_back(transpose(prevMidi, currentKeyChange));
 		keyChange -= keyChangeStep;
+		if(keyChange == 0) {
+			keyChangeCatList.push_back(transpose(prevMidi, currentKeyChange));
+		}
+		else {
+			keyChangeCatList.push_back(transpose(keyChangeBar, currentKeyChange));
+		}
 	}
+	
+	MidiFile prevMidiAfterKeyChange = midiCat.run(keyChangeCatList, 0.0);
+	prevMidiAfterKeyChange = tempoDilation(prevMidiAfterKeyChange, findFirstTempo(nextMidi));
+	catList.push_back(prevMidiAfterKeyChange);
 	
 	catList.push_back(nextMidi);
 	newMidi = midiCat.run(catList, 0.0);
