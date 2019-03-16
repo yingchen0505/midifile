@@ -56,7 +56,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	keyChange = keyChange%12;
 
 	std::cout << "keyChange = " << keyChange << "\n";
-	
+	double tempoOfNext = findFirstTempo(nextMidi);
 	//prevMidi = tempoDilation(prevMidi, findFirstTempo(nextMidi));
 
 	vector<MidiFile> catList;
@@ -95,7 +95,8 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	}
 	
 	MidiFile prevMidiAfterKeyChange = midiCat.run(keyChangeCatList, 0.0);
-	prevMidiAfterKeyChange = tempoDilation(prevMidiAfterKeyChange, findFirstTempo(nextMidi));
+	//prevMidiAfterKeyChange = tempoDilation(prevMidiAfterKeyChange, findFirstTempo(nextMidi));
+	prevMidiAfterKeyChange = tempoDilation(prevMidiAfterKeyChange, 30);
 	catList.push_back(prevMidiAfterKeyChange);
 	
 	//MidiFile frontOfNextMidi = midiExcerptByBar(1, )
@@ -254,29 +255,76 @@ MidiFile Bridge::tempoDilation(MidiFile inputFile, double finalTempo) {
 
 MidiFile Bridge::reverseTempoDilation(MidiFile inputFile, double initialTempo) {
 	inputFile.joinTracks();
-	inputFile.deltaTicks();
+	inputFile.absoluteTicks();
+	int totalTicks = inputFile.getFileDurationInTicks();
 	int eventCount = inputFile.getEventCount(0);
-	double currentTempo = 120.0; // this is the midi default tempo if no tempo marking is found
-	double speedUpFactor = 1.0;	// default no tempo dilation
+	double progression = 0.0;
+	vector<MidiEvent> tempoList;
+	MidiEvent lastOriginalTempo;
+	
+	// This loop adjusts the BPM values of the tempo events in the midi file
+	// so that the new BPM values are results of linear interpolation
+	// between the initialTempo and the original tempos
 	for(int i=0; i < eventCount; i++) {
-		double progression = (double)i/(double)eventCount;
+		progression = (double) inputFile.getEvent(0, i).tick / (double) totalTicks;
+		
 		if(inputFile.getEvent(0, i).isTempo()) {
 			double originalTempo = inputFile.getEvent(0, i).getTempoBPM();
-			//double newTempo = originalTempo - (originalTempo - finalTempo) * progression;
 			double newTempo = initialTempo + (originalTempo - initialTempo) * progression;
-			
-			currentTempo = newTempo;
+			lastOriginalTempo = inputFile.getEvent(0, i);
 			inputFile.getEvent(0, i).setTempo(newTempo);
-		}
-		else if (inputFile.getEvent(0, i).tick != 0) {
-			//double newTempo = currentTempo - (currentTempo - finalTempo) * progression;
-			double newTempo = initialTempo + (currentTempo - initialTempo) * progression;
-			
-			speedUpFactor = newTempo/currentTempo;
-			std::cout << "speedUpFactor = " << speedUpFactor << "\n";
-			inputFile.getEvent(0, i).tick *= speedUpFactor;
+			tempoList.push_back(inputFile.getEvent(0, i));
 		}
 	}
+	
+	lastOriginalTempo.tick = totalTicks;
+	tempoList.push_back(lastOriginalTempo);
+	
+	int currentTick = 0;
+	int lastTick = 0;
+	int nextTick = 0;
+	const double stepsize = 1.0 / 10.0;
+	double stepCounter = 0.0;
+	progression = 0.0;
+	double lastTempo = initialTempo;
+	double nextTempo = 120.0; // this is the midi default tempo if no tempo marking is found
+	
+	// This loop performs linear interpolation for events in-between the tempo events
+	for(int i=0; i < eventCount; i++) {
+		currentTick = inputFile.getEvent(0, i).tick;
+		double oldProgression = progression;
+		progression = (double) currentTick / (double) totalTicks;
+		stepCounter += progression - oldProgression;
+		
+		if(!tempoList.empty()) {
+			if(currentTick > tempoList.front().tick) {
+				lastTick = tempoList.front().tick;
+				lastTempo = tempoList.front().getTempoBPM();
+				tempoList.erase(tempoList.begin());
+			}
+		}
+		
+		if(!(inputFile.getEvent(0, i).isTempo()) && stepCounter >= stepsize) {
+
+			if(!tempoList.empty()) {
+				nextTempo = tempoList.front().getTempoBPM();
+				nextTick = tempoList.front().tick;
+			}
+			else {
+				nextTick = totalTicks;
+			}
+			
+			double progressionBetweenTempos = (double) (currentTick - lastTick) / (double) (nextTick - lastTick);
+			double newTempo = lastTempo + (nextTempo - lastTempo) * progressionBetweenTempos;
+			MidiEvent tempoEvent;
+			tempoEvent.makeTempo(newTempo);
+			tempoEvent.tick = inputFile.getEvent(0, i).tick;
+			inputFile.addEvent(tempoEvent);
+			while(stepCounter >= stepsize) stepCounter -= stepsize;
+		}
+		
+	}
+	inputFile.sortTracks();
 	return inputFile;
 }
 
