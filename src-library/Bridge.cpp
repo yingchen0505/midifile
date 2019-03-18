@@ -92,6 +92,13 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 						
 	std::cout << "magicNumber = " << magicNumber << "\n";
 	
+	// Convert vector to array:
+	std::vector<int> v;
+	v.push_back(1);
+	v.push_back(2);
+	int* a = &v[0];
+	std::cout << "ATTENTION! " << countSolutions(a, v.size(), 3) << "\n";
+	
 	int currentKeyChange = 0;
 	int greatestPrime = 2;
 	/*
@@ -511,10 +518,10 @@ int Bridge::getPhraseLengthInBars(MidiFile inputFile) {
 	}
 	return phraseLength;
 }
-/*
+
 // Returns the count of ways we can  
 // sum S[0...m-1] coins to get sum n 
-int count( int S[], int m, int n ) 
+int Bridge::countSolutions( int S[], int m, int n ) 
 { 
     // If n is 0 then there is 1 solution  
     // (do not include any coin) 
@@ -534,16 +541,5 @@ int count( int S[], int m, int n )
   
     // count is sum of solutions (i)  
     // including S[m-1] (ii) excluding S[m-1] 
-    return count( S, m - 1, n ) + count( S, m, n-S[m-1] ); 
+    return countSolutions( S, m - 1, n ) + countSolutions( S, m, n-S[m-1] ); 
 } 
-  
-// Driver program to test above function 
-int main() 
-{ 
-    int i, j; 
-    int arr[] = {1, 2, 3}; 
-    int m = sizeof(arr)/sizeof(arr[0]); 
-    printf("%d ", count(arr, m, 4)); 
-    getchar(); 
-    return 0; 
-} */
