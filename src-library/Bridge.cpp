@@ -62,8 +62,36 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	vector<MidiFile> catList;
 	vector<MidiFile> keyChangeCatList;
 
-	MidiFile keyChangeBar = midiExcerptByBar.run(1, 1, prevMidi);
+	MidiFile keyChangeBar = midiExcerptByBar.run(1, max(1, prevMidi.getTotalBars() - 1), prevMidi);
 	keyChangeCatList.push_back(keyChangeBar);
+	
+	vector<int> begNotesOfKeyChangeBar = getBeginningNoteKeys(keyChangeBar);
+	/*
+	for(int i=0; i< begNotesOfKeyChangeBar.size(); i++){
+		std::cout << "begNotesOfKeyChangeBar[" << i << "] = " << begNotesOfKeyChangeBar[i] << "\n";
+	}*/
+	
+	vector<int> endNotesOfKeyChangeBar = getEndNoteKeys(keyChangeBar);
+	/*for(int i=0; i< endNotesOfKeyChangeBar.size(); i++){
+		std::cout << "endNotesOfKeyChangeBar[" << i << "] = " << endNotesOfKeyChangeBar[i] << "\n";
+	}*/
+	
+	MidiFile finalBarOfPrev = midiExcerptByBar.run(prevMidi.getTotalBars(), prevMidi.getTotalBars(), prevMidi);
+	
+	vector<int> begNotesOfFinalBarOfPrev = getBeginningNoteKeys(finalBarOfPrev);
+	/*for(int i=0; i< begNotesOfFinalBarOfPrev.size(); i++){
+		std::cout << "begNotesOfFinalBarOfPrev[" << i << "] = " << begNotesOfFinalBarOfPrev[i] << "\n";
+	}*/
+
+	
+	//int magicNumber = *max_element(begin(endNotesOfKeyChangeBar), end(endNotesOfKeyChangeBar)) - 
+						//*max_element(begin(begNotesOfKeyChangeBar), end(begNotesOfKeyChangeBar));
+	int magicNumber = *max_element(begin(begNotesOfFinalBarOfPrev), end(begNotesOfFinalBarOfPrev)) - 
+						*max_element(begin(begNotesOfKeyChangeBar), end(begNotesOfKeyChangeBar));
+	magicNumber = magicNumber%12;
+						
+	std::cout << "magicNumber = " << magicNumber << "\n";
+	
 	int currentKeyChange = 0;
 	int greatestPrime = 2;
 	/*
@@ -79,11 +107,20 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	std::cout << "greatestPrime = " << greatestPrime << "\n";
 	
 	while (keyChange != 0) {
-		int keyChangeStep = keyChange > 0 ? min(greatestPrime, keyChange) : max((-1)*greatestPrime, keyChange);
-		std::cout << "keyChangeStep = " << keyChangeStep << "\n";
+//		int keyChangeStep = keyChange > 0 ? min(greatestPrime, keyChange) : max((-1)*greatestPrime, keyChange);
+		int keyChangeStep;
+		if(magicNumber != 0) {
+			keyChangeStep = keyChange > 0 ? min(abs(magicNumber), keyChange) : max((-1)*abs(magicNumber), keyChange);
+		}
+		else {
+			keyChangeStep = keyChange > 0 ? min(greatestPrime, keyChange) : max((-1)*greatestPrime, keyChange);
+		}
+		
+		std::cout << (magicNumber != 0) << " keyChangeStep = " << keyChangeStep << "\n";
 
 		currentKeyChange += keyChangeStep;
 		keyChange -= keyChangeStep;
+		// Need to include the final bar if we are at the end
 		if(keyChange == 0) {
 			keyChangeCatList.push_back(transpose(prevMidi, currentKeyChange));
 		}
@@ -403,15 +440,21 @@ vector<int> Bridge::getEndNoteKeys(MidiFile inputFile) {
 	int eventCount = inputFile.getEventCount(0);
 	vector<int> endNoteKeys;
 	int currentTick = 0;
+	
+	// Gaps smaller than a 32nd note are assumed to be 
+	// performance variations of the notes that are supposed
+	// to fall on the same beat.
+	int tickAmbiguity = inputFile.getTPQ() / 8; 
 
 	for(int i=0; i<eventCount; i++) {
 		if(inputFile.getEvent(0, i).isNoteOn() || inputFile.getEvent(0, i).isNoteOff()){
-			if(inputFile.getEvent(0, i).tick > currentTick) {
+			int diff = inputFile.getEvent(0, i).tick - currentTick;
+			if(diff > tickAmbiguity)  {
 				endNoteKeys.clear();
 				endNoteKeys.push_back(inputFile.getEvent(0, i).getKeyNumber());
 				currentTick = inputFile.getEvent(0, i).tick;
 			}
-			else if(inputFile.getEvent(0, i).tick == currentTick) {
+			else if(diff >= 0) {
 				endNoteKeys.push_back(inputFile.getEvent(0, i).getKeyNumber());
 			}
 		}
@@ -426,14 +469,22 @@ vector<int> Bridge::getBeginningNoteKeys(MidiFile inputFile) {
 	int eventCount = inputFile.getEventCount(0);
 	vector<int> beginningNoteKeys;
 	int currentTick = 0;
+	
+	// Gaps smaller than a 32nd note are assumed to be 
+	// performance variations of the notes that are supposed
+	// to fall on the same beat.
+	int tickAmbiguity = inputFile.getTPQ() / 8; 
 
 	for(int i=0; i<eventCount; i++) {
 		if(inputFile.getEvent(0, i).isNoteOn() || inputFile.getEvent(0, i).isNoteOff()){
-			if(inputFile.getEvent(0, i).tick > currentTick && !beginningNoteKeys.empty()) {
-				return beginningNoteKeys;
+			int diff = inputFile.getEvent(0, i).tick - currentTick;
+			if(diff > tickAmbiguity) {
+				currentTick = inputFile.getEvent(0, i).tick;
+				if(!beginningNoteKeys.empty()) {
+					return beginningNoteKeys;
+				}
 			}
 			beginningNoteKeys.push_back(inputFile.getEvent(0, i).getKeyNumber());
-			currentTick = inputFile.getEvent(0, i).tick;
 		}
 	}
 
@@ -460,3 +511,39 @@ int Bridge::getPhraseLengthInBars(MidiFile inputFile) {
 	}
 	return phraseLength;
 }
+/*
+// Returns the count of ways we can  
+// sum S[0...m-1] coins to get sum n 
+int count( int S[], int m, int n ) 
+{ 
+    // If n is 0 then there is 1 solution  
+    // (do not include any coin) 
+    if (n == 0) 
+        return 1; 
+      
+    // If n is less than 0 then no  
+    // solution exists 
+    if (n < 0) 
+        return 0; 
+  
+    // If there are no coins and n  
+    // is greater than 0, then no 
+    // solution exist 
+    if (m <=0 && n >= 1) 
+        return 0; 
+  
+    // count is sum of solutions (i)  
+    // including S[m-1] (ii) excluding S[m-1] 
+    return count( S, m - 1, n ) + count( S, m, n-S[m-1] ); 
+} 
+  
+// Driver program to test above function 
+int main() 
+{ 
+    int i, j; 
+    int arr[] = {1, 2, 3}; 
+    int m = sizeof(arr)/sizeof(arr[0]); 
+    printf("%d ", count(arr, m, 4)); 
+    getchar(); 
+    return 0; 
+} */
