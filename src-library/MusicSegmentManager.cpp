@@ -110,7 +110,6 @@ void MusicSegmentManager::generateMusicFromEmotion() {
 
 				vector<MidiFile> catList;
 				catList.push_back(musicSegmentList[i].repeat(30, 0, bridge.barErosionIntoPrevSeg));
-				
 				catList.push_back(bridge.bridgeMidi);
 				catList.push_back(musicSegmentList[j].repeat(30, bridge.barErosionIntoNextSeg, 0));
 				

@@ -185,5 +185,6 @@ MidiFile MidiExcerptByBar::run(int startBar, int endBar, MidiFile infile) {
 	outfile.sortTracks();
 
 	outfile.updateBarNumber();
+	outfile.splitTracks();
 	return outfile;
 }

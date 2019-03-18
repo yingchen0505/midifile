@@ -34,6 +34,11 @@ int main(int argc, char* argv[]) {
 	Options options;
 	checkOptions(options, argc, argv);
 	
+	// Read and print text:
+	//MidiFile infile(options.getArg(1).c_str());
+	//cout << infile;
+
+	
 	MusicSegmentManager musicSegmentManager(INPUT_PATH);
 	musicSegmentManager.generateMusicFromEmotion();
 	
