@@ -54,6 +54,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	int maxEndKey = 0;
 	int keyChange = *max_element(begin(beginningNoteKeys), end(beginningNoteKeys)) - *max_element(begin(endNoteKeys), end(endNoteKeys));
 	keyChange = keyChange%12;
+	keyChange = (keyChange > 0 ) ? (keyChange - 12) : keyChange; 
 
 	std::cout << "keyChange = " << keyChange << "\n";
 	double tempoOfNext = findFirstTempo(nextMidi);
