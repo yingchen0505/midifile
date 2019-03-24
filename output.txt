@@ -9,18 +9,42 @@ beginningNoteKeys[2] = 47
 beginningNoteKeys[3] = 35
 keyChange = -11
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = -5
 greatestPrime = 5
@@ -39,18 +63,42 @@ beginningNoteKeys[2] = 58
 beginningNoteKeys[3] = 55
 keyChange = 2
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = -5
 greatestPrime = 2
@@ -68,18 +116,42 @@ beginningNoteKeys[2] = 55
 beginningNoteKeys[3] = 43
 keyChange = 2
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = -5
 greatestPrime = 2
@@ -93,18 +165,42 @@ endNoteKeys[3] = 65
 beginningNoteKeys[0] = 48
 keyChange = -5
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = -5
 greatestPrime = 5
@@ -118,18 +214,42 @@ endNoteKeys[3] = 65
 beginningNoteKeys[0] = 69
 keyChange = 4
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = -5
 greatestPrime = 3
@@ -145,18 +265,42 @@ beginningNoteKeys[0] = 41
 beginningNoteKeys[1] = 38
 keyChange = -1
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = -6
 greatestPrime = 2
@@ -173,18 +317,42 @@ beginningNoteKeys[2] = 58
 beginningNoteKeys[3] = 55
 keyChange = 1
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = -6
 greatestPrime = 2
@@ -208,18 +376,42 @@ beginningNoteKeys[8] = 81
 beginningNoteKeys[9] = 49
 keyChange = 3
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = -6
 greatestPrime = 3
@@ -237,18 +429,42 @@ beginningNoteKeys[2] = 55
 beginningNoteKeys[3] = 43
 keyChange = 1
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = -6
 greatestPrime = 2
@@ -263,18 +479,42 @@ endNoteKeys[4] = 42
 beginningNoteKeys[0] = 48
 keyChange = -6
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = -6
 greatestPrime = 5
@@ -289,18 +529,42 @@ endNoteKeys[4] = 42
 beginningNoteKeys[0] = 69
 keyChange = 3
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = -6
 greatestPrime = 3
@@ -316,18 +580,42 @@ beginningNoteKeys[0] = 41
 beginningNoteKeys[1] = 38
 keyChange = -2
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = 0
 greatestPrime = 2
@@ -344,18 +632,42 @@ beginningNoteKeys[2] = 47
 beginningNoteKeys[3] = 35
 keyChange = -1
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = 0
 greatestPrime = 2
@@ -378,18 +690,42 @@ beginningNoteKeys[8] = 81
 beginningNoteKeys[9] = 49
 keyChange = 2
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = 0
 greatestPrime = 2
@@ -406,18 +742,42 @@ beginningNoteKeys[2] = 55
 beginningNoteKeys[3] = 43
 keyChange = 0
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = 0
 greatestPrime = 2
@@ -431,18 +791,42 @@ endNoteKeys[4] = 43
 beginningNoteKeys[0] = 69
 keyChange = 2
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = 0
 greatestPrime = 2
@@ -458,18 +842,42 @@ beginningNoteKeys[0] = 41
 beginningNoteKeys[1] = 38
 keyChange = -8
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = -2
 greatestPrime = 5
@@ -489,18 +897,42 @@ beginningNoteKeys[2] = 47
 beginningNoteKeys[3] = 35
 keyChange = -7
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = -2
 greatestPrime = 5
@@ -520,18 +952,42 @@ beginningNoteKeys[2] = 58
 beginningNoteKeys[3] = 55
 keyChange = -6
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = -2
 greatestPrime = 5
@@ -551,18 +1007,42 @@ beginningNoteKeys[2] = 55
 beginningNoteKeys[3] = 43
 keyChange = -6
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = -2
 greatestPrime = 5
@@ -579,18 +1059,42 @@ endNoteKeys[4] = 85
 beginningNoteKeys[0] = 48
 keyChange = -1
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = -2
 greatestPrime = 2
@@ -605,18 +1109,42 @@ endNoteKeys[4] = 85
 beginningNoteKeys[0] = 69
 keyChange = -4
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = -2
 greatestPrime = 3
@@ -635,18 +1163,42 @@ beginningNoteKeys[2] = 47
 beginningNoteKeys[3] = 35
 keyChange = -1
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = 0
 greatestPrime = 2
@@ -662,18 +1214,42 @@ beginningNoteKeys[2] = 58
 beginningNoteKeys[3] = 55
 keyChange = 0
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = 0
 greatestPrime = 2
@@ -694,18 +1270,42 @@ beginningNoteKeys[8] = 81
 beginningNoteKeys[9] = 49
 keyChange = 2
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = 0
 greatestPrime = 2
@@ -718,18 +1318,42 @@ endNoteKeys[3] = 43
 beginningNoteKeys[0] = 48
 keyChange = -7
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = 0
 greatestPrime = 5
@@ -744,18 +1368,42 @@ endNoteKeys[3] = 43
 beginningNoteKeys[0] = 69
 keyChange = 2
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = 0
 greatestPrime = 2
@@ -767,18 +1415,42 @@ beginningNoteKeys[0] = 41
 beginningNoteKeys[1] = 38
 keyChange = -11
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = 0
 greatestPrime = 5
@@ -793,18 +1465,42 @@ beginningNoteKeys[2] = 47
 beginningNoteKeys[3] = 35
 keyChange = -10
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = 0
 greatestPrime = 5
@@ -818,18 +1514,42 @@ beginningNoteKeys[2] = 58
 beginningNoteKeys[3] = 55
 keyChange = 3
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = 0
 greatestPrime = 3
@@ -848,18 +1568,42 @@ beginningNoteKeys[8] = 81
 beginningNoteKeys[9] = 49
 keyChange = 5
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = 0
 greatestPrime = 5
@@ -872,18 +1616,42 @@ beginningNoteKeys[2] = 55
 beginningNoteKeys[3] = 43
 keyChange = 3
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = 0
 greatestPrime = 3
@@ -893,18 +1661,42 @@ endNoteKeys[0] = 64
 beginningNoteKeys[0] = 69
 keyChange = 5
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = 0
 greatestPrime = 5
@@ -918,18 +1710,42 @@ beginningNoteKeys[0] = 41
 beginningNoteKeys[1] = 38
 keyChange = -9
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = -7
 greatestPrime = 5
@@ -945,18 +1761,42 @@ beginningNoteKeys[2] = 47
 beginningNoteKeys[3] = 35
 keyChange = -8
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = -7
 greatestPrime = 5
@@ -979,18 +1819,42 @@ beginningNoteKeys[8] = 81
 beginningNoteKeys[9] = 49
 keyChange = 7
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = -7
 greatestPrime = 5
@@ -1005,18 +1869,42 @@ beginningNoteKeys[2] = 55
 beginningNoteKeys[3] = 43
 keyChange = 5
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = -7
 greatestPrime = 5
@@ -1028,18 +1916,42 @@ endNoteKeys[2] = 62
 beginningNoteKeys[0] = 48
 keyChange = -2
 m = 3
-n = 3
+n = 8
 m = 2
-n = 3
+n = 8
 m = 1
 excludeLast finished 
 m = 1
 includeLast finished 
-include last not empty 
-added 2 
+m = 1
+includeLastTwice finished 
 excludeLast finished 
+m = 2
+n = 5
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+m = 1
+includeLastTwice finished 
+include last twice not empty 
+added 2 twice 
+includeLast finished 
+include last not empty 
+added 3 
+m = 2
+n = 2
+m = 1
+excludeLast finished 
+includeLastTwice finished 
+include last twice not empty 
+added 3 twice 
 num = 1
 num = 2
+num = 2
+num = 3
+num = 2
+num = 3
 num = 3
 magicNumber = -7
 greatestPrime = 2

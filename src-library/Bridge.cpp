@@ -114,7 +114,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	
 	vector<int> sanity{1, 2, 3};
 	int* array = &sanity[0];
-	vector<vector<int>> solutions = countSolutions(array, sanity.size(), 3);
+	vector<vector<int>> solutions = countSolutions(array, sanity.size(), 8);
 	if(!solutions.empty()) {
 		for(vector<int> solution : solutions) {
 			for (int num : solution) {
@@ -650,6 +650,31 @@ vector<vector<int>> Bridge::countSolutions( int S[], int m, int n )
 		}
 	}
 	includeLast.clear();
+	
+	// If including the last coin twice would make the sum
+	// there's no need to explore further
+	// cuz twice the last coin is the solution
+	if(n-S[m-1]*2 == 0) {
+		result.push_back(vector<int>{S[m-1], S[m-1]});
+		return result;
+	}
+	
+	vector<vector<int>> includeLastTwice = countSolutions( S, m-1, n-S[m-1] * 2 );
+//			return vector<vector<int>>();
+
+	cout << "includeLastTwice finished \n";
+
+	if(!includeLastTwice.empty()) {
+		cout << "include last twice not empty \n";
+
+		for(vector<int> solution : includeLastTwice) {
+			solution.push_back(S[m-1]);
+			solution.push_back(S[m-1]);
+			cout << "added " << S[m-1] << " twice \n";
+			result.push_back(solution);
+		}
+	}
+	includeLastTwice.clear();
 
     return result; 
 } 
