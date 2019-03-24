@@ -41,14 +41,16 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	}*/
 
 	vector<int> endNoteKeys = getEndNoteKeys(prevMidi);
+	/*
 	for(int i=0; i< endNoteKeys.size(); i++){
 		std::cout << "endNoteKeys[" << i << "] = " << endNoteKeys[i] << "\n";
-	}
+	}*/
 	
 	vector<int> beginningNoteKeys = getBeginningNoteKeys(nextMidi);
+	/*
 	for(int i=0; i< beginningNoteKeys.size(); i++){
 		std::cout << "beginningNoteKeys[" << i << "] = " << beginningNoteKeys[i] << "\n";
-	}
+	}*/
 	
 	int maxBeginningKey = 0;
 	int maxEndKey = 0;
@@ -93,10 +95,18 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	///----------------------------------------------------------------------------
 	vector<int> magicSet;
 	vector<int> stepSet;
-	int startPoint = *max_element(begin(begNotesOfKeyChangeBar), end(begNotesOfKeyChangeBar));
+	//int startPoint = *max_element(begin(begNotesOfKeyChangeBar), end(begNotesOfKeyChangeBar));
+	for(int startPoint : begNotesOfKeyChangeBar) {
+		for(int begNote : begNotesOfFinalBarOfPrev) {
+			stepSet.push_back(begNote - startPoint);
+		}
+	}
+	
+	sort( stepSet.begin(), stepSet.end() );
+	stepSet.erase( unique( stepSet.begin(), stepSet.end() ), stepSet.end() );
 
-	for(int begNote : begNotesOfFinalBarOfPrev) {
-		stepSet.push_back(begNote - startPoint);
+	for (int step : stepSet) {
+		cout << "step = " << step << "\n";
 	}
 	
 	int* array = &stepSet[0];
@@ -124,26 +134,6 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	}
 */
 
-	/*
-	bool solutionFound = false;
-	int sizeOfMagicSet = 1;
-	//while(!solutionFound) {
-
-		for(int step : stepSet) {
-			magicSet.push_back(step);
-			int* array = &magicSet[0];
-
-			int solutionNumber = countSolutions(array, magicSet.size(), keyChange);
-			if(solutionNumber <= 0) {
-				magicSet.pop_back();
-			}
-			else {
-				solutionFound = true;
-				break;
-			}
-		}
-	//}
-	*/
 	for (int magic : magicSet) {
 		cout << "MAGIC SET HERE! " << magic << "\n";
 	}
