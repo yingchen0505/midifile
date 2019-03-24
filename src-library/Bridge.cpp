@@ -88,16 +88,45 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 						//*max_element(begin(begNotesOfKeyChangeBar), end(begNotesOfKeyChangeBar));
 	int magicNumber = *max_element(begin(begNotesOfFinalBarOfPrev), end(begNotesOfFinalBarOfPrev)) - 
 						*max_element(begin(begNotesOfKeyChangeBar), end(begNotesOfKeyChangeBar));
+	
+	/////////// Magic set please save me
+	///----------------------------------------------------------------------------
+	vector<int> magicSet;
+	vector<int> stepSet;
+	int startPoint = *max_element(begin(begNotesOfKeyChangeBar), end(begNotesOfKeyChangeBar));
+
+	for(int begNote : begNotesOfFinalBarOfPrev) {
+		stepSet.push_back(begNote - startPoint);
+	}
+	
+	bool solutionFound = false;
+	int sizeOfMagicSet = 1;
+	//while(!solutionFound) {
+
+		for(int step : stepSet) {
+			magicSet.push_back(step);
+			int* array = &magicSet[0];
+			int solutionNumber = countSolutions(array, magicSet.size(), keyChange);
+			if(solutionNumber <= 0) {
+				magicSet.pop_back();
+			}
+			else {
+				solutionFound = true;
+				break;
+			}
+		}
+	//}
+	
+	for (int magic : magicSet) {
+		cout << "MAGIC SET HERE! " << magic << "\n";
+	}
+	
+	///----------------------------------------------------------------------------
+
+	
 	magicNumber = magicNumber%12;
 						
 	std::cout << "magicNumber = " << magicNumber << "\n";
-	
-	// Convert vector to array:
-	std::vector<int> v;
-	v.push_back(1);
-	v.push_back(2);
-	int* a = &v[0];
-	std::cout << "ATTENTION! " << countSolutions(a, v.size(), 3) << "\n";
 	
 	int currentKeyChange = 0;
 	int greatestPrime = 2;
@@ -538,6 +567,13 @@ int Bridge::countSolutions( int S[], int m, int n )
     // solution exist 
     if (m <=0 && n >= 1) 
         return 0; 
+	
+	// If there is only 1 coin, 
+	// and n and the coin have different signs
+	// or the coin is zero
+	// then no solution exist
+	if (m == 1 && (S[0] * n < 0 || S[0] == 0))
+		return 0;
   
     // count is sum of solutions (i)  
     // including S[m-1] (ii) excluding S[m-1] 
