@@ -49,7 +49,7 @@ namespace bridge {
 			vector<int> getEndNoteKeys(MidiFile inputFile);		
 			vector<int> getBeginningNoteKeys(MidiFile inputFile);
 			int getPhraseLengthInBars(MidiFile inputFile);
-			int countSolutions( int S[], int m, int n );
+			vector<vector<int>> countSolutions( int S[], int m, int n );
 
 	};
 }

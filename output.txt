@@ -8,6 +8,20 @@ beginningNoteKeys[1] = 50
 beginningNoteKeys[2] = 47
 beginningNoteKeys[3] = 35
 keyChange = -11
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = -5
 greatestPrime = 5
 1 keyChangeStep = -5
@@ -24,6 +38,20 @@ beginningNoteKeys[1] = 62
 beginningNoteKeys[2] = 58
 beginningNoteKeys[3] = 55
 keyChange = 2
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = -5
 greatestPrime = 2
 1 keyChangeStep = 2
@@ -39,6 +67,20 @@ beginningNoteKeys[1] = 67
 beginningNoteKeys[2] = 55
 beginningNoteKeys[3] = 43
 keyChange = 2
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = -5
 greatestPrime = 2
 1 keyChangeStep = 2
@@ -50,6 +92,20 @@ endNoteKeys[2] = 53
 endNoteKeys[3] = 65
 beginningNoteKeys[0] = 48
 keyChange = -5
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = -5
 greatestPrime = 5
 1 keyChangeStep = -5
@@ -61,6 +117,20 @@ endNoteKeys[2] = 53
 endNoteKeys[3] = 65
 beginningNoteKeys[0] = 69
 keyChange = 4
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = -5
 greatestPrime = 3
 1 keyChangeStep = 4
@@ -74,6 +144,20 @@ endNoteKeys[4] = 42
 beginningNoteKeys[0] = 41
 beginningNoteKeys[1] = 38
 keyChange = -1
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = -6
 greatestPrime = 2
 1 keyChangeStep = -1
@@ -88,6 +172,20 @@ beginningNoteKeys[1] = 62
 beginningNoteKeys[2] = 58
 beginningNoteKeys[3] = 55
 keyChange = 1
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = -6
 greatestPrime = 2
 1 keyChangeStep = 1
@@ -109,6 +207,20 @@ beginningNoteKeys[7] = 37
 beginningNoteKeys[8] = 81
 beginningNoteKeys[9] = 49
 keyChange = 3
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = -6
 greatestPrime = 3
 1 keyChangeStep = 3
@@ -124,6 +236,20 @@ beginningNoteKeys[1] = 67
 beginningNoteKeys[2] = 55
 beginningNoteKeys[3] = 43
 keyChange = 1
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = -6
 greatestPrime = 2
 1 keyChangeStep = 1
@@ -136,6 +262,20 @@ endNoteKeys[3] = 54
 endNoteKeys[4] = 42
 beginningNoteKeys[0] = 48
 keyChange = -6
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = -6
 greatestPrime = 5
 1 keyChangeStep = -6
@@ -148,6 +288,20 @@ endNoteKeys[3] = 54
 endNoteKeys[4] = 42
 beginningNoteKeys[0] = 69
 keyChange = 3
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = -6
 greatestPrime = 3
 1 keyChangeStep = 3
@@ -161,6 +315,20 @@ endNoteKeys[4] = 43
 beginningNoteKeys[0] = 41
 beginningNoteKeys[1] = 38
 keyChange = -2
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = 0
 greatestPrime = 2
 0 keyChangeStep = -2
@@ -175,6 +343,20 @@ beginningNoteKeys[1] = 50
 beginningNoteKeys[2] = 47
 beginningNoteKeys[3] = 35
 keyChange = -1
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = 0
 greatestPrime = 2
 0 keyChangeStep = -1
@@ -195,6 +377,20 @@ beginningNoteKeys[7] = 37
 beginningNoteKeys[8] = 81
 beginningNoteKeys[9] = 49
 keyChange = 2
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = 0
 greatestPrime = 2
 0 keyChangeStep = 2
@@ -209,7 +405,20 @@ beginningNoteKeys[1] = 67
 beginningNoteKeys[2] = 55
 beginningNoteKeys[3] = 43
 keyChange = 0
-MAGIC SET HERE! 0
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = 0
 greatestPrime = 2
 i = 2 j = 5
@@ -221,6 +430,20 @@ endNoteKeys[3] = 62
 endNoteKeys[4] = 43
 beginningNoteKeys[0] = 69
 keyChange = 2
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = 0
 greatestPrime = 2
 0 keyChangeStep = 2
@@ -234,6 +457,20 @@ endNoteKeys[4] = 85
 beginningNoteKeys[0] = 41
 beginningNoteKeys[1] = 38
 keyChange = -8
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = -2
 greatestPrime = 5
 1 keyChangeStep = -2
@@ -251,6 +488,20 @@ beginningNoteKeys[1] = 50
 beginningNoteKeys[2] = 47
 beginningNoteKeys[3] = 35
 keyChange = -7
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = -2
 greatestPrime = 5
 1 keyChangeStep = -2
@@ -268,6 +519,20 @@ beginningNoteKeys[1] = 62
 beginningNoteKeys[2] = 58
 beginningNoteKeys[3] = 55
 keyChange = -6
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = -2
 greatestPrime = 5
 1 keyChangeStep = -2
@@ -285,6 +550,20 @@ beginningNoteKeys[1] = 67
 beginningNoteKeys[2] = 55
 beginningNoteKeys[3] = 43
 keyChange = -6
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = -2
 greatestPrime = 5
 1 keyChangeStep = -2
@@ -299,6 +578,20 @@ endNoteKeys[3] = 37
 endNoteKeys[4] = 85
 beginningNoteKeys[0] = 48
 keyChange = -1
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = -2
 greatestPrime = 2
 1 keyChangeStep = -1
@@ -311,6 +604,20 @@ endNoteKeys[3] = 37
 endNoteKeys[4] = 85
 beginningNoteKeys[0] = 69
 keyChange = -4
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = -2
 greatestPrime = 3
 1 keyChangeStep = -2
@@ -327,6 +634,20 @@ beginningNoteKeys[1] = 50
 beginningNoteKeys[2] = 47
 beginningNoteKeys[3] = 35
 keyChange = -1
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = 0
 greatestPrime = 2
 0 keyChangeStep = -1
@@ -340,7 +661,20 @@ beginningNoteKeys[1] = 62
 beginningNoteKeys[2] = 58
 beginningNoteKeys[3] = 55
 keyChange = 0
-MAGIC SET HERE! -12
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = 0
 greatestPrime = 2
 i = 4 j = 3
@@ -359,6 +693,20 @@ beginningNoteKeys[7] = 37
 beginningNoteKeys[8] = 81
 beginningNoteKeys[9] = 49
 keyChange = 2
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = 0
 greatestPrime = 2
 0 keyChangeStep = 2
@@ -369,6 +717,20 @@ endNoteKeys[2] = 55
 endNoteKeys[3] = 43
 beginningNoteKeys[0] = 48
 keyChange = -7
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = 0
 greatestPrime = 5
 0 keyChangeStep = -5
@@ -381,6 +743,20 @@ endNoteKeys[2] = 55
 endNoteKeys[3] = 43
 beginningNoteKeys[0] = 69
 keyChange = 2
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = 0
 greatestPrime = 2
 0 keyChangeStep = 2
@@ -390,6 +766,20 @@ endNoteKeys[0] = 64
 beginningNoteKeys[0] = 41
 beginningNoteKeys[1] = 38
 keyChange = -11
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = 0
 greatestPrime = 5
 0 keyChangeStep = -5
@@ -402,6 +792,20 @@ beginningNoteKeys[1] = 50
 beginningNoteKeys[2] = 47
 beginningNoteKeys[3] = 35
 keyChange = -10
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = 0
 greatestPrime = 5
 0 keyChangeStep = -5
@@ -413,6 +817,20 @@ beginningNoteKeys[1] = 62
 beginningNoteKeys[2] = 58
 beginningNoteKeys[3] = 55
 keyChange = 3
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = 0
 greatestPrime = 3
 0 keyChangeStep = 3
@@ -429,6 +847,20 @@ beginningNoteKeys[7] = 37
 beginningNoteKeys[8] = 81
 beginningNoteKeys[9] = 49
 keyChange = 5
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = 0
 greatestPrime = 5
 0 keyChangeStep = 5
@@ -439,6 +871,20 @@ beginningNoteKeys[1] = 67
 beginningNoteKeys[2] = 55
 beginningNoteKeys[3] = 43
 keyChange = 3
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = 0
 greatestPrime = 3
 0 keyChangeStep = 3
@@ -446,6 +892,20 @@ i = 5 j = 6
 endNoteKeys[0] = 64
 beginningNoteKeys[0] = 69
 keyChange = 5
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = 0
 greatestPrime = 5
 0 keyChangeStep = 5
@@ -457,6 +917,20 @@ endNoteKeys[2] = 62
 beginningNoteKeys[0] = 41
 beginningNoteKeys[1] = 38
 keyChange = -9
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = -7
 greatestPrime = 5
 1 keyChangeStep = -7
@@ -470,6 +944,20 @@ beginningNoteKeys[1] = 50
 beginningNoteKeys[2] = 47
 beginningNoteKeys[3] = 35
 keyChange = -8
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = -7
 greatestPrime = 5
 1 keyChangeStep = -7
@@ -490,6 +978,20 @@ beginningNoteKeys[7] = 37
 beginningNoteKeys[8] = 81
 beginningNoteKeys[9] = 49
 keyChange = 7
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = -7
 greatestPrime = 5
 1 keyChangeStep = 7
@@ -502,6 +1004,20 @@ beginningNoteKeys[1] = 67
 beginningNoteKeys[2] = 55
 beginningNoteKeys[3] = 43
 keyChange = 5
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = -7
 greatestPrime = 5
 1 keyChangeStep = 5
@@ -511,6 +1027,20 @@ endNoteKeys[1] = 50
 endNoteKeys[2] = 62
 beginningNoteKeys[0] = 48
 keyChange = -2
+m = 3
+n = 3
+m = 2
+n = 3
+m = 1
+excludeLast finished 
+m = 1
+includeLast finished 
+include last not empty 
+added 2 
+excludeLast finished 
+num = 1
+num = 2
+num = 3
 magicNumber = -7
 greatestPrime = 2
 1 keyChangeStep = -2

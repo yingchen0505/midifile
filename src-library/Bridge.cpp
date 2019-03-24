@@ -98,7 +98,33 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	for(int begNote : begNotesOfFinalBarOfPrev) {
 		stepSet.push_back(begNote - startPoint);
 	}
+	/*
+	int* array = &stepSet[0];
+	vector<vector<int>> solutions = countSolutions(array, stepSet.size(), keyChange);
+	if(!solutions.empty()) {
+		int shortestSolutionLength = INT8_MAX;
+		for(vector<int> solution : solutions) {
+			if(solution.size() < shortestSolutionLength) {
+				shortestSolutionLength = solution.size();
+				//magicSet.clear();
+				magicSet = solution;
+			}
+		}
+	}*/
 	
+	vector<int> sanity{1, 2, 3};
+	int* array = &sanity[0];
+	vector<vector<int>> solutions = countSolutions(array, sanity.size(), 3);
+	if(!solutions.empty()) {
+		for(vector<int> solution : solutions) {
+			for (int num : solution) {
+				cout << "num = " << num << "\n";
+			}
+		}
+	}
+
+
+	/*
 	bool solutionFound = false;
 	int sizeOfMagicSet = 1;
 	//while(!solutionFound) {
@@ -106,6 +132,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 		for(int step : stepSet) {
 			magicSet.push_back(step);
 			int* array = &magicSet[0];
+
 			int solutionNumber = countSolutions(array, magicSet.size(), keyChange);
 			if(solutionNumber <= 0) {
 				magicSet.pop_back();
@@ -116,7 +143,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 			}
 		}
 	//}
-	
+	*/
 	for (int magic : magicSet) {
 		cout << "MAGIC SET HERE! " << magic << "\n";
 	}
@@ -548,34 +575,81 @@ int Bridge::getPhraseLengthInBars(MidiFile inputFile) {
 	return phraseLength;
 }
 
-// Returns the count of ways we can  
-// sum S[0...m-1] coins to get sum n 
-int Bridge::countSolutions( int S[], int m, int n ) 
+// Returns a vector of vector of integer where 
+// first vector of integer (of size 1) is the count of ways we can  
+// sum S[0...m-1] coins to get sum n;
+// and the rest are the sets of solutions coins
+// that each set sums up to n
+vector<vector<int>> Bridge::countSolutions( int S[], int m, int n ) 
 { 
-    // If n is 0 then there is 1 solution  
-    // (do not include any coin) 
-    if (n == 0) 
-        return 1; 
-      
-    // If n is less than 0 then no  
-    // solution exists 
-    if (n < 0) 
-        return 0; 
-  
-    // If there are no coins and n  
-    // is greater than 0, then no 
-    // solution exist 
-    if (m <=0 && n >= 1) 
-        return 0; 
-	
+
+	if(n == 0) {
+		return vector<vector<int>>();
+	}
 	// If there is only 1 coin, 
-	// and n and the coin have different signs
-	// or the coin is zero
+	// and the coin does not add up to sum
 	// then no solution exist
-	if (m == 1 && (S[0] * n < 0 || S[0] == 0))
-		return 0;
-  
+	if (m == 1) {
+		cout << "m = " << m << "\n";
+		vector<vector<int>> result;
+
+		if(S[0] == n) {
+			vector<int> coin{S[0]};
+			result.push_back(coin);
+		}
+        return result;
+	}
+	
+	cout << "m = " << m << "\n";
+	cout << "n = " << n << "\n";
+
     // count is sum of solutions (i)  
     // including S[m-1] (ii) excluding S[m-1] 
-    return countSolutions( S, m - 1, n ) + countSolutions( S, m, n-S[m-1] ); 
+	
+	vector<vector<int>> excludeLast = countSolutions( S, m - 1, n );
+
+	
+	cout << "excludeLast finished \n";
+	vector<vector<int>> result;
+
+	if(!excludeLast.empty()) {
+		for(vector<int> solution : excludeLast) {
+			result.push_back(solution);
+		}
+	}
+	excludeLast.clear();
+
+	// If S[m-1] is zero or has different sign from n,
+	// don't even think about including it
+	if(S[m-1] * n <=0 ) {
+			//return vector<vector<int>>();
+	
+		return result;
+	}
+	
+	// If including the last coin would make the sum
+	// there's no need to explore further
+	// cuz the last coin is the solution
+	if(n-S[m-1] == 0) {
+		result.push_back(vector<int>{S[m-1]});
+		return result;
+	}
+	
+	vector<vector<int>> includeLast = countSolutions( S, m-1, n-S[m-1] );
+//			return vector<vector<int>>();
+
+	cout << "includeLast finished \n";
+
+	if(!includeLast.empty()) {
+		cout << "include last not empty \n";
+
+		for(vector<int> solution : includeLast) {
+			solution.push_back(S[m-1]);
+			cout << "added " << S[m-1] << " \n";
+			result.push_back(solution);
+		}
+	}
+	includeLast.clear();
+
+    return result; 
 } 
