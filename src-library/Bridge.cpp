@@ -29,7 +29,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	outfiletxt.open(to_string(prevSegment.valence) + to_string(prevSegment.arousal) + to_string(prevSegment.ID) + "helplah.txt");
 	outfiletxt << prevMidi;
 	outfiletxt.close();*/
-	
+	/*
 	if(!(getLastKeySignature(prevMidi).isEmpty()) && !(getFirstKeySignature(nextMidi).isEmpty())){
 		int prevKeySig = getLastKeySignature(prevMidi)[3];
 		int nextKeySig = getFirstKeySignature(nextMidi)[3];
@@ -38,7 +38,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 			this->valid = false;
 			return;
 		}
-	}
+	}*/
 
 	vector<int> endNoteKeys = getEndNoteKeys(prevMidi);
 	for(int i=0; i< endNoteKeys.size(); i++){
@@ -54,7 +54,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	int maxEndKey = 0;
 	int keyChange = *max_element(begin(beginningNoteKeys), end(beginningNoteKeys)) - *max_element(begin(endNoteKeys), end(endNoteKeys));
 	keyChange = keyChange%12;
-	keyChange = (keyChange > 0 ) ? (keyChange - 12) : keyChange; 
+	//keyChange = (keyChange > 0 ) ? (keyChange - 12) : keyChange; 
 
 	std::cout << "keyChange = " << keyChange << "\n";
 	double tempoOfNext = findFirstTempo(nextMidi);

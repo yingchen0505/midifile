@@ -9,12 +9,27 @@ beginningNoteKeys[2] = 47
 beginningNoteKeys[3] = 35
 keyChange = -11
 magicNumber = -5
+ATTENTION! 2
 greatestPrime = 5
 1 keyChangeStep = -5
 1 keyChangeStep = -5
 1 keyChangeStep = -1
 intermediateTempo = 30.4
 i = 0 j = 2
+endNoteKeys[0] = 53
+endNoteKeys[1] = 60
+endNoteKeys[2] = 53
+endNoteKeys[3] = 65
+beginningNoteKeys[0] = 67
+beginningNoteKeys[1] = 62
+beginningNoteKeys[2] = 58
+beginningNoteKeys[3] = 55
+keyChange = 2
+magicNumber = -5
+ATTENTION! 2
+greatestPrime = 2
+1 keyChangeStep = 2
+intermediateTempo = 30.4
 i = 0 j = 3
 i = 0 j = 4
 endNoteKeys[0] = 53
@@ -25,11 +40,11 @@ beginningNoteKeys[0] = 79
 beginningNoteKeys[1] = 67
 beginningNoteKeys[2] = 55
 beginningNoteKeys[3] = 43
-keyChange = -10
+keyChange = 2
 magicNumber = -5
-greatestPrime = 5
-1 keyChangeStep = -5
-1 keyChangeStep = -5
+ATTENTION! 2
+greatestPrime = 2
+1 keyChangeStep = 2
 intermediateTempo = 30.4
 i = 0 j = 5
 endNoteKeys[0] = 53
@@ -39,6 +54,7 @@ endNoteKeys[3] = 65
 beginningNoteKeys[0] = 48
 keyChange = -5
 magicNumber = -5
+ATTENTION! 2
 greatestPrime = 5
 1 keyChangeStep = -5
 intermediateTempo = 30.4
@@ -48,11 +64,11 @@ endNoteKeys[1] = 60
 endNoteKeys[2] = 53
 endNoteKeys[3] = 65
 beginningNoteKeys[0] = 69
-keyChange = -8
+keyChange = 4
 magicNumber = -5
-greatestPrime = 5
-1 keyChangeStep = -5
-1 keyChangeStep = -3
+ATTENTION! 2
+greatestPrime = 3
+1 keyChangeStep = 4
 intermediateTempo = 30.4
 i = 1 j = 0
 endNoteKeys[0] = 66
@@ -64,9 +80,25 @@ beginningNoteKeys[0] = 41
 beginningNoteKeys[1] = 38
 keyChange = -1
 magicNumber = -6
+ATTENTION! 2
 greatestPrime = 2
 1 keyChangeStep = -1
 i = 1 j = 2
+endNoteKeys[0] = 66
+endNoteKeys[1] = 57
+endNoteKeys[2] = 61
+endNoteKeys[3] = 54
+endNoteKeys[4] = 42
+beginningNoteKeys[0] = 67
+beginningNoteKeys[1] = 62
+beginningNoteKeys[2] = 58
+beginningNoteKeys[3] = 55
+keyChange = 1
+magicNumber = -6
+ATTENTION! 2
+greatestPrime = 2
+1 keyChangeStep = 1
+intermediateTempo = 33.6
 i = 1 j = 3
 endNoteKeys[0] = 66
 endNoteKeys[1] = 57
@@ -83,11 +115,11 @@ beginningNoteKeys[6] = 49
 beginningNoteKeys[7] = 37
 beginningNoteKeys[8] = 81
 beginningNoteKeys[9] = 49
-keyChange = -9
+keyChange = 3
 magicNumber = -6
-greatestPrime = 5
-1 keyChangeStep = -6
-1 keyChangeStep = -3
+ATTENTION! 2
+greatestPrime = 3
+1 keyChangeStep = 3
 intermediateTempo = 33.6
 i = 1 j = 4
 endNoteKeys[0] = 66
@@ -99,11 +131,11 @@ beginningNoteKeys[0] = 79
 beginningNoteKeys[1] = 67
 beginningNoteKeys[2] = 55
 beginningNoteKeys[3] = 43
-keyChange = -11
+keyChange = 1
 magicNumber = -6
-greatestPrime = 5
-1 keyChangeStep = -6
-1 keyChangeStep = -5
+ATTENTION! 2
+greatestPrime = 2
+1 keyChangeStep = 1
 intermediateTempo = 33.6
 i = 1 j = 5
 endNoteKeys[0] = 66
@@ -114,6 +146,7 @@ endNoteKeys[4] = 42
 beginningNoteKeys[0] = 48
 keyChange = -6
 magicNumber = -6
+ATTENTION! 2
 greatestPrime = 5
 1 keyChangeStep = -6
 intermediateTempo = 33.6
@@ -124,18 +157,89 @@ endNoteKeys[2] = 61
 endNoteKeys[3] = 54
 endNoteKeys[4] = 42
 beginningNoteKeys[0] = 69
-keyChange = -9
+keyChange = 3
 magicNumber = -6
-greatestPrime = 5
-1 keyChangeStep = -6
-1 keyChangeStep = -3
+ATTENTION! 2
+greatestPrime = 3
+1 keyChangeStep = 3
 intermediateTempo = 33.6
 i = 2 j = 0
+endNoteKeys[0] = 67
+endNoteKeys[1] = 67
+endNoteKeys[2] = 59
+endNoteKeys[3] = 62
+endNoteKeys[4] = 43
+beginningNoteKeys[0] = 41
+beginningNoteKeys[1] = 38
+keyChange = -2
+magicNumber = 0
+ATTENTION! 2
+greatestPrime = 2
+0 keyChangeStep = -2
 i = 2 j = 1
+endNoteKeys[0] = 67
+endNoteKeys[1] = 67
+endNoteKeys[2] = 59
+endNoteKeys[3] = 62
+endNoteKeys[4] = 43
+beginningNoteKeys[0] = 54
+beginningNoteKeys[1] = 50
+beginningNoteKeys[2] = 47
+beginningNoteKeys[3] = 35
+keyChange = -1
+magicNumber = 0
+ATTENTION! 2
+greatestPrime = 2
+0 keyChangeStep = -1
 i = 2 j = 3
+endNoteKeys[0] = 67
+endNoteKeys[1] = 67
+endNoteKeys[2] = 59
+endNoteKeys[3] = 62
+endNoteKeys[4] = 43
+beginningNoteKeys[0] = 65
+beginningNoteKeys[1] = 77
+beginningNoteKeys[2] = 61
+beginningNoteKeys[3] = 56
+beginningNoteKeys[4] = 65
+beginningNoteKeys[5] = 61
+beginningNoteKeys[6] = 49
+beginningNoteKeys[7] = 37
+beginningNoteKeys[8] = 81
+beginningNoteKeys[9] = 49
+keyChange = 2
+magicNumber = 0
+ATTENTION! 2
+greatestPrime = 2
+0 keyChangeStep = 2
 i = 2 j = 4
+endNoteKeys[0] = 67
+endNoteKeys[1] = 67
+endNoteKeys[2] = 59
+endNoteKeys[3] = 62
+endNoteKeys[4] = 43
+beginningNoteKeys[0] = 79
+beginningNoteKeys[1] = 67
+beginningNoteKeys[2] = 55
+beginningNoteKeys[3] = 43
+keyChange = 0
+magicNumber = 0
+ATTENTION! 2
+greatestPrime = 2
 i = 2 j = 5
 i = 2 j = 6
+endNoteKeys[0] = 67
+endNoteKeys[1] = 67
+endNoteKeys[2] = 59
+endNoteKeys[3] = 62
+endNoteKeys[4] = 43
+beginningNoteKeys[0] = 69
+keyChange = 2
+magicNumber = 0
+ATTENTION! 2
+greatestPrime = 2
+0 keyChangeStep = 2
+intermediateTempo = 83.9999
 i = 3 j = 0
 endNoteKeys[0] = 73
 endNoteKeys[1] = 65
@@ -146,6 +250,7 @@ beginningNoteKeys[0] = 41
 beginningNoteKeys[1] = 38
 keyChange = -8
 magicNumber = -2
+ATTENTION! 2
 greatestPrime = 5
 1 keyChangeStep = -2
 1 keyChangeStep = -2
@@ -163,12 +268,30 @@ beginningNoteKeys[2] = 47
 beginningNoteKeys[3] = 35
 keyChange = -7
 magicNumber = -2
+ATTENTION! 2
 greatestPrime = 5
 1 keyChangeStep = -2
 1 keyChangeStep = -2
 1 keyChangeStep = -2
 1 keyChangeStep = -1
 i = 3 j = 2
+endNoteKeys[0] = 73
+endNoteKeys[1] = 65
+endNoteKeys[2] = 49
+endNoteKeys[3] = 37
+endNoteKeys[4] = 85
+beginningNoteKeys[0] = 67
+beginningNoteKeys[1] = 62
+beginningNoteKeys[2] = 58
+beginningNoteKeys[3] = 55
+keyChange = -6
+magicNumber = -2
+ATTENTION! 2
+greatestPrime = 5
+1 keyChangeStep = -2
+1 keyChangeStep = -2
+1 keyChangeStep = -2
+intermediateTempo = 40
 i = 3 j = 4
 endNoteKeys[0] = 73
 endNoteKeys[1] = 65
@@ -181,6 +304,7 @@ beginningNoteKeys[2] = 55
 beginningNoteKeys[3] = 43
 keyChange = -6
 magicNumber = -2
+ATTENTION! 2
 greatestPrime = 5
 1 keyChangeStep = -2
 1 keyChangeStep = -2
@@ -195,6 +319,7 @@ endNoteKeys[4] = 85
 beginningNoteKeys[0] = 48
 keyChange = -1
 magicNumber = -2
+ATTENTION! 2
 greatestPrime = 2
 1 keyChangeStep = -1
 intermediateTempo = 40
@@ -207,6 +332,7 @@ endNoteKeys[4] = 85
 beginningNoteKeys[0] = 69
 keyChange = -4
 magicNumber = -2
+ATTENTION! 2
 greatestPrime = 3
 1 keyChangeStep = -2
 1 keyChangeStep = -2
@@ -223,6 +349,7 @@ beginningNoteKeys[2] = 47
 beginningNoteKeys[3] = 35
 keyChange = -1
 magicNumber = 0
+ATTENTION! 2
 greatestPrime = 2
 0 keyChangeStep = -1
 i = 4 j = 2
@@ -236,6 +363,7 @@ beginningNoteKeys[2] = 58
 beginningNoteKeys[3] = 55
 keyChange = 0
 magicNumber = 0
+ATTENTION! 2
 greatestPrime = 2
 i = 4 j = 3
 endNoteKeys[0] = 67
@@ -252,11 +380,11 @@ beginningNoteKeys[6] = 49
 beginningNoteKeys[7] = 37
 beginningNoteKeys[8] = 81
 beginningNoteKeys[9] = 49
-keyChange = -10
+keyChange = 2
 magicNumber = 0
-greatestPrime = 5
-0 keyChangeStep = -5
-0 keyChangeStep = -5
+ATTENTION! 2
+greatestPrime = 2
+0 keyChangeStep = 2
 i = 4 j = 5
 endNoteKeys[0] = 67
 endNoteKeys[1] = 55
@@ -265,6 +393,7 @@ endNoteKeys[3] = 43
 beginningNoteKeys[0] = 48
 keyChange = -7
 magicNumber = 0
+ATTENTION! 2
 greatestPrime = 5
 0 keyChangeStep = -5
 0 keyChangeStep = -2
@@ -275,11 +404,11 @@ endNoteKeys[1] = 55
 endNoteKeys[2] = 55
 endNoteKeys[3] = 43
 beginningNoteKeys[0] = 69
-keyChange = -10
+keyChange = 2
 magicNumber = 0
-greatestPrime = 5
-0 keyChangeStep = -5
-0 keyChangeStep = -5
+ATTENTION! 2
+greatestPrime = 2
+0 keyChangeStep = 2
 intermediateTempo = 83.9999
 i = 5 j = 0
 endNoteKeys[0] = 64
@@ -287,6 +416,7 @@ beginningNoteKeys[0] = 41
 beginningNoteKeys[1] = 38
 keyChange = -11
 magicNumber = 0
+ATTENTION! 2
 greatestPrime = 5
 0 keyChangeStep = -5
 0 keyChangeStep = -5
@@ -299,6 +429,7 @@ beginningNoteKeys[2] = 47
 beginningNoteKeys[3] = 35
 keyChange = -10
 magicNumber = 0
+ATTENTION! 2
 greatestPrime = 5
 0 keyChangeStep = -5
 0 keyChangeStep = -5
@@ -308,11 +439,11 @@ beginningNoteKeys[0] = 67
 beginningNoteKeys[1] = 62
 beginningNoteKeys[2] = 58
 beginningNoteKeys[3] = 55
-keyChange = -9
+keyChange = 3
 magicNumber = 0
-greatestPrime = 5
-0 keyChangeStep = -5
-0 keyChangeStep = -4
+ATTENTION! 2
+greatestPrime = 3
+0 keyChangeStep = 3
 i = 5 j = 3
 endNoteKeys[0] = 64
 beginningNoteKeys[0] = 65
@@ -325,30 +456,30 @@ beginningNoteKeys[6] = 49
 beginningNoteKeys[7] = 37
 beginningNoteKeys[8] = 81
 beginningNoteKeys[9] = 49
-keyChange = -7
+keyChange = 5
 magicNumber = 0
+ATTENTION! 2
 greatestPrime = 5
-0 keyChangeStep = -5
-0 keyChangeStep = -2
+0 keyChangeStep = 5
 i = 5 j = 4
 endNoteKeys[0] = 64
 beginningNoteKeys[0] = 79
 beginningNoteKeys[1] = 67
 beginningNoteKeys[2] = 55
 beginningNoteKeys[3] = 43
-keyChange = -9
+keyChange = 3
 magicNumber = 0
-greatestPrime = 5
-0 keyChangeStep = -5
-0 keyChangeStep = -4
+ATTENTION! 2
+greatestPrime = 3
+0 keyChangeStep = 3
 i = 5 j = 6
 endNoteKeys[0] = 64
 beginningNoteKeys[0] = 69
-keyChange = -7
+keyChange = 5
 magicNumber = 0
+ATTENTION! 2
 greatestPrime = 5
-0 keyChangeStep = -5
-0 keyChangeStep = -2
+0 keyChangeStep = 5
 intermediateTempo = 96
 i = 6 j = 0
 endNoteKeys[0] = 74
@@ -358,6 +489,7 @@ beginningNoteKeys[0] = 41
 beginningNoteKeys[1] = 38
 keyChange = -9
 magicNumber = -7
+ATTENTION! 2
 greatestPrime = 5
 1 keyChangeStep = -7
 1 keyChangeStep = -2
@@ -371,6 +503,7 @@ beginningNoteKeys[2] = 47
 beginningNoteKeys[3] = 35
 keyChange = -8
 magicNumber = -7
+ATTENTION! 2
 greatestPrime = 5
 1 keyChangeStep = -7
 1 keyChangeStep = -1
@@ -389,10 +522,11 @@ beginningNoteKeys[6] = 49
 beginningNoteKeys[7] = 37
 beginningNoteKeys[8] = 81
 beginningNoteKeys[9] = 49
-keyChange = -5
+keyChange = 7
 magicNumber = -7
+ATTENTION! 2
 greatestPrime = 5
-1 keyChangeStep = -5
+1 keyChangeStep = 7
 i = 6 j = 4
 endNoteKeys[0] = 74
 endNoteKeys[1] = 50
@@ -401,10 +535,11 @@ beginningNoteKeys[0] = 79
 beginningNoteKeys[1] = 67
 beginningNoteKeys[2] = 55
 beginningNoteKeys[3] = 43
-keyChange = -7
+keyChange = 5
 magicNumber = -7
+ATTENTION! 2
 greatestPrime = 5
-1 keyChangeStep = -7
+1 keyChangeStep = 5
 i = 6 j = 5
 endNoteKeys[0] = 74
 endNoteKeys[1] = 50
@@ -412,5 +547,6 @@ endNoteKeys[2] = 62
 beginningNoteKeys[0] = 48
 keyChange = -2
 magicNumber = -7
+ATTENTION! 2
 greatestPrime = 2
 1 keyChangeStep = -2
