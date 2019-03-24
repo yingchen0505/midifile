@@ -98,7 +98,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	for(int begNote : begNotesOfFinalBarOfPrev) {
 		stepSet.push_back(begNote - startPoint);
 	}
-	/*
+	
 	int* array = &stepSet[0];
 	vector<vector<int>> solutions = countSolutions(array, stepSet.size(), keyChange);
 	if(!solutions.empty()) {
@@ -110,8 +110,8 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 				magicSet = solution;
 			}
 		}
-	}*/
-	
+	}
+	/*
 	vector<int> sanity{1, 2, 3};
 	int* array = &sanity[0];
 	vector<vector<int>> solutions = countSolutions(array, sanity.size(), 8);
@@ -122,7 +122,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 			}
 		}
 	}
-
+*/
 
 	/*
 	bool solutionFound = false;
@@ -590,9 +590,7 @@ vector<vector<int>> Bridge::countSolutions( int S[], int m, int n )
 	// and the coin does not add up to sum
 	// then no solution exist
 	if (m == 1) {
-		cout << "m = " << m << "\n";
 		vector<vector<int>> result;
-
 		if(S[0] == n) {
 			vector<int> coin{S[0]};
 			result.push_back(coin);
@@ -600,16 +598,9 @@ vector<vector<int>> Bridge::countSolutions( int S[], int m, int n )
         return result;
 	}
 	
-	cout << "m = " << m << "\n";
-	cout << "n = " << n << "\n";
-
     // count is sum of solutions (i)  
-    // including S[m-1] (ii) excluding S[m-1] 
-	
+    // including S[m-1] (ii) excluding S[m-1] (iii) including S[m-1] twice
 	vector<vector<int>> excludeLast = countSolutions( S, m - 1, n );
-
-	
-	cout << "excludeLast finished \n";
 	vector<vector<int>> result;
 
 	if(!excludeLast.empty()) {
@@ -622,8 +613,6 @@ vector<vector<int>> Bridge::countSolutions( int S[], int m, int n )
 	// If S[m-1] is zero or has different sign from n,
 	// don't even think about including it
 	if(S[m-1] * n <=0 ) {
-			//return vector<vector<int>>();
-	
 		return result;
 	}
 	
@@ -636,16 +625,10 @@ vector<vector<int>> Bridge::countSolutions( int S[], int m, int n )
 	}
 	
 	vector<vector<int>> includeLast = countSolutions( S, m-1, n-S[m-1] );
-//			return vector<vector<int>>();
-
-	cout << "includeLast finished \n";
 
 	if(!includeLast.empty()) {
-		cout << "include last not empty \n";
-
 		for(vector<int> solution : includeLast) {
 			solution.push_back(S[m-1]);
-			cout << "added " << S[m-1] << " \n";
 			result.push_back(solution);
 		}
 	}
@@ -660,17 +643,12 @@ vector<vector<int>> Bridge::countSolutions( int S[], int m, int n )
 	}
 	
 	vector<vector<int>> includeLastTwice = countSolutions( S, m-1, n-S[m-1] * 2 );
-//			return vector<vector<int>>();
-
-	cout << "includeLastTwice finished \n";
 
 	if(!includeLastTwice.empty()) {
-		cout << "include last twice not empty \n";
-
+		
 		for(vector<int> solution : includeLastTwice) {
 			solution.push_back(S[m-1]);
 			solution.push_back(S[m-1]);
-			cout << "added " << S[m-1] << " twice \n";
 			result.push_back(solution);
 		}
 	}
