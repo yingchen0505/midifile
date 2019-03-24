@@ -159,26 +159,41 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	}
 	std::cout << "greatestPrime = " << greatestPrime << "\n";
 	
-	while (keyChange != 0) {
-//		int keyChangeStep = keyChange > 0 ? min(greatestPrime, keyChange) : max((-1)*greatestPrime, keyChange);
-		int keyChangeStep;
-		if(magicNumber != 0) {
-			keyChangeStep = keyChange > 0 ? min(abs(magicNumber), keyChange) : max((-1)*abs(magicNumber), keyChange);
+	if(!magicSet.empty()) {
+		int remainingKeyChange = keyChange;
+		for(int magic : magicSet) {
+			currentKeyChange += magic;
+			remainingKeyChange -= magic;
+			if(remainingKeyChange == 0) {
+				keyChangeCatList.push_back(transpose(prevMidi, currentKeyChange));
+			}
+			else {
+				keyChangeCatList.push_back(transpose(keyChangeBar, currentKeyChange));
+			}
 		}
-		else {
-			keyChangeStep = keyChange > 0 ? min(greatestPrime, keyChange) : max((-1)*greatestPrime, keyChange);
-		}
-		
-		std::cout << (magicNumber != 0) << " keyChangeStep = " << keyChangeStep << "\n";
+	}
+	else {
+		while (keyChange != 0) {
+	//		int keyChangeStep = keyChange > 0 ? min(greatestPrime, keyChange) : max((-1)*greatestPrime, keyChange);
+			int keyChangeStep;
+			if(magicNumber != 0) {
+				keyChangeStep = keyChange > 0 ? min(abs(magicNumber), keyChange) : max((-1)*abs(magicNumber), keyChange);
+			}
+			else {
+				keyChangeStep = keyChange > 0 ? min(greatestPrime, keyChange) : max((-1)*greatestPrime, keyChange);
+			}
+			
+			std::cout << (magicNumber != 0) << " keyChangeStep = " << keyChangeStep << "\n";
 
-		currentKeyChange += keyChangeStep;
-		keyChange -= keyChangeStep;
-		// Need to include the final bar if we are at the end
-		if(keyChange == 0) {
-			keyChangeCatList.push_back(transpose(prevMidi, currentKeyChange));
-		}
-		else {
-			keyChangeCatList.push_back(transpose(keyChangeBar, currentKeyChange));
+			currentKeyChange += keyChangeStep;
+			keyChange -= keyChangeStep;
+			// Need to include the final bar if we are at the end
+			if(keyChange == 0) {
+				keyChangeCatList.push_back(transpose(prevMidi, currentKeyChange));
+			}
+			else {
+				keyChangeCatList.push_back(transpose(keyChangeBar, currentKeyChange));
+			}
 		}
 	}
 	
