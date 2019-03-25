@@ -98,7 +98,15 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	//int startPoint = *max_element(begin(begNotesOfKeyChangeBar), end(begNotesOfKeyChangeBar));
 	for(int startPoint : begNotesOfKeyChangeBar) {
 		for(int begNote : begNotesOfFinalBarOfPrev) {
-			stepSet.push_back(begNote - startPoint);
+			int step = begNote - startPoint;
+			//if(step < 7 &&  step > -7) {
+			//if(step && step < 1) {
+				stepSet.push_back( step < 7 &&  step > -7 ? step : 0);
+			//}
+			//if(step > 7) {
+				//stepSet.pop_back();
+			//}
+
 		}
 	}
 	
