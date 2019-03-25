@@ -30,12 +30,13 @@ namespace music_segment {
 			MusicSegment& operator=(const MusicSegment &rhs) = default;
 			
 			// Returns a midifile that repeats for the closest possible value to given time
-			MidiFile repeat(double timeInSeconds, int beginningBarErosion, int endBarErosion);
+			MidiFile repeat(double timeInSeconds, int beginningBarErosion, int endBarErosion, int transposition);
 			
 			// Returns true if main loop is null
 			bool isInvalid();
 
 		private:
+			MidiFile transpose(MidiFile inputFile, int keyChange);
 	};
 }
 

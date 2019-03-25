@@ -26,7 +26,7 @@ bool MusicSegment::isInvalid() {
 	return !mainLoop;
 }
 
-MidiFile MusicSegment::repeat(double timeInSeconds, int beginningBarErosion, int endBarErosion) {
+MidiFile MusicSegment::repeat(double timeInSeconds, int beginningBarErosion, int endBarErosion, int transposition) {
 	if(!mainLoop) return MidiFile(); // No mainLoop to repeat, something went wrong.
 	
 	double durationOfPrepAndEnd = 0.0; 
@@ -114,6 +114,24 @@ MidiFile MusicSegment::repeat(double timeInSeconds, int beginningBarErosion, int
 			beginningBarErosion = beginningBarErosion - totalBars;
 		}
 	}
+	MidiFile concatResult = midiCat.run(concatList, 0.0);
+	if (transposition != 0) {
+		concatResult = transpose(concatResult, transposition);
+	}
+	return concatResult;
+}
+
+MidiFile MusicSegment::transpose(MidiFile inputFile, int keyChange) {
+	inputFile.joinTracks();
+	int eventCount = inputFile.getEventCount(0);
 	
-	return midiCat.run(concatList, 0.0);
+	for(int i=0; i<eventCount; i++) {
+		if(inputFile.getEvent(0, i).isNoteOn() || inputFile.getEvent(0, i).isNoteOff()){
+			int originalKey = inputFile.getEvent(0, i).getKeyNumber();
+			int newKey = originalKey + keyChange;
+			inputFile.getEvent(0, i).setKeyNumber(newKey);
+		}
+	}
+	
+	return inputFile;
 }

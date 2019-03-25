@@ -32,6 +32,8 @@ namespace bridge {
 			MidiFile bridgeMidi;
 			string prevSegmentID;
 			string nextSegmentID;
+			int prevTransposition;
+			int nextTransposition;
 			
 			bool isInvalid();
 		

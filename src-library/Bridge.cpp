@@ -119,12 +119,25 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	
 	int* array = &stepSet[0];
 	vector<vector<int>> solutions = countSolutions(array, stepSet.size(), keyChange);
+	int nextTransposition = 0;
+	bool nextTranspositionFailed = false;
+	while(solutions.empty()) {
+		// explore in the sequence of -1, 1, -2, 2, -3, 3...
+		nextTransposition = nextTransposition >= 0 ? (nextTransposition + 1) * (-1) : nextTransposition * (-1);
+		solutions = countSolutions(array, stepSet.size(), keyChange + nextTransposition);
+		cout << "nextTransposition = " << nextTransposition << "\n";
+		if(abs(nextTransposition) > 10) {
+			nextTranspositionFailed = true;
+			break;
+		}
+	}
+	cout << "nextTranspositionFailed = " << nextTranspositionFailed << "\n";
+	keyChange += !nextTranspositionFailed ? nextTransposition : 0;
 	if(!solutions.empty()) {
 		int shortestSolutionLength = INT8_MAX;
 		for(vector<int> solution : solutions) {
 			if(solution.size() < shortestSolutionLength) {
 				shortestSolutionLength = solution.size();
-				//magicSet.clear();
 				magicSet = solution;
 			}
 		}
@@ -142,6 +155,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	}
 */
 
+	
 	for (int magic : magicSet) {
 		cout << "MAGIC SET HERE! " << magic << "\n";
 	}
@@ -181,6 +195,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 		}
 	}
 	else {
+		cout << "MAGIC FAILED! CRAIS \n";
 		while (keyChange != 0) {
 	//		int keyChangeStep = keyChange > 0 ? min(greatestPrime, keyChange) : max((-1)*greatestPrime, keyChange);
 			int keyChangeStep;
@@ -218,11 +233,15 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 		prevMidiAfterKeyChange = tempoDilation(prevMidiAfterKeyChange, nextTempo);
 	}
 	catList.push_back(prevMidiAfterKeyChange);
+	if(!nextTranspositionFailed && nextTransposition != 0) {
+		nextMidi = transpose(nextMidi, nextTransposition);
+	}
 	catList.push_back(nextMidi);
 	newMidi = midiCat.run(catList, 0.0);
 	
 	this->bridgeMidi = newMidi;
 	this->valid = true;
+	this->nextTransposition = !nextTranspositionFailed ? nextTransposition : 0;
 }
 
 Bridge::Bridge(string ID, MidiFile bridgeMidi, int barErosionIntoPrevSeg, int barErosionIntoNextSeg) {
