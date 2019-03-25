@@ -95,20 +95,21 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	///----------------------------------------------------------------------------
 	vector<int> magicSet;
 	vector<int> stepSet;
-	//int startPoint = *max_element(begin(begNotesOfKeyChangeBar), end(begNotesOfKeyChangeBar));
-	for(int startPoint : begNotesOfKeyChangeBar) {
+	int startPoint = *max_element(begin(begNotesOfKeyChangeBar), end(begNotesOfKeyChangeBar));
+	//for(int startPoint : begNotesOfKeyChangeBar) {
 		for(int begNote : begNotesOfFinalBarOfPrev) {
 			int step = begNote - startPoint;
 			//if(step < 7 &&  step > -7) {
 			//if(step && step < 1) {
-				stepSet.push_back( step < 7 &&  step > -7 ? step : 0);
+			stepSet.push_back( abs(step) < 12 ? step : 0);
+			//stepSet.push_back(step);
 			//}
 			//if(step > 7) {
 				//stepSet.pop_back();
 			//}
 
 		}
-	}
+	//}
 	
 	sort( stepSet.begin(), stepSet.end() );
 	stepSet.erase( unique( stepSet.begin(), stepSet.end() ), stepSet.end() );
