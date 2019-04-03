@@ -96,21 +96,12 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	vector<int> magicSet;
 	vector<int> stepSet;
 	int startPoint = *max_element(begin(begNotesOfKeyChangeBar), end(begNotesOfKeyChangeBar));
-	//for(int startPoint : begNotesOfKeyChangeBar) {
-		for(int begNote : begNotesOfFinalBarOfPrev) {
-			int step = begNote - startPoint;
-			//if(step < 7 &&  step > -7) {
-			//if(step && step < 1) {
-			stepSet.push_back( abs(step) < 12 ? step : 0);
-			//stepSet.push_back(step);
-			//}
-			//if(step > 7) {
-				//stepSet.pop_back();
-			//}
-
-		}
-	//}
+	for(int begNote : begNotesOfFinalBarOfPrev) {
+		int step = begNote - startPoint;
+		stepSet.push_back( abs(step) < 12 ? step : 0);
+	}
 	
+	///// Remove duplicates
 	sort( stepSet.begin(), stepSet.end() );
 	stepSet.erase( unique( stepSet.begin(), stepSet.end() ), stepSet.end() );
 
@@ -122,12 +113,12 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	vector<vector<int>> solutions = countSolutions(array, stepSet.size(), keyChange);
 	int nextTransposition = 0;
 	bool nextTranspositionFailed = false;
-	while(solutions.empty()) {
+	while(solutions.empty() && nextTransposition != -keyChange) {
 		// explore in the sequence of -1, 1, -2, 2, -3, 3...
 		nextTransposition = nextTransposition >= 0 ? (nextTransposition + 1) * (-1) : nextTransposition * (-1);
 		solutions = countSolutions(array, stepSet.size(), keyChange + nextTransposition);
 		cout << "nextTransposition = " << nextTransposition << "\n";
-		if(abs(nextTransposition) > 10) {
+		if(abs(nextTransposition) > 11) {
 			nextTranspositionFailed = true;
 			break;
 		}
@@ -170,10 +161,6 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	
 	int currentKeyChange = 0;
 	int greatestPrime = 2;
-	/*
-	if(abs(keyChange) >= 7) {
-		greatestPrime = 7;
-	}*/
 	if (abs(keyChange) >= 5) {
 		greatestPrime = 5;
 	}
@@ -194,6 +181,10 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 				keyChangeCatList.push_back(transpose(keyChangeBar, currentKeyChange));
 			}
 		}
+	}
+	else if(!nextTranspositionFailed) {
+		cout << "MAGIC FAILED BUT WE GOT TRANSPOSE! \n";
+		keyChangeCatList.push_back(finalBarOfPrev);
 	}
 	else {
 		cout << "MAGIC FAILED! CRAIS \n";

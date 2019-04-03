@@ -19,20 +19,10 @@ step = 0
 nextTransposition = -1
 nextTransposition = 1
 nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
-nextTransposition = -7
 nextTranspositionFailed = 0
-MAGIC SET HERE! -5
 magicNumber = -5
-greatestPrime = 5
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 intermediateTempo = 30.4
 i = 0 j = 3
 i = 0 j = 4
@@ -43,20 +33,10 @@ step = 0
 nextTransposition = -1
 nextTransposition = 1
 nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
-nextTransposition = -7
 nextTranspositionFailed = 0
-MAGIC SET HERE! -5
 magicNumber = -5
-greatestPrime = 5
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 intermediateTempo = 30.4
 i = 0 j = 5
 keyChange = -5
@@ -80,20 +60,10 @@ nextTransposition = 2
 nextTransposition = -3
 nextTransposition = 3
 nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
-nextTransposition = -7
-nextTransposition = 7
-nextTransposition = -8
-nextTransposition = 8
-nextTransposition = -9
 nextTranspositionFailed = 0
-MAGIC SET HERE! -5
 magicNumber = -5
-greatestPrime = 5
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 intermediateTempo = 30.4
 i = 1 j = 0
 keyChange = -1
@@ -102,39 +72,20 @@ step = -6
 step = 0
 nextTransposition = -1
 nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
 nextTranspositionFailed = 0
-MAGIC SET HERE! -6
 magicNumber = -6
-greatestPrime = 5
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 i = 1 j = 2
 keyChange = 1
 step = -10
 step = -6
 step = 0
 nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
-nextTransposition = -7
 nextTranspositionFailed = 0
-MAGIC SET HERE! -6
 magicNumber = -6
-greatestPrime = 5
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 intermediateTempo = 33.6
 i = 1 j = 3
 keyChange = 3
@@ -146,22 +97,10 @@ nextTransposition = 1
 nextTransposition = -2
 nextTransposition = 2
 nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
-nextTransposition = -7
-nextTransposition = 7
-nextTransposition = -8
-nextTransposition = 8
-nextTransposition = -9
 nextTranspositionFailed = 0
-MAGIC SET HERE! -6
 magicNumber = -6
-greatestPrime = 5
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 intermediateTempo = 33.6
 i = 1 j = 4
 keyChange = 1
@@ -169,22 +108,10 @@ step = -10
 step = -6
 step = 0
 nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
-nextTransposition = -7
 nextTranspositionFailed = 0
-MAGIC SET HERE! -6
 magicNumber = -6
-greatestPrime = 5
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 intermediateTempo = 33.6
 i = 1 j = 5
 keyChange = -6
@@ -206,22 +133,10 @@ nextTransposition = 1
 nextTransposition = -2
 nextTransposition = 2
 nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
-nextTransposition = -7
-nextTransposition = 7
-nextTransposition = -8
-nextTransposition = 8
-nextTransposition = -9
 nextTranspositionFailed = 0
-MAGIC SET HERE! -6
 magicNumber = -6
-greatestPrime = 5
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 intermediateTempo = 33.6
 i = 2 j = 0
 keyChange = -2
@@ -232,11 +147,10 @@ nextTransposition = -1
 nextTransposition = 1
 nextTransposition = -2
 nextTransposition = 2
-nextTransposition = -3
 nextTranspositionFailed = 0
-MAGIC SET HERE! -5
 magicNumber = 0
-greatestPrime = 5
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 i = 2 j = 1
 keyChange = -1
 step = -8
@@ -244,15 +158,10 @@ step = -5
 step = 0
 nextTransposition = -1
 nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
 nextTranspositionFailed = 0
-MAGIC SET HERE! -5
 magicNumber = 0
-greatestPrime = 5
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 i = 2 j = 3
 keyChange = 2
 step = -8
@@ -261,38 +170,19 @@ step = 0
 nextTransposition = -1
 nextTransposition = 1
 nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
-nextTransposition = -7
 nextTranspositionFailed = 0
-MAGIC SET HERE! -5
 magicNumber = 0
-greatestPrime = 5
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 i = 2 j = 4
 keyChange = 0
 step = -8
 step = -5
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
 nextTranspositionFailed = 0
-MAGIC SET HERE! -5
 magicNumber = 0
-greatestPrime = 5
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 i = 2 j = 5
 i = 2 j = 6
 keyChange = 2
@@ -302,20 +192,10 @@ step = 0
 nextTransposition = -1
 nextTransposition = 1
 nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
-nextTransposition = -7
 nextTranspositionFailed = 0
-MAGIC SET HERE! -5
 magicNumber = 0
-greatestPrime = 5
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 intermediateTempo = 83.9999
 i = 3 j = 0
 keyChange = -8
@@ -418,87 +298,27 @@ keyChange = -1
 step = 0
 nextTransposition = -1
 nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
-nextTransposition = -7
-nextTransposition = 7
-nextTransposition = -8
-nextTransposition = 8
-nextTransposition = -9
-nextTransposition = 9
-nextTransposition = -10
-nextTransposition = 10
-nextTransposition = -11
-nextTranspositionFailed = 1
+nextTranspositionFailed = 0
 magicNumber = 0
 greatestPrime = 2
-MAGIC FAILED! CRAIS 
-0 keyChangeStep = -1
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 i = 4 j = 2
 keyChange = 0
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
-nextTransposition = -7
-nextTransposition = 7
-nextTransposition = -8
-nextTransposition = 8
-nextTransposition = -9
-nextTransposition = 9
-nextTransposition = -10
-nextTransposition = 10
-nextTransposition = -11
-nextTranspositionFailed = 1
+nextTranspositionFailed = 0
 magicNumber = 0
 greatestPrime = 2
-MAGIC FAILED! CRAIS 
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 i = 4 j = 3
 keyChange = 2
 step = 0
 nextTransposition = -1
 nextTransposition = 1
 nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
-nextTransposition = -7
-nextTransposition = 7
-nextTransposition = -8
-nextTransposition = 8
-nextTransposition = -9
-nextTransposition = 9
-nextTransposition = -10
-nextTransposition = 10
-nextTransposition = -11
-nextTranspositionFailed = 1
+nextTranspositionFailed = 0
 magicNumber = 0
 greatestPrime = 2
-MAGIC FAILED! CRAIS 
-0 keyChangeStep = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 i = 4 j = 5
 keyChange = -7
 step = 0
@@ -516,19 +336,10 @@ nextTransposition = -6
 nextTransposition = 6
 nextTransposition = -7
 nextTransposition = 7
-nextTransposition = -8
-nextTransposition = 8
-nextTransposition = -9
-nextTransposition = 9
-nextTransposition = -10
-nextTransposition = 10
-nextTransposition = -11
-nextTranspositionFailed = 1
+nextTranspositionFailed = 0
 magicNumber = 0
-greatestPrime = 5
-MAGIC FAILED! CRAIS 
-0 keyChangeStep = -5
-0 keyChangeStep = -2
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 intermediateTempo = 83.9999
 i = 4 j = 6
 keyChange = 2
@@ -536,29 +347,10 @@ step = 0
 nextTransposition = -1
 nextTransposition = 1
 nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
-nextTransposition = -7
-nextTransposition = 7
-nextTransposition = -8
-nextTransposition = 8
-nextTransposition = -9
-nextTransposition = 9
-nextTransposition = -10
-nextTransposition = 10
-nextTransposition = -11
-nextTranspositionFailed = 1
+nextTranspositionFailed = 0
 magicNumber = 0
 greatestPrime = 2
-MAGIC FAILED! CRAIS 
-0 keyChangeStep = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 intermediateTempo = 83.9999
 i = 5 j = 0
 keyChange = -11
@@ -584,13 +376,11 @@ nextTransposition = 9
 nextTransposition = -10
 nextTransposition = 10
 nextTransposition = -11
-nextTranspositionFailed = 1
+nextTransposition = 11
+nextTranspositionFailed = 0
 magicNumber = 0
-greatestPrime = 5
-MAGIC FAILED! CRAIS 
-0 keyChangeStep = -5
-0 keyChangeStep = -5
-0 keyChangeStep = -1
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 i = 5 j = 1
 keyChange = -10
 step = 0
@@ -614,13 +404,10 @@ nextTransposition = -9
 nextTransposition = 9
 nextTransposition = -10
 nextTransposition = 10
-nextTransposition = -11
-nextTranspositionFailed = 1
+nextTranspositionFailed = 0
 magicNumber = 0
-greatestPrime = 5
-MAGIC FAILED! CRAIS 
-0 keyChangeStep = -5
-0 keyChangeStep = -5
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 i = 5 j = 2
 keyChange = 3
 step = 0
@@ -629,27 +416,10 @@ nextTransposition = 1
 nextTransposition = -2
 nextTransposition = 2
 nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
-nextTransposition = -7
-nextTransposition = 7
-nextTransposition = -8
-nextTransposition = 8
-nextTransposition = -9
-nextTransposition = 9
-nextTransposition = -10
-nextTransposition = 10
-nextTransposition = -11
-nextTranspositionFailed = 1
+nextTranspositionFailed = 0
 magicNumber = 0
-greatestPrime = 3
-MAGIC FAILED! CRAIS 
-0 keyChangeStep = 3
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 i = 5 j = 3
 keyChange = 5
 step = 0
@@ -662,23 +432,10 @@ nextTransposition = 3
 nextTransposition = -4
 nextTransposition = 4
 nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
-nextTransposition = -7
-nextTransposition = 7
-nextTransposition = -8
-nextTransposition = 8
-nextTransposition = -9
-nextTransposition = 9
-nextTransposition = -10
-nextTransposition = 10
-nextTransposition = -11
-nextTranspositionFailed = 1
+nextTranspositionFailed = 0
 magicNumber = 0
-greatestPrime = 5
-MAGIC FAILED! CRAIS 
-0 keyChangeStep = 5
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 i = 5 j = 4
 keyChange = 3
 step = 0
@@ -687,27 +444,10 @@ nextTransposition = 1
 nextTransposition = -2
 nextTransposition = 2
 nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
-nextTransposition = -7
-nextTransposition = 7
-nextTransposition = -8
-nextTransposition = 8
-nextTransposition = -9
-nextTransposition = 9
-nextTransposition = -10
-nextTransposition = 10
-nextTransposition = -11
-nextTranspositionFailed = 1
+nextTranspositionFailed = 0
 magicNumber = 0
-greatestPrime = 3
-MAGIC FAILED! CRAIS 
-0 keyChangeStep = 3
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 i = 5 j = 6
 keyChange = 5
 step = 0
@@ -720,23 +460,10 @@ nextTransposition = 3
 nextTransposition = -4
 nextTransposition = 4
 nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
-nextTransposition = -7
-nextTransposition = 7
-nextTransposition = -8
-nextTransposition = 8
-nextTransposition = -9
-nextTransposition = 9
-nextTransposition = -10
-nextTransposition = 10
-nextTransposition = -11
-nextTranspositionFailed = 1
+nextTranspositionFailed = 0
 magicNumber = 0
-greatestPrime = 5
-MAGIC FAILED! CRAIS 
-0 keyChangeStep = 5
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 intermediateTempo = 96
 i = 6 j = 0
 keyChange = -9
@@ -778,19 +505,10 @@ nextTransposition = 5
 nextTransposition = -6
 nextTransposition = 6
 nextTransposition = -7
-nextTransposition = 7
-nextTransposition = -8
-nextTransposition = 8
-nextTransposition = -9
-nextTransposition = 9
-nextTransposition = -10
-nextTransposition = 10
-nextTransposition = -11
-nextTranspositionFailed = 1
+nextTranspositionFailed = 0
 magicNumber = -7
-greatestPrime = 5
-MAGIC FAILED! CRAIS 
-1 keyChangeStep = 7
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 i = 6 j = 4
 keyChange = 5
 step = -7
@@ -804,23 +522,10 @@ nextTransposition = 3
 nextTransposition = -4
 nextTransposition = 4
 nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
-nextTransposition = -7
-nextTransposition = 7
-nextTransposition = -8
-nextTransposition = 8
-nextTransposition = -9
-nextTransposition = 9
-nextTransposition = -10
-nextTransposition = 10
-nextTransposition = -11
-nextTranspositionFailed = 1
+nextTranspositionFailed = 0
 magicNumber = -7
-greatestPrime = 5
-MAGIC FAILED! CRAIS 
-1 keyChangeStep = 5
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
 i = 6 j = 5
 keyChange = -2
 step = -7
@@ -829,12 +534,7 @@ nextTransposition = -1
 nextTransposition = 1
 nextTransposition = -2
 nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
 nextTranspositionFailed = 0
-MAGIC SET HERE! -7
 magicNumber = -7
-greatestPrime = 5
+greatestPrime = 2
+MAGIC FAILED BUT WE GOT TRANSPOSE! 
