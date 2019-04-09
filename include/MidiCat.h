@@ -1,5 +1,9 @@
+#ifndef _MIDICAT_H_INCLUDED
+#define _MIDICAT_H_INCLUDED
+
 #include "MidiFile.h"
 #include <list>
+#include <iostream>
 
 using namespace std;
 using namespace smf;
@@ -24,3 +28,5 @@ namespace midicat {
 	};
 	
 }
+
+#endif /* _MIDICAT_H_INCLUDED */

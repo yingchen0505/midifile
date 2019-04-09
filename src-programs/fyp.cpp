@@ -4,6 +4,7 @@
 #include <vector>
 #include <cmath>
 #include <map>
+#include <string>
 #include <list>
 #include <unistd.h>
 #include "MidiExcerptByBar.h"
@@ -17,7 +18,7 @@ using namespace midi_excerpt_by_bar;
 using namespace smf;
 //using namespace music_segment;
 using namespace music_segment_manager;
-
+using std::string;
 
 // pause (in seconds) between concatenated midi files.
 // used with -p option
@@ -30,10 +31,16 @@ void checkOptions (Options& opts, int argc, char** argv);
 
 int main(int argc, char* argv[]) {
 	
-	//Options options;
-	//checkOptions(options, argc, argv);
+	Options options;
+	checkOptions(options, argc, argv);
+	
+	// Read and print text:
+	//MidiFile infile(options.getArg(1).c_str());
+	//cout << infile;
+
 	
 	MusicSegmentManager musicSegmentManager(INPUT_PATH);
+	musicSegmentManager.generateMusicFromEmotion();
 	
 	//// Debugger by event
 	/*
@@ -74,10 +81,18 @@ int main(int argc, char* argv[]) {
 	outfile.write(cout);*/
 
 	///// Midi Excerpt Tool
+	//MidiExcerptByBar midiExcerptByBar;
+	//midiExcerptByBar.run(startBar, endBar, options.getArg(1)).write(cout);
 	/*
-	MidiExcerptByBar midiExcerptByBar;
-	midiExcerptByBar.run(argc, argv);
-	*/
+	MidiFile infile(options.getArg(1));
+	
+	std::ofstream orig_inMidi; // without std::, reference would be ambiguous because of Boost
+	orig_inMidi.open("infile.mid");
+	infile.write(orig_inMidi);
+	orig_inMidi.close();
+	
+	midiExcerptByBar.run(startBar, endBar, infile);*/
+	
 }
 
 

@@ -27,7 +27,7 @@ MidiFile MidiCat::run(vector<MidiFile> inputFiles, double pause) {
    // insert an end-of track Meta Event
    int tpq = outfile.getTicksPerQuarterNote();
    MidiEvent mfevent;
-   mfevent.tick = tpq;
+   mfevent.tick = 0;
    mfevent.track = 0;
    mfevent.resize(3);
    mfevent[0] = 0xff;
@@ -83,7 +83,7 @@ void MidiCat::appendMidi(MidiFile& outfile, MidiFile infile,
          anevent.track = 0;
          outfile.addEvent(anevent);
       }
-      return;
+	  return;
    }
 
    // presuming constant tpq for different files.

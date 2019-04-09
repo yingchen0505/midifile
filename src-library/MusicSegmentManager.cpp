@@ -3,10 +3,6 @@
 using namespace music_segment_manager;
 
 MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
-	// Store current directory so as to return to this before exiting constructor
-	char homeDirectory[1024];
-	getcwd(homeDirectory, sizeof(homeDirectory));
-
 	if ( !exists( inputFolderPath ) ) {
 		return;
 	}
@@ -15,12 +11,16 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 	
 	for ( directory_iterator itr( inputFolderPath ); itr != end_itr; ++itr ) {
 		if ( is_directory(itr->status()) ) {
-			if(itr->path().leaf().string() == "music_segments") {
+			
+			if(itr->path().leaf().string() == "bridges") {
+				bridgeManager = BridgeManager(itr->path().string());
+			}
+			
+			else if(itr->path().leaf().string() == "music_segments") {
 				// Loop through all emotion folders in music_segments folder
 				for (directory_iterator emotionFolderItr( itr->path() ); emotionFolderItr != end_itr; ++emotionFolderItr) {
 					string emotionFolderName = emotionFolderItr->path().leaf().string();
-					cout << "emotionFolderName = " << emotionFolderName << "\n";
-					
+
 					string searchString = emotionFolderName;
 					regex signedIntRegex("(\\-)?[[:d:]]+");
 					smatch numberFound;  
@@ -34,9 +34,6 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 					regex_search(searchString, numberFound, signedIntRegex);
 					int arousal = stoi(numberFound[0]);
 
-					cout << "valence = " << valence << "\n";
-					cout << "arousal = " << arousal << "\n";
-					
 					vector<MusicSegment> tempList;
 
 					// Loop through music segments within this emotion
@@ -56,11 +53,13 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 						regex_search(searchString, numberFound, intRegex);
 						int partNumber = stoi(numberFound[0]);
 						
+						// Construct new MusicSegment if needed (i.e. if fileNumber is out of bound)
 						if(fileNumber >= tempList.size()) {
 							for(int i=tempList.size() - 1; i<fileNumber; i++) {
 								MusicSegment musicSegment;
 								musicSegment.valence = valence;
 								musicSegment.arousal = arousal;
+								musicSegment.ID = fileNumber + 1; // ID starts from 1, while fileNumber starts from 0
 								tempList.push_back(musicSegment);
 							}
 						}
@@ -95,20 +94,31 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 			}
 		}
 	}	
-	
-	for(int i=0; i<musicSegmentList.size(); i++){
-		MidiFile midiFile = musicSegmentList[i].repeat(30, true, true);
-		cout << musicSegmentList[i].isInvalid() << "\n";
-		
-		std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
-		outfile.open((to_string(i) + ".mid").c_str());
-		midiFile.write(outfile);
-		outfile.close();
-	}
+}
 
-	chdir(homeDirectory);
+void MusicSegmentManager::generateMusicFromEmotion() {
+	MidiCat midiCat;
 	
-	char currDirectory[1024];
-	getcwd(currDirectory, sizeof(currDirectory));
-	std::cout << currDirectory << "\n";
+	// Testing repeat function for all segments
+	for(int i=0; i<musicSegmentList.size(); i++){
+		
+		for(int j=0; j<musicSegmentList.size(); j++){
+			if(i==j) continue;
+			std::cout << "i = " << i << " j = " << j << "\n";
+			Bridge bridge = bridgeManager.getBridge(musicSegmentList[i], musicSegmentList[j]);
+			if(!bridge.isInvalid()) {
+
+				vector<MidiFile> catList;
+				catList.push_back(musicSegmentList[i].repeat(30, 0, bridge.barErosionIntoPrevSeg, bridge.prevTransposition));
+				catList.push_back(bridge.bridgeMidi);
+				catList.push_back(musicSegmentList[j].repeat(30, bridge.barErosionIntoNextSeg, 0, bridge.nextTransposition));
+				
+				MidiFile midiFile = midiCat.run(catList, 0.0);
+				std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
+				outfile.open((to_string(i) + to_string(j) + ".mid").c_str());
+				midiFile.write(outfile);
+				outfile.close();
+			}
+		}
+	}	
 }

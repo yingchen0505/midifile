@@ -1,28 +1,32 @@
+#ifndef _MIDIEXCERPTBYBAR_H_INCLUDED
+#define _MIDIEXCERPTBYBAR_H_INCLUDED
+
 #include "MidiFile.h"
-#include "Options.h"
 #include <iostream>
 #include <vector>
 #include <string>
 #include <cmath>
 #include <map>
+#include <algorithm>
+#include "Options.h"
 
 using namespace smf;
+using std::string;
+using std::to_string;
+using std::max;
 
 namespace midi_excerpt_by_bar {
 	
 	class MidiExcerptByBar {
 		public:
-			int startBar = 1;	// Use with -s option (inclusive)
-			int endBar = -1;	// Use with -e option (inclusive)
- 			
-			// Function declarations:
 			MidiExcerptByBar() = default;
 			~MidiExcerptByBar() = default;
-			void checkOptions (Options& opts, int argc, char** argv);
-			void run(int argc, char* argv[]);
-		
+
+			MidiFile run(int startBar, int endBar, MidiFile infile);
 		private:
 		
 	};
 
 }
+
+#endif /* _MIDIEXCERPTBYBAR_H_INCLUDED */

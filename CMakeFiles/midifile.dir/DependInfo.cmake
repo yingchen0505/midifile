@@ -5,6 +5,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/Binasc.cpp" "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles/midifile.dir/src-library/Binasc.cpp.o"
+  "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/Bridge.cpp" "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles/midifile.dir/src-library/Bridge.cpp.o"
+  "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/BridgeManager.cpp" "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles/midifile.dir/src-library/BridgeManager.cpp.o"
   "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MidiCat.cpp" "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles/midifile.dir/src-library/MidiCat.cpp.o"
   "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MidiEvent.cpp" "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles/midifile.dir/src-library/MidiEvent.cpp.o"
   "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MidiEventList.cpp" "/mnt/c/Users/Yingchen/Documents/GitHub/midifile/CMakeFiles/midifile.dir/src-library/MidiEventList.cpp.o"

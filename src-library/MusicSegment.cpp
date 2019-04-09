@@ -5,15 +5,17 @@ using namespace music_segment;
 MusicSegment::MusicSegment() {
 	valence = 0;
 	arousal = 0;
+	ID = 0;
 	prep = NULL;
 	mainLoop = NULL;
 	mainLoopEnd = NULL;
 	finalEnd = NULL;
 }
 
-MusicSegment::MusicSegment(int valence, int arousal, MidiFile* prep, MidiFile* mainLoop, MidiFile* mainLoopEnd, MidiFile* finalEnd) {
+MusicSegment::MusicSegment(int valence, int arousal, int ID, MidiFile* prep, MidiFile* mainLoop, MidiFile* mainLoopEnd, MidiFile* finalEnd) {
 	this->valence = valence;
 	this->arousal = arousal;
+	this->ID = ID;
 	this->prep = prep;
 	this->mainLoop = mainLoop;
 	this->mainLoopEnd = mainLoopEnd;
@@ -24,23 +26,22 @@ bool MusicSegment::isInvalid() {
 	return !mainLoop;
 }
 
-MidiFile MusicSegment::repeat(double timeInSeconds, bool isAbsoluteStart, bool isAbsoluteEnd) {
+MidiFile MusicSegment::repeat(double timeInSeconds, int beginningBarErosion, int endBarErosion, int transposition) {
 	if(!mainLoop) return MidiFile(); // No mainLoop to repeat, something went wrong.
 	
 	double durationOfPrepAndEnd = 0.0; 
 	MidiCat midiCat;
 	vector<MidiFile> concatList; // list of files waiting to be concatenated into output
-	
-	if(isAbsoluteStart && prep) {
+
+	if(prep) {
 		concatList.push_back(*prep);
 		durationOfPrepAndEnd += (*prep).getFileDurationInSeconds();
 	}
-
-	if(isAbsoluteEnd && finalEnd) {
-		// Account for the duration first, but only add finalEnd to the list after mainLoop is added.
-		durationOfPrepAndEnd += (*finalEnd).getFileDurationInSeconds(); 
+	
+	if(finalEnd) {
+		durationOfPrepAndEnd += (*finalEnd).getFileDurationInSeconds();
 	}
-
+	
 	double mainLoopDuration = (*mainLoop).getFileDurationInSeconds();
 	
 	// If mainLoopEnd is not null, it should be repeated together with mainLoop
@@ -50,7 +51,7 @@ MidiFile MusicSegment::repeat(double timeInSeconds, bool isAbsoluteStart, bool i
 
 	// Calculate how many times the mainLoop (and mainLoopEnd if exists) should be repeated
 	int repeatRounds = round((timeInSeconds - durationOfPrepAndEnd) / mainLoopDuration);
-	
+
 	// Need to play at least once, even if time given is too short
 	repeatRounds = max(repeatRounds, 1);
 
@@ -67,14 +68,70 @@ MidiFile MusicSegment::repeat(double timeInSeconds, bool isAbsoluteStart, bool i
 		}
 	}
 	
-	if(isAbsoluteEnd && finalEnd) {
-		// If there is mainLoopEnd, 
-		// need to replace the last one of it with the finalEnd
+	if(finalEnd) {
 		if(mainLoopEnd) {
 			concatList.pop_back();
 		}
 		concatList.push_back(*finalEnd);
 	}
 	
-	return midiCat.run(concatList, 0.0);
+	while(endBarErosion > 0 && !(concatList.empty())) {
+		MidiFile lastMidi = concatList.back();
+
+		int totalBars = lastMidi.getTotalBars();
+		if(totalBars > endBarErosion) {
+			int newEndBar = totalBars - endBarErosion;
+			MidiExcerptByBar midiExcerptByBar;
+			lastMidi = midiExcerptByBar.run(1, newEndBar, lastMidi);
+			concatList.pop_back();
+			concatList.push_back(lastMidi);
+
+			break; // All required bars have been dropped
+		}
+		
+		else {
+			concatList.pop_back();
+			endBarErosion = endBarErosion - totalBars;
+		}
+	}
+	
+	while(beginningBarErosion > 0 && !(concatList.empty())) {
+		MidiFile firstMidi = concatList.front();
+
+		int totalBars = firstMidi.getTotalBars();
+		if(totalBars > beginningBarErosion) {
+			int newBeginningBar = beginningBarErosion + 1;
+			MidiExcerptByBar midiExcerptByBar;
+			firstMidi = midiExcerptByBar.run(newBeginningBar, totalBars, firstMidi);
+			concatList.erase(concatList.begin());
+			concatList.insert(concatList.begin(), firstMidi);
+
+			break; // All required bars have been dropped
+		}
+		
+		else {
+			concatList.erase(concatList.begin());
+			beginningBarErosion = beginningBarErosion - totalBars;
+		}
+	}
+	MidiFile concatResult = midiCat.run(concatList, 0.0);
+	if (transposition != 0) {
+		concatResult = transpose(concatResult, transposition);
+	}
+	return concatResult;
+}
+
+MidiFile MusicSegment::transpose(MidiFile inputFile, int keyChange) {
+	inputFile.joinTracks();
+	int eventCount = inputFile.getEventCount(0);
+	
+	for(int i=0; i<eventCount; i++) {
+		if(inputFile.getEvent(0, i).isNoteOn() || inputFile.getEvent(0, i).isNoteOff()){
+			int originalKey = inputFile.getEvent(0, i).getKeyNumber();
+			int newKey = originalKey + keyChange;
+			inputFile.getEvent(0, i).setKeyNumber(newKey);
+		}
+	}
+	
+	return inputFile;
 }

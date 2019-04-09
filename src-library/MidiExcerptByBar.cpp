@@ -1,17 +1,12 @@
 #include "MidiExcerptByBar.h"
 
 using namespace midi_excerpt_by_bar;
-
-void MidiExcerptByBar::run(int argc, char* argv[]) {
-	Options options;
-	checkOptions(options, argc, argv);
-	const char* filename = options.getArg(1).c_str();
-	
-	// Initialize input file
-	MidiFile infile(filename);
+MidiFile MidiExcerptByBar::run(int startBar, int endBar, MidiFile infile) {
 	infile.joinTracks();
 	infile.deltaTicks();
+	
 	int eventCount = infile.getEventCount(0) - 1; // exclude end of file event
+	
 	infile.linkNotePairs();
 	
 	// Initialize output file
@@ -28,6 +23,10 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 	bool hasTimeSignature = false;
 	bool timeSignatureIsAdded = false;
 	
+	MidiEvent keySignature;
+	bool hasKeySignature = false;
+	bool keySignatureIsAdded = false;
+	
 	// Notes that are turned on during the selected bars but only turned off afterwards
 	// Need to add the note-off events at the end of the file
 	std::vector<MidiEvent> noteOffAfterEndBar; 
@@ -37,22 +36,22 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 	std::vector<int> startBarTicks = infile.getBeginningAndEndTicksByBar(startBar);
 	if(startBarTicks.empty()) {
 		std::cout << "Error: start bar out of bound. \n";
-		return; 
+		return outfile; 
 	}
 	const int beginningTicksOfStartBar = startBarTicks[0];
 	
 	std::vector<int> endBarTicks = infile.getBeginningAndEndTicksByBar(endBar);
 	if(endBarTicks.empty()) {
 		std::cout << "Error: end bar out of bound. \n";
-		return; 
+		return outfile; 
 	}
 	const int endTicksOfEndBar = endBarTicks[1];
-
+	
 	// Loop through all events except the end-of-file event
 	for (int i=0; i<eventCount; i++) {
 		int currentBar = infile.getEvent(0,i).bar;
 		currentTick += infile.getEvent(0,i).tick;
-
+		
 		// Store the latest tempo setting before start bar
 		if(currentBar < startBar && infile.getEvent(0,i).isTempo()) {
 			hasTempoBeforeStart = true;
@@ -65,6 +64,12 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 			timeSignature = infile.getEvent(0,i);
 		}
 		
+		// Store the latest key signature before start bar
+		if(currentBar < startBar && infile.getEvent(0,i).isKeySignature()) {
+			hasKeySignature = true;
+			keySignature = infile.getEvent(0,i);
+		}
+		
 		// Add timber setting before start bar
 		if(currentBar < startBar && infile.getEvent(0,i).isTimbre()) {
 			MidiEvent timbreEvent = infile.getEvent(0,i);
@@ -72,13 +77,30 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 			outfile.addEvent(timbreEvent);
 		}
 		
+		// If this note is turned on before start bar and turned off only after start bar
+		// Need to add this note in, but adjust the start tick to beginning of start bar
+		if(currentBar < startBar && infile.getEvent(0,i).isNoteOn()) {
+			MidiEvent* linkedEvent = infile.getEvent(0,i).getLinkedEvent();
+			if(linkedEvent && (*linkedEvent).bar >= startBar) {
+				MidiEvent noteOnEvent = infile.getEvent(0,i);
+				noteOnEvent.clearVariables();
+				noteOnEvent.tick = 0;
+				outfile.addEvent(noteOnEvent);
+				// If this note is only turned off after selected bar range, 
+				// need to add the note-off to end of file.
+				// Else, the note-off is within selected range and will be auto added later
+				if((*linkedEvent).bar > endBar) {
+					noteOffAfterEndBar.push_back(*linkedEvent);
+				}
+			}
+		}
+		
 		// Find events between targeted bars:
 		if(currentBar >= startBar && currentBar <= endBar){
-			
 			int ticksSinceBeginningOfStartBar = currentTick - beginningTicksOfStartBar;
 			if(ticksSinceBeginningOfStartBar < 0) {
 				std::cout << "Error: currentTick < beginningTicksOfStartBar. Bar tick map is wrong! \n";
-				return;
+				return outfile;
 			}
 			
 			// Add tempo setting before start bar if it hasn't been added
@@ -94,11 +116,12 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 				outfile.addEvent(timeSignature);
 				timeSignatureIsAdded = true;
 			}
-
-			if(infile.getEvent(0,i).isNoteOff()) {
-				MidiEvent* linkedEvent = infile.getEvent(0,i).getLinkedEvent();
-				// Ignore this note-off if it is for a note before the targeted bar range
-				if(linkedEvent && (*linkedEvent).bar < startBar) continue;
+			
+			// Add key signature before start bar if it hasn't been added
+			if(!keySignatureIsAdded && hasKeySignature) {
+				keySignature.clearVariables();
+				outfile.addEvent(keySignature);
+				keySignatureIsAdded = true;
 			}
 			
 			if(infile.getEvent(0,i).isNoteOn()) {
@@ -124,7 +147,7 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 	int currentOutputLengthInTicks = outfile.getFileDurationInTicks();
 	// We don't want a gap between the end of file and the actual end of the last bar
 	// This gap will be filled by either a rest, or the note-off events yet to be added.
-	int gap = endTicksOfEndBar - currentOutputLengthInTicks - 1;
+	int gap = endTicksOfEndBar - beginningTicksOfStartBar - currentOutputLengthInTicks - 1; // minus 1 to prevent it from overflowing to next bar
 	
 	// If there isn't any notes still on, then add a rest to fill the gap
 	if(noteOffAfterEndBar.empty() && gap > 0){
@@ -138,7 +161,7 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 	else {
 		for(int i = 0; i < noteOffAfterEndBar.size(); i++) {
 			if(i==0) {
-				noteOffAfterEndBar[i].tick = gap;
+				noteOffAfterEndBar[i].tick = max(gap, 0);
 			}
 			else {
 				noteOffAfterEndBar[i].tick = 0;
@@ -148,34 +171,20 @@ void MidiExcerptByBar::run(int argc, char* argv[]) {
 	}
 
 	 // insert an end-of track Meta Event
-   int tpq = outfile.getTicksPerQuarterNote();
-   MidiEvent mfevent;
-   mfevent.tick = tpq;
-   mfevent.track = 0;
-   mfevent.resize(3);
-   mfevent[0] = 0xff;
-   mfevent[1] = 0x2f;
-   mfevent[2] = 0;
-   outfile.addEvent(mfevent);
+    int tpq = outfile.getTicksPerQuarterNote();
+    MidiEvent mfevent;
+    mfevent.tick = 0;
+    mfevent.track = 0;
+    mfevent.resize(3);
+    mfevent[0] = 0xff;
+    mfevent[1] = 0x2f;
+    mfevent[2] = 0;
+    outfile.addEvent(mfevent);
 
    	outfile.absoluteTicks();
 	outfile.sortTracks();
 
 	outfile.updateBarNumber();
-	//std::cout << outfile;
-	outfile.write(std::cout);
-}
-
-//////////////////////////////
-//
-// checkOptions --
-//
-
-void MidiExcerptByBar::checkOptions(Options& opts, int argc, char* argv[]) {
-   opts.define("s|start=i:1",  "Starting bar (inclusive)");
-   opts.define("e|end=i:-1",  "Ending bar (inclusive)");
-   opts.process(argc, argv);
-
-   startBar     =  opts.getInt("start");
-   endBar     = opts.getInt("end");
+	outfile.splitTracks();
+	return outfile;
 }

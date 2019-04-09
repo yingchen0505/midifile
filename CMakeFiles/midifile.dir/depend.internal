@@ -4,6 +4,29 @@
 CMakeFiles/midifile.dir/src-library/Binasc.cpp.o
  /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/Binasc.cpp
  include/Binasc.h
+CMakeFiles/midifile.dir/src-library/Bridge.cpp.o
+ /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/Bridge.cpp
+ include/Bridge.h
+ include/MidiCat.h
+ include/MidiEvent.h
+ include/MidiEventList.h
+ include/MidiExcerptByBar.h
+ include/MidiFile.h
+ include/MidiMessage.h
+ include/MusicSegment.h
+ include/Options.h
+CMakeFiles/midifile.dir/src-library/BridgeManager.cpp.o
+ /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/BridgeManager.cpp
+ include/Bridge.h
+ include/BridgeManager.h
+ include/MidiCat.h
+ include/MidiEvent.h
+ include/MidiEventList.h
+ include/MidiExcerptByBar.h
+ include/MidiFile.h
+ include/MidiMessage.h
+ include/MusicSegment.h
+ include/Options.h
 CMakeFiles/midifile.dir/src-library/MidiCat.cpp.o
  /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MidiCat.cpp
  include/MidiCat.h
@@ -43,18 +66,24 @@ CMakeFiles/midifile.dir/src-library/MusicSegment.cpp.o
  include/MidiCat.h
  include/MidiEvent.h
  include/MidiEventList.h
+ include/MidiExcerptByBar.h
  include/MidiFile.h
  include/MidiMessage.h
  include/MusicSegment.h
+ include/Options.h
 CMakeFiles/midifile.dir/src-library/MusicSegmentManager.cpp.o
  /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/MusicSegmentManager.cpp
+ include/Bridge.h
+ include/BridgeManager.h
  include/MidiCat.h
  include/MidiEvent.h
  include/MidiEventList.h
+ include/MidiExcerptByBar.h
  include/MidiFile.h
  include/MidiMessage.h
  include/MusicSegment.h
  include/MusicSegmentManager.h
+ include/Options.h
 CMakeFiles/midifile.dir/src-library/Options.cpp.o
  /mnt/c/Users/Yingchen/Documents/GitHub/midifile/src-library/Options.cpp
  include/Options.h
