@@ -99,6 +99,8 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	for(int begNote : begNotesOfFinalBarOfPrev) {
 		int step = begNote - startPoint;
 		stepSet.push_back( abs(step) < 12 ? step : 0);
+		//stepSet.push_back( step % 12);
+
 	}
 	
 	///// Remove duplicates
@@ -117,13 +119,25 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 		// explore in the sequence of -1, 1, -2, 2, -3, 3...
 		nextTransposition = nextTransposition >= 0 ? (nextTransposition + 1) * (-1) : nextTransposition * (-1);
 		solutions = countSolutions(array, stepSet.size(), keyChange + nextTransposition);
-		cout << "nextTransposition = " << nextTransposition << "\n";
+		//cout << "nextTransposition = " << nextTransposition << "\n";
 		if(abs(nextTransposition) > 11) {
 			nextTranspositionFailed = true;
 			break;
 		}
 	}
 	cout << "nextTranspositionFailed = " << nextTranspositionFailed << "\n";
+	cout << "final transpose = " << nextTransposition << "\n";
+	
+	if(nextTransposition != 0) {
+		cout << "NEED TRANSPOSE! \n";
+	}
+	if(nextTransposition != 0 && abs(nextTransposition) < 5) {
+		cout << "TRANSPOSE IS GOOD! \n";
+	}
+	else if (nextTransposition == 0) {
+		cout << "NO TRANSPOSE! GOOD! \n";
+	}
+
 	keyChange += !nextTranspositionFailed ? nextTransposition : 0;
 	if(!solutions.empty()) {
 		int shortestSolutionLength = INT8_MAX;
@@ -228,6 +242,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	if(!nextTranspositionFailed && nextTransposition != 0) {
 		nextMidi = transpose(nextMidi, nextTransposition);
 	}
+	nextMidi = reverseVolumeInterpolation(nextMidi, 0);
 	catList.push_back(nextMidi);
 	newMidi = midiCat.run(catList, 0.0);
 	
@@ -454,6 +469,34 @@ MidiFile Bridge::reverseTempoDilation(MidiFile inputFile, double initialTempo) {
 	inputFile.sortTracks();
 	return inputFile;
 }
+
+MidiFile Bridge::reverseVolumeInterpolation(MidiFile inputFile, int initialVolume) {
+	inputFile.joinTracks();
+	inputFile.absoluteTicks();
+	int totalTicks = inputFile.getFileDurationInTicks();
+	int eventCount = inputFile.getEventCount(0);
+	double progression = 0.0;
+	
+	// This loop adjusts the velocity values of the note events in the midi file
+	// so that the new velocity values are results of linear interpolation
+	// between the initialVolume and the original velocity
+	for(int i=0; i < eventCount; i++) {
+		progression = (double) inputFile.getEvent(0, i).tick / (double) totalTicks;
+		
+		if(inputFile.getEvent(0, i).isNoteOn()) {
+			int originalVolume = inputFile.getEvent(0, i).getVelocity();
+			int newVolume = initialVolume + (double)(originalVolume - initialVolume) * progression;
+			std::cout << "originalVolume = " << originalVolume << "\n";
+			std::cout << "newVolume = " << newVolume << "\n";
+			inputFile.getEvent(0, i).setVelocity(newVolume);
+		}
+	}
+	
+	inputFile.sortTracks();
+	return inputFile;
+}
+
+
 
 double Bridge::findFirstTempo(MidiFile inputFile) {
 	inputFile.joinTracks();

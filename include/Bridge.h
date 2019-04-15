@@ -52,6 +52,8 @@ namespace bridge {
 			vector<int> getBeginningNoteKeys(MidiFile inputFile);
 			int getPhraseLengthInBars(MidiFile inputFile);
 			vector<vector<int>> countSolutions( int S[], int m, int n );
+			MidiFile reverseVolumeInterpolation(MidiFile inputFile, int initialVolume);
+
 
 	};
 }
