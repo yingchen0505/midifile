@@ -238,7 +238,9 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	else {
 		prevMidiAfterKeyChange = tempoDilation(prevMidiAfterKeyChange, nextTempo);
 	}
+	prevMidiAfterKeyChange = volumeInterpolation(prevMidiAfterKeyChange, 0);
 	catList.push_back(prevMidiAfterKeyChange);
+	
 	if(!nextTranspositionFailed && nextTransposition != 0) {
 		nextMidi = transpose(nextMidi, nextTransposition);
 	}
@@ -470,6 +472,31 @@ MidiFile Bridge::reverseTempoDilation(MidiFile inputFile, double initialTempo) {
 	return inputFile;
 }
 
+MidiFile Bridge::volumeInterpolation(MidiFile inputFile, int endVolume) {
+	inputFile.joinTracks();
+	inputFile.absoluteTicks();
+	int totalTicks = inputFile.getFileDurationInTicks();
+	int eventCount = inputFile.getEventCount(0);
+	double progression = 0.0;
+	
+	// This loop adjusts the velocity values of the note events in the midi file
+	// so that the new velocity values are results of linear interpolation
+	// between the original velocity and endVolume
+	for(int i=0; i < eventCount; i++) {
+		progression = (double) inputFile.getEvent(0, i).tick / (double) totalTicks;
+		
+		if(inputFile.getEvent(0, i).isNoteOn()) {
+			int originalVolume = inputFile.getEvent(0, i).getVelocity();
+			int newVolume = endVolume + (double)(originalVolume - endVolume) * (1.0 - progression);
+			inputFile.getEvent(0, i).setVelocity(newVolume);
+		}
+	}
+	
+	inputFile.sortTracks();
+	return inputFile;
+}
+
+
 MidiFile Bridge::reverseVolumeInterpolation(MidiFile inputFile, int initialVolume) {
 	inputFile.joinTracks();
 	inputFile.absoluteTicks();
@@ -486,8 +513,6 @@ MidiFile Bridge::reverseVolumeInterpolation(MidiFile inputFile, int initialVolum
 		if(inputFile.getEvent(0, i).isNoteOn()) {
 			int originalVolume = inputFile.getEvent(0, i).getVelocity();
 			int newVolume = initialVolume + (double)(originalVolume - initialVolume) * progression;
-			std::cout << "originalVolume = " << originalVolume << "\n";
-			std::cout << "newVolume = " << newVolume << "\n";
 			inputFile.getEvent(0, i).setVelocity(newVolume);
 		}
 	}
