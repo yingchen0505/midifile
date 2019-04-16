@@ -248,14 +248,19 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	
 	int lastVolume = getLastVolume(nextMidi);
 	int firstVolume = getFirstVolume(prevMidiAfterKeyChange);
-	
+	int intermediateVolume = min(firstVolume, lastVolume) * 0.8;
+/* 	
 	if(lastVolume < firstVolume) {
 		nextMidi = reverseVolumeInterpolation(nextMidi, lastVolume);
 	}
 	else if (lastVolume > firstVolume) {
 		prevMidiAfterKeyChange = volumeInterpolation(prevMidiAfterKeyChange, firstVolume);
 	}
-	
+ */	
+	nextMidi = reverseVolumeInterpolation(nextMidi, intermediateVolume);
+	prevMidiAfterKeyChange = volumeInterpolation(prevMidiAfterKeyChange, intermediateVolume);
+
+
 	////-------------------------------
 	//// Volume done
 	
@@ -527,12 +532,22 @@ MidiFile Bridge::reverseVolumeInterpolation(MidiFile inputFile, int initialVolum
 	int totalTicks = inputFile.getFileDurationInTicks();
 	int eventCount = inputFile.getEventCount(0);
 	double progression = 0.0;
+	int beginningTick = 0;
+	
+	/// Get the tick of first note-on event
+	for(int i=0; i < eventCount; i++) {
+		if(inputFile.getEvent(0, i).isNoteOn()) {
+			beginningTick = inputFile.getEvent(0, i).tick;
+			break;
+		}
+	}
+
 	
 	// This loop adjusts the velocity values of the note events in the midi file
 	// so that the new velocity values are results of linear interpolation
 	// between the initialVolume and the original velocity
 	for(int i=0; i < eventCount; i++) {
-		progression = (double) inputFile.getEvent(0, i).tick / (double) totalTicks;
+		progression = (double) (inputFile.getEvent(0, i).tick - beginningTick) / (double) (totalTicks - beginningTick);
 		
 		if(inputFile.getEvent(0, i).isNoteOn()) {
 			int originalVolume = inputFile.getEvent(0, i).getVelocity();
