@@ -238,13 +238,28 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	else {
 		prevMidiAfterKeyChange = tempoDilation(prevMidiAfterKeyChange, nextTempo);
 	}
-	prevMidiAfterKeyChange = volumeInterpolation(prevMidiAfterKeyChange, 0);
-	catList.push_back(prevMidiAfterKeyChange);
 	
 	if(!nextTranspositionFailed && nextTransposition != 0) {
 		nextMidi = transpose(nextMidi, nextTransposition);
 	}
-	nextMidi = reverseVolumeInterpolation(nextMidi, 0);
+
+	////-------------------------------
+	//// Volume
+	
+	int lastVolume = getLastVolume(nextMidi);
+	int firstVolume = getFirstVolume(prevMidiAfterKeyChange);
+	
+	if(lastVolume < firstVolume) {
+		nextMidi = reverseVolumeInterpolation(nextMidi, lastVolume);
+	}
+	else if (lastVolume > firstVolume) {
+		prevMidiAfterKeyChange = volumeInterpolation(prevMidiAfterKeyChange, firstVolume);
+	}
+	
+	////-------------------------------
+	//// Volume done
+	
+	catList.push_back(prevMidiAfterKeyChange);
 	catList.push_back(nextMidi);
 	newMidi = midiCat.run(catList, 0.0);
 	
@@ -560,6 +575,35 @@ MidiEvent Bridge::getLastKeySignature(MidiFile inputFile) {
 	
 	return keySignature;
 }
+
+int Bridge::getLastVolume(MidiFile inputFile) {
+	inputFile.joinTracks();
+	int eventCount = inputFile.getEventCount(0);
+	int lastVolume = -1;
+	
+	for(int i=0; i<eventCount; i++) {
+		if(inputFile.getEvent(0, i).isNoteOn()){
+			lastVolume = inputFile.getEvent(0, i).getVelocity();
+		}
+	}
+	
+	return lastVolume;
+}
+
+int Bridge::getFirstVolume(MidiFile inputFile) {
+	inputFile.joinTracks();
+	int eventCount = inputFile.getEventCount(0);
+
+	for(int i=0; i<eventCount; i++) {
+		if(inputFile.getEvent(0, i).isNoteOn()){
+			return inputFile.getEvent(0, i).getVelocity();
+		}
+	}
+	
+	return -1;
+}
+
+
 
 MidiEvent Bridge::getFirstKeySignature(MidiFile inputFile) {
 	inputFile.joinTracks();
