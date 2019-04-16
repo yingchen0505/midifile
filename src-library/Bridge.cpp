@@ -493,12 +493,21 @@ MidiFile Bridge::volumeInterpolation(MidiFile inputFile, int endVolume) {
 	int totalTicks = inputFile.getFileDurationInTicks();
 	int eventCount = inputFile.getEventCount(0);
 	double progression = 0.0;
+	int tickOfLastNoteOff;
+	
+	/// Get the tick of last note-off event
+	for(int i=0; i < eventCount; i++) {
+		if(inputFile.getEvent(0, i).isNoteOff()) {
+			tickOfLastNoteOff = inputFile.getEvent(0, i).tick;
+		}
+	}
+
 	
 	// This loop adjusts the velocity values of the note events in the midi file
 	// so that the new velocity values are results of linear interpolation
 	// between the original velocity and endVolume
 	for(int i=0; i < eventCount; i++) {
-		progression = (double) inputFile.getEvent(0, i).tick / (double) totalTicks;
+		progression = (double) inputFile.getEvent(0, i).tick / (double) tickOfLastNoteOff;
 		
 		if(inputFile.getEvent(0, i).isNoteOn()) {
 			int originalVolume = inputFile.getEvent(0, i).getVelocity();
