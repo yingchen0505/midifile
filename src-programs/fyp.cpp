@@ -26,6 +26,7 @@ double pauseBetweenMidi = 0.0;
 
 int startBar = 1;	// Use with -s option (inclusive)
 int endBar = -1;	// Use with -e option (inclusive)
+double volumeFactor = 1.0; // Use with -v option
 
 void checkOptions (Options& opts, int argc, char** argv);
 
@@ -39,8 +40,8 @@ int main(int argc, char* argv[]) {
 	//cout << infile;
 
 	
-	MusicSegmentManager musicSegmentManager(INPUT_PATH);
-	musicSegmentManager.generateMusicFromEmotion();
+	//MusicSegmentManager musicSegmentManager(INPUT_PATH);
+	//musicSegmentManager.generateMusicFromEmotion();
 	
 	//// Debugger by event
 	/*
@@ -81,8 +82,29 @@ int main(int argc, char* argv[]) {
 	outfile.write(cout);*/
 
 	///// Midi Excerpt Tool
-	//MidiExcerptByBar midiExcerptByBar;
-	//midiExcerptByBar.run(startBar, endBar, options.getArg(1)).write(cout);
+	MidiExcerptByBar midiExcerptByBar;
+	midiExcerptByBar.run(startBar, endBar, options.getArg(1)).write(cout);
+	
+	//// remove parts
+/* 	MidiFile infile(options.getArg(1));
+	for(int i=0; i< infile.getTrackCount(); i++) {
+		
+	} */
+	
+	////--------------------------------------------
+	//// Volume adjustment tool
+	/* MidiFile infile(options.getArg(1));
+	infile.joinTracks();
+	for(int i=0; i< infile.getEventCount(0); i++) {
+		if(infile.getEvent(0, i).isNoteOn()) {
+			int velocity = infile.getEvent(0, i).getVelocity() * volumeFactor;
+			infile.getEvent(0, i).setVelocity(velocity);
+		}
+	}
+	infile.splitTracks();
+	infile.write(cout); */
+	///----------------------------------------
+	
 	/*
 	MidiFile infile(options.getArg(1));
 	
@@ -105,9 +127,11 @@ void checkOptions(Options& opts, int argc, char* argv[]) {
 	opts.define("p|pause=i:1",  "pause (in seconds) between concatenated midi files.");
 	opts.define("s|start=i:1",  "Starting bar (inclusive)");
 	opts.define("e|end=i:-1",  "Ending bar (inclusive)");
+	opts.define("v|volumeFactor=d:1.0",  "volume factor");
 	opts.process(argc, argv);
 	
 	pauseBetweenMidi = opts.getDouble("pause");
 	startBar     =  opts.getInt("start");
 	endBar     = opts.getInt("end");
+	volumeFactor = opts.getDouble("volumeFactor");
 }
