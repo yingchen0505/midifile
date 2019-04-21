@@ -7,6 +7,7 @@
 #include <string>
 #include <list>
 #include <unistd.h>
+#include "EmotionState.h"
 #include "MidiExcerptByBar.h"
 //#include "MusicSegment.h"
 #include "MusicSegmentManager.h"
@@ -20,9 +21,6 @@ using namespace smf;
 using namespace music_segment_manager;
 using std::string;
 
-struct EmotionState {
-	int sec, valence, arousal;
-};
 
 
 // pause (in seconds) between concatenated midi files.
@@ -45,7 +43,7 @@ int main(int argc, char* argv[]) {
 	//cout << infile;
 
 	
-	// MusicSegmentManager musicSegmentManager(INPUT_PATH);
+	 MusicSegmentManager musicSegmentManager(INPUT_PATH);
 	// musicSegmentManager.generateMusicFromEmotion();
 	
 	std::ifstream in("emotion_sequence.txt");
@@ -62,9 +60,14 @@ int main(int argc, char* argv[]) {
 	}
 	
 	int currentTime = emotionSequence.at(0).sec;
-	for(int i=0; i<emotionSequence.size(); i++) {
+	for(int i=0; i<emotionSequence.size() - 1; i++) {
 		EmotionState currEmotion = emotionSequence.at(i);
-		int currDuration = 0;
+		EmotionState nextEmotion = emotionSequence.at(i+1);		
+		int currDuration = nextEmotion.sec - currEmotion.sec;
+		
+		MusicSegment currMusic = musicSegmentManager.getMusicSegmentByEmotion(currEmotion.valence, currEmotion.arousal);
+		
+		
 	}
 	
 	
