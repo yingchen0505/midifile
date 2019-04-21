@@ -118,24 +118,30 @@ void MusicSegmentManager::generateMusicFromEmotion(vector<EmotionState> emotionS
 
 		Bridge bridge = bridgeManager.getBridge(currMusic, nextMusic);
 		
-		MidiFile currMidi = currMusic.repeat(currDuration, currBegBarErosion, bridge.barErosionIntoPrevSeg);
-		double shrinkFactor = ((double)currDuration + accumulatedError) / (currMidi.getFileDurationInSeconds() + bridge.prevMidiDuration + timeTakenByPrevBridge);
+		MidiFile currMidi = currMusic.repeat(currDuration - accumulatedError, currBegBarErosion, bridge.barErosionIntoPrevSeg);
+		double shrinkFactor = ((double)currDuration - accumulatedError) / (currMidi.getFileDurationInSeconds() + bridge.prevMidiDuration + timeTakenByPrevBridge);
 		double totalActualTime = 0.0;
 		if(i>0) {
 			MidiFile prevBridgeMidi = shrinkOrExpand(prevBridge.nextMidi, shrinkFactor);
 			catList.push_back(prevBridgeMidi);
+			// catList.push_back(prevBridge.nextMidi);
 			totalActualTime += prevBridgeMidi.getFileDurationInSeconds();
+			// totalActualTime += prevBridge.nextMidi.getFileDurationInSeconds();
+
 		}
 		
 		currMidi = shrinkOrExpand(currMidi, shrinkFactor);
 		catList.push_back(currMidi);
 		totalActualTime += currMidi.getFileDurationInSeconds();
+		// totalActualTime += currMidi.getFileDurationInSeconds();
 		
 		MidiFile bridgePrevMidi = shrinkOrExpand(bridge.prevMidi, shrinkFactor);
 		catList.push_back(bridgePrevMidi);
+		// catList.push_back(bridge.prevMidi);
 		totalActualTime += bridgePrevMidi.getFileDurationInSeconds();
+		// totalActualTime += bridge.prevMidi.getFileDurationInSeconds();
 		
-		accumulatedError += currDuration - totalActualTime;
+		accumulatedError += totalActualTime - currDuration;
 		
 		cout << "totalActualTime = " << totalActualTime << "\n";
 		
@@ -224,6 +230,8 @@ MidiFile MusicSegmentManager::shrinkOrExpand(MidiFile infile, double factor) {
 				double newTempo = (double) infile.getEvent(0,i).getTempoMicroseconds() * factor;
 				infile.getEvent(0,i).setTempoMicroseconds(newTempo);
 			}
+			// double newTick = (double)infile.getEvent(0,i).tick * factor;
+			// infile.getEvent(0,i).tick = newTick;
 		}
 	}
 	

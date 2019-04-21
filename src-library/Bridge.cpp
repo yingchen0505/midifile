@@ -178,7 +178,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	double prevTempo = findLastTempo(prevMidi);
 	double nextTempo = findFirstTempo(nextMidi);
 	if(prevTempo < nextTempo) {
-		double intermediateTempo = prevTempo * 0.8;
+		double intermediateTempo = prevTempo * 0.6;
 		prevMidiAfterKeyChange = tempoDilation(prevMidiAfterKeyChange, intermediateTempo);
 		nextMidi = reverseTempoDilation(nextMidi, intermediateTempo);
 	}
@@ -195,7 +195,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	
 	int lastVolume = getLastVolume(nextMidi);
 	int firstVolume = getFirstVolume(prevMidiAfterKeyChange);
-	int intermediateVolume = min(firstVolume, lastVolume) * 0.8;
+	int intermediateVolume = min(firstVolume, lastVolume) * 0.5;
 	
 	nextMidi = reverseVolumeInterpolation(nextMidi, intermediateVolume);
 	prevMidiAfterKeyChange = volumeInterpolation(prevMidiAfterKeyChange, intermediateVolume);
@@ -230,7 +230,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	outfiletxt2.close();
 
 	
-	this->prevMidi = prevMidi;
+	this->prevMidi = prevMidiAfterKeyChange;
 	this->nextMidi = nextMidi;
 	this->valid = true;
 	this->nextTransposition = !nextTranspositionFailed ? nextTransposition : 0;

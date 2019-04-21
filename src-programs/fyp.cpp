@@ -45,31 +45,31 @@ int main(int argc, char* argv[]) {
 	///------------------------------------------------
 	/// Main Program
 	
-	MusicSegmentManager musicSegmentManager(INPUT_PATH);
+	// MusicSegmentManager musicSegmentManager(INPUT_PATH);
 	
-	std::ifstream in("emotion_sequence.txt");
-	int min;
-	int sec;
-	int valence;
-	int arousal;
-	vector<EmotionState> emotionSequence;
-	int endOfFileTime;
-	while(in >> min) {
-		in >> sec;
-		if(in >> valence) {
-			in >> arousal;
-			emotionSequence.push_back({min * 60 + sec, 0, valence, arousal}); 
-		}
-		else {
-			endOfFileTime = min * 60 + sec;
-		}
-	}
-	for (int i=0; i<emotionSequence.size() - 1; i++) {
-		emotionSequence.at(i).endTime = emotionSequence.at(i+1).startTime;
-	}
-	emotionSequence.back().endTime = endOfFileTime;
+	// std::ifstream in("emotion_sequence.txt");
+	// int min;
+	// int sec;
+	// int valence;
+	// int arousal;
+	// vector<EmotionState> emotionSequence;
+	// int endOfFileTime;
+	// while(in >> min) {
+		// in >> sec;
+		// if(in >> valence) {
+			// in >> arousal;
+			// emotionSequence.push_back({min * 60 + sec, 0, valence, arousal}); 
+		// }
+		// else {
+			// endOfFileTime = min * 60 + sec;
+		// }
+	// }
+	// for (int i=0; i<emotionSequence.size() - 1; i++) {
+		// emotionSequence.at(i).endTime = emotionSequence.at(i+1).startTime;
+	// }
+	// emotionSequence.back().endTime = endOfFileTime;
 	
-	musicSegmentManager.generateMusicFromEmotion(emotionSequence);
+	// musicSegmentManager.generateMusicFromEmotion(emotionSequence);
 
 	/////------------------------------------------------------------------
 	
@@ -112,8 +112,8 @@ int main(int argc, char* argv[]) {
 	outfile.write(cout);*/
 
 	///// Midi Excerpt Tool
-	// MidiExcerptByBar midiExcerptByBar;
-	// midiExcerptByBar.run(startBar, endBar, options.getArg(1)).write(cout);
+	MidiExcerptByBar midiExcerptByBar;
+	midiExcerptByBar.run(startBar, endBar, options.getArg(1)).write(cout);
 	
 	//// remove parts
 /* 	MidiFile infile(options.getArg(1));
