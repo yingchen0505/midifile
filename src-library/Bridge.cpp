@@ -180,7 +180,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 		double intermediateTempo = prevTempo * 0.8;
 		std::cout << "intermediateTempo = " << intermediateTempo << "\n";
 		prevMidiAfterKeyChange = tempoDilation(prevMidiAfterKeyChange, intermediateTempo);
-		nextMidi = reverseTempoDilation(nextMidi, intermediateTempo);
+		//nextMidi = reverseTempoDilation(nextMidi, intermediateTempo);
 	}
 	else {
 		prevMidiAfterKeyChange = tempoDilation(prevMidiAfterKeyChange, nextTempo);
@@ -369,6 +369,7 @@ MidiFile Bridge::reverseTempoDilation(MidiFile inputFile, double initialTempo) {
 	// This loop adjusts the BPM values of the tempo events in the midi file
 	// so that the new BPM values are results of linear interpolation
 	// between the initialTempo and the original tempos
+	cout << "initialTempo = " << initialTempo << "\n";
 	for(int i=0; i < eventCount; i++) {
 		progression = (double) inputFile.getEvent(0, i).tick / (double) totalTicks;
 		
@@ -378,6 +379,11 @@ MidiFile Bridge::reverseTempoDilation(MidiFile inputFile, double initialTempo) {
 			lastOriginalTempo = inputFile.getEvent(0, i);
 			inputFile.getEvent(0, i).setTempo(newTempo);
 			tempoList.push_back(inputFile.getEvent(0, i));
+				cout << "progression = " << progression << "\n";
+
+				cout << "newTempo = " << newTempo << "\n";
+				cout << "originalTempo = " << originalTempo << "\n";
+
 		}
 	}
 	
@@ -425,6 +431,9 @@ MidiFile Bridge::reverseTempoDilation(MidiFile inputFile, double initialTempo) {
 			tempoEvent.tick = inputFile.getEvent(0, i).tick;
 			inputFile.addEvent(tempoEvent);
 			while(stepCounter >= stepsize) stepCounter -= stepsize;
+			cout << "progression = " << progression << "\n";
+			cout << "newTempo = " << newTempo << "\n";
+
 		}
 		
 	}
