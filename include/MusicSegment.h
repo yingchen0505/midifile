@@ -17,6 +17,7 @@ namespace music_segment {
 			int valence;
 			int arousal;
 			int ID;		// unique identification number among music segments with exact same emotion
+			int currTransposition;
 			MidiFile* prep;
 			MidiFile* mainLoop;
 			MidiFile* mainLoopEnd;
@@ -30,7 +31,7 @@ namespace music_segment {
 			MusicSegment& operator=(const MusicSegment &rhs) = default;
 			
 			// Returns a midifile that repeats for the closest possible value to given time
-			MidiFile repeat(double timeInSeconds, int beginningBarErosion, int endBarErosion, int transposition);
+			MidiFile repeat(double timeInSeconds, int beginningBarErosion, int endBarErosion);
 			
 			// Returns true if main loop is null
 			bool isInvalid();

@@ -99,9 +99,11 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 void MusicSegmentManager::generateMusicFromEmotion(vector<EmotionState> emotionSequence) {
 	
 	MidiCat midiCat;
+	vector<MidiFile> catList;
+
 	EmotionState currEmotion = emotionSequence.at(0);	
 	MusicSegment currMusic = getMusicSegmentByEmotion(currEmotion.valence, currEmotion.arousal);
-	int currTransposition = 0;
+	int currBegBarErosion = 0;
 
 	for(int i=0; i<emotionSequence.size() - 1; i++) {
 		EmotionState nextEmotion = emotionSequence.at(i+1);		
@@ -110,22 +112,26 @@ void MusicSegmentManager::generateMusicFromEmotion(vector<EmotionState> emotionS
 		MusicSegment nextMusic = getMusicSegmentByEmotion(nextEmotion.valence, nextEmotion.arousal);
 
 		Bridge bridge = bridgeManager.getBridge(currMusic, nextMusic);
-		if(!bridge.isInvalid()) {
-
-			vector<MidiFile> catList;
-			catList.push_back(musicSegmentList[i].repeat(30, 0, bridge.barErosionIntoPrevSeg, bridge.prevTransposition));
-			catList.push_back(bridge.bridgeMidi);
-			catList.push_back(musicSegmentList[j].repeat(30, bridge.barErosionIntoNextSeg, 0, bridge.nextTransposition));
-			
-			MidiFile midiFile = midiCat.run(catList, 0.0);
-			std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
-			outfile.open((to_string(i) + to_string(j) + ".mid").c_str());
-			midiFile.write(outfile);
-			outfile.close();
-		}
+		double bridgeDuration = bridge.bridgeMidi.getFileDurationInSeconds();
+		
+		catList.push_back(currMusic.repeat(currDuration - bridgeDuration, currBegBarErosion, bridge.barErosionIntoPrevSeg));
+		catList.push_back(bridge.bridgeMidi);
+		
+		currBegBarErosion = bridge.barErosionIntoNextSeg;
+		
+		nextMusic.currTransposition = bridge.nextTransposition;
+		currMusic = nextMusic;
 
 	}
 	
+	
+	MidiFile midiFile = midiCat.run(catList, 0.0);
+
+	std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
+	outfile.open("output.mid");
+	midiFile.write(outfile);
+	outfile.close();
+
 	
 	
 	

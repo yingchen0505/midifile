@@ -43,15 +43,17 @@ BridgeManager::BridgeManager(string bridgeFolderPath) {
 }
 
 Bridge BridgeManager::getBridge(MusicSegment prevSegment, MusicSegment nextSegment) {
-	string bridgeID = to_string(prevSegment.valence) + "_" + to_string(prevSegment.arousal) + "_" + to_string(prevSegment.ID) + "_" +
-						to_string(nextSegment.valence) + "_" + to_string(nextSegment.arousal) + "_" + to_string(nextSegment.ID);
-	if(bridgeMap[bridgeID].isInvalid()) {
-		Bridge bridge(prevSegment, nextSegment);
-		bridgeMap[bridgeID] = bridge;
-		return bridge;
-	}
-	else {
-		return bridgeMap[bridgeID];
-	}
+	return Bridge(prevSegment, nextSegment);
+
+	// string bridgeID = to_string(prevSegment.valence) + "_" + to_string(prevSegment.arousal) + "_" + to_string(prevSegment.ID) + "_" +
+						// to_string(nextSegment.valence) + "_" + to_string(nextSegment.arousal) + "_" + to_string(nextSegment.ID);
+	// if(bridgeMap[bridgeID].isInvalid()) {
+		// Bridge bridge(prevSegment, nextSegment);
+		// bridgeMap[bridgeID] = bridge;
+		// return bridge;
+	// }
+	// else {
+		// return bridgeMap[bridgeID];
+	// }
 }
 		
