@@ -19,6 +19,7 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 			else if(itr->path().leaf().string() == "music_segments") {
 				// Loop through all emotion folders in music_segments folder
 				for (directory_iterator emotionFolderItr( itr->path() ); emotionFolderItr != end_itr; ++emotionFolderItr) {
+					
 					string emotionFolderName = emotionFolderItr->path().leaf().string();
 
 					string searchString = emotionFolderName;
@@ -35,7 +36,7 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 					int arousal = stoi(numberFound[0]);
 
 					vector<MusicSegment> tempList;
-
+					
 					// Loop through music segments within this emotion
 					for (directory_iterator musicSegmentItr( emotionFolderItr->path() ); musicSegmentItr != end_itr; ++musicSegmentItr) {
 						MidiFile infile(musicSegmentItr->path().string().c_str());
@@ -63,7 +64,6 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 								tempList.push_back(musicSegment);
 							}
 						}
-
 						switch(partNumber) {
 							case 1:
 								tempList[fileNumber].prep = new MidiFile(infile);
@@ -96,29 +96,74 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 	}	
 }
 
-void MusicSegmentManager::generateMusicFromEmotion() {
+void MusicSegmentManager::generateMusicFromEmotion(vector<EmotionState> emotionSequence) {
+	
 	MidiCat midiCat;
+	EmotionState currEmotion = emotionSequence.at(0);	
+	MusicSegment currMusic = getMusicSegmentByEmotion(currEmotion.valence, currEmotion.arousal);
+	int currTransposition = 0;
+
+	for(int i=0; i<emotionSequence.size() - 1; i++) {
+		EmotionState nextEmotion = emotionSequence.at(i+1);		
+		int currDuration = nextEmotion.sec - currEmotion.sec;
+		
+		MusicSegment nextMusic = getMusicSegmentByEmotion(nextEmotion.valence, nextEmotion.arousal);
+
+		Bridge bridge = bridgeManager.getBridge(currMusic, nextMusic);
+		if(!bridge.isInvalid()) {
+
+			vector<MidiFile> catList;
+			catList.push_back(musicSegmentList[i].repeat(30, 0, bridge.barErosionIntoPrevSeg, bridge.prevTransposition));
+			catList.push_back(bridge.bridgeMidi);
+			catList.push_back(musicSegmentList[j].repeat(30, bridge.barErosionIntoNextSeg, 0, bridge.nextTransposition));
+			
+			MidiFile midiFile = midiCat.run(catList, 0.0);
+			std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
+			outfile.open((to_string(i) + to_string(j) + ".mid").c_str());
+			midiFile.write(outfile);
+			outfile.close();
+		}
+
+	}
+	
+	
+	
+	
 	
 	// Testing repeat function for all segments
-	for(int i=0; i<musicSegmentList.size(); i++){
+	// for(int i=0; i<musicSegmentList.size(); i++){
 		
-		for(int j=0; j<musicSegmentList.size(); j++){
-			if(i==j) continue;
-			std::cout << "i = " << i << " j = " << j << "\n";
-			Bridge bridge = bridgeManager.getBridge(musicSegmentList[i], musicSegmentList[j]);
-			if(!bridge.isInvalid()) {
+		// for(int j=0; j<musicSegmentList.size(); j++){
+			// if(i==j) continue;
+			// std::cout << "i = " << i << " j = " << j << "\n";
+			// Bridge bridge = bridgeManager.getBridge(musicSegmentList[i], musicSegmentList[j]);
+			// if(!bridge.isInvalid()) {
 
-				vector<MidiFile> catList;
-				catList.push_back(musicSegmentList[i].repeat(30, 0, bridge.barErosionIntoPrevSeg, bridge.prevTransposition));
-				catList.push_back(bridge.bridgeMidi);
-				catList.push_back(musicSegmentList[j].repeat(30, bridge.barErosionIntoNextSeg, 0, bridge.nextTransposition));
+				// vector<MidiFile> catList;
+				// catList.push_back(musicSegmentList[i].repeat(30, 0, bridge.barErosionIntoPrevSeg, bridge.prevTransposition));
+				// catList.push_back(bridge.bridgeMidi);
+				// catList.push_back(musicSegmentList[j].repeat(30, bridge.barErosionIntoNextSeg, 0, bridge.nextTransposition));
 				
-				MidiFile midiFile = midiCat.run(catList, 0.0);
-				std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
-				outfile.open((to_string(i) + to_string(j) + ".mid").c_str());
-				midiFile.write(outfile);
-				outfile.close();
-			}
+				// MidiFile midiFile = midiCat.run(catList, 0.0);
+				// std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
+				// outfile.open((to_string(i) + to_string(j) + ".mid").c_str());
+				// midiFile.write(outfile);
+				// outfile.close();
+			// }
+		// }
+	// }	
+}
+
+MusicSegment MusicSegmentManager::getMusicSegmentByEmotion(int valence, int arousal) {
+	double currDistance = INT_MAX;
+	MusicSegment result;
+	for(int i=0; i<musicSegmentList.size(); i++){
+		MusicSegment musicSegment = musicSegmentList.at(i);
+		double distance = sqrt(pow(musicSegment.valence - valence, 2) + pow(musicSegment.arousal - arousal, 2));
+		if(currDistance > distance) {
+			currDistance = distance;
+			result = musicSegment;
 		}
-	}	
+	}
+	return result;
 }

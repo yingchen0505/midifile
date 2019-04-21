@@ -44,7 +44,6 @@ int main(int argc, char* argv[]) {
 
 	
 	 MusicSegmentManager musicSegmentManager(INPUT_PATH);
-	// musicSegmentManager.generateMusicFromEmotion();
 	
 	std::ifstream in("emotion_sequence.txt");
 	int min;
@@ -59,17 +58,8 @@ int main(int argc, char* argv[]) {
 		emotionSequence.push_back({min * 60 + sec, valence, arousal}); 
 	}
 	
-	int currentTime = emotionSequence.at(0).sec;
-	for(int i=0; i<emotionSequence.size() - 1; i++) {
-		EmotionState currEmotion = emotionSequence.at(i);
-		EmotionState nextEmotion = emotionSequence.at(i+1);		
-		int currDuration = nextEmotion.sec - currEmotion.sec;
-		
-		MusicSegment currMusic = musicSegmentManager.getMusicSegmentByEmotion(currEmotion.valence, currEmotion.arousal);
-		
-		
-	}
-	
+	musicSegmentManager.generateMusicFromEmotion(emotionSequence);
+
 	
 	//// Debugger by event
 	/*

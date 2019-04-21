@@ -25,12 +25,11 @@ namespace music_segment_manager {
 	class MusicSegmentManager {
 		public:
 			MusicSegmentManager(string inputFolderPath);
-			void generateMusicFromEmotion();
-			MusicSegment getMusicSegmentByEmotion(int valence, int arousal);
+			void generateMusicFromEmotion(vector<EmotionState> emotionSequence);
 
 		private:
 			std::vector<MusicSegment> musicSegmentList;
 			BridgeManager bridgeManager;
-		
+			MusicSegment getMusicSegmentByEmotion(int valence, int arousal);			
 	};
 }
