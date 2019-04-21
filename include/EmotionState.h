@@ -2,7 +2,7 @@
 #define _EMOTIONSTATE_H_INCLUDED
 
 struct EmotionState {
-	int sec, valence, arousal;
+	int startTime, endTime, valence, arousal; // time in seconds
 };
 
 #endif /* _EMOTIONSTATE_H_INCLUDED */

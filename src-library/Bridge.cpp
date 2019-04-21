@@ -20,6 +20,11 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	
 	prevMidi = getLastBarsFromSegment(prevSegment, barErosionIntoPrevSeg);
 	nextMidi = getFirstBarsFromSegment(nextSegment, barErosionIntoNextSeg);
+	
+	if(prevSegment.currTransposition != 0) {
+		prevMidi = transpose(prevMidi, prevSegment.currTransposition);
+	}
+
 	/*
 	std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
 	outfile.open(to_string(prevSegment.valence) + to_string(prevSegment.arousal) + to_string(prevSegment.ID) + "helplah.mid");
@@ -263,7 +268,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 
 	////-------------------------------
 	//// Volume done
-	
+		
 	catList.push_back(prevMidiAfterKeyChange);
 	catList.push_back(nextMidi);
 	newMidi = midiCat.run(catList, 0.0);

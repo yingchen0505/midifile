@@ -107,8 +107,7 @@ void MusicSegmentManager::generateMusicFromEmotion(vector<EmotionState> emotionS
 
 	for(int i=0; i<emotionSequence.size() - 1; i++) {
 		EmotionState nextEmotion = emotionSequence.at(i+1);		
-		int currDuration = nextEmotion.sec - currEmotion.sec;
-		
+		int currDuration = currEmotion.endTime - currEmotion.startTime;
 		MusicSegment nextMusic = getMusicSegmentByEmotion(nextEmotion.valence, nextEmotion.arousal);
 
 		Bridge bridge = bridgeManager.getBridge(currMusic, nextMusic);
@@ -121,10 +120,11 @@ void MusicSegmentManager::generateMusicFromEmotion(vector<EmotionState> emotionS
 		
 		nextMusic.currTransposition = bridge.nextTransposition;
 		currMusic = nextMusic;
-
+		currEmotion = nextEmotion;
 	}
 	
-	
+	catList.push_back(currMusic.repeat(emotionSequence.back().endTime - emotionSequence.back().startTime, currBegBarErosion, 0));
+
 	MidiFile midiFile = midiCat.run(catList, 0.0);
 
 	std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
