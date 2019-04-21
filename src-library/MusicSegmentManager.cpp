@@ -106,19 +106,20 @@ void MusicSegmentManager::generateMusicFromEmotion(vector<EmotionState> emotionS
 	int currBegBarErosion = 0;
 	double timeTakenByPrevBridge = 0.0;
 	Bridge prevBridge;
+	double accumulatedError = 0.0;
 
 	for(int i=0; i<emotionSequence.size() - 1; i++) {
 		EmotionState nextEmotion = emotionSequence.at(i+1);		
 		int currDuration = currEmotion.endTime - currEmotion.startTime;
-		cout << "endTime = " << currEmotion.endTime << "\n";
-		cout << "startTime = " << currEmotion.startTime << "\n";
+		// cout << "endTime = " << currEmotion.endTime << "\n";
+		// cout << "startTime = " << currEmotion.startTime << "\n";
 		cout << "currDuration = " << currDuration << "\n";
 		MusicSegment nextMusic = getMusicSegmentByEmotion(nextEmotion.valence, nextEmotion.arousal);
 
 		Bridge bridge = bridgeManager.getBridge(currMusic, nextMusic);
 		
 		MidiFile currMidi = currMusic.repeat(currDuration, currBegBarErosion, bridge.barErosionIntoPrevSeg);
-		double shrinkFactor = (double)currDuration / (currMidi.getFileDurationInSeconds() + bridge.prevMidiDuration + timeTakenByPrevBridge);
+		double shrinkFactor = ((double)currDuration + accumulatedError) / (currMidi.getFileDurationInSeconds() + bridge.prevMidiDuration + timeTakenByPrevBridge);
 		double totalActualTime = 0.0;
 		if(i>0) {
 			MidiFile prevBridgeMidi = shrinkOrExpand(prevBridge.nextMidi, shrinkFactor);
@@ -133,6 +134,8 @@ void MusicSegmentManager::generateMusicFromEmotion(vector<EmotionState> emotionS
 		MidiFile bridgePrevMidi = shrinkOrExpand(bridge.prevMidi, shrinkFactor);
 		catList.push_back(bridgePrevMidi);
 		totalActualTime += bridgePrevMidi.getFileDurationInSeconds();
+		
+		accumulatedError += currDuration - totalActualTime;
 		
 		cout << "totalActualTime = " << totalActualTime << "\n";
 		
