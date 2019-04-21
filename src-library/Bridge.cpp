@@ -177,10 +177,8 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	MidiFile prevMidiAfterKeyChange = midiCat.run(keyChangeCatList, 0.0);
 	double prevTempo = findLastTempo(prevMidi);
 	double nextTempo = findFirstTempo(nextMidi);
-	std::cout << "nextTempo = " << nextTempo << "\n";
 	if(prevTempo < nextTempo) {
 		double intermediateTempo = prevTempo * 0.8;
-		std::cout << "intermediateTempo = " << intermediateTempo << "\n";
 		prevMidiAfterKeyChange = tempoDilation(prevMidiAfterKeyChange, intermediateTempo);
 		nextMidi = reverseTempoDilation(nextMidi, intermediateTempo);
 	}
@@ -235,6 +233,8 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	this->bridgeMidi = newMidi;
 	this->valid = true;
 	this->nextTransposition = !nextTranspositionFailed ? nextTransposition : 0;
+	this->prevMidiDuration = prevMidiAfterKeyChange.getFileDurationInSeconds();
+	this->nextMidiDuration = nextMidi.getFileDurationInSeconds();
 }
 
 Bridge::Bridge(string ID, MidiFile bridgeMidi, int barErosionIntoPrevSeg, int barErosionIntoNextSeg) {

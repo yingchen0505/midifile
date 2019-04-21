@@ -33,6 +33,8 @@ namespace bridge {
 			string prevSegmentID;
 			string nextSegmentID;
 			int nextTransposition;
+			double prevMidiDuration; // in seconds
+			double nextMidiDuration; // in seconds
 			
 			bool isInvalid();
 		
