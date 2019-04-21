@@ -20,6 +20,11 @@ using namespace smf;
 using namespace music_segment_manager;
 using std::string;
 
+struct EmotionState {
+	int sec, valence, arousal;
+};
+
+
 // pause (in seconds) between concatenated midi files.
 // used with -p option
 double pauseBetweenMidi = 0.0;  
@@ -40,8 +45,28 @@ int main(int argc, char* argv[]) {
 	//cout << infile;
 
 	
-	//MusicSegmentManager musicSegmentManager(INPUT_PATH);
-	//musicSegmentManager.generateMusicFromEmotion();
+	// MusicSegmentManager musicSegmentManager(INPUT_PATH);
+	// musicSegmentManager.generateMusicFromEmotion();
+	
+	std::ifstream in("emotion_sequence.txt");
+	int min;
+	int sec;
+	int valence;
+	int arousal;
+	vector<EmotionState> emotionSequence;
+	while(in >> min) {
+		in >> sec;
+		in >> valence;
+		in >> arousal;
+		emotionSequence.push_back({min * 60 + sec, valence, arousal}); 
+	}
+	
+	int currentTime = emotionSequence.at(0).sec;
+	for(int i=0; i<emotionSequence.size(); i++) {
+		EmotionState currEmotion = emotionSequence.at(i);
+		int currDuration = 0;
+	}
+	
 	
 	//// Debugger by event
 	/*
@@ -82,8 +107,8 @@ int main(int argc, char* argv[]) {
 	outfile.write(cout);*/
 
 	///// Midi Excerpt Tool
-	MidiExcerptByBar midiExcerptByBar;
-	midiExcerptByBar.run(startBar, endBar, options.getArg(1)).write(cout);
+	// MidiExcerptByBar midiExcerptByBar;
+	// midiExcerptByBar.run(startBar, endBar, options.getArg(1)).write(cout);
 	
 	//// remove parts
 /* 	MidiFile infile(options.getArg(1));
@@ -93,16 +118,16 @@ int main(int argc, char* argv[]) {
 	
 	////--------------------------------------------
 	//// Volume adjustment tool
-	/* MidiFile infile(options.getArg(1));
-	infile.joinTracks();
-	for(int i=0; i< infile.getEventCount(0); i++) {
-		if(infile.getEvent(0, i).isNoteOn()) {
-			int velocity = infile.getEvent(0, i).getVelocity() * volumeFactor;
-			infile.getEvent(0, i).setVelocity(velocity);
-		}
-	}
-	infile.splitTracks();
-	infile.write(cout); */
+	// MidiFile infile(options.getArg(1));
+	// infile.joinTracks();
+	// for(int i=0; i< infile.getEventCount(0); i++) {
+		// if(infile.getEvent(0, i).isNoteOn()) {
+			// int velocity = infile.getEvent(0, i).getVelocity() * volumeFactor;
+			// infile.getEvent(0, i).setVelocity(velocity);
+		// }
+	// }
+	// infile.splitTracks();
+	// infile.write(cout);
 	///----------------------------------------
 	
 	/*
