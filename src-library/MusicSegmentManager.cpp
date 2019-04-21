@@ -116,6 +116,16 @@ void MusicSegmentManager::generateMusicFromEmotion(vector<EmotionState> emotionS
 		catList.push_back(currMusic.repeat(currDuration - bridgeDuration, currBegBarErosion, bridge.barErosionIntoPrevSeg));
 		catList.push_back(bridge.bridgeMidi);
 		
+		std::ofstream outfile2; // without std::, reference would be ambiguous because of Boost
+		outfile2.open("bridge" + to_string(currMusic.ID) + to_string(nextMusic.ID) + ".mid");
+		bridge.bridgeMidi.write(outfile2);
+		outfile2.close();
+
+		std::ofstream outfiletxt2; // without std::, reference would be ambiguous because of Boost
+		outfiletxt2.open("bridge" + to_string(currMusic.ID) + to_string(nextMusic.ID) + ".txt");
+		outfiletxt2 << bridge.bridgeMidi;
+		outfiletxt2.close();
+
 		currBegBarErosion = bridge.barErosionIntoNextSeg;
 		
 		nextMusic.currTransposition = bridge.nextTransposition;
@@ -131,9 +141,12 @@ void MusicSegmentManager::generateMusicFromEmotion(vector<EmotionState> emotionS
 	outfile.open("output.mid");
 	midiFile.write(outfile);
 	outfile.close();
+	
+	std::ofstream outfiletxt; // without std::, reference would be ambiguous because of Boost
+	outfiletxt.open("outputmid.txt");
+	outfiletxt << midiFile;
+	outfiletxt.close();
 
-	
-	
 	
 	
 	// Testing repeat function for all segments

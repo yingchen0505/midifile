@@ -20,7 +20,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	
 	prevMidi = getLastBarsFromSegment(prevSegment, barErosionIntoPrevSeg);
 	nextMidi = getFirstBarsFromSegment(nextSegment, barErosionIntoNextSeg);
-	
+		
 	if(prevSegment.currTransposition != 0) {
 		prevMidi = transpose(prevMidi, prevSegment.currTransposition);
 	}
@@ -52,6 +52,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	}*/
 	
 	vector<int> beginningNoteKeys = getBeginningNoteKeys(nextMidi);
+	
 	/*
 	for(int i=0; i< beginningNoteKeys.size(); i++){
 		std::cout << "beginningNoteKeys[" << i << "] = " << beginningNoteKeys[i] << "\n";
@@ -176,11 +177,12 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	MidiFile prevMidiAfterKeyChange = midiCat.run(keyChangeCatList, 0.0);
 	double prevTempo = findLastTempo(prevMidi);
 	double nextTempo = findFirstTempo(nextMidi);
+	std::cout << "nextTempo = " << nextTempo << "\n";
 	if(prevTempo < nextTempo) {
 		double intermediateTempo = prevTempo * 0.8;
 		std::cout << "intermediateTempo = " << intermediateTempo << "\n";
 		prevMidiAfterKeyChange = tempoDilation(prevMidiAfterKeyChange, intermediateTempo);
-		//nextMidi = reverseTempoDilation(nextMidi, intermediateTempo);
+		nextMidi = reverseTempoDilation(nextMidi, intermediateTempo);
 	}
 	else {
 		prevMidiAfterKeyChange = tempoDilation(prevMidiAfterKeyChange, nextTempo);
@@ -189,7 +191,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	if(!nextTranspositionFailed && nextTransposition != 0) {
 		nextMidi = transpose(nextMidi, nextTransposition);
 	}
-
+	
 	////-------------------------------
 	//// Volume
 	
@@ -205,8 +207,30 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	//// Volume done
 		
 	catList.push_back(prevMidiAfterKeyChange);
+	
+	std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
+	outfile.open("nextMidi" + to_string(prevSegment.ID) + to_string(nextSegment.ID) + ".mid");
+	nextMidi.write(outfile);
+	outfile.close();
+
+	std::ofstream outfiletxt; // without std::, reference would be ambiguous because of Boost
+	outfiletxt.open("nextMidi" + to_string(prevSegment.ID) + to_string(nextSegment.ID) + ".txt");
+	outfiletxt << nextMidi;
+	outfiletxt.close();
+	
 	catList.push_back(nextMidi);
 	newMidi = midiCat.run(catList, 0.0);
+	
+	std::ofstream outfile2; // without std::, reference would be ambiguous because of Boost
+	outfile2.open("newMidi" + to_string(prevSegment.ID) + to_string(nextSegment.ID) + ".mid");
+	newMidi.write(outfile2);
+	outfile2.close();
+
+	std::ofstream outfiletxt2; // without std::, reference would be ambiguous because of Boost
+	outfiletxt2.open("newMidi" + to_string(prevSegment.ID) + to_string(nextSegment.ID) + ".txt");
+	outfiletxt2 << newMidi;
+	outfiletxt2.close();
+
 	
 	this->bridgeMidi = newMidi;
 	this->valid = true;
@@ -369,7 +393,6 @@ MidiFile Bridge::reverseTempoDilation(MidiFile inputFile, double initialTempo) {
 	// This loop adjusts the BPM values of the tempo events in the midi file
 	// so that the new BPM values are results of linear interpolation
 	// between the initialTempo and the original tempos
-	cout << "initialTempo = " << initialTempo << "\n";
 	for(int i=0; i < eventCount; i++) {
 		progression = (double) inputFile.getEvent(0, i).tick / (double) totalTicks;
 		
@@ -379,11 +402,6 @@ MidiFile Bridge::reverseTempoDilation(MidiFile inputFile, double initialTempo) {
 			lastOriginalTempo = inputFile.getEvent(0, i);
 			inputFile.getEvent(0, i).setTempo(newTempo);
 			tempoList.push_back(inputFile.getEvent(0, i));
-				cout << "progression = " << progression << "\n";
-
-				cout << "newTempo = " << newTempo << "\n";
-				cout << "originalTempo = " << originalTempo << "\n";
-
 		}
 	}
 	
@@ -431,8 +449,6 @@ MidiFile Bridge::reverseTempoDilation(MidiFile inputFile, double initialTempo) {
 			tempoEvent.tick = inputFile.getEvent(0, i).tick;
 			inputFile.addEvent(tempoEvent);
 			while(stepCounter >= stepsize) stepCounter -= stepsize;
-			cout << "progression = " << progression << "\n";
-			cout << "newTempo = " << newTempo << "\n";
 
 		}
 		
@@ -491,7 +507,6 @@ MidiFile Bridge::reverseVolumeInterpolation(MidiFile inputFile, int initialVolum
 		}
 	}
 
-	
 	// This loop adjusts the velocity values of the note events in the midi file
 	// so that the new velocity values are results of linear interpolation
 	// between the initialVolume and the original velocity
