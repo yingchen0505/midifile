@@ -30,6 +30,8 @@ namespace music_segment_manager {
 		private:
 			std::vector<MusicSegment> musicSegmentList;
 			BridgeManager bridgeManager;
-			MusicSegment getMusicSegmentByEmotion(int valence, int arousal);			
+			MusicSegment getMusicSegmentByEmotion(int valence, int arousal);	
+			MidiFile shrinkOrExpand(MidiFile infile, double factor);
+			
 	};
 }

@@ -56,13 +56,6 @@ MidiFile MusicSegment::repeat(double timeInSeconds, int beginningBarErosion, int
 
 	// Need to play at least once, even if time given is too short
 	repeatRounds = max(repeatRounds, 1);
-	
-	///-----------------------------------------------------
-	/// Calculate shirnk/expand factor
-	double totalRawMusicTime = ((double) repeatRounds - 1.) * mainLoopDuration + (*mainLoop).getFileDurationInSeconds() + durationOfPrepAndEnd;
-	double factor = timeInSeconds / totalRawMusicTime;
-	///-----------------------------------------------------
-
 
 	// If mainLoopEnd is not null, it should be repeated together with mainLoop
 	if(mainLoopEnd) {
@@ -126,19 +119,6 @@ MidiFile MusicSegment::repeat(double timeInSeconds, int beginningBarErosion, int
 	MidiFile concatResult = midiCat.run(concatList, 0.0);
 	if (currTransposition != 0) {
 		concatResult = transpose(concatResult, currTransposition);
-	}
-	
-	///-----------------------------------------------------
-	/// Shrink / expand
-	if(factor != 1.0) {
-		concatResult.joinTracks();
-		int eventCount = concatResult.getEventCount(0);
-		for (int i=0; i<eventCount; i++) {
-			if(concatResult.getEvent(0,i).isTempo()){
-				double newTempo = (double) concatResult.getEvent(0,i).getTempoMicroseconds() * factor;
-				concatResult.getEvent(0,i).setTempoMicroseconds(newTempo);
-			}
-		}
 	}
 
 	return concatResult;

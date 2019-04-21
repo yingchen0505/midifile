@@ -230,7 +230,8 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	outfiletxt2.close();
 
 	
-	this->bridgeMidi = newMidi;
+	this->prevMidi = prevMidi;
+	this->nextMidi = nextMidi;
 	this->valid = true;
 	this->nextTransposition = !nextTranspositionFailed ? nextTransposition : 0;
 	this->prevMidiDuration = prevMidiAfterKeyChange.getFileDurationInSeconds();
