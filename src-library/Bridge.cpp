@@ -63,7 +63,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	keyChange = keyChange%12;
 	//keyChange = (keyChange > 0 ) ? (keyChange - 12) : keyChange; 
 
-	std::cout << "keyChange = " << keyChange << "\n";
+	// std::cout << "keyChange = " << keyChange << "\n";
 	double tempoOfNext = findFirstTempo(nextMidi);
 
 	vector<MidiFile> catList;
@@ -112,9 +112,9 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	sort( stepSet.begin(), stepSet.end() );
 	stepSet.erase( unique( stepSet.begin(), stepSet.end() ), stepSet.end() );
 
-	for (int step : stepSet) {
-		cout << "step = " << step << "\n";
-	}
+	// for (int step : stepSet) {
+		// cout << "step = " << step << "\n";
+	// }
 	
 	int* array = &stepSet[0];
 	vector<vector<int>> solutions = countSolutions(array, stepSet.size(), keyChange);
@@ -130,19 +130,9 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 			break;
 		}
 	}
-	cout << "nextTranspositionFailed = " << nextTranspositionFailed << "\n";
-	cout << "final transpose = " << nextTransposition << "\n";
+	// cout << "nextTranspositionFailed = " << nextTranspositionFailed << "\n";
+	// cout << "final transpose = " << nextTransposition << "\n";
 	
-	if(nextTransposition != 0) {
-		cout << "NEED TRANSPOSE! \n";
-	}
-	if(nextTransposition != 0 && abs(nextTransposition) < 5) {
-		cout << "TRANSPOSE IS GOOD! \n";
-	}
-	else if (nextTransposition == 0) {
-		cout << "NO TRANSPOSE! GOOD! \n";
-	}
-
 	keyChange += !nextTranspositionFailed ? nextTransposition : 0;
 	if(!solutions.empty()) {
 		int shortestSolutionLength = INT8_MAX;
@@ -153,40 +143,14 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 			}
 		}
 	}
-	/*
-	vector<int> sanity{1, 2, 3};
-	int* array = &sanity[0];
-	vector<vector<int>> solutions = countSolutions(array, sanity.size(), 8);
-	if(!solutions.empty()) {
-		for(vector<int> solution : solutions) {
-			for (int num : solution) {
-				cout << "num = " << num << "\n";
-			}
-		}
-	}
-*/
-
 	
-	for (int magic : magicSet) {
-		cout << "MAGIC SET HERE! " << magic << "\n";
-	}
+	// for (int magic : magicSet) {
+		// cout << "MAGIC SET HERE! " << magic << "\n";
+	// }
 	
 	///----------------------------------------------------------------------------
 
-	
-	magicNumber = magicNumber%12;
-						
-	std::cout << "magicNumber = " << magicNumber << "\n";
-	
 	int currentKeyChange = 0;
-	int greatestPrime = 2;
-	if (abs(keyChange) >= 5) {
-		greatestPrime = 5;
-	}
-	else if (abs(keyChange) >= 3) {
-		greatestPrime = 3;
-	}
-	std::cout << "greatestPrime = " << greatestPrime << "\n";
 	
 	if(!magicSet.empty()) {
 		int remainingKeyChange = keyChange;
@@ -202,33 +166,11 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 		}
 	}
 	else if(!nextTranspositionFailed) {
-		cout << "MAGIC FAILED BUT WE GOT TRANSPOSE! \n";
+		// cout << "MAGIC FAILED BUT WE GOT TRANSPOSE! \n";
 		keyChangeCatList.push_back(finalBarOfPrev);
 	}
 	else {
 		cout << "MAGIC FAILED! CRAIS \n";
-		while (keyChange != 0) {
-	//		int keyChangeStep = keyChange > 0 ? min(greatestPrime, keyChange) : max((-1)*greatestPrime, keyChange);
-			int keyChangeStep;
-			if(magicNumber != 0) {
-				keyChangeStep = keyChange > 0 ? min(abs(magicNumber), keyChange) : max((-1)*abs(magicNumber), keyChange);
-			}
-			else {
-				keyChangeStep = keyChange > 0 ? min(greatestPrime, keyChange) : max((-1)*greatestPrime, keyChange);
-			}
-			
-			std::cout << (magicNumber != 0) << " keyChangeStep = " << keyChangeStep << "\n";
-
-			currentKeyChange += keyChangeStep;
-			keyChange -= keyChangeStep;
-			// Need to include the final bar if we are at the end
-			if(keyChange == 0) {
-				keyChangeCatList.push_back(transpose(prevMidi, currentKeyChange));
-			}
-			else {
-				keyChangeCatList.push_back(transpose(keyChangeBar, currentKeyChange));
-			}
-		}
 	}
 	
 	MidiFile prevMidiAfterKeyChange = midiCat.run(keyChangeCatList, 0.0);
@@ -254,14 +196,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	int lastVolume = getLastVolume(nextMidi);
 	int firstVolume = getFirstVolume(prevMidiAfterKeyChange);
 	int intermediateVolume = min(firstVolume, lastVolume) * 0.8;
-/* 	
-	if(lastVolume < firstVolume) {
-		nextMidi = reverseVolumeInterpolation(nextMidi, lastVolume);
-	}
-	else if (lastVolume > firstVolume) {
-		prevMidiAfterKeyChange = volumeInterpolation(prevMidiAfterKeyChange, firstVolume);
-	}
- */	
+	
 	nextMidi = reverseVolumeInterpolation(nextMidi, intermediateVolume);
 	prevMidiAfterKeyChange = volumeInterpolation(prevMidiAfterKeyChange, intermediateVolume);
 
