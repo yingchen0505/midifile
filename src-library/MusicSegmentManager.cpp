@@ -115,6 +115,9 @@ void MusicSegmentManager::generateMusicFromEmotion(vector<EmotionState> emotionS
 		// cout << "startTime = " << currEmotion.startTime << "\n";
 		cout << "currDuration = " << currDuration << "\n";
 		cout << "currTransposition = " << currMusic.currTransposition << "\n";
+		cout << "valence = " << currEmotion.valence << "\n";
+		cout << "arousal = " << currEmotion.arousal << "\n";
+
 		MusicSegment nextMusic = getMusicSegmentByEmotion(nextEmotion.valence, nextEmotion.arousal);
 
 		Bridge bridge = bridgeManager.getBridge(currMusic, nextMusic);
@@ -153,7 +156,15 @@ void MusicSegmentManager::generateMusicFromEmotion(vector<EmotionState> emotionS
 		currEmotion = nextEmotion;
 		timeTakenByPrevBridge = bridge.nextMidiDuration;
 		prevBridge = bridge;
+		
+		cout << "------------------------------------------------------------ \n";
+
 	}
+	
+	cout << "currTransposition = " << currMusic.currTransposition << "\n";
+	cout << "valence = " << currEmotion.valence << "\n";
+	cout << "arousal = " << currEmotion.arousal << "\n";
+
 	
 	catList.push_back(currMusic.repeat(emotionSequence.back().endTime - emotionSequence.back().startTime - timeTakenByPrevBridge, currBegBarErosion, 0));
 
