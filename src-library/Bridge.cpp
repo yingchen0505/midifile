@@ -145,9 +145,9 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 		}
 	}
 	
-	// for (int magic : magicSet) {
-		// cout << "MAGIC SET HERE! " << magic << "\n";
-	// }
+	for (int magic : magicSet) {
+		cout << "Transposition step = " << magic << "\n";
+	}
 	
 	///----------------------------------------------------------------------------
 

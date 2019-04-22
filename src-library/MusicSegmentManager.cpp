@@ -114,6 +114,7 @@ void MusicSegmentManager::generateMusicFromEmotion(vector<EmotionState> emotionS
 		// cout << "endTime = " << currEmotion.endTime << "\n";
 		// cout << "startTime = " << currEmotion.startTime << "\n";
 		cout << "currDuration = " << currDuration << "\n";
+		cout << "currTransposition = " << currMusic.currTransposition << "\n";
 		MusicSegment nextMusic = getMusicSegmentByEmotion(nextEmotion.valence, nextEmotion.arousal);
 
 		Bridge bridge = bridgeManager.getBridge(currMusic, nextMusic);
@@ -145,16 +146,6 @@ void MusicSegmentManager::generateMusicFromEmotion(vector<EmotionState> emotionS
 		
 		cout << "totalActualTime = " << totalActualTime << "\n";
 		
-		// std::ofstream outfile2; // without std::, reference would be ambiguous because of Boost
-		// outfile2.open("bridge" + to_string(currMusic.ID) + to_string(nextMusic.ID) + ".mid");
-		// bridge.bridgeMidi.write(outfile2);
-		// outfile2.close();
-
-		// std::ofstream outfiletxt2; // without std::, reference would be ambiguous because of Boost
-		// outfiletxt2.open("bridge" + to_string(currMusic.ID) + to_string(nextMusic.ID) + ".txt");
-		// outfiletxt2 << bridge.bridgeMidi;
-		// outfiletxt2.close();
-
 		currBegBarErosion = bridge.barErosionIntoNextSeg;
 		
 		nextMusic.currTransposition = bridge.nextTransposition;
