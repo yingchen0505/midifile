@@ -30,10 +30,13 @@ namespace bridge {
 			int barErosionIntoPrevSeg; // number of end bars that the previous segment has to drop when connected to this bridge
 			int barErosionIntoNextSeg; // number of beginning bars that the next segment has to drop when connected to this bridge
 			MidiFile bridgeMidi;
+			MidiFile prevMidi;
+			MidiFile nextMidi;
 			string prevSegmentID;
 			string nextSegmentID;
-			int prevTransposition;
 			int nextTransposition;
+			double prevMidiDuration; // in seconds
+			double nextMidiDuration; // in seconds
 			
 			bool isInvalid();
 		
@@ -52,6 +55,11 @@ namespace bridge {
 			vector<int> getBeginningNoteKeys(MidiFile inputFile);
 			int getPhraseLengthInBars(MidiFile inputFile);
 			vector<vector<int>> countSolutions( int S[], int m, int n );
+			MidiFile reverseVolumeInterpolation(MidiFile inputFile, int initialVolume);
+			MidiFile volumeInterpolation(MidiFile inputFile, int endVolume);
+			int getFirstVolume(MidiFile inputFile);
+			int getLastVolume(MidiFile inputFile);
+
 
 	};
 }

@@ -20,6 +20,11 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	
 	prevMidi = getLastBarsFromSegment(prevSegment, barErosionIntoPrevSeg);
 	nextMidi = getFirstBarsFromSegment(nextSegment, barErosionIntoNextSeg);
+		
+	if(prevSegment.currTransposition != 0) {
+		prevMidi = transpose(prevMidi, prevSegment.currTransposition);
+	}
+
 	/*
 	std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
 	outfile.open(to_string(prevSegment.valence) + to_string(prevSegment.arousal) + to_string(prevSegment.ID) + "helplah.mid");
@@ -47,6 +52,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	}*/
 	
 	vector<int> beginningNoteKeys = getBeginningNoteKeys(nextMidi);
+	
 	/*
 	for(int i=0; i< beginningNoteKeys.size(); i++){
 		std::cout << "beginningNoteKeys[" << i << "] = " << beginningNoteKeys[i] << "\n";
@@ -58,7 +64,7 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	keyChange = keyChange%12;
 	//keyChange = (keyChange > 0 ) ? (keyChange - 12) : keyChange; 
 
-	std::cout << "keyChange = " << keyChange << "\n";
+	// std::cout << "keyChange = " << keyChange << "\n";
 	double tempoOfNext = findFirstTempo(nextMidi);
 
 	vector<MidiFile> catList;
@@ -99,15 +105,17 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	for(int begNote : begNotesOfFinalBarOfPrev) {
 		int step = begNote - startPoint;
 		stepSet.push_back( abs(step) < 12 ? step : 0);
+		//stepSet.push_back( step % 12);
+
 	}
 	
 	///// Remove duplicates
 	sort( stepSet.begin(), stepSet.end() );
 	stepSet.erase( unique( stepSet.begin(), stepSet.end() ), stepSet.end() );
 
-	for (int step : stepSet) {
-		cout << "step = " << step << "\n";
-	}
+	// for (int step : stepSet) {
+		// cout << "step = " << step << "\n";
+	// }
 	
 	int* array = &stepSet[0];
 	vector<vector<int>> solutions = countSolutions(array, stepSet.size(), keyChange);
@@ -117,13 +125,15 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 		// explore in the sequence of -1, 1, -2, 2, -3, 3...
 		nextTransposition = nextTransposition >= 0 ? (nextTransposition + 1) * (-1) : nextTransposition * (-1);
 		solutions = countSolutions(array, stepSet.size(), keyChange + nextTransposition);
-		cout << "nextTransposition = " << nextTransposition << "\n";
+		//cout << "nextTransposition = " << nextTransposition << "\n";
 		if(abs(nextTransposition) > 11) {
 			nextTranspositionFailed = true;
 			break;
 		}
 	}
-	cout << "nextTranspositionFailed = " << nextTranspositionFailed << "\n";
+	// cout << "nextTranspositionFailed = " << nextTranspositionFailed << "\n";
+	// cout << "final transpose = " << nextTransposition << "\n";
+	
 	keyChange += !nextTranspositionFailed ? nextTransposition : 0;
 	if(!solutions.empty()) {
 		int shortestSolutionLength = INT8_MAX;
@@ -134,40 +144,14 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 			}
 		}
 	}
-	/*
-	vector<int> sanity{1, 2, 3};
-	int* array = &sanity[0];
-	vector<vector<int>> solutions = countSolutions(array, sanity.size(), 8);
-	if(!solutions.empty()) {
-		for(vector<int> solution : solutions) {
-			for (int num : solution) {
-				cout << "num = " << num << "\n";
-			}
-		}
-	}
-*/
-
 	
 	for (int magic : magicSet) {
-		cout << "MAGIC SET HERE! " << magic << "\n";
+		cout << "Transposition step = " << magic << "\n";
 	}
 	
 	///----------------------------------------------------------------------------
 
-	
-	magicNumber = magicNumber%12;
-						
-	std::cout << "magicNumber = " << magicNumber << "\n";
-	
 	int currentKeyChange = 0;
-	int greatestPrime = 2;
-	if (abs(keyChange) >= 5) {
-		greatestPrime = 5;
-	}
-	else if (abs(keyChange) >= 3) {
-		greatestPrime = 3;
-	}
-	std::cout << "greatestPrime = " << greatestPrime << "\n";
 	
 	if(!magicSet.empty()) {
 		int remainingKeyChange = keyChange;
@@ -183,57 +167,75 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 		}
 	}
 	else if(!nextTranspositionFailed) {
-		cout << "MAGIC FAILED BUT WE GOT TRANSPOSE! \n";
+		// cout << "MAGIC FAILED BUT WE GOT TRANSPOSE! \n";
 		keyChangeCatList.push_back(finalBarOfPrev);
 	}
 	else {
 		cout << "MAGIC FAILED! CRAIS \n";
-		while (keyChange != 0) {
-	//		int keyChangeStep = keyChange > 0 ? min(greatestPrime, keyChange) : max((-1)*greatestPrime, keyChange);
-			int keyChangeStep;
-			if(magicNumber != 0) {
-				keyChangeStep = keyChange > 0 ? min(abs(magicNumber), keyChange) : max((-1)*abs(magicNumber), keyChange);
-			}
-			else {
-				keyChangeStep = keyChange > 0 ? min(greatestPrime, keyChange) : max((-1)*greatestPrime, keyChange);
-			}
-			
-			std::cout << (magicNumber != 0) << " keyChangeStep = " << keyChangeStep << "\n";
-
-			currentKeyChange += keyChangeStep;
-			keyChange -= keyChangeStep;
-			// Need to include the final bar if we are at the end
-			if(keyChange == 0) {
-				keyChangeCatList.push_back(transpose(prevMidi, currentKeyChange));
-			}
-			else {
-				keyChangeCatList.push_back(transpose(keyChangeBar, currentKeyChange));
-			}
-		}
 	}
 	
 	MidiFile prevMidiAfterKeyChange = midiCat.run(keyChangeCatList, 0.0);
 	double prevTempo = findLastTempo(prevMidi);
 	double nextTempo = findFirstTempo(nextMidi);
 	if(prevTempo < nextTempo) {
-		double intermediateTempo = prevTempo * 0.8;
-		std::cout << "intermediateTempo = " << intermediateTempo << "\n";
+		double intermediateTempo = prevTempo * 0.6;
 		prevMidiAfterKeyChange = tempoDilation(prevMidiAfterKeyChange, intermediateTempo);
 		nextMidi = reverseTempoDilation(nextMidi, intermediateTempo);
 	}
 	else {
 		prevMidiAfterKeyChange = tempoDilation(prevMidiAfterKeyChange, nextTempo);
 	}
-	catList.push_back(prevMidiAfterKeyChange);
+	
 	if(!nextTranspositionFailed && nextTransposition != 0) {
 		nextMidi = transpose(nextMidi, nextTransposition);
 	}
+	
+	////-------------------------------
+	//// Volume
+	
+	int lastVolume = getLastVolume(nextMidi);
+	int firstVolume = getFirstVolume(prevMidiAfterKeyChange);
+	int intermediateVolume = min(firstVolume, lastVolume) * 0.5;
+	
+	nextMidi = reverseVolumeInterpolation(nextMidi, intermediateVolume);
+	prevMidiAfterKeyChange = volumeInterpolation(prevMidiAfterKeyChange, intermediateVolume);
+
+
+	////-------------------------------
+	//// Volume done
+		
+	catList.push_back(prevMidiAfterKeyChange);
+	
+	std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
+	outfile.open("nextMidi" + to_string(prevSegment.ID) + to_string(nextSegment.ID) + ".mid");
+	nextMidi.write(outfile);
+	outfile.close();
+
+	std::ofstream outfiletxt; // without std::, reference would be ambiguous because of Boost
+	outfiletxt.open("nextMidi" + to_string(prevSegment.ID) + to_string(nextSegment.ID) + ".txt");
+	outfiletxt << nextMidi;
+	outfiletxt.close();
+	
 	catList.push_back(nextMidi);
 	newMidi = midiCat.run(catList, 0.0);
 	
-	this->bridgeMidi = newMidi;
+	std::ofstream outfile2; // without std::, reference would be ambiguous because of Boost
+	outfile2.open("newMidi" + to_string(prevSegment.ID) + to_string(nextSegment.ID) + ".mid");
+	newMidi.write(outfile2);
+	outfile2.close();
+
+	std::ofstream outfiletxt2; // without std::, reference would be ambiguous because of Boost
+	outfiletxt2.open("newMidi" + to_string(prevSegment.ID) + to_string(nextSegment.ID) + ".txt");
+	outfiletxt2 << newMidi;
+	outfiletxt2.close();
+
+	
+	this->prevMidi = prevMidiAfterKeyChange;
+	this->nextMidi = nextMidi;
 	this->valid = true;
 	this->nextTransposition = !nextTranspositionFailed ? nextTransposition : 0;
+	this->prevMidiDuration = prevMidiAfterKeyChange.getFileDurationInSeconds();
+	this->nextMidiDuration = nextMidi.getFileDurationInSeconds();
 }
 
 Bridge::Bridge(string ID, MidiFile bridgeMidi, int barErosionIntoPrevSeg, int barErosionIntoNextSeg) {
@@ -448,12 +450,82 @@ MidiFile Bridge::reverseTempoDilation(MidiFile inputFile, double initialTempo) {
 			tempoEvent.tick = inputFile.getEvent(0, i).tick;
 			inputFile.addEvent(tempoEvent);
 			while(stepCounter >= stepsize) stepCounter -= stepsize;
+
 		}
 		
 	}
 	inputFile.sortTracks();
 	return inputFile;
 }
+
+MidiFile Bridge::volumeInterpolation(MidiFile inputFile, int endVolume) {
+	inputFile.joinTracks();
+	inputFile.absoluteTicks();
+	int totalTicks = inputFile.getFileDurationInTicks();
+	int eventCount = inputFile.getEventCount(0);
+	double progression = 0.0;
+	int tickOfLastNoteOff;
+	
+	/// Get the tick of last note-off event
+	for(int i=0; i < eventCount; i++) {
+		if(inputFile.getEvent(0, i).isNoteOff()) {
+			tickOfLastNoteOff = inputFile.getEvent(0, i).tick;
+		}
+	}
+
+	
+	// This loop adjusts the velocity values of the note events in the midi file
+	// so that the new velocity values are results of linear interpolation
+	// between the original velocity and endVolume
+	for(int i=0; i < eventCount; i++) {
+		progression = (double) inputFile.getEvent(0, i).tick / (double) tickOfLastNoteOff;
+		
+		if(inputFile.getEvent(0, i).isNoteOn()) {
+			int originalVolume = inputFile.getEvent(0, i).getVelocity();
+			int newVolume = endVolume + (double)(originalVolume - endVolume) * (1.0 - progression);
+			inputFile.getEvent(0, i).setVelocity(newVolume);
+		}
+	}
+	
+	inputFile.sortTracks();
+	return inputFile;
+}
+
+
+MidiFile Bridge::reverseVolumeInterpolation(MidiFile inputFile, int initialVolume) {
+	inputFile.joinTracks();
+	inputFile.absoluteTicks();
+	int totalTicks = inputFile.getFileDurationInTicks();
+	int eventCount = inputFile.getEventCount(0);
+	double progression = 0.0;
+	int beginningTick = 0;
+	
+	/// Get the tick of first note-on event
+	for(int i=0; i < eventCount; i++) {
+		if(inputFile.getEvent(0, i).isNoteOn()) {
+			beginningTick = inputFile.getEvent(0, i).tick;
+			break;
+		}
+	}
+
+	// This loop adjusts the velocity values of the note events in the midi file
+	// so that the new velocity values are results of linear interpolation
+	// between the initialVolume and the original velocity
+	for(int i=0; i < eventCount; i++) {
+		progression = (double) (inputFile.getEvent(0, i).tick - beginningTick) / (double) (totalTicks - beginningTick);
+		
+		if(inputFile.getEvent(0, i).isNoteOn()) {
+			int originalVolume = inputFile.getEvent(0, i).getVelocity();
+			int newVolume = initialVolume + (double)(originalVolume - initialVolume) * progression;
+			inputFile.getEvent(0, i).setVelocity(newVolume);
+		}
+	}
+	
+	inputFile.sortTracks();
+	return inputFile;
+}
+
+
 
 double Bridge::findFirstTempo(MidiFile inputFile) {
 	inputFile.joinTracks();
@@ -492,6 +564,35 @@ MidiEvent Bridge::getLastKeySignature(MidiFile inputFile) {
 	
 	return keySignature;
 }
+
+int Bridge::getLastVolume(MidiFile inputFile) {
+	inputFile.joinTracks();
+	int eventCount = inputFile.getEventCount(0);
+	int lastVolume = -1;
+	
+	for(int i=0; i<eventCount; i++) {
+		if(inputFile.getEvent(0, i).isNoteOn()){
+			lastVolume = inputFile.getEvent(0, i).getVelocity();
+		}
+	}
+	
+	return lastVolume;
+}
+
+int Bridge::getFirstVolume(MidiFile inputFile) {
+	inputFile.joinTracks();
+	int eventCount = inputFile.getEventCount(0);
+
+	for(int i=0; i<eventCount; i++) {
+		if(inputFile.getEvent(0, i).isNoteOn()){
+			return inputFile.getEvent(0, i).getVelocity();
+		}
+	}
+	
+	return -1;
+}
+
+
 
 MidiEvent Bridge::getFirstKeySignature(MidiFile inputFile) {
 	inputFile.joinTracks();

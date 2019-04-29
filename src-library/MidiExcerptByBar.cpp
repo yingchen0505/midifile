@@ -169,6 +169,16 @@ MidiFile MidiExcerptByBar::run(int startBar, int endBar, MidiFile infile) {
 			outfile.addEvent(noteOffAfterEndBar[i]);
 		}
 	}
+	
+	outfile.linkNotePairs();
+	for(int i=0; i<outfile.getEventCount(0); i++) {
+		if(outfile.getEvent(0, i).isNoteOn()) {
+			MidiEvent* linkedEvent = outfile.getEvent(0,i).getLinkedEvent();
+			if(!linkedEvent) {
+				outfile.addNoteOff(outfile.getEvent(0,i).track, 0, outfile.getEvent(0,i).getChannel(), outfile.getEvent(0,i).getKeyNumber());
+			}
+		}
+	}
 
 	 // insert an end-of track Meta Event
     int tpq = outfile.getTicksPerQuarterNote();

@@ -6,6 +6,7 @@ MusicSegment::MusicSegment() {
 	valence = 0;
 	arousal = 0;
 	ID = 0;
+	currTransposition = 0;
 	prep = NULL;
 	mainLoop = NULL;
 	mainLoopEnd = NULL;
@@ -20,13 +21,14 @@ MusicSegment::MusicSegment(int valence, int arousal, int ID, MidiFile* prep, Mid
 	this->mainLoop = mainLoop;
 	this->mainLoopEnd = mainLoopEnd;
 	this->finalEnd = finalEnd;
+	this->currTransposition = 0;
 }
 
 bool MusicSegment::isInvalid() {
 	return !mainLoop;
 }
 
-MidiFile MusicSegment::repeat(double timeInSeconds, int beginningBarErosion, int endBarErosion, int transposition) {
+MidiFile MusicSegment::repeat(double timeInSeconds, int beginningBarErosion, int endBarErosion) {
 	if(!mainLoop) return MidiFile(); // No mainLoop to repeat, something went wrong.
 	
 	double durationOfPrepAndEnd = 0.0; 
@@ -115,9 +117,10 @@ MidiFile MusicSegment::repeat(double timeInSeconds, int beginningBarErosion, int
 		}
 	}
 	MidiFile concatResult = midiCat.run(concatList, 0.0);
-	if (transposition != 0) {
-		concatResult = transpose(concatResult, transposition);
+	if (currTransposition != 0) {
+		concatResult = transpose(concatResult, currTransposition);
 	}
+
 	return concatResult;
 }
 

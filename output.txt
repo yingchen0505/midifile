@@ -3,9 +3,10 @@ keyChange = -11
 step = -8
 step = -5
 step = 0
-nextTransposition = -1
-nextTransposition = 1
 nextTranspositionFailed = 0
+final transpose = 1
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 MAGIC SET HERE! -5
 MAGIC SET HERE! -5
 magicNumber = -5
@@ -16,10 +17,10 @@ keyChange = 2
 step = -8
 step = -5
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
 nextTranspositionFailed = 0
+final transpose = -2
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 magicNumber = -5
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
@@ -30,10 +31,10 @@ keyChange = 2
 step = -8
 step = -5
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
 nextTranspositionFailed = 0
+final transpose = -2
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 magicNumber = -5
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
@@ -44,6 +45,8 @@ step = -8
 step = -5
 step = 0
 nextTranspositionFailed = 0
+final transpose = 0
+NO TRANSPOSE! GOOD! 
 MAGIC SET HERE! -5
 magicNumber = -5
 greatestPrime = 5
@@ -53,14 +56,10 @@ keyChange = 4
 step = -8
 step = -5
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
 nextTranspositionFailed = 0
+final transpose = -4
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 magicNumber = -5
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
@@ -70,9 +69,10 @@ keyChange = -1
 step = -10
 step = -6
 step = 0
-nextTransposition = -1
-nextTransposition = 1
 nextTranspositionFailed = 0
+final transpose = 1
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 magicNumber = -6
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
@@ -81,8 +81,10 @@ keyChange = 1
 step = -10
 step = -6
 step = 0
-nextTransposition = -1
 nextTranspositionFailed = 0
+final transpose = -1
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 magicNumber = -6
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
@@ -92,12 +94,10 @@ keyChange = 3
 step = -10
 step = -6
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
 nextTranspositionFailed = 0
+final transpose = -3
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 magicNumber = -6
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
@@ -107,8 +107,10 @@ keyChange = 1
 step = -10
 step = -6
 step = 0
-nextTransposition = -1
 nextTranspositionFailed = 0
+final transpose = -1
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 magicNumber = -6
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
@@ -119,6 +121,8 @@ step = -10
 step = -6
 step = 0
 nextTranspositionFailed = 0
+final transpose = 0
+NO TRANSPOSE! GOOD! 
 MAGIC SET HERE! -6
 magicNumber = -6
 greatestPrime = 5
@@ -128,12 +132,10 @@ keyChange = 3
 step = -10
 step = -6
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
 nextTranspositionFailed = 0
+final transpose = -3
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 magicNumber = -6
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
@@ -143,11 +145,10 @@ keyChange = -2
 step = -8
 step = -5
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
 nextTranspositionFailed = 0
+final transpose = 2
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 magicNumber = 0
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
@@ -156,9 +157,10 @@ keyChange = -1
 step = -8
 step = -5
 step = 0
-nextTransposition = -1
-nextTransposition = 1
 nextTranspositionFailed = 0
+final transpose = 1
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 magicNumber = 0
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
@@ -167,10 +169,10 @@ keyChange = 2
 step = -8
 step = -5
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
 nextTranspositionFailed = 0
+final transpose = -2
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 magicNumber = 0
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
@@ -180,6 +182,8 @@ step = -8
 step = -5
 step = 0
 nextTranspositionFailed = 0
+final transpose = 0
+NO TRANSPOSE! GOOD! 
 magicNumber = 0
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
@@ -189,10 +193,10 @@ keyChange = 2
 step = -8
 step = -5
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
 nextTranspositionFailed = 0
+final transpose = -2
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 magicNumber = 0
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
@@ -201,19 +205,9 @@ i = 3 j = 0
 keyChange = -8
 step = -2
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
 nextTranspositionFailed = 0
+final transpose = 6
+NEED TRANSPOSE! 
 MAGIC SET HERE! -2
 magicNumber = -2
 greatestPrime = 2
@@ -221,17 +215,9 @@ i = 3 j = 1
 keyChange = -7
 step = -2
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
-nextTransposition = 5
 nextTranspositionFailed = 0
+final transpose = 5
+NEED TRANSPOSE! 
 MAGIC SET HERE! -2
 magicNumber = -2
 greatestPrime = 2
@@ -239,15 +225,10 @@ i = 3 j = 2
 keyChange = -6
 step = -2
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
 nextTranspositionFailed = 0
+final transpose = 4
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 MAGIC SET HERE! -2
 magicNumber = -2
 greatestPrime = 2
@@ -256,15 +237,10 @@ i = 3 j = 4
 keyChange = -6
 step = -2
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
 nextTranspositionFailed = 0
+final transpose = 4
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 MAGIC SET HERE! -2
 magicNumber = -2
 greatestPrime = 2
@@ -273,8 +249,10 @@ i = 3 j = 5
 keyChange = -1
 step = -2
 step = 0
-nextTransposition = -1
 nextTranspositionFailed = 0
+final transpose = -1
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 MAGIC SET HERE! -2
 magicNumber = -2
 greatestPrime = 2
@@ -283,11 +261,10 @@ i = 3 j = 6
 keyChange = -4
 step = -2
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
 nextTranspositionFailed = 0
+final transpose = 2
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 MAGIC SET HERE! -2
 magicNumber = -2
 greatestPrime = 2
@@ -296,9 +273,10 @@ i = 4 j = 0
 i = 4 j = 1
 keyChange = -1
 step = 0
-nextTransposition = -1
-nextTransposition = 1
 nextTranspositionFailed = 0
+final transpose = 1
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 magicNumber = 0
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
@@ -306,37 +284,27 @@ i = 4 j = 2
 keyChange = 0
 step = 0
 nextTranspositionFailed = 0
+final transpose = 0
+NO TRANSPOSE! GOOD! 
 magicNumber = 0
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
 i = 4 j = 3
 keyChange = 2
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
 nextTranspositionFailed = 0
+final transpose = -2
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 magicNumber = 0
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
 i = 4 j = 5
 keyChange = -7
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
-nextTransposition = -7
-nextTransposition = 7
 nextTranspositionFailed = 0
+final transpose = 7
+NEED TRANSPOSE! 
 magicNumber = 0
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
@@ -344,10 +312,10 @@ intermediateTempo = 83.9999
 i = 4 j = 6
 keyChange = 2
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
 nextTranspositionFailed = 0
+final transpose = -2
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 magicNumber = 0
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
@@ -355,112 +323,56 @@ intermediateTempo = 83.9999
 i = 5 j = 0
 keyChange = -11
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
-nextTransposition = -7
-nextTransposition = 7
-nextTransposition = -8
-nextTransposition = 8
-nextTransposition = -9
-nextTransposition = 9
-nextTransposition = -10
-nextTransposition = 10
-nextTransposition = -11
-nextTransposition = 11
 nextTranspositionFailed = 0
+final transpose = 11
+NEED TRANSPOSE! 
 magicNumber = 0
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
 i = 5 j = 1
 keyChange = -10
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
-nextTransposition = -7
-nextTransposition = 7
-nextTransposition = -8
-nextTransposition = 8
-nextTransposition = -9
-nextTransposition = 9
-nextTransposition = -10
-nextTransposition = 10
 nextTranspositionFailed = 0
+final transpose = 10
+NEED TRANSPOSE! 
 magicNumber = 0
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
 i = 5 j = 2
 keyChange = 3
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
 nextTranspositionFailed = 0
+final transpose = -3
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 magicNumber = 0
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
 i = 5 j = 3
 keyChange = 5
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
 nextTranspositionFailed = 0
+final transpose = -5
+NEED TRANSPOSE! 
 magicNumber = 0
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
 i = 5 j = 4
 keyChange = 3
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
 nextTranspositionFailed = 0
+final transpose = -3
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 magicNumber = 0
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
 i = 5 j = 6
 keyChange = 5
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
 nextTranspositionFailed = 0
+final transpose = -5
+NEED TRANSPOSE! 
 magicNumber = 0
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
@@ -469,11 +381,10 @@ i = 6 j = 0
 keyChange = -9
 step = -7
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
 nextTranspositionFailed = 0
+final transpose = 2
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 MAGIC SET HERE! -7
 magicNumber = -7
 greatestPrime = 5
@@ -481,9 +392,10 @@ i = 6 j = 1
 keyChange = -8
 step = -7
 step = 0
-nextTransposition = -1
-nextTransposition = 1
 nextTranspositionFailed = 0
+final transpose = 1
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 MAGIC SET HERE! -7
 magicNumber = -7
 greatestPrime = 5
@@ -492,20 +404,9 @@ i = 6 j = 3
 keyChange = 7
 step = -7
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
-nextTransposition = 5
-nextTransposition = -6
-nextTransposition = 6
-nextTransposition = -7
 nextTranspositionFailed = 0
+final transpose = -7
+NEED TRANSPOSE! 
 magicNumber = -7
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
@@ -513,16 +414,9 @@ i = 6 j = 4
 keyChange = 5
 step = -7
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
-nextTransposition = -3
-nextTransposition = 3
-nextTransposition = -4
-nextTransposition = 4
-nextTransposition = -5
 nextTranspositionFailed = 0
+final transpose = -5
+NEED TRANSPOSE! 
 magicNumber = -7
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 
@@ -530,11 +424,10 @@ i = 6 j = 5
 keyChange = -2
 step = -7
 step = 0
-nextTransposition = -1
-nextTransposition = 1
-nextTransposition = -2
-nextTransposition = 2
 nextTranspositionFailed = 0
+final transpose = 2
+NEED TRANSPOSE! 
+TRANSPOSE IS GOOD! 
 magicNumber = -7
 greatestPrime = 2
 MAGIC FAILED BUT WE GOT TRANSPOSE! 

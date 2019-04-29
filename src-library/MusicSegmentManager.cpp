@@ -19,6 +19,7 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 			else if(itr->path().leaf().string() == "music_segments") {
 				// Loop through all emotion folders in music_segments folder
 				for (directory_iterator emotionFolderItr( itr->path() ); emotionFolderItr != end_itr; ++emotionFolderItr) {
+					
 					string emotionFolderName = emotionFolderItr->path().leaf().string();
 
 					string searchString = emotionFolderName;
@@ -35,7 +36,7 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 					int arousal = stoi(numberFound[0]);
 
 					vector<MusicSegment> tempList;
-
+					
 					// Loop through music segments within this emotion
 					for (directory_iterator musicSegmentItr( emotionFolderItr->path() ); musicSegmentItr != end_itr; ++musicSegmentItr) {
 						MidiFile infile(musicSegmentItr->path().string().c_str());
@@ -63,7 +64,6 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 								tempList.push_back(musicSegment);
 							}
 						}
-
 						switch(partNumber) {
 							case 1:
 								tempList[fileNumber].prep = new MidiFile(infile);
@@ -96,29 +96,162 @@ MusicSegmentManager::MusicSegmentManager(string inputFolderPath) {
 	}	
 }
 
-void MusicSegmentManager::generateMusicFromEmotion() {
-	MidiCat midiCat;
+void MusicSegmentManager::generateMusicFromEmotion(vector<EmotionState> emotionSequence) {
 	
-	// Testing repeat function for all segments
-	for(int i=0; i<musicSegmentList.size(); i++){
-		
-		for(int j=0; j<musicSegmentList.size(); j++){
-			if(i==j) continue;
-			std::cout << "i = " << i << " j = " << j << "\n";
-			Bridge bridge = bridgeManager.getBridge(musicSegmentList[i], musicSegmentList[j]);
-			if(!bridge.isInvalid()) {
+	MidiCat midiCat;
+	vector<MidiFile> catList;
 
-				vector<MidiFile> catList;
-				catList.push_back(musicSegmentList[i].repeat(30, 0, bridge.barErosionIntoPrevSeg, bridge.prevTransposition));
-				catList.push_back(bridge.bridgeMidi);
-				catList.push_back(musicSegmentList[j].repeat(30, bridge.barErosionIntoNextSeg, 0, bridge.nextTransposition));
-				
-				MidiFile midiFile = midiCat.run(catList, 0.0);
-				std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
-				outfile.open((to_string(i) + to_string(j) + ".mid").c_str());
-				midiFile.write(outfile);
-				outfile.close();
-			}
+	EmotionState currEmotion = emotionSequence.at(0);	
+	MusicSegment currMusic = getMusicSegmentByEmotion(currEmotion.valence, currEmotion.arousal);
+	currMusic.currTransposition = 0;
+	int currBegBarErosion = 0;
+	double timeTakenByPrevBridge = 0.0;
+	Bridge prevBridge;
+	double accumulatedError = 0.0;
+
+	for(int i=0; i<emotionSequence.size() - 1; i++) {
+		EmotionState nextEmotion = emotionSequence.at(i+1);		
+		int currDuration = currEmotion.endTime - currEmotion.startTime;
+		cout << "currDuration = " << currDuration << "\n";
+		cout << "currTransposition = " << currMusic.currTransposition << "\n";
+		cout << "valence = " << currEmotion.valence << "\n";
+		cout << "arousal = " << currEmotion.arousal << "\n";
+
+		MusicSegment nextMusic = getMusicSegmentByEmotion(nextEmotion.valence, nextEmotion.arousal);
+
+		Bridge bridge = bridgeManager.getBridge(currMusic, nextMusic);
+		
+		MidiFile currMidi = currMusic.repeat(currDuration - accumulatedError, currBegBarErosion, bridge.barErosionIntoPrevSeg);
+		double shrinkFactor = ((double)currDuration - accumulatedError) / (currMidi.getFileDurationInSeconds() + bridge.prevMidiDuration + timeTakenByPrevBridge);
+		double totalActualTime = 0.0;
+		if(i>0) {
+			MidiFile prevBridgeMidi = shrinkOrExpand(prevBridge.nextMidi, shrinkFactor);
+			catList.push_back(prevBridgeMidi);
+			totalActualTime += prevBridgeMidi.getFileDurationInSeconds();
 		}
-	}	
+		
+		currMidi = shrinkOrExpand(currMidi, shrinkFactor);
+		catList.push_back(currMidi);
+		totalActualTime += currMidi.getFileDurationInSeconds();
+		
+		MidiFile bridgePrevMidi = shrinkOrExpand(bridge.prevMidi, shrinkFactor);
+		catList.push_back(bridgePrevMidi);
+		totalActualTime += bridgePrevMidi.getFileDurationInSeconds();
+		
+		accumulatedError += totalActualTime - currDuration;
+		
+		cout << "totalActualTime = " << totalActualTime << "\n";
+		
+		currBegBarErosion = bridge.barErosionIntoNextSeg;
+		
+		nextMusic.currTransposition = bridge.nextTransposition;
+		currMusic = nextMusic;
+		currEmotion = nextEmotion;
+		timeTakenByPrevBridge = bridge.nextMidiDuration;
+		prevBridge = bridge;
+		
+		cout << "------------------------------------------------------------ \n";
+
+	}
+	
+	cout << "currTransposition = " << currMusic.currTransposition << "\n";
+	cout << "valence = " << currEmotion.valence << "\n";
+	cout << "arousal = " << currEmotion.arousal << "\n";
+	
+	catList.push_back(currMusic.repeat(emotionSequence.back().endTime - emotionSequence.back().startTime - timeTakenByPrevBridge, currBegBarErosion, 0));
+
+	MidiFile midiFile = midiCat.run(catList, 0.0);
+
+	std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
+	outfile.open("output.mid");
+	midiFile.write(outfile);
+	outfile.close();
+}
+
+void MusicSegmentManager::generateMusicWithoutTransitionForComparison(vector<EmotionState> emotionSequence) {
+	
+	MidiCat midiCat;
+	vector<MidiFile> catList;
+
+	EmotionState currEmotion = emotionSequence.at(0);	
+	MusicSegment currMusic = getMusicSegmentByEmotion(currEmotion.valence, currEmotion.arousal);
+	currMusic.currTransposition = 0;
+	double accumulatedError = 0.0;
+
+	for(int i=0; i<emotionSequence.size() - 1; i++) {
+		EmotionState nextEmotion = emotionSequence.at(i+1);		
+		int currDuration = currEmotion.endTime - currEmotion.startTime;
+		// cout << "currDuration = " << currDuration << "\n";
+		// cout << "currTransposition = " << currMusic.currTransposition << "\n";
+		// cout << "valence = " << currEmotion.valence << "\n";
+		// cout << "arousal = " << currEmotion.arousal << "\n";
+
+		MusicSegment nextMusic = getMusicSegmentByEmotion(nextEmotion.valence, nextEmotion.arousal);
+		
+		MidiFile currMidi = currMusic.repeat(currDuration - accumulatedError, 0, 0);
+		// double shrinkFactor = ((double)currDuration - accumulatedError) / (currMidi.getFileDurationInSeconds());
+		// double totalActualTime = 0.0;
+		
+		// currMidi = shrinkOrExpand(currMidi, shrinkFactor);
+		catList.push_back(currMidi);
+		// totalActualTime += currMidi.getFileDurationInSeconds();
+		
+		// accumulatedError += totalActualTime - currDuration;
+		
+		// cout << "totalActualTime = " << totalActualTime << "\n";
+				
+		nextMusic.currTransposition = 0;
+		currMusic = nextMusic;
+		currEmotion = nextEmotion;		
+		// cout << "------------------------------------------------------------ \n";
+
+	}
+	
+	// cout << "currTransposition = " << currMusic.currTransposition << "\n";
+	// cout << "valence = " << currEmotion.valence << "\n";
+	// cout << "arousal = " << currEmotion.arousal << "\n";
+	
+	catList.push_back(currMusic.repeat(emotionSequence.back().endTime - emotionSequence.back().startTime, 0, 0));
+
+	MidiFile midiFile = midiCat.run(catList, 0.0);
+
+	std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
+	outfile.open("no_transition.mid");
+	midiFile.write(outfile);
+	outfile.close();
+}
+
+
+MusicSegment MusicSegmentManager::getMusicSegmentByEmotion(int valence, int arousal) {
+	double currDistance = INT_MAX;
+	MusicSegment result;
+	for(int i=0; i<musicSegmentList.size(); i++){
+		MusicSegment musicSegment = musicSegmentList.at(i);
+		double distance = sqrt(pow(musicSegment.valence - valence, 2) + pow(musicSegment.arousal - arousal, 2));
+		if(currDistance > distance) {
+			currDistance = distance;
+			result = musicSegment;
+		}
+	}
+	return result;
+}
+
+MidiFile MusicSegmentManager::shrinkOrExpand(MidiFile infile, double factor) {
+	
+	///-----------------------------------------------------
+	/// Shrink / expand
+	if(factor != 1.0) {
+		infile.joinTracks();
+		int eventCount = infile.getEventCount(0);
+		for (int i=0; i<eventCount; i++) {
+			if(infile.getEvent(0,i).isTempo()){
+				double newTempo = (double) infile.getEvent(0,i).getTempoMicroseconds() * factor;
+				infile.getEvent(0,i).setTempoMicroseconds(newTempo);
+			}
+			// double newTick = (double)infile.getEvent(0,i).tick * factor;
+			// infile.getEvent(0,i).tick = newTick;
+		}
+	}
+	
+	return infile;
 }

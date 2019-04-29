@@ -49,7 +49,9 @@ MidiFile MidiCat::run(vector<MidiFile> inputFiles, double pause) {
 //
 
 int MidiCat::correctTempo(int oldTempo, int oldTpq, int newTpq) {
-	return (oldTempo * newTpq / oldTpq);
+	double factor = (double)newTpq / (double)oldTpq;
+	double newTempo = (double) oldTempo * factor;
+	return newTempo;
 }
 
 
