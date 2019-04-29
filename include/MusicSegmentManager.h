@@ -26,6 +26,7 @@ namespace music_segment_manager {
 		public:
 			MusicSegmentManager(string inputFolderPath);
 			void generateMusicFromEmotion(vector<EmotionState> emotionSequence);
+			void generateMusicWithoutTransitionForComparison(vector<EmotionState> emotionSequence);
 
 		private:
 			std::vector<MusicSegment> musicSegmentList;

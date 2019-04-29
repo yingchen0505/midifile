@@ -69,7 +69,8 @@ int main(int argc, char* argv[]) {
 	}
 	emotionSequence.back().endTime = endOfFileTime;
 	
-	musicSegmentManager.generateMusicFromEmotion(emotionSequence);
+	//musicSegmentManager.generateMusicFromEmotion(emotionSequence);
+	musicSegmentManager.generateMusicWithoutTransitionForComparison(emotionSequence);
 
 	/////------------------------------------------------------------------
 	
