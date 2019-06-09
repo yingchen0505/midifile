@@ -13,6 +13,7 @@
 
 #define INPUT_PATH	"../input"
 #define OUTPUT_PATH	"../output"
+#define EMOTION_SEQUENCE_FILE_NAME "emotion_sequence.txt"
 
 using namespace midi_excerpt_by_bar;
 using namespace smf;
@@ -28,20 +29,45 @@ int endBar = -1;	// Use with -e option (inclusive)
 double volumeFactor = 1.0; // Use with -v option
 
 void checkOptions (Options& opts, int argc, char** argv);
+vector<EmotionState> readEmotionSequence(string emotionSequencePath);
 
 int main(int argc, char* argv[]) {
 	
 	Options options;
 	checkOptions(options, argc, argv);
 	
-	///------------------------------------------------
-	/// Main Program
-	
 	MusicSegmentManager musicSegmentManager(INPUT_PATH);
-
-	std::string emotionSequenceFileName = "/emotion_sequence.txt";
 	std::string inputPath = INPUT_PATH;	
-	std::ifstream in(inputPath + emotionSequenceFileName);
+	std::string emotionSequenceFileName = EMOTION_SEQUENCE_FILE_NAME;
+	std::string emotionSequenceFilePath = inputPath + "/" + emotionSequenceFileName;
+	vector<EmotionState> emotionSequence = readEmotionSequence(emotionSequenceFilePath);
+	musicSegmentManager.generateMusicFromEmotion(emotionSequence);
+	musicSegmentManager.generateMusicWithoutTransitionForComparison(emotionSequence);
+	
+}
+
+
+//////////////////////////////
+//
+// checkOptions --
+//
+
+void checkOptions(Options& opts, int argc, char* argv[]) {
+	opts.define("p|pause=i:1",  "pause (in seconds) between concatenated midi files.");
+	opts.define("s|start=i:1",  "Starting bar (inclusive)");
+	opts.define("e|end=i:-1",  "Ending bar (inclusive)");
+	opts.define("v|volumeFactor=d:1.0",  "volume factor");
+	opts.process(argc, argv);
+	
+	pauseBetweenMidi = opts.getDouble("pause");
+	startBar     =  opts.getInt("start");
+	endBar     = opts.getInt("end");
+	volumeFactor = opts.getDouble("volumeFactor");
+}
+
+
+vector<EmotionState> readEmotionSequence(string emotionSequenceFilePath) {
+	std::ifstream in(emotionSequenceFilePath);
 	int min;
 	int sec;
 	int valence;
@@ -65,100 +91,6 @@ int main(int argc, char* argv[]) {
 	}
 	
 	emotionSequence.back().endTime = endOfFileTime;
-	//musicSegmentManager.generateMusicFromEmotion(emotionSequence);
-	musicSegmentManager.generateMusicWithoutTransitionForComparison(emotionSequence);
 	
-	/////------------------------------------------------------------------
-	
-	//// Debugger by event
-	/*
-	MidiFile infile(options.getArg(1).c_str());
-	infile.joinTracks();
-	
-	for (int i=0; i<infile.getEventCount(0); i++){
-		cout << "bar = " << infile.getEvent(0, i).bar << "\n";
-		cout << "ticks since beginning of bar = " << infile.getEvent(0, i).ticksSinceBeginningOfBar << "\n";
-		cout << "ticks till end of bar = " << infile.getEvent(0, i).ticksTillEndOfBar << "\n";
-	}*/
-	
-	
-	//// Debugger by bar
-	/*
-	int currBar = 1;
-	
-	while(1) {
-		std::vector<int> ticks = infile.getBeginningAndEndTicksByBar(currBar);
-		if(ticks.empty()){
-			break;
-		}
-		cout << "bar = " << currBar << "\n";
-		cout << "beg ticks = " << ticks[0] << "\n";
-		cout << "end ticks = " << ticks[1] << "\n";
-		currBar++;
-	}*/
-	
-	///// MidiCat Tester
-	/*
-	MidiFile prep(options.getArg(1).c_str());
-	MidiFile mainLoop(options.getArg(2).c_str());
-	MidiFile mainLoopEnd(options.getArg(3).c_str());
-	MidiFile finalEnd(options.getArg(4).c_str());
-	MusicSegment musicSegment(0, 0, &prep, &mainLoop, &mainLoopEnd, &finalEnd);
-	MidiFile outfile = musicSegment.repeat(150, true, true);
-	//cout << outfile;
-	outfile.write(cout);*/
-
-	///// Midi Excerpt Tool
-	// MidiExcerptByBar midiExcerptByBar;
-	// midiExcerptByBar.run(startBar, endBar, options.getArg(1)).write(cout);
-	
-	//// remove parts
-/* 	MidiFile infile(options.getArg(1));
-	for(int i=0; i< infile.getTrackCount(); i++) {
-		
-	} */
-	
-	////--------------------------------------------
-	//// Volume adjustment tool
-	// MidiFile infile(options.getArg(1));
-	// infile.joinTracks();
-	// for(int i=0; i< infile.getEventCount(0); i++) {
-		// if(infile.getEvent(0, i).isNoteOn()) {
-			// int velocity = infile.getEvent(0, i).getVelocity() * volumeFactor;
-			// infile.getEvent(0, i).setVelocity(velocity);
-		// }
-	// }
-	// infile.splitTracks();
-	// infile.write(cout);
-	///----------------------------------------
-	
-	/*
-	MidiFile infile(options.getArg(1));
-	
-	std::ofstream orig_inMidi; // without std::, reference would be ambiguous because of Boost
-	orig_inMidi.open("infile.mid");
-	infile.write(orig_inMidi);
-	orig_inMidi.close();
-	
-	midiExcerptByBar.run(startBar, endBar, infile);*/
-	
-}
-
-
-//////////////////////////////
-//
-// checkOptions --
-//
-
-void checkOptions(Options& opts, int argc, char* argv[]) {
-	opts.define("p|pause=i:1",  "pause (in seconds) between concatenated midi files.");
-	opts.define("s|start=i:1",  "Starting bar (inclusive)");
-	opts.define("e|end=i:-1",  "Ending bar (inclusive)");
-	opts.define("v|volumeFactor=d:1.0",  "volume factor");
-	opts.process(argc, argv);
-	
-	pauseBetweenMidi = opts.getDouble("pause");
-	startBar     =  opts.getInt("start");
-	endBar     = opts.getInt("end");
-	volumeFactor = opts.getDouble("volumeFactor");
+	return emotionSequence;
 }
