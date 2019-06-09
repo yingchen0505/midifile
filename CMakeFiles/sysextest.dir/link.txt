@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/sysextest.dir/src-programs/sysextest.cpp.o  -o sysextest libmidifile.a 

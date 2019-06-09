@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/80off.dir/src-programs/80off.cpp.o  -o 80off libmidifile.a 

@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/midiexcerpt.dir/src-programs/midiexcerpt.cpp.o  -o midiexcerpt libmidifile.a 

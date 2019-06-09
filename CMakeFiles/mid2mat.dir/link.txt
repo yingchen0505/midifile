@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/mid2mat.dir/src-programs/mid2mat.cpp.o  -o mid2mat libmidifile.a 

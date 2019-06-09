@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/midimixup.dir/src-programs/midimixup.cpp.o  -o midimixup libmidifile.a 
