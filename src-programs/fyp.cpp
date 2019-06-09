@@ -9,19 +9,15 @@
 #include <unistd.h>
 #include "EmotionState.h"
 #include "MidiExcerptByBar.h"
-//#include "MusicSegment.h"
 #include "MusicSegmentManager.h"
 
-#define INPUT_PATH	"./input"
-#define OUTPUT_PATH	"./output"
+#define INPUT_PATH	"../input"
+#define OUTPUT_PATH	"../output"
 
 using namespace midi_excerpt_by_bar;
 using namespace smf;
-//using namespace music_segment;
 using namespace music_segment_manager;
 using std::string;
-
-
 
 // pause (in seconds) between concatenated midi files.
 // used with -p option
@@ -38,22 +34,21 @@ int main(int argc, char* argv[]) {
 	Options options;
 	checkOptions(options, argc, argv);
 	
-	// Read and print text:
-	//MidiFile infile(options.getArg(1).c_str());
-	//cout << infile;
-
 	///------------------------------------------------
 	/// Main Program
 	
 	MusicSegmentManager musicSegmentManager(INPUT_PATH);
-	
-	std::ifstream in("emotion_sequence.txt");
+
+	std::string emotionSequenceFileName = "/emotion_sequence.txt";
+	std::string inputPath = INPUT_PATH;	
+	std::ifstream in(inputPath + emotionSequenceFileName);
 	int min;
 	int sec;
 	int valence;
 	int arousal;
 	vector<EmotionState> emotionSequence;
 	int endOfFileTime;
+	
 	while(in >> min) {
 		in >> sec;
 		if(in >> valence) {
@@ -64,14 +59,15 @@ int main(int argc, char* argv[]) {
 			endOfFileTime = min * 60 + sec;
 		}
 	}
+	
 	for (int i=0; i<emotionSequence.size() - 1; i++) {
 		emotionSequence.at(i).endTime = emotionSequence.at(i+1).startTime;
 	}
-	emotionSequence.back().endTime = endOfFileTime;
 	
+	emotionSequence.back().endTime = endOfFileTime;
 	//musicSegmentManager.generateMusicFromEmotion(emotionSequence);
 	musicSegmentManager.generateMusicWithoutTransitionForComparison(emotionSequence);
-
+	
 	/////------------------------------------------------------------------
 	
 	//// Debugger by event
