@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/vlv.dir/src-programs/vlv.cpp.o  -o vlv libmidifile.a 

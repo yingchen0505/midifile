@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/mid2svg.dir/src-programs/mid2svg.cpp.o  -o mid2svg libmidifile.a 

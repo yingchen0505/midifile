@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/tohex.dir/src-programs/tohex.cpp.o  -o tohex libmidifile.a 

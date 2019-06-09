@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/midi2beep.dir/src-programs/midi2beep.cpp.o  -o midi2beep libmidifile.a 
