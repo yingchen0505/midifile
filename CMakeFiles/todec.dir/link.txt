@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/todec.dir/src-programs/todec.cpp.o  -o todec libmidifile.a 
