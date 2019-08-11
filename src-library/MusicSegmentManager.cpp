@@ -112,10 +112,6 @@ void MusicSegmentManager::generateMusicFromEmotion(vector<EmotionState> emotionS
 	for(int i=0; i<emotionSequence.size() - 1; i++) {
 		EmotionState nextEmotion = emotionSequence.at(i+1);		
 		int currDuration = currEmotion.endTime - currEmotion.startTime;
-		cout << "currDuration = " << currDuration << "\n";
-		cout << "currTransposition = " << currMusic.currTransposition << "\n";
-		cout << "valence = " << currEmotion.valence << "\n";
-		cout << "arousal = " << currEmotion.arousal << "\n";
 
 		MusicSegment nextMusic = getMusicSegmentByEmotion(nextEmotion.valence, nextEmotion.arousal);
 
@@ -140,8 +136,6 @@ void MusicSegmentManager::generateMusicFromEmotion(vector<EmotionState> emotionS
 		
 		accumulatedError += totalActualTime - currDuration;
 		
-		cout << "totalActualTime = " << totalActualTime << "\n";
-		
 		currBegBarErosion = bridge.barErosionIntoNextSeg;
 		
 		nextMusic.currTransposition = bridge.nextTransposition;
@@ -149,14 +143,8 @@ void MusicSegmentManager::generateMusicFromEmotion(vector<EmotionState> emotionS
 		currEmotion = nextEmotion;
 		timeTakenByPrevBridge = bridge.nextMidiDuration;
 		prevBridge = bridge;
-		
-		cout << "------------------------------------------------------------ \n";
 
 	}
-	
-	cout << "currTransposition = " << currMusic.currTransposition << "\n";
-	cout << "valence = " << currEmotion.valence << "\n";
-	cout << "arousal = " << currEmotion.arousal << "\n";
 	
 	catList.push_back(currMusic.repeat(emotionSequence.back().endTime - emotionSequence.back().startTime - timeTakenByPrevBridge, currBegBarErosion, 0));
 
@@ -181,35 +169,17 @@ void MusicSegmentManager::generateMusicWithoutTransitionForComparison(vector<Emo
 	for(int i=0; i<emotionSequence.size() - 1; i++) {
 		EmotionState nextEmotion = emotionSequence.at(i+1);		
 		int currDuration = currEmotion.endTime - currEmotion.startTime;
-		// cout << "currDuration = " << currDuration << "\n";
-		// cout << "currTransposition = " << currMusic.currTransposition << "\n";
-		// cout << "valence = " << currEmotion.valence << "\n";
-		// cout << "arousal = " << currEmotion.arousal << "\n";
 
 		MusicSegment nextMusic = getMusicSegmentByEmotion(nextEmotion.valence, nextEmotion.arousal);
 		
 		MidiFile currMidi = currMusic.repeat(currDuration - accumulatedError, 0, 0);
-		// double shrinkFactor = ((double)currDuration - accumulatedError) / (currMidi.getFileDurationInSeconds());
-		// double totalActualTime = 0.0;
-		
-		// currMidi = shrinkOrExpand(currMidi, shrinkFactor);
 		catList.push_back(currMidi);
-		// totalActualTime += currMidi.getFileDurationInSeconds();
-		
-		// accumulatedError += totalActualTime - currDuration;
-		
-		// cout << "totalActualTime = " << totalActualTime << "\n";
 				
 		nextMusic.currTransposition = 0;
 		currMusic = nextMusic;
 		currEmotion = nextEmotion;		
-		// cout << "------------------------------------------------------------ \n";
 
 	}
-	
-	// cout << "currTransposition = " << currMusic.currTransposition << "\n";
-	// cout << "valence = " << currEmotion.valence << "\n";
-	// cout << "arousal = " << currEmotion.arousal << "\n";
 	
 	catList.push_back(currMusic.repeat(emotionSequence.back().endTime - emotionSequence.back().startTime, 0, 0));
 
@@ -238,8 +208,6 @@ MusicSegment MusicSegmentManager::getMusicSegmentByEmotion(int valence, int arou
 
 MidiFile MusicSegmentManager::shrinkOrExpand(MidiFile infile, double factor) {
 	
-	///-----------------------------------------------------
-	/// Shrink / expand
 	if(factor != 1.0) {
 		infile.joinTracks();
 		int eventCount = infile.getEventCount(0);
@@ -248,8 +216,6 @@ MidiFile MusicSegmentManager::shrinkOrExpand(MidiFile infile, double factor) {
 				double newTempo = (double) infile.getEvent(0,i).getTempoMicroseconds() * factor;
 				infile.getEvent(0,i).setTempoMicroseconds(newTempo);
 			}
-			// double newTick = (double)infile.getEvent(0,i).tick * factor;
-			// infile.getEvent(0,i).tick = newTick;
 		}
 	}
 	
