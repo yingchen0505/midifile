@@ -25,46 +25,15 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 		prevMidi = transpose(prevMidi, prevSegment.currTransposition);
 	}
 
-	/*
-	std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
-	outfile.open(to_string(prevSegment.valence) + to_string(prevSegment.arousal) + to_string(prevSegment.ID) + "helplah.mid");
-	prevMidi.write(outfile);
-	outfile.close();
-	std::ofstream outfiletxt; // without std::, reference would be ambiguous because of Boost
-	outfiletxt.open(to_string(prevSegment.valence) + to_string(prevSegment.arousal) + to_string(prevSegment.ID) + "helplah.txt");
-	outfiletxt << prevMidi;
-	outfiletxt.close();*/
-	/*
-	if(!(getLastKeySignature(prevMidi).isEmpty()) && !(getFirstKeySignature(nextMidi).isEmpty())){
-		int prevKeySig = getLastKeySignature(prevMidi)[3];
-		int nextKeySig = getFirstKeySignature(nextMidi)[3];
-
-		if((prevKeySig > 7 && nextKeySig <= 7) || (prevKeySig <= 7 && nextKeySig > 7) ) {
-			this->valid = false;
-			return;
-		}
-	}*/
-
 	vector<int> endNoteKeys = getEndNoteKeys(prevMidi);
-	/*
-	for(int i=0; i< endNoteKeys.size(); i++){
-		std::cout << "endNoteKeys[" << i << "] = " << endNoteKeys[i] << "\n";
-	}*/
 	
 	vector<int> beginningNoteKeys = getBeginningNoteKeys(nextMidi);
-	
-	/*
-	for(int i=0; i< beginningNoteKeys.size(); i++){
-		std::cout << "beginningNoteKeys[" << i << "] = " << beginningNoteKeys[i] << "\n";
-	}*/
 	
 	int maxBeginningKey = 0;
 	int maxEndKey = 0;
 	int keyChange = *max_element(begin(beginningNoteKeys), end(beginningNoteKeys)) - *max_element(begin(endNoteKeys), end(endNoteKeys));
 	keyChange = keyChange%12;
-	//keyChange = (keyChange > 0 ) ? (keyChange - 12) : keyChange; 
 
-	// std::cout << "keyChange = " << keyChange << "\n";
 	double tempoOfNext = findFirstTempo(nextMidi);
 
 	vector<MidiFile> catList;
@@ -74,26 +43,12 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	keyChangeCatList.push_back(keyChangeBar);
 	
 	vector<int> begNotesOfKeyChangeBar = getBeginningNoteKeys(keyChangeBar);
-	/*
-	for(int i=0; i< begNotesOfKeyChangeBar.size(); i++){
-		std::cout << "begNotesOfKeyChangeBar[" << i << "] = " << begNotesOfKeyChangeBar[i] << "\n";
-	}*/
 	
 	vector<int> endNotesOfKeyChangeBar = getEndNoteKeys(keyChangeBar);
-	/*for(int i=0; i< endNotesOfKeyChangeBar.size(); i++){
-		std::cout << "endNotesOfKeyChangeBar[" << i << "] = " << endNotesOfKeyChangeBar[i] << "\n";
-	}*/
 	
 	MidiFile finalBarOfPrev = midiExcerptByBar.run(prevMidi.getTotalBars(), prevMidi.getTotalBars(), prevMidi);
 	
 	vector<int> begNotesOfFinalBarOfPrev = getBeginningNoteKeys(finalBarOfPrev);
-	/*for(int i=0; i< begNotesOfFinalBarOfPrev.size(); i++){
-		std::cout << "begNotesOfFinalBarOfPrev[" << i << "] = " << begNotesOfFinalBarOfPrev[i] << "\n";
-	}*/
-
-	
-	//int magicNumber = *max_element(begin(endNotesOfKeyChangeBar), end(endNotesOfKeyChangeBar)) - 
-						//*max_element(begin(begNotesOfKeyChangeBar), end(begNotesOfKeyChangeBar));
 	int magicNumber = *max_element(begin(begNotesOfFinalBarOfPrev), end(begNotesOfFinalBarOfPrev)) - 
 						*max_element(begin(begNotesOfKeyChangeBar), end(begNotesOfKeyChangeBar));
 	
@@ -105,7 +60,6 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	for(int begNote : begNotesOfFinalBarOfPrev) {
 		int step = begNote - startPoint;
 		stepSet.push_back( abs(step) < 12 ? step : 0);
-		//stepSet.push_back( step % 12);
 
 	}
 	
@@ -113,10 +67,6 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	sort( stepSet.begin(), stepSet.end() );
 	stepSet.erase( unique( stepSet.begin(), stepSet.end() ), stepSet.end() );
 
-	// for (int step : stepSet) {
-		// cout << "step = " << step << "\n";
-	// }
-	
 	int* array = &stepSet[0];
 	vector<vector<int>> solutions = countSolutions(array, stepSet.size(), keyChange);
 	int nextTransposition = 0;
@@ -125,14 +75,11 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 		// explore in the sequence of -1, 1, -2, 2, -3, 3...
 		nextTransposition = nextTransposition >= 0 ? (nextTransposition + 1) * (-1) : nextTransposition * (-1);
 		solutions = countSolutions(array, stepSet.size(), keyChange + nextTransposition);
-		//cout << "nextTransposition = " << nextTransposition << "\n";
 		if(abs(nextTransposition) > 11) {
 			nextTranspositionFailed = true;
 			break;
 		}
 	}
-	// cout << "nextTranspositionFailed = " << nextTranspositionFailed << "\n";
-	// cout << "final transpose = " << nextTransposition << "\n";
 	
 	keyChange += !nextTranspositionFailed ? nextTransposition : 0;
 	if(!solutions.empty()) {
@@ -143,10 +90,6 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 				magicSet = solution;
 			}
 		}
-	}
-	
-	for (int magic : magicSet) {
-		cout << "Transposition step = " << magic << "\n";
 	}
 	
 	///----------------------------------------------------------------------------
@@ -205,30 +148,6 @@ Bridge::Bridge(MusicSegment prevSegment, MusicSegment nextSegment) {
 	//// Volume done
 		
 	catList.push_back(prevMidiAfterKeyChange);
-	
-	std::ofstream outfile; // without std::, reference would be ambiguous because of Boost
-	outfile.open("nextMidi" + to_string(prevSegment.ID) + to_string(nextSegment.ID) + ".mid");
-	nextMidi.write(outfile);
-	outfile.close();
-
-	std::ofstream outfiletxt; // without std::, reference would be ambiguous because of Boost
-	outfiletxt.open("nextMidi" + to_string(prevSegment.ID) + to_string(nextSegment.ID) + ".txt");
-	outfiletxt << nextMidi;
-	outfiletxt.close();
-	
-	catList.push_back(nextMidi);
-	newMidi = midiCat.run(catList, 0.0);
-	
-	std::ofstream outfile2; // without std::, reference would be ambiguous because of Boost
-	outfile2.open("newMidi" + to_string(prevSegment.ID) + to_string(nextSegment.ID) + ".mid");
-	newMidi.write(outfile2);
-	outfile2.close();
-
-	std::ofstream outfiletxt2; // without std::, reference would be ambiguous because of Boost
-	outfiletxt2.open("newMidi" + to_string(prevSegment.ID) + to_string(nextSegment.ID) + ".txt");
-	outfiletxt2 << newMidi;
-	outfiletxt2.close();
-
 	
 	this->prevMidi = prevMidiAfterKeyChange;
 	this->nextMidi = nextMidi;
