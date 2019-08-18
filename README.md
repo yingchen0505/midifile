@@ -154,6 +154,8 @@ Second integer is the seconds.
 Third integer is the valence value.   
 Fourth integer is the arousal value.   
 
+The last row, which contains only two integers, represent the minutes and seconds of the end time of the last emotion state.   
+
 The sample emotion sequence is for the video [*La Luna*](https://youtu.be/vbuq7w3ZDUQ), a short film by Pixar.
 
 
