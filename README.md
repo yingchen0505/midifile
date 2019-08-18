@@ -157,7 +157,12 @@ Fourth integer is the arousal value.
 The sample emotion sequence is for the video [*La Luna*](https://youtu.be/vbuq7w3ZDUQ), a short film by Pixar.
 
 
-To generate an output music 
+To generate output music from sample data:
 ``` bash
-./fyp [options] [arguments]
+./fyp
 ```
+
+In root folder, you would find two midifiles generated.   
+`output.mid` is the output midifile.   
+`no_transition.mid` is the "raw" output without executing the transition algorithm for the purpose of comparison.   
+
