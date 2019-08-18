@@ -18,9 +18,20 @@ using namespace smf;
 using namespace music_segment_manager;
 using std::string;
 
+vector<EmotionState> readEmotionSequence();
+
 int main(int argc, char* argv[]) {
 
 	MusicSegmentManager musicSegmentManager(INPUT_PATH);
+	
+	vector<EmotionState> emotionSequence = readEmotionSequence();
+	
+	musicSegmentManager.generateMusicFromEmotion(emotionSequence);
+	musicSegmentManager.generateMusicWithoutTransitionForComparison(emotionSequence);
+	
+}
+
+vector<EmotionState> readEmotionSequence() {
 	
 	std::ifstream in((string)(INPUT_PATH) + "/" + "emotion_sequence.txt");
 	int min;
@@ -44,7 +55,5 @@ int main(int argc, char* argv[]) {
 	}
 	emotionSequence.back().endTime = endOfFileTime;
 	
-	musicSegmentManager.generateMusicFromEmotion(emotionSequence);
-	musicSegmentManager.generateMusicWithoutTransitionForComparison(emotionSequence);
-	
+	return emotionSequence;
 }
