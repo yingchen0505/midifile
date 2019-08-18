@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
 
 	MusicSegmentManager musicSegmentManager(INPUT_PATH);
 	
-	std::ifstream in("emotion_sequence.txt");
+	std::ifstream in((string)(INPUT_PATH) + "/" + "emotion_sequence.txt");
 	int min;
 	int sec;
 	int valence;
