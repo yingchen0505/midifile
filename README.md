@@ -174,8 +174,10 @@ Sample Output
 
 Sample output are hosted [here](https://github.com/yingchen0505/fyp_sample_output.git) since Git Large File Storage is not available for public forks.   
 
-`output_refined.mp3` is the output music generated for La Luna, converted to mp3 format using CoolSoft VirtualMidiSynth (2.6.0) and sound font Merlin Creative.    
-Note: Since there is rounding error in the duration of each midifile due to the limitation of c++ computation capabilities, the duration of each midifile in the mp3 output is slightly adjusted in order to fit the intended duration as per the algorithm.    
+`output_refined.mp3` is the output music generated for *La Luna*, converted to mp3 format using CoolSoft VirtualMidiSynth (2.6.0) and sound font Merlin Creative.    
+
+* Note:    
+Since there is rounding error in the duration of each midifile due to the limitation of c++ computation capabilities, the duration of each midifile in the mp3 output is slightly adjusted in order to fit the intended duration as per the algorithm.    
 The duration rounding error in the raw midi output does not indicate a flaw in the algorithm, but rather a limitation of the current implementation.    
 
 Sample output for different types of transition between several music segments can be found in the presentation slides.    
