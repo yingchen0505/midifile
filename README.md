@@ -118,7 +118,7 @@ make fyp
   
 This will generate an executable program fyp, which be run with the following command:
 ``` bash
-./fyp [options] [arguments]
+./fyp
 ```
 
 Run with Sample Data
@@ -163,6 +163,8 @@ To generate output music from sample data:
 ``` bash
 ./fyp
 ```
+
+The program searches for the most appropriate input music segments from the `music_segments` folder to generated an output music for the given emotion sequence in `emotion_sequence.txt`.    
 
 In root folder, you would find two midifiles generated.   
 `output.mid` is the output midifile.   
